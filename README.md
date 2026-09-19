@@ -12,12 +12,12 @@ This repository accompanies the manuscript:
 
 The model classifies lateral spinal radiographs into four ordinal categories:
 
-| Grade | Category | Description |
-|-------|----------|-------------|
-| 0 | Normal | Absence of structural lesions |
-| 1 | Osteophytes | Horizontally-oriented bony outgrowths (degenerative) |
-| 2 | Parasyndesmophytes | Bridging outgrowths of intermediate morphology |
-| 3 | Syndesmophytes | Vertically-oriented bony bridges across the disc space (axSpA-related) |
+| Category | Description |
+|----------|-------------|
+ Normal | Absence of structural lesions |
+ Osteophytes | Horizontally-oriented bony outgrowths (degenerative) |
+ Parasyndesmophytes | Bridging outgrowths of intermediate morphology |
+ Syndesmophytes | Vertically-oriented bony bridges across the disc space (axSpA-related) |
 
 ## Performance
 
@@ -82,10 +82,10 @@ Output:
 Predicted grade: 2 (Parasyndesmophytes)
 Confidence: 0.87
 Class probabilities:
-  Grade 0 (Normal):            0.03
-  Grade 1 (Osteophytes):       0.08
-  Grade 2 (Parasyndesmophytes): 0.87
-  Grade 3 (Syndesmophytes):    0.02
+  (Normal):            0.03
+  (Osteophytes):       0.08
+  (Parasyndesmophytes): 0.87
+  (Syndesmophytes):    0.02
 ```
 
 ### 3. Batch evaluation
