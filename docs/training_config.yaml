@@ -1,0 +1,82 @@
+# YOLO11l-cls Training Configuration
+# Ultralytics 8.3.246
+# axSpA radiographic classification study
+
+task: classify
+mode: train
+model: yolo11l-cls.pt
+epochs: 240
+patience: 240
+batch: 100
+imgsz: 640
+save: true
+device: 0
+workers: 8
+project: axspa-classification
+name: yolo11l_cls_240ep
+exist_ok: false
+pretrained: true
+optimizer: auto
+verbose: true
+seed: 0
+deterministic: true
+single_cls: false
+rect: false
+cos_lr: false
+close_mosaic: 10
+resume: false
+amp: true
+fraction: 1
+profile: false
+freeze: null
+multi_scale: false
+overlap_mask: true
+mask_ratio: 4
+dropout: 0
+val: true
+split: val
+save_json: false
+conf: null
+iou: 0.7
+max_det: 300
+half: false
+dnn: false
+plots: true
+
+# Optimizer hyperparameters
+lr0: 0.01
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3
+warmup_momentum: 0.8
+warmup_bias_lr: 0
+box: 7.5
+cls: 0.5
+dfl: 1.5
+nbs: 64
+
+# Data augmentation
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 0
+translate: 0.1
+scale: 0.5
+shear: 0
+perspective: 0
+flipud: 0        # Vertical flip DISABLED (anatomically implausible for lateral spine)
+fliplr: 0.5      # Horizontal flip RETAINED as regularization
+bgr: 0
+mosaic: 1
+mixup: 0
+cutmix: 0
+copy_paste: 0
+copy_paste_mode: flip
+auto_augment: randaugment
+erasing: 0.4
+
+# Training result
+# time: 954.211 seconds (~16 minutes)
+# final val accuracy_top1: 0.91579
+# final val_loss: 0.47925
