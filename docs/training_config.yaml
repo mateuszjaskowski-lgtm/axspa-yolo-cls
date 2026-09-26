@@ -1,0 +1,31 @@
+# Selected supplied-checkpoint fields, not proof of independently reproduced training.
+# optimizer=auto: lr0/momentum are configured, NOT effective values.
+# Detection-only fields omitted.
+task: "classify"
+model: "yolo11l-cls.pt"
+imgsz: 640
+batch: 100
+epochs: 240
+patience: 240
+pretrained: true
+optimizer: "auto"
+seed: 0
+deterministic: true
+amp: true
+cos_lr: false
+lr0: 0.01
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.0
+nbs: 64
+scale: 0.5
+fliplr: 0.5
+flipud: 0.0
+auto_augment: "randaugment"
+erasing: 0.4
+dropout: 0.0
+# Best validation epoch: 199; framework: 8.3.246.
+# Framework reconstruction: AdamW lr=0.00125 beta1=0.9; original optimizer log unavailable.
