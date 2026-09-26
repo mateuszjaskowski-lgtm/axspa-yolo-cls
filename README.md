@@ -1,149 +1,92 @@
-# axSpA Radiographic Changes — YOLO11l-cls
+# Lateral spinal radiograph morphology classification
 
-Deep learning model for detection of radiographic changes on lateral spinal radiographs in patients evaluated for axial spondyloarthritis (axSpA). The model classifies radiographs into four morphological categories of structural change.
+Research code accompanying **Deep Learning Classification of Morphological Patterns on Lateral Spinal Radiographs in Patients with Suspected Axial Spondyloarthritis**, by Mateusz Jaśkowski, Paweł Górski, Zbigniew Guzera and Michał Podgórski. Manuscript prepared for Diagnostics; no publication or acceptance is claimed.
 
-This repository accompanies the manuscript:
+## Task
 
-> **Jaśkowski M, Górski P, Guzera Z, Podgórski M.** Radiographic Differentiation of Axial Spondyloarthritis and Degenerative Spinal Changes in Patients with Chronic Back Pain: Development and External Validation of a YOLO-Based Deep Learning Model. *Diagnostics* (submitted, 2026).
+Four **nominal morphological categories**, not an ordinal severity scale:
 
----
+| Code | Category | Operational definition |
+|---|---|---|
+| 0 | Normal | Absence of assessed structural lesions |
+| 1 | Osteophytes | Horizontally oriented vertebral-margin outgrowths |
+| 2 | Parasyndesmophytes | Distinct intermediate/non-marginal pattern assigned by readers |
+| 3 | Syndesmophytes | Vertically oriented bridging lesions in this study |
 
-## Overview
+Dominant type was determined by affected-vertebra counts; ties by individual outgrowths. Two independent radiologists assigned labels; all 174 disagreements were resolved by consensus. Pre-consensus nominal Cohen's kappa was 0.703 (95% CI 0.663–0.741), exact agreement 653/827.
 
-The model classifies lateral spinal radiographs into four ordinal categories:
+Secondary binary grouping combines categories 2 and 3. It describes dominant morphology, not clinical axSpA diagnosis or absence of every lesion on mixed images.
 
-| Category | Description |
-|----------|-------------|
- Normal | Absence of structural lesions |
- Osteophytes | Horizontally-oriented bony outgrowths (degenerative) |
- Parasyndesmophytes | Bridging outgrowths of intermediate morphology |
- Syndesmophytes | Vertically-oriented bony bridges across the disc space (axSpA-related) |
+## Data and model
 
-## Performance
+January 2022–December 2025: Lodz 686 assessed, 9 quality exclusions, 677 included (582 train, 95 validation); Konskie 155 assessed, 5 quality exclusions, 150 external test. One image per patient from the most painful spinal segment. No included image was omitted from model evaluation.
 
-Validated on an independent external cohort (n=150) from a structurally distinct healthcare center:
+Anonymized PNGs were manually cropped to retain the visible segment and surrounding anatomy without class-label knowledge or manual brightness/contrast/CLAHE processing. Device details and separate train/validation demographic summaries are unavailable. Analysis plan agreed verbally; no written plan available for review.
 
-| Metric | Value | 95% CI |
-|--------|-------|--------|
-| Overall accuracy | 0.900 | 0.847–0.947 |
-| Quadratic-weighted Cohen's κ | 0.907 | 0.825–0.963 |
-| Macro AUC | 0.989 | — |
-| Within-1-grade accuracy | 0.980 | — |
-| **Binary task AUC** (axSpA-related vs non-axSpA) | **0.990** | **0.975–0.999** |
+Primary model: ImageNet-pretrained YOLO11l-cls, 640 pixels, batch 100, 240 epochs, seed 0, Ultralytics 8.3.246. Checkpoint history identifies best validation top-1 at epoch 199. Original Python/PyTorch/CUDA versions, GPU and timing measurements are not verified. See docs/training_config.yaml.
 
-## Model architecture
+## Corrected primary results
 
-- **Base model:** YOLO11l-cls (Ultralytics)
-- **Parameters:** ~13M
-- **Input:** 640×640 pixel grayscale/RGB images
-- **Pretraining:** ImageNet-1K
-- **Training framework:** Ultralytics 8.3.246 (PyTorch 2.10.0, CUDA 12.8)
-- **Hardware:** Single NVIDIA Tesla T4 GPU (16 GB VRAM)
-- **Training time:** ~16 minutes for 240 epochs
-- **Inference time:** ~28 ms per image (34.7 images/second on Tesla T4)
+| Metric | Internal n=95 | External n=150 |
+|---|---:|---:|
+| Accuracy | 90/95 = 0.947 | 135/150 = 0.900 |
+| Nominal Cohen's kappa | 0.923 | 0.856 |
+| Macro one-vs-rest AUC | 0.981891 | 0.987043 |
+| Binary dominant-category AUC | 0.996479 | 0.989931 |
+| Mean one-vs-rest Brier | 0.026179 | 0.038277 |
 
-## Repository structure
+External accuracy exact 95% CI: 0.840–0.943. External binary AUC bootstrap CI: 0.977–0.999. Full estimates and methods: audit/.
+Internal-derived threshold 0.584019549792572 gives external TP=35, FN=6, FP=2, TN=107. Externally optimized thresholds are exploratory.
 
-```
-.
-├── README.md                    # This file
-├── LICENSE                       # MIT License
-├── CITATION.cff                  # Citation metadata
-├── requirements.txt              # Python dependencies
-├── notebooks/
-│   ├── analysis.ipynb            # Main analysis notebook (inference, metrics, ROC, calibration, Eigen-CAM)
-│   └── inter_rater_analysis.ipynb  # Inter-rater agreement analysis
-├── scripts/
-│   ├── inference.py              # Minimal single-image inference script
-│   └── export_metrics.py         # Metrics export script for validation folder
-├── docs/
-│   ├── model_card.md             # Model card (intended use, limitations, ethics)
-│   └── training_config.yaml      # Training hyperparameters
-└── example_outputs/
-    └── example_predictions.md    # Example predictions with confidence scores
-```
+Revision comparisons: ResNet50 140/150, EfficientNet-B0 137/150, new YOLO26l-cls 138/150. New archived YOLO26 replaces the earlier incompletely documented 140/150 run: 12,839,748 parameters, best validation epoch 150, Ultralytics 8.4.163, external macro-AUC 0.987679 and binary AUC 0.988812. External data had already been examined; revision comparisons are exploratory. Different pipelines prevent attributing differences solely to architecture.
 
-## Quick start
+## Reproduction
 
-### 1. Install dependencies
+Install analysis dependencies with: python -m pip install -r requirements.txt
 
-```bash
-pip install -r requirements.txt
-```
+Run: python scripts/export_metrics.py --published-matrices --output confusion_matrix_audit.json
 
-### 2. Single-image inference
+This reanalyzes manuscript hard-label matrices. It cannot reconstruct probabilities, patient IDs, AUC or prediction provenance. Exported matrices use true rows and predicted columns; original Figure 1 uses the transpose.
 
-```bash
-python scripts/inference.py --image path/to/radiograph.jpg --model best.pt
-```
+With authorized original files:
 
-Output:
-```
-Predicted grade: 2 (Parasyndesmophytes)
-Confidence: 0.87
-Class probabilities:
-  (Normal):            0.03
-  (Osteophytes):       0.08
-  (Parasyndesmophytes): 0.87
-  (Syndesmophytes):    0.02
-```
+    python scripts/export_metrics.py --input external_probs.npz --positive-indices 2 3 --threshold 0.584019549792572 --output external_audit.json
+    python scripts/audit_reader_agreement.py --input reader_agreement_axspa.xlsx --output reader_audit.json
 
-### 3. Batch evaluation
+NPZ schema: Unicode class_names, integer true, float probs (N × 4); a single pair of suffixed _true/_probs keys is also accepted. Preserve canonical class order. Reader XLSX columns: Case_ID, Cohort, M.P., P.G., Consensus; labels 0–3.
+Notebooks run these audited functions. Case-level ratings/probabilities, original radiographs and trained weights are not distributed here; access is subject to institutional permission. Included JSONs contain aggregate results.
 
-Use the Colab notebook `notebooks/analysis.ipynb` for full evaluation including confusion matrices, ROC curves, calibration analysis, and Eigen-CAM visualizations.
+## Inference and future evaluations
 
-## Model weights
+    python -m pip install -r requirements-inference.txt
+    python scripts/inference.py --model best.pt --image radiograph.png
+    python scripts/evaluate_folder.py --model best.pt --data dataset/test --output results/test.npz
 
-Model weights (best.pt) are available upon reasonable request from the corresponding author due to institutional and data-protection constraints on the training data.
+Evaluation expects four canonical class directories (English or original Polish names). Probability order is derived from checkpoint names. Unknown classes and unreadable images cause errors rather than silent exclusions. Relative image IDs are preserved; these do not prove patient independence.
+Do not change train/validation/test membership in response to performance. New experiments must retain their partition and report their own results.
 
-For research collaboration or clinical evaluation, please contact:
+## Verification
 
-**Mateusz Jaśkowski, MD**
-Rheumatology Department, Saint Lucas Hospital
-ul. Gimnazjalna 41B, 26-200 Konskie, Poland
-Email: mjaskowski@zoz.konskie.pl
-ORCID: [0009-0003-7303-9600](https://orcid.org/0009-0003-7303-9600)
+    python -m unittest discover -s tests
+    python scripts/regenerate_probability_figures.py --inputs data --output results/figures
 
-## Ethics and data availability
+Figure regeneration requires internal_probs.npz and external_probs.npz in data. It exports TIFF Figures 2–4 and probability/calibration audits. Eigen-CAM reproduction is not provided without the original weights and images; historical notebook versions remain in Git history.
 
-- The study was approved by the institutional Ethics Committees of both participating centers (Medical University of Lodz and Saint Lucas Hospital, Konskie)
-- Individual informed consent was waived due to the retrospective design and analysis of irreversibly anonymized imaging data
-- Individual-patient imaging data are not publicly available due to institutional and data-protection constraints
-- Aggregate results and metrics are provided in the manuscript and this repository
+## Limits
 
-## Intended use and limitations
+Supplied-array metrics and checkpoint metadata were audited; independent inference on original images was not performed. Original split algorithm and patient identities were not independently verified. DISH and severe degeneration were excluded. No subgroup fairness, prospective clinical utility or assisted-reader benefit was established. Weighted kappa and code distances are secondary coding-dependent descriptions. Paired comparisons require aligned IDs, labels and class order; scripts/compare_predictions.py rejects mismatches.
 
-**Intended use:** Research and development of AI-assisted radiographic interpretation tools for axSpA imaging.
+## Citation and releases
 
-**Not intended for:** Standalone clinical decision-making without expert radiologist supervision.
+Historical v1.0.0: https://doi.org/10.5281/zenodo.22850852
+All-version record: https://doi.org/10.5281/zenodo.22850851
 
-See [`docs/model_card.md`](docs/model_card.md) for full model card including limitations, ethical considerations, and out-of-scope uses.
+Historical version DOI does not identify these corrections. This working revision has no new release DOI yet. See docs/RELEASE_CHECKLIST_PL.md and CITATION.cff. Cite the actual new version DOI after archiving, not an invented journal citation.
 
-## Citation
+## Ethics and licensing
 
-If you use this model or code in your research, please cite:
+Complete ethics identifiers, scope and consent/waiver details from actual institutional decisions in the manuscript. No assumption of two separate approvals is made.
+Existing MIT license is retained for repository code. Third-party frameworks/weights retain their own licenses. Repository licensing does not grant rights to patient data.
+Research use only; no clinical deployment provided.
 
-```bibtex
-@article{jaskowski2026axspa,
-  title={Radiographic Differentiation of Axial Spondyloarthritis and Degenerative Spinal Changes in Patients with Chronic Back Pain: Development and External Validation of a YOLO-Based Deep Learning Model},
-  author={Jaśkowski, Mateusz and Górski, Paweł and Guzera, Zbigniew and Podgórski, Michał},
-  journal={Diagnostics},
-  year={2026},
-  publisher={MDPI}
-}
-```
-
-## License
-
-This repository is licensed under the [MIT License](LICENSE).
-
-The pretrained YOLO11l-cls base model is licensed under [AGPL-3.0 by Ultralytics](https://github.com/ultralytics/ultralytics/blob/main/LICENSE).
-
-## Acknowledgments
-
-- Ultralytics team for the YOLO11 framework
-- All patients whose de-identified imaging contributed to this research
-
-## Contact
-
-For questions, issues, or collaboration inquiries, please open an [issue](../../issues) or contact the corresponding author.
+Contact: Mateusz Jaśkowski — mjaskowski@zoz.konskie.pl

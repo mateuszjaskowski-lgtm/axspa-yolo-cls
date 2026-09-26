@@ -1,210 +1,83 @@
-!pip -q install ultralytics scikit-learn pandas
-ZIP = "/sacroiliitis train val_ new.zip"   # <- wklej swoją nazwę z list(uploaded.keys())
-!mkdir -p /content/dataset
-!unzip -q "$ZIP" -d /content/dataset
-!find /content/dataset -maxdepth 2 -type d -print
-
-# export_metrics_cls.py
-# Walidacja YOLO-cls + eksport metryk per klasa (precision/recall/F1) + summary.json + INFERENCE TIME
-from ultralytics import YOLO
+#!/usr/bin/env python3
+"""Audit hard-label metrics from published confusion matrices or original NPZ probabilities.
+Examples:
+ python export_metrics.py --published-matrices --output confusion_matrix_audit.json
+ python export_metrics.py --input external_probs.npz --positive-indices 2 3 --threshold 0.584 --output external_audit.json
+Rows of exported confusion matrices are TRUE; columns are PREDICTED.
+NPZ files must contain class_names and one unambiguous pair of *_probs, *_true arrays.
+This script never manufactures probabilities from a confusion matrix.
+"""
+import argparse,json
 from pathlib import Path
-import os, json, time
 import numpy as np
-import pandas as pd
-
-# === 1) USTAWIENIA – PODMIEŃ NA SWOJE ===
-WEIGHTS = "/content/model_- 30 september 2025 14_14.pt"
-DATA    = "/content/dataset/sacroiliitis train val_ new"  # root z train/val(/test)
-SPLIT   = "val"  # <- daj dokładnie nazwę Twojego podfolderu (np. "val" / "val_new" / "val_final")
-PROJECT = "runs/val"
-NAME    = "exp1"
-
-# === NOWE: parametry pomiaru inference time ===
-IMGSZ = 640          # rozmiar obrazu (ten sam co przy treningu)
-DEVICE = 0           # GPU 0 (użyj 'cpu' dla CPU-only)
-N_WARMUP = 10        # liczba warmup runs (nie liczone)
-N_MEASURE = 200      # liczba pomiarów (używanych do statystyki)
-
-# === 2) Sanity check ścieżek ===
-DATA = str(Path(DATA))  # normalizacja
-split_dir = Path(DATA) / SPLIT
-if not split_dir.is_dir():
-    subdirs = [d.name for d in Path(DATA).iterdir() if d.is_dir()]
-    raise FileNotFoundError(f"Nie istnieje: {split_dir}\nW {DATA} są: {subdirs}")
-
-# === 3) Walidacja (KLASYFIKACJA) ===
-model = YOLO(WEIGHTS)
-results = model.val(data=DATA, split=SPLIT, project=PROJECT, name=NAME, plots=True)
-
-# Katalog runa
-save_dir = Path(getattr(results, "save_dir", Path(PROJECT) / NAME))
-save_dir.mkdir(parents=True, exist_ok=True)
-
-# === 4) Confusion Matrix -> pandas/numpy + etykiety ===
-cm_df = results.confusion_matrix.to_df()
-# jeżeli to Polars, zamień na pandas
-try:
-    cm_df = cm_df.to_pandas()
-except Exception:
-    pass
-
-# jeśli tabela ma kolumnę z etykietami w pierwszej kolumnie — ustaw jako index
-if cm_df.shape[0] != cm_df.shape[1]:
-    cm_df = cm_df.set_index(cm_df.columns[0])
-
-cm_numeric = cm_df.apply(pd.to_numeric, errors="coerce")
-cm = cm_numeric.to_numpy(dtype=float)
-
-# etykiety klas
-names = getattr(results, "names", None)
-if isinstance(names, dict):
-    classes = [names[i] for i in range(cm.shape[0])]
-elif isinstance(names, (list, tuple)):
-    classes = list(names)[:cm.shape[0]]
-else:
-    classes = list(map(str, cm_df.index))
-
-# === 5) precision / recall / F1 per klasa ===
-tp = np.diag(cm)
-fp = cm.sum(axis=0) - tp
-fn = cm.sum(axis=1) - tp
-support = cm.sum(axis=1)
-
-precision = np.divide(tp, tp + fp, out=np.zeros_like(tp), where=(tp+fp)!=0)
-recall    = np.divide(tp, tp + fn, out=np.zeros_like(tp), where=(tp+fn)!=0)
-f1        = np.divide(2*precision*recall, precision+recall, out=np.zeros_like(tp), where=(precision+recall)!=0)
-
-per_class = pd.DataFrame({
-    "class": classes,
-    "support": support.astype(int),
-    "precision": precision,
-    "recall": recall,
-    "f1": f1
-}).sort_values("class").reset_index(drop=True)
-
-# === 6) Zapisy CSV/XLSX ===
-csv_path  = save_dir / "per_class_metrics.csv"
-xlsx_path = save_dir / "per_class_metrics.xlsx"
-per_class.to_csv(csv_path, index=False)
-with pd.ExcelWriter(xlsx_path, engine="openpyxl") as w:
-    per_class.to_excel(w, sheet_name=f"per_class_{SPLIT}", index=False)
-
-# ==========================================================================
-# === 7) NOWE: POMIAR INFERENCE TIME =========================================
-# ==========================================================================
-print("\n" + "=" * 60)
-print("POMIAR INFERENCE TIME")
-print("=" * 60)
-
-# Znajdź wszystkie obrazy w split directory (rekurencyjnie)
-image_extensions = {'.jpg', '.jpeg', '.png', '.bmp', '.tif', '.tiff'}
-test_images = [
-    p for p in split_dir.rglob('*')
-    if p.suffix.lower() in image_extensions and p.is_file()
-]
-
-if not test_images:
-    print(f"⚠️  Nie znaleziono obrazów w {split_dir}")
-    inference_stats = None
-else:
-    print(f"Znaleziono {len(test_images)} obrazów w {split_dir}")
-    print(f"Warmup: {N_WARMUP} runs, Measurement: {N_MEASURE} runs")
-    print(f"Image size: {IMGSZ}×{IMGSZ}, Device: {DEVICE}")
-
-    # Wybierz reprezentatywny obraz (pierwszy)
-    test_img = str(test_images[0])
-    print(f"Test image: {test_img}")
-
-    # ---- WARMUP (te predykcje NIE są liczone) ----
-    print(f"\nWarmup ({N_WARMUP} runs)...")
-    for _ in range(N_WARMUP):
-        _ = model.predict(test_img, verbose=False, imgsz=IMGSZ, device=DEVICE)
-
-    # ---- POMIAR ----
-    print(f"Measuring ({N_MEASURE} runs)...")
-    times_ms = []
-    for i in range(N_MEASURE):
-        start = time.perf_counter()
-        _ = model.predict(test_img, verbose=False, imgsz=IMGSZ, device=DEVICE)
-        elapsed_ms = (time.perf_counter() - start) * 1000.0
-        times_ms.append(elapsed_ms)
-
-    times_arr = np.array(times_ms)
-
-    # Statystyki
-    inference_stats = {
-        "n_warmup": N_WARMUP,
-        "n_measure": N_MEASURE,
-        "imgsz": IMGSZ,
-        "device": str(DEVICE),
-        "test_image": test_img,
-        "mean_ms": float(np.mean(times_arr)),
-        "median_ms": float(np.median(times_arr)),
-        "std_ms": float(np.std(times_arr)),
-        "min_ms": float(np.min(times_arr)),
-        "max_ms": float(np.max(times_arr)),
-        "p25_ms": float(np.percentile(times_arr, 25)),
-        "p75_ms": float(np.percentile(times_arr, 75)),
-        "p95_ms": float(np.percentile(times_arr, 95)),
-        "throughput_img_per_sec": float(1000.0 / np.mean(times_arr)),
-    }
-
-    print(f"\n--- INFERENCE TIME RESULTS ---")
-    print(f"  Median:     {inference_stats['median_ms']:.2f} ms/image")
-    print(f"  Mean:       {inference_stats['mean_ms']:.2f} ms/image")
-    print(f"  Std:        {inference_stats['std_ms']:.2f} ms")
-    print(f"  Min/Max:    {inference_stats['min_ms']:.2f} / {inference_stats['max_ms']:.2f} ms")
-    print(f"  P25/P75:    {inference_stats['p25_ms']:.2f} / {inference_stats['p75_ms']:.2f} ms")
-    print(f"  P95:        {inference_stats['p95_ms']:.2f} ms")
-    print(f"  Throughput: {inference_stats['throughput_img_per_sec']:.1f} images/second")
-    print(f"\n>>> DO MANUSKRYPTU (median): {inference_stats['median_ms']:.1f} ms per image <<<")
-
-    # Zapisz szczegółowe pomiary do CSV
-    pd.DataFrame({"iteration": range(1, N_MEASURE+1), "time_ms": times_ms}).to_csv(
-        save_dir / "inference_time_raw.csv", index=False
-    )
-
-    # Zapisz statystyki do JSON
-    with open(save_dir / "inference_time.json", "w") as f:
-        json.dump(inference_stats, f, indent=2)
-
-# ==========================================================================
-# === 8) Summary JSON (rozszerzony o inference time) =======================
-# ==========================================================================
-def js(x):
-    try:
-        if hasattr(x, "item"):
-            return x.item()
-        if isinstance(x, (np.floating, np.integer)):
-            return float(x)
-        if isinstance(x, np.ndarray):
-            return x.tolist()
-    except Exception:
-        pass
-    if isinstance(x, Path):
-        return str(x)
-    return x
-
-summary = {
-    "split": SPLIT,
-    "top1": js(getattr(results, "top1", None)),
-    "top5": js(getattr(results, "top5", None)),
-    "loss": js(getattr(results, "loss", None)),
-    "num_images": js(getattr(results, "images", None)),
-    "save_dir": str(save_dir),
-    "inference_time": inference_stats,   # <-- NOWE
-}
-
-with open(save_dir / "summary.json", "w", encoding="utf-8") as f:
-    json.dump(summary, f, ensure_ascii=False, indent=2)
-
-print("\n" + "=" * 60)
-print("ZAPISANE PLIKI:")
-print("=" * 60)
-print(f"- {csv_path}")
-print(f"- {xlsx_path}")
-print(f"- {save_dir / 'summary.json'}")
-if inference_stats:
-    print(f"- {save_dir / 'inference_time.json'}")
-    print(f"- {save_dir / 'inference_time_raw.csv'}")
-print(f"\nKatalog runa: {save_dir}")
+from scipy.stats import beta
+from sklearn.metrics import roc_auc_score,roc_curve
+NAMES=['normal','osteophytes','parasyndesmophytes','syndesmophytes']
+# Transpose of Figure 1, whose rows are predicted and columns are reference.
+PUBLISHED={
+'internal':np.array([[36,2,0,0],[1,31,1,0],[0,1,11,0],[0,0,0,12]]).T,
+'external':np.array([[51,3,0,1],[4,49,4,1],[0,1,16,0],[0,1,0,19]]).T}
+def cp(k,n):
+ if not n:return [None,None]
+ return [0. if k==0 else float(beta.ppf(.025,k,n-k+1)),1. if k==n else float(beta.ppf(.975,k+1,n-k))]
+def rate(k,n):return {'estimate':float(k/n) if n else None,'ci95':cp(k,n),'numerator':int(k),'denominator':int(n)}
+def vals(cm):
+ n=cm.sum();r=cm.sum(1);c=cm.sum(0);tp=np.diag(cm);f=np.divide(2*tp,r+c,out=np.zeros(len(r),float),where=(r+c)>0)
+ rec=np.divide(tp,r,out=np.full(len(r),np.nan),where=r>0)
+ pe=(r*c).sum()/n**2;acc=tp.sum()/n
+ w=(np.arange(len(r))[:,None]-np.arange(len(r))[None,:])**2
+ den=(w*np.outer(r,c)/n).sum();kw=1-(w*cm).sum()/den if den else np.nan
+ return {'accuracy':acc,'balanced_accuracy':np.mean(rec),'macro_f1':np.mean(f),'unweighted_kappa':(acc-pe)/(1-pe) if pe<1 else np.nan,'quadratic_weighted_kappa':kw,'per_class_f1':f}
+def audit(cm,names,iterations=2000,seed=0):
+ cm=np.asarray(cm,int);n=int(cm.sum());k=len(names);v=vals(cm)
+ true,pred=np.where(cm>=0);pair=np.repeat(np.arange(k*k),cm.ravel())
+ rng=np.random.default_rng(seed);boot=[]
+ for _ in range(iterations):
+  b=np.bincount(rng.choice(pair,size=n,replace=True),minlength=k*k).reshape(k,k)
+  z=vals(b);z['per_class_f1']=np.where(b.sum(1)>0,z['per_class_f1'],np.nan);boot.append(z)
+ out={'n':n,'class_names':names,'confusion_matrix_true_by_predicted':cm.tolist(),'bootstrap':{'iterations':iterations,'seed':seed,'generator':'numpy.default_rng / PCG64','method':'percentile','pair_order':'true class then predicted class, repeated by cell count','note':'Reconstructed pairs are equivalent for label metrics; no patient identifiers or probabilities are reconstructed.'},'overall':{},'per_class':{}}
+ for metric in ['balanced_accuracy','macro_f1','unweighted_kappa','quadratic_weighted_kappa']:
+  a=np.array([b[metric] for b in boot]);a=a[np.isfinite(a)]
+  out['overall'][metric]={'estimate':float(v[metric]),'ci95':np.quantile(a,[.025,.975]).tolist(),'valid_replicates':len(a)}
+ out['overall']['accuracy']=rate(int(np.trace(cm)),n)
+ dist=abs(np.arange(k)[:,None]-np.arange(k)[None,:]);out['overall']['within_one_category']=rate(int(cm[dist<=1].sum()),n);out['overall']['mae']=float((cm*dist).sum()/n)
+ for i,name in enumerate(names):
+  tp=int(cm[i,i]);fn=int(cm[i].sum()-tp);fp=int(cm[:,i].sum()-tp);tn=n-tp-fn-fp
+  a=np.array([b['per_class_f1'][i] for b in boot]);a=a[np.isfinite(a)]
+  out['per_class'][name]={'TP':tp,'FN':fn,'FP':fp,'TN':tn,'sensitivity':rate(tp,tp+fn),'specificity':rate(tn,tn+fp),'PPV':rate(tp,tp+fp),'NPV':rate(tn,tn+fn),'f1':{'estimate':float(v['per_class_f1'][i]),'ci95':np.quantile(a,[.025,.975]).tolist(),'valid_replicates':len(a),'zero_observed_errors':fp+fn==0,'note':'A degenerate bootstrap interval does not imply absence of population uncertainty.' if fp+fn==0 else ''}}
+ return out
+def load_npz(path):
+ with np.load(path,allow_pickle=False) as z:
+  pk=[x for x in z.files if x=='probs' or x.endswith('_probs')];tk=[x for x in z.files if x=='true' or x.endswith('_true')]
+  if len(pk)!=1 or len(tk)!=1 or 'class_names' not in z:raise ValueError('Require class_names and exactly one probs/true key pair.')
+  p=np.asarray(z[pk[0]],float);raw=np.asarray(z[tk[0]]);names=[str(x) for x in z['class_names']]
+ if p.ndim!=2 or raw.ndim!=1 or len(raw)!=len(p) or p.shape[1]!=len(names) or len(set(names))!=len(names):raise ValueError('Inconsistent shapes or duplicate names.')
+ if not np.all(np.isfinite(p)) or np.any(p<0) or np.any(p>1) or not np.allclose(p.sum(1),1,atol=1e-5):raise ValueError('Invalid probabilities.')
+ y=raw.astype(int)
+ if not np.array_equal(raw,y) or np.any(y<0) or np.any(y>=len(names)):raise ValueError('Invalid reference labels.')
+ return p,y,names
+def main():
+ ap=argparse.ArgumentParser(description=__doc__);g=ap.add_mutually_exclusive_group(required=True);g.add_argument('--published-matrices',action='store_true');g.add_argument('--input');ap.add_argument('--output',required=True);ap.add_argument('--positive-indices',nargs='+',type=int);ap.add_argument('--threshold',type=float);ap.add_argument('--iterations',type=int,default=2000);ap.add_argument('--seed',type=int,default=0);a=ap.parse_args()
+ if a.published_matrices:
+  out={'provenance':'Reanalysis of manuscript Figure 1 only; probability-based results are not verified.','cohorts':{s:audit(c,NAMES,a.iterations,a.seed) for s,c in PUBLISHED.items()}}
+ else:
+  p,y,names=load_npz(a.input);k=len(names);pred=p.argmax(1);cm=np.bincount(y*k+pred,minlength=k*k).reshape(k,k);out=audit(cm,names,a.iterations,a.seed)
+  one=np.eye(k)[y];out['mean_ovr_brier']=float(np.mean((p-one)**2));out['macro_auc']=float(roc_auc_score(y,p,multi_class='ovr',labels=np.arange(k))) if len(np.unique(y))==k else None
+  out['micro_auc']=float(roc_auc_score(one.ravel(),p.ravel()));out['per_class_auc']={name:float(roc_auc_score(y==i,p[:,i])) if 0<(y==i).sum()<len(y) else None for i,name in enumerate(names)}
+  if a.positive_indices is not None:
+   pos=a.positive_indices
+   if len(set(pos))!=len(pos) or not pos or min(pos)<0 or max(pos)>=k or len(pos)==k:raise ValueError('Invalid positive class indices.')
+   yy=np.isin(y,pos);score=p[:,pos].sum(1)
+   if len(np.unique(yy))<2:raise ValueError('Binary AUC needs both reference groups.')
+   auc=float(roc_auc_score(yy,score));rng=np.random.default_rng(a.seed);boots=[]
+   for _ in range(a.iterations):
+    idx=rng.integers(0,len(y),len(y))
+    if len(np.unique(yy[idx]))==2:boots.append(roc_auc_score(yy[idx],score[idx]))
+   out['binary']={'positive_class_names':[names[i] for i in pos],'auc':auc,'auc_ci95':np.quantile(boots,[.025,.975]).tolist(),'valid_auc_replicates':len(boots)}
+   # Optimum is explicitly exploratory unless this input is the internal derivation set.
+   fpr,tpr,thr=roc_curve(yy,score,drop_intermediate=False);valid=np.isfinite(thr);jj=tpr[valid]-fpr[valid];th=thr[valid];out['binary']['youden_on_this_input']=float(th[np.argmax(jj)])
+   if a.threshold is not None:
+    yp=score>=a.threshold;tp=int((yy&yp).sum());fn=int((yy&~yp).sum());fp=int((~yy&yp).sum());tn=int((~yy&~yp).sum())
+    out['binary']['fixed_threshold']={'threshold':a.threshold,'TP':tp,'FN':fn,'FP':fp,'TN':tn,'sensitivity':rate(tp,tp+fn),'specificity':rate(tn,tn+fp),'PPV':rate(tp,tp+fp),'NPV':rate(tn,tn+fn),'accuracy':rate(tp+tn,len(y))}
+ Path(a.output).write_text(json.dumps(out,indent=2,allow_nan=False)+'\n');print(a.output)
+if __name__=='__main__':main()

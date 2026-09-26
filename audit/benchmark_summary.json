@@ -1,0 +1,32 @@
+{
+  "scope": "Exploratory revision benchmark on previously examined external cohort; different training pipelines.",
+  "external_n": 150,
+  "models": {
+    "YOLO11": {
+      "correct": 135,
+      "macro_auc": 0.9870430952,
+      "binary_auc": 0.9899306333
+    },
+    "ResNet50": {
+      "correct": 140,
+      "macro_auc": 0.992803262,
+      "binary_auc": 0.993734616
+    },
+    "EfficientNet_B0": {
+      "correct": 137,
+      "macro_auc": 0.990207978,
+      "binary_auc": 1.0
+    },
+    "YOLO26_revision": {
+      "correct": 138,
+      "macro_auc": 0.987678569,
+      "binary_auc": 0.988811815,
+      "nominal_kappa": 0.885226041,
+      "parameters": 12839748,
+      "best_validation_epoch": 150,
+      "ultralytics": "8.4.163",
+      "checkpoint_sha256": "b968a374b4ec77270a38c65f15724544c2a69894c66b545d520307f86db6cb34"
+    }
+  },
+  "provenance": "Metrics recalculated from author-supplied probabilities; original patient images not independently re-inferred. New YOLO26 replaces earlier 140/150 run."
+}

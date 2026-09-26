@@ -1,38 +1,9 @@
-# Python
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.Python
-*.egg-info/
-.venv/
-venv/
-env/
-
-# Jupyter
 .ipynb_checkpoints/
-
-# Model weights (large files — use Zenodo/HuggingFace for release)
-*.pt
-*.pth
-*.onnx
-
-# Data (privacy - never commit)
 data/
-*.csv
-*.xlsx
-*.dcm
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-
-# Results (large outputs)
-runs/
 results/
-*.log
+runs/
+*.pt
+*.npz
+*.xlsx

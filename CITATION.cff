@@ -21,8 +21,8 @@ authors:
     orcid: "https://orcid.org/0000-0003-4513-0602"
     affiliation: "Medical University of Lodz, Poland"
 
-repository-code: "https://github.com/mjaskowski/axspa-yolo-cls"
-url: "https://github.com/mjaskowski/axspa-yolo-cls"
+repository-code: "https://github.com/mateuszjaskowski-lgtm/axspa-yolo-cls"
+url: "https://github.com/mateuszjaskowski-lgtm/axspa-yolo-cls"
 abstract: >-
   Deep learning model for radiographic changes on lateral spinal radiographs, classifying structural
   spinal changes on lateral radiographs in patients evaluated for axial
@@ -36,24 +36,4 @@ keywords:
   - external validation
   - convolutional neural network
 license: MIT
-version: "1.0.0"
-date-released: "2026-09-13"
-preferred-citation:
-  type: article
-  title: >-
-    Radiographic Differentiation of Axial Spondyloarthritis and Degenerative
-    Spinal Changes in Patients with Chronic Back Pain: Development and
-    External Validation of a YOLO-Based Deep Learning Model
-  authors:
-    - given-names: Mateusz
-      family-names: Jaśkowski
-    - given-names: Paweł
-      family-names: Górski
-    - given-names: Zbigniew
-      family-names: Guzera
-    - given-names: Michał
-      family-names: Podgórski
-  journal: Diagnostics
-  publisher:
-    name: MDPI
-  year: 2026
+version: "1.1.0-dev"

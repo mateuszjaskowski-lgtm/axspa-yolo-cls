@@ -1,0 +1,380 @@
+{
+  "n": 95,
+  "class_names": [
+    "normal",
+    "osteofity",
+    "parasyndesmofity",
+    "syndesmofity"
+  ],
+  "confusion_matrix_true_by_predicted": [
+    [
+      36,
+      1,
+      0,
+      0
+    ],
+    [
+      2,
+      31,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      11,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      12
+    ]
+  ],
+  "bootstrap": {
+    "iterations": 2000,
+    "seed": 0,
+    "generator": "numpy.default_rng / PCG64",
+    "method": "percentile",
+    "pair_order": "true class then predicted class, repeated by cell count",
+    "note": "Reconstructed pairs are equivalent for label metrics; no patient identifiers or probabilities are reconstructed."
+  },
+  "overall": {
+    "balanced_accuracy": {
+      "estimate": 0.9503510863804981,
+      "ci95": [
+        0.898092817315201,
+        0.9913793103448276
+      ],
+      "valid_replicates": 2000
+    },
+    "macro_f1": {
+      "estimate": 0.9505099502487562,
+      "ci95": [
+        0.9009312730148187,
+        0.9869908323771275
+      ],
+      "valid_replicates": 2000
+    },
+    "unweighted_kappa": {
+      "estimate": 0.923498147849895,
+      "ci95": [
+        0.8548072676429564,
+        0.9841725351517331
+      ],
+      "valid_replicates": 2000
+    },
+    "quadratic_weighted_kappa": {
+      "estimate": 0.9743534366394903,
+      "ci95": [
+        0.9469241544765216,
+        0.9943910478375497
+      ],
+      "valid_replicates": 2000
+    },
+    "accuracy": {
+      "estimate": 0.9473684210526315,
+      "ci95": [
+        0.8814372111951138,
+        0.98269212415356
+      ],
+      "numerator": 90,
+      "denominator": 95
+    },
+    "within_one_category": {
+      "estimate": 1.0,
+      "ci95": [
+        0.9619139224299894,
+        1.0
+      ],
+      "numerator": 95,
+      "denominator": 95
+    },
+    "mae": 0.05263157894736842
+  },
+  "per_class": {
+    "normal": {
+      "TP": 36,
+      "FN": 1,
+      "FP": 2,
+      "TN": 56,
+      "sensitivity": {
+        "estimate": 0.972972972972973,
+        "ci95": [
+          0.858396904388842,
+          0.9993159689753053
+        ],
+        "numerator": 36,
+        "denominator": 37
+      },
+      "specificity": {
+        "estimate": 0.9655172413793104,
+        "ci95": [
+          0.8809226891196078,
+          0.9957963527601323
+        ],
+        "numerator": 56,
+        "denominator": 58
+      },
+      "PPV": {
+        "estimate": 0.9473684210526315,
+        "ci95": [
+          0.8225094096523592,
+          0.9935612832849081
+        ],
+        "numerator": 36,
+        "denominator": 38
+      },
+      "NPV": {
+        "estimate": 0.9824561403508771,
+        "ci95": [
+          0.9060831581080893,
+          0.9995559265599107
+        ],
+        "numerator": 56,
+        "denominator": 57
+      },
+      "f1": {
+        "estimate": 0.96,
+        "ci95": [
+          0.9040874944763587,
+          1.0
+        ],
+        "valid_replicates": 2000,
+        "zero_observed_errors": false,
+        "note": ""
+      }
+    },
+    "osteofity": {
+      "TP": 31,
+      "FN": 3,
+      "FP": 2,
+      "TN": 59,
+      "sensitivity": {
+        "estimate": 0.9117647058823529,
+        "ci95": [
+          0.7632247257130624,
+          0.9814204965591596
+        ],
+        "numerator": 31,
+        "denominator": 34
+      },
+      "specificity": {
+        "estimate": 0.9672131147540983,
+        "ci95": [
+          0.8865278328118185,
+          0.9960043968326835
+        ],
+        "numerator": 59,
+        "denominator": 61
+      },
+      "PPV": {
+        "estimate": 0.9393939393939394,
+        "ci95": [
+          0.797735687473645,
+          0.9925741622577402
+        ],
+        "numerator": 31,
+        "denominator": 33
+      },
+      "NPV": {
+        "estimate": 0.9516129032258065,
+        "ci95": [
+          0.86503805228493,
+          0.9899080536890242
+        ],
+        "numerator": 59,
+        "denominator": 62
+      },
+      "f1": {
+        "estimate": 0.9253731343283582,
+        "ci95": [
+          0.8524590163934426,
+          0.9836065573770492
+        ],
+        "valid_replicates": 2000,
+        "zero_observed_errors": false,
+        "note": ""
+      }
+    },
+    "parasyndesmofity": {
+      "TP": 11,
+      "FN": 1,
+      "FP": 1,
+      "TN": 82,
+      "sensitivity": {
+        "estimate": 0.9166666666666666,
+        "ci95": [
+          0.6152038348490559,
+          0.9978924067681397
+        ],
+        "numerator": 11,
+        "denominator": 12
+      },
+      "specificity": {
+        "estimate": 0.9879518072289156,
+        "ci95": [
+          0.9346916264486556,
+          0.999695012686953
+        ],
+        "numerator": 82,
+        "denominator": 83
+      },
+      "PPV": {
+        "estimate": 0.9166666666666666,
+        "ci95": [
+          0.6152038348490559,
+          0.9978924067681397
+        ],
+        "numerator": 11,
+        "denominator": 12
+      },
+      "NPV": {
+        "estimate": 0.9879518072289156,
+        "ci95": [
+          0.9346916264486556,
+          0.999695012686953
+        ],
+        "numerator": 82,
+        "denominator": 83
+      },
+      "f1": {
+        "estimate": 0.9166666666666666,
+        "ci95": [
+          0.7777777777777778,
+          1.0
+        ],
+        "valid_replicates": 2000,
+        "zero_observed_errors": false,
+        "note": ""
+      }
+    },
+    "syndesmofity": {
+      "TP": 12,
+      "FN": 0,
+      "FP": 0,
+      "TN": 83,
+      "sensitivity": {
+        "estimate": 1.0,
+        "ci95": [
+          0.7353515306029488,
+          1.0
+        ],
+        "numerator": 12,
+        "denominator": 12
+      },
+      "specificity": {
+        "estimate": 1.0,
+        "ci95": [
+          0.9565288478335582,
+          1.0
+        ],
+        "numerator": 83,
+        "denominator": 83
+      },
+      "PPV": {
+        "estimate": 1.0,
+        "ci95": [
+          0.7353515306029488,
+          1.0
+        ],
+        "numerator": 12,
+        "denominator": 12
+      },
+      "NPV": {
+        "estimate": 1.0,
+        "ci95": [
+          0.9565288478335582,
+          1.0
+        ],
+        "numerator": 83,
+        "denominator": 83
+      },
+      "f1": {
+        "estimate": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "valid_replicates": 2000,
+        "zero_observed_errors": true,
+        "note": "A degenerate bootstrap interval does not imply absence of population uncertainty."
+      }
+    }
+  },
+  "mean_ovr_brier": 0.026178960537691004,
+  "macro_auc": 0.9818907979241178,
+  "micro_auc": 0.984561403508772,
+  "per_class_auc": {
+    "normal": 0.9720410065237652,
+    "osteofity": 0.9585342333654774,
+    "parasyndesmofity": 0.9969879518072289,
+    "syndesmofity": 1.0
+  },
+  "binary": {
+    "positive_class_names": [
+      "parasyndesmofity",
+      "syndesmofity"
+    ],
+    "auc": 0.9964788732394366,
+    "auc_ci95": [
+      0.9852886303775241,
+      1.0
+    ],
+    "valid_auc_replicates": 2000,
+    "youden_on_this_input": 0.584019549792572,
+    "fixed_threshold": {
+      "threshold": 0.584019549792572,
+      "TP": 23,
+      "FN": 1,
+      "FP": 0,
+      "TN": 71,
+      "sensitivity": {
+        "estimate": 0.9583333333333334,
+        "ci95": [
+          0.7887983165430269,
+          0.9989456475545303
+        ],
+        "numerator": 23,
+        "denominator": 24
+      },
+      "specificity": {
+        "estimate": 1.0,
+        "ci95": [
+          0.9493705920455963,
+          1.0
+        ],
+        "numerator": 71,
+        "denominator": 71
+      },
+      "PPV": {
+        "estimate": 1.0,
+        "ci95": [
+          0.8518148710847756,
+          1.0
+        ],
+        "numerator": 23,
+        "denominator": 23
+      },
+      "NPV": {
+        "estimate": 0.9861111111111112,
+        "ci95": [
+          0.9250286891460808,
+          0.9996484255947664
+        ],
+        "numerator": 71,
+        "denominator": 72
+      },
+      "accuracy": {
+        "estimate": 0.9894736842105263,
+        "ci95": [
+          0.9427430194068642,
+          0.9997335322668947
+        ],
+        "numerator": 94,
+        "denominator": 95
+      }
+    }
+  }
+}

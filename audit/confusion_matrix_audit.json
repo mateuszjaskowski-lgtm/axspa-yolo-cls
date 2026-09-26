@@ -1,0 +1,617 @@
+{
+  "provenance": "Reanalysis of manuscript Figure 1 only; probability-based results are not verified.",
+  "cohorts": {
+    "internal": {
+      "n": 95,
+      "class_names": [
+        "normal",
+        "osteophytes",
+        "parasyndesmophytes",
+        "syndesmophytes"
+      ],
+      "confusion_matrix_true_by_predicted": [
+        [
+          36,
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          31,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          11,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          12
+        ]
+      ],
+      "bootstrap": {
+        "iterations": 2000,
+        "seed": 0,
+        "generator": "numpy.default_rng / PCG64",
+        "method": "percentile",
+        "pair_order": "true class then predicted class, repeated by cell count",
+        "note": "Reconstructed pairs are equivalent for label metrics; no patient identifiers or probabilities are reconstructed."
+      },
+      "overall": {
+        "balanced_accuracy": {
+          "estimate": 0.9503510863804981,
+          "ci95": [
+            0.898092817315201,
+            0.9913793103448276
+          ],
+          "valid_replicates": 2000
+        },
+        "macro_f1": {
+          "estimate": 0.9505099502487562,
+          "ci95": [
+            0.9009312730148187,
+            0.9869908323771275
+          ],
+          "valid_replicates": 2000
+        },
+        "unweighted_kappa": {
+          "estimate": 0.923498147849895,
+          "ci95": [
+            0.8548072676429564,
+            0.9841725351517331
+          ],
+          "valid_replicates": 2000
+        },
+        "quadratic_weighted_kappa": {
+          "estimate": 0.9743534366394903,
+          "ci95": [
+            0.9469241544765216,
+            0.9943910478375497
+          ],
+          "valid_replicates": 2000
+        },
+        "accuracy": {
+          "estimate": 0.9473684210526315,
+          "ci95": [
+            0.8814372111951138,
+            0.98269212415356
+          ],
+          "numerator": 90,
+          "denominator": 95
+        },
+        "within_one_category": {
+          "estimate": 1.0,
+          "ci95": [
+            0.9619139224299894,
+            1.0
+          ],
+          "numerator": 95,
+          "denominator": 95
+        },
+        "mae": 0.05263157894736842
+      },
+      "per_class": {
+        "normal": {
+          "TP": 36,
+          "FN": 1,
+          "FP": 2,
+          "TN": 56,
+          "sensitivity": {
+            "estimate": 0.972972972972973,
+            "ci95": [
+              0.858396904388842,
+              0.9993159689753053
+            ],
+            "numerator": 36,
+            "denominator": 37
+          },
+          "specificity": {
+            "estimate": 0.9655172413793104,
+            "ci95": [
+              0.8809226891196078,
+              0.9957963527601323
+            ],
+            "numerator": 56,
+            "denominator": 58
+          },
+          "PPV": {
+            "estimate": 0.9473684210526315,
+            "ci95": [
+              0.8225094096523592,
+              0.9935612832849081
+            ],
+            "numerator": 36,
+            "denominator": 38
+          },
+          "NPV": {
+            "estimate": 0.9824561403508771,
+            "ci95": [
+              0.9060831581080893,
+              0.9995559265599107
+            ],
+            "numerator": 56,
+            "denominator": 57
+          },
+          "f1": {
+            "estimate": 0.96,
+            "ci95": [
+              0.9040874944763587,
+              1.0
+            ],
+            "valid_replicates": 2000,
+            "zero_observed_errors": false,
+            "note": ""
+          }
+        },
+        "osteophytes": {
+          "TP": 31,
+          "FN": 3,
+          "FP": 2,
+          "TN": 59,
+          "sensitivity": {
+            "estimate": 0.9117647058823529,
+            "ci95": [
+              0.7632247257130624,
+              0.9814204965591596
+            ],
+            "numerator": 31,
+            "denominator": 34
+          },
+          "specificity": {
+            "estimate": 0.9672131147540983,
+            "ci95": [
+              0.8865278328118185,
+              0.9960043968326835
+            ],
+            "numerator": 59,
+            "denominator": 61
+          },
+          "PPV": {
+            "estimate": 0.9393939393939394,
+            "ci95": [
+              0.797735687473645,
+              0.9925741622577402
+            ],
+            "numerator": 31,
+            "denominator": 33
+          },
+          "NPV": {
+            "estimate": 0.9516129032258065,
+            "ci95": [
+              0.86503805228493,
+              0.9899080536890242
+            ],
+            "numerator": 59,
+            "denominator": 62
+          },
+          "f1": {
+            "estimate": 0.9253731343283582,
+            "ci95": [
+              0.8524590163934426,
+              0.9836065573770492
+            ],
+            "valid_replicates": 2000,
+            "zero_observed_errors": false,
+            "note": ""
+          }
+        },
+        "parasyndesmophytes": {
+          "TP": 11,
+          "FN": 1,
+          "FP": 1,
+          "TN": 82,
+          "sensitivity": {
+            "estimate": 0.9166666666666666,
+            "ci95": [
+              0.6152038348490559,
+              0.9978924067681397
+            ],
+            "numerator": 11,
+            "denominator": 12
+          },
+          "specificity": {
+            "estimate": 0.9879518072289156,
+            "ci95": [
+              0.9346916264486556,
+              0.999695012686953
+            ],
+            "numerator": 82,
+            "denominator": 83
+          },
+          "PPV": {
+            "estimate": 0.9166666666666666,
+            "ci95": [
+              0.6152038348490559,
+              0.9978924067681397
+            ],
+            "numerator": 11,
+            "denominator": 12
+          },
+          "NPV": {
+            "estimate": 0.9879518072289156,
+            "ci95": [
+              0.9346916264486556,
+              0.999695012686953
+            ],
+            "numerator": 82,
+            "denominator": 83
+          },
+          "f1": {
+            "estimate": 0.9166666666666666,
+            "ci95": [
+              0.7777777777777778,
+              1.0
+            ],
+            "valid_replicates": 2000,
+            "zero_observed_errors": false,
+            "note": ""
+          }
+        },
+        "syndesmophytes": {
+          "TP": 12,
+          "FN": 0,
+          "FP": 0,
+          "TN": 83,
+          "sensitivity": {
+            "estimate": 1.0,
+            "ci95": [
+              0.7353515306029488,
+              1.0
+            ],
+            "numerator": 12,
+            "denominator": 12
+          },
+          "specificity": {
+            "estimate": 1.0,
+            "ci95": [
+              0.9565288478335582,
+              1.0
+            ],
+            "numerator": 83,
+            "denominator": 83
+          },
+          "PPV": {
+            "estimate": 1.0,
+            "ci95": [
+              0.7353515306029488,
+              1.0
+            ],
+            "numerator": 12,
+            "denominator": 12
+          },
+          "NPV": {
+            "estimate": 1.0,
+            "ci95": [
+              0.9565288478335582,
+              1.0
+            ],
+            "numerator": 83,
+            "denominator": 83
+          },
+          "f1": {
+            "estimate": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "valid_replicates": 2000,
+            "zero_observed_errors": true,
+            "note": "A degenerate bootstrap interval does not imply absence of population uncertainty."
+          }
+        }
+      }
+    },
+    "external": {
+      "n": 150,
+      "class_names": [
+        "normal",
+        "osteophytes",
+        "parasyndesmophytes",
+        "syndesmophytes"
+      ],
+      "confusion_matrix_true_by_predicted": [
+        [
+          51,
+          4,
+          0,
+          0
+        ],
+        [
+          3,
+          49,
+          1,
+          1
+        ],
+        [
+          0,
+          4,
+          16,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          19
+        ]
+      ],
+      "bootstrap": {
+        "iterations": 2000,
+        "seed": 0,
+        "generator": "numpy.default_rng / PCG64",
+        "method": "percentile",
+        "pair_order": "true class then predicted class, repeated by cell count",
+        "note": "Reconstructed pairs are equivalent for label metrics; no patient identifiers or probabilities are reconstructed."
+      },
+      "overall": {
+        "balanced_accuracy": {
+          "estimate": 0.8848605098605099,
+          "ci95": [
+            0.8219664027073538,
+            0.9414655209401878
+          ],
+          "valid_replicates": 2000
+        },
+        "macro_f1": {
+          "estimate": 0.8984917151075688,
+          "ci95": [
+            0.8404404630214312,
+            0.9442862364130491
+          ],
+          "valid_replicates": 2000
+        },
+        "unweighted_kappa": {
+          "estimate": 0.855611884746198,
+          "ci95": [
+            0.7800968503579564,
+            0.9165761369570776
+          ],
+          "valid_replicates": 2000
+        },
+        "quadratic_weighted_kappa": {
+          "estimate": 0.9066964094204453,
+          "ci95": [
+            0.8266827466031209,
+            0.961932455180908
+          ],
+          "valid_replicates": 2000
+        },
+        "accuracy": {
+          "estimate": 0.9,
+          "ci95": [
+            0.840432114872423,
+            0.9429425651637531
+          ],
+          "numerator": 135,
+          "denominator": 150
+        },
+        "within_one_category": {
+          "estimate": 0.98,
+          "ci95": [
+            0.9426657777117942,
+            0.9958563747187794
+          ],
+          "numerator": 147,
+          "denominator": 150
+        },
+        "mae": 0.12666666666666668
+      },
+      "per_class": {
+        "normal": {
+          "TP": 51,
+          "FN": 4,
+          "FP": 4,
+          "TN": 91,
+          "sensitivity": {
+            "estimate": 0.9272727272727272,
+            "ci95": [
+              0.8241324647160317,
+              0.97982946664677
+            ],
+            "numerator": 51,
+            "denominator": 55
+          },
+          "specificity": {
+            "estimate": 0.9578947368421052,
+            "ci95": [
+              0.8956916268102717,
+              0.9884103541006212
+            ],
+            "numerator": 91,
+            "denominator": 95
+          },
+          "PPV": {
+            "estimate": 0.9272727272727272,
+            "ci95": [
+              0.8241324647160317,
+              0.97982946664677
+            ],
+            "numerator": 51,
+            "denominator": 55
+          },
+          "NPV": {
+            "estimate": 0.9578947368421052,
+            "ci95": [
+              0.8956916268102717,
+              0.9884103541006212
+            ],
+            "numerator": 91,
+            "denominator": 95
+          },
+          "f1": {
+            "estimate": 0.9272727272727272,
+            "ci95": [
+              0.8686802232854864,
+              0.9734513274336283
+            ],
+            "valid_replicates": 2000,
+            "zero_observed_errors": false,
+            "note": ""
+          }
+        },
+        "osteophytes": {
+          "TP": 49,
+          "FN": 5,
+          "FP": 9,
+          "TN": 87,
+          "sensitivity": {
+            "estimate": 0.9074074074074074,
+            "ci95": [
+              0.79699845281371,
+              0.969247214732477
+            ],
+            "numerator": 49,
+            "denominator": 54
+          },
+          "specificity": {
+            "estimate": 0.90625,
+            "ci95": [
+              0.8294814556587637,
+              0.9562296167372899
+            ],
+            "numerator": 87,
+            "denominator": 96
+          },
+          "PPV": {
+            "estimate": 0.8448275862068966,
+            "ci95": [
+              0.7257684759958714,
+              0.9265067281337502
+            ],
+            "numerator": 49,
+            "denominator": 58
+          },
+          "NPV": {
+            "estimate": 0.9456521739130435,
+            "ci95": [
+              0.8777128644005314,
+              0.9821202066076392
+            ],
+            "numerator": 87,
+            "denominator": 92
+          },
+          "f1": {
+            "estimate": 0.875,
+            "ci95": [
+              0.8,
+              0.9333606557377048
+            ],
+            "valid_replicates": 2000,
+            "zero_observed_errors": false,
+            "note": ""
+          }
+        },
+        "parasyndesmophytes": {
+          "TP": 16,
+          "FN": 4,
+          "FP": 1,
+          "TN": 129,
+          "sensitivity": {
+            "estimate": 0.8,
+            "ci95": [
+              0.5633859970033317,
+              0.9426660029499672
+            ],
+            "numerator": 16,
+            "denominator": 20
+          },
+          "specificity": {
+            "estimate": 0.9923076923076923,
+            "ci95": [
+              0.957887260985338,
+              0.9998052665939017
+            ],
+            "numerator": 129,
+            "denominator": 130
+          },
+          "PPV": {
+            "estimate": 0.9411764705882353,
+            "ci95": [
+              0.7131106033327794,
+              0.9985118256087334
+            ],
+            "numerator": 16,
+            "denominator": 17
+          },
+          "NPV": {
+            "estimate": 0.9699248120300752,
+            "ci95": [
+              0.9247864795628777,
+              0.9917459388891761
+            ],
+            "numerator": 129,
+            "denominator": 133
+          },
+          "f1": {
+            "estimate": 0.8648648648648649,
+            "ci95": [
+              0.7272727272727273,
+              0.9655172413793104
+            ],
+            "valid_replicates": 2000,
+            "zero_observed_errors": false,
+            "note": ""
+          }
+        },
+        "syndesmophytes": {
+          "TP": 19,
+          "FN": 2,
+          "FP": 1,
+          "TN": 128,
+          "sensitivity": {
+            "estimate": 0.9047619047619048,
+            "ci95": [
+              0.6962255930860758,
+              0.9882506821155542
+            ],
+            "numerator": 19,
+            "denominator": 21
+          },
+          "specificity": {
+            "estimate": 0.9922480620155039,
+            "ci95": [
+              0.9575665749347008,
+              0.999803757180744
+            ],
+            "numerator": 128,
+            "denominator": 129
+          },
+          "PPV": {
+            "estimate": 0.95,
+            "ci95": [
+              0.7512672372279722,
+              0.9987349105020502
+            ],
+            "numerator": 19,
+            "denominator": 20
+          },
+          "NPV": {
+            "estimate": 0.9846153846153847,
+            "ci95": [
+              0.945531118666212,
+              0.998131391041748
+            ],
+            "numerator": 128,
+            "denominator": 130
+          },
+          "f1": {
+            "estimate": 0.926829268292683,
+            "ci95": [
+              0.8275487256371814,
+              1.0
+            ],
+            "valid_replicates": 2000,
+            "zero_observed_errors": false,
+            "note": ""
+          }
+        }
+      }
+    }
+  }
+}
