@@ -1,0 +1,11 @@
+# Recorded core versions. Install CUDA torch wheels first as described in README.
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+ultralytics==8.4.163
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.2.3
+scikit-learn==1.8.0
+matplotlib==3.10.7
+pillow==11.3.0
+opencv-python==5.0.0.93

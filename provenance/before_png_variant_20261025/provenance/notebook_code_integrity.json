@@ -1,0 +1,77 @@
+{
+  "pre_correction_notebook_path": "provenance/axspa_clean_retraining_before_design_correction.ipynb",
+  "pre_correction_notebook_sha256": "95df28843e100dfe30f537468acd0f94a5af1618e863aac18237a5a324f041a1",
+  "active_notebook_sha256": "cfe0572b6052d73e41ffc6d48cb3239da73a54d5f6f4858834137050bfcb1141",
+  "code_cells_unchanged": false,
+  "changed_cells": [
+    {
+      "cell_index": 0,
+      "cell_type": "markdown",
+      "old_source_sha256": "a860ddea291d40ef47ae97d0a7c1d212bf9d6566e18f321dbdbb3b79ad56ad5f",
+      "new_source_sha256": "4a3616fb16cfc027758a48601d781a992b5998abc5952b755b7bdb67d921604d"
+    },
+    {
+      "cell_index": 4,
+      "cell_type": "code",
+      "old_source_sha256": "5cf687c36ad372aa8cf3e1560a3df8e874d752bf8940f75cc036cc4c350df499",
+      "new_source_sha256": "a242c10d5dbf79df9ae3c4312f213b949482d8dc09ca73056b99747cefdfa15a"
+    },
+    {
+      "cell_index": 5,
+      "cell_type": "markdown",
+      "old_source_sha256": "d4f7ab327de4d6b07e9d136fff6398c12effeffcb777524cd04a87da9be0bee0",
+      "new_source_sha256": "a77d9416b22e1028ca556bb0d64a9818752058dfb8db54e31549bdf39c5a182a"
+    },
+    {
+      "cell_index": 6,
+      "cell_type": "code",
+      "old_source_sha256": "ef21e0769ee792f3a26684fe3b3026eefc9e98bc520c9de9cebbf8500f3e1bb9",
+      "new_source_sha256": "5d01861272f89cc61f24736ab1de8bf65d270f435cc520acab57e7721e594945"
+    },
+    {
+      "cell_index": 12,
+      "cell_type": "code",
+      "old_source_sha256": "fbac2ddc896b16d379c5a4e8da20a2dc124a98e4135812afc36cd7c8de3cdba2",
+      "new_source_sha256": "ea28f09a0fea5aafca945381c9211383aa2c8b10905cd6951f0b6f37fbb45e99"
+    },
+    {
+      "cell_index": 18,
+      "cell_type": "code",
+      "old_source_sha256": "597b6e6e76c8619c7662856881c6d9b443ba6200bb2e90b9acb302c0f8cdf460",
+      "new_source_sha256": "efc8cc49194e9e4622f06d1f32f40eba3db10aa7509f80c883eaab579a5ddb1e"
+    },
+    {
+      "cell_index": 20,
+      "cell_type": "code",
+      "old_source_sha256": "465ef8742a80c9c93d5621ea0ad4651e2cdabf4ced717e64ec1aed125a109bf1",
+      "new_source_sha256": "5e1811aa8d363d76ed9b2c024339e8ad3375ac037d8ca3d72e6cbdd41d3fedaa"
+    },
+    {
+      "cell_index": 22,
+      "cell_type": "code",
+      "old_source_sha256": "0deaf1d99c30997fe1644cdada060a5cde73aeded33a4960673a644ca925f7dc",
+      "new_source_sha256": "7f258e4c4e18075ac71ab2b36531e081137cbc75e0a955945d35ae4d1b13216f"
+    },
+    {
+      "cell_index": 23,
+      "cell_type": "markdown",
+      "old_source_sha256": "09c770391ef3f35425824d7fef1976f193ae9aa68a584b542b2af25e95ba5c09",
+      "new_source_sha256": "41694b58cacbfc53d672bff4af49a5a69b458e62e52dcea1fcfff0a0aa13e16a"
+    }
+  ],
+  "embedded_active_assets_sha256": {
+    "eigen_cam.py": "70f66b92dc2145ae8ed8cd45cd11b12bc022c3d2b7477a886c2636b552ed8e32",
+    "eigen_cam_replay.py": "d0c0e653b945a619901018008ed2f8367302481bebf8e0f949984e73f5038a3a",
+    "evaluate_models.py": "8b4b02eb1a8765693c9cefcab5181d9bbda5a99ffc6686b7227cb1b2cb127e59",
+    "original_manifest.csv": "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746",
+    "prepare_data.py": "4ed7d4cc66148fc1c917c41797433d7b8cc8886d585b2a148071b9cf7c6e024e",
+    "preview_training_inputs.py": "1a5c92fd646779f586515678cbaccfa1582d92db426b740ab4dedd07c6feb718",
+    "spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+    "test_evaluation.py": "f6def3b89a9e6275d15cc56497a89a89791ba30e9286c904fbaeb2286827595d",
+    "train_models.py": "2386fd1fbf253e58d577d891dc34d4ef369fbb35aa51d72561fb33a7392a17e1",
+    "trainer_notes.txt": "051bea78f18b9d8cc517cb3eef1546d46d795394f203093ded43f7ab6277d5eb",
+    "study_design.py": "218300b6a46138fd1cb0bd4785b57da3d065169de22d45f36e510f7c38df40f2"
+  },
+  "embedded_study_design_sha256": "121c944bb74d7f9fbf353b388a47df99f8003fe3c872e29bfae2555ffe88bb6f",
+  "changes": "Corrected active payloads, immutable installer replacing one-off AMP repair, explicit reproduction project and metadata, compatible completed-result guard, batch-faithful replay with active frozen source root, and export of study_design.json. Numerical workflow/settings retained. Original notebook preserved; no cell executed for model training or inference."
+}

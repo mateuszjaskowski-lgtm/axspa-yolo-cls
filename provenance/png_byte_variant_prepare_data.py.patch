@@ -1,0 +1,139 @@
+--- before/code/prepare_data.py
++++ code/prepare_data.py
+@@ -1,9 +1,13 @@
+ """Verify the supplied archive and create a separate deduplicated dataset.
+ 
+-No original images are modified. Two explicitly verified archives are accepted:
++No original images are modified. Three explicitly verified archives are accepted:
+ the historical 827-entry archive and its 824-entry version with the three
+ approved copies already removed. Both produce identical retained PNG bytes and
+ the same clean manifest. The already-clean archive is not deduplicated again.
++The registered 824-image PNG byte variant has identical decoded RGB pixels,
++dimensions and assignments. It produces a separate manifest of its actual file
++hashes for future reproduction only; original-checkpoint locked replay still
++requires the original PNG bytes and historical manifest.
+ """
+ from __future__ import annotations
+ import argparse
+@@ -24,9 +28,12 @@
+ 
+ ARCHIVE_SHA256 = "c4eb673704b93daaceaea208a3d1fd202d900c2ef8d013c9b73a07a37a320bdf"
+ ALREADY_CLEAN_ARCHIVE_SHA256 = "ba4c5ece78779f67b209f839cec75f70aa480c07bc8ee1dee008f4594a96613d"
++PNG_BYTE_VARIANT_ARCHIVE_SHA256 = "51f54607bb58b2d5492dd129e6c31b0198e67ce58a3efc19c4e1d4156aafd615"
++PNG_BYTE_VARIANT_MANIFEST_SHA256 = "f98cc4992fe3da8140ed1ab033361e86188fc3e9c9c04d814ac09af3bb869642"
+ ACCEPTED_ARCHIVES = {
+     ARCHIVE_SHA256: "historical_original",
+     ALREADY_CLEAN_ARCHIVE_SHA256: "already_deduplicated",
++    PNG_BYTE_VARIANT_ARCHIVE_SHA256: "registered_rgb_equivalent_png_byte_variant",
+ }
+ MANIFEST_SHA256 = "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746"
+ CLEAN_MANIFEST_SHA256 = "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd"
+@@ -57,7 +64,18 @@
+     input_sha256 = sha_file(args.archive)
+     input_kind = ACCEPTED_ARCHIVES.get(input_sha256)
+     if input_kind is None:
+-        raise ValueError("Archive is neither the verified original nor the verified already-clean study archive.")
++        raise ValueError("Archive is not one of the three explicitly registered study archives.")
++    byte_variant = input_sha256 == PNG_BYTE_VARIANT_ARCHIVE_SHA256
++    reference = None
++    if byte_variant:
++        reference_path = Path(__file__).with_name("reference_clean_manifest.csv")
++        if sha_file(reference_path) != CLEAN_MANIFEST_SHA256:
++            raise ValueError("Frozen RGB-reference manifest checksum mismatch.")
++        with reference_path.open(newline="", encoding="utf-8") as handle:
++            reference_rows = list(csv.DictReader(handle))
++        reference = {r["relative_path"]: r for r in reference_rows}
++        if len(reference_rows) != 824 or len(reference) != 824:
++            raise ValueError("Expected 824 unique frozen RGB-reference records.")
+     if sha_file(args.manifest) != MANIFEST_SHA256:
+         raise ValueError("Historical manifest checksum mismatch.")
+     with args.manifest.open(newline="", encoding="utf-8") as f:
+@@ -78,7 +96,7 @@
+     input_rows = rows if input_kind == "historical_original" else retained
+     expected_input_paths = {r["relative_path"] for r in input_rows}
+     removed_this_invocation = sorted(omitted) if input_kind == "historical_original" else []
+-    previously_removed = sorted(omitted) if input_kind == "already_deduplicated" else []
++    previously_removed = sorted(omitted) if input_kind != "historical_original" else []
+     counts = {s: [sum(r["split"] == s and r["class_name"] == c for r in retained) for c in CLASSES]
+               for s in EXPECTED_COUNTS}
+     if counts != EXPECTED_COUNTS:
+@@ -86,7 +104,7 @@
+     args.output_dir.parent.mkdir(parents=True, exist_ok=True)
+     temp = Path(tempfile.mkdtemp(prefix="axspa_verified_", dir=args.output_dir.parent))
+     new_data = temp / "dataset"
+-    independent_hashes = {}; alpha_stats = []; mode_counts = Counter()
++    independent_hashes = {}; actual_file_hashes = {}; alpha_stats = []; mode_counts = Counter()
+     try:
+         with zipfile.ZipFile(args.archive) as z:
+             files = {}
+@@ -108,7 +126,8 @@
+             for r in input_rows:
+                 rel = r["relative_path"]
+                 blob = z.read(files[rel])
+-                if hashlib.sha256(blob).hexdigest() != r["sha256"]:
++                actual_file_hashes[rel] = hashlib.sha256(blob).hexdigest()
++                if not byte_variant and actual_file_hashes[rel] != r["sha256"]:
+                     raise ValueError(f"Image-byte mismatch: {rel}")
+                 with Image.open(io.BytesIO(blob)) as im:
+                     im.load()
+@@ -116,6 +135,8 @@
+                         raise ValueError(f"Dimensions differ: {rel}")
+                     mode_counts[im.mode] += 1
+                     independent_hashes[rel] = canonical_rgb_hash(im)
++                    if byte_variant and independent_hashes[rel] != reference[rel]["independent_rgb_sha256"]:
++                        raise ValueError(f"Registered PNG variant has changed RGB pixels: {rel}")
+                     if "A" in im.getbands():
+                         a = np.asarray(im.getchannel("A"))
+                         alpha_stats.append({"relative_path": rel,
+@@ -133,13 +154,16 @@
+             groups[independent_hashes[r["relative_path"]]].append(r["relative_path"])
+         if any(len(v) > 1 for v in groups.values()):
+             raise ValueError("Unexpected duplicate remains after the three specified omissions.")
++        output_rows = [{**r, "sha256": actual_file_hashes[r["relative_path"]],
++                        "independent_rgb_sha256": independent_hashes[r["relative_path"]]}
++                       for r in retained]
+         with (temp / "clean_manifest.csv").open("w", newline="", encoding="utf-8") as f:
+             writer = csv.DictWriter(f, fieldnames=fields + ["independent_rgb_sha256"])
+             writer.writeheader()
+-            for r in retained:
+-                writer.writerow({**r, "independent_rgb_sha256": independent_hashes[r["relative_path"]]})
++            writer.writerows(output_rows)
+         clean_manifest_sha256 = sha_file(temp / "clean_manifest.csv")
+-        if clean_manifest_sha256 != CLEAN_MANIFEST_SHA256:
++        expected_manifest_sha256 = PNG_BYTE_VARIANT_MANIFEST_SHA256 if byte_variant else CLEAN_MANIFEST_SHA256
++        if clean_manifest_sha256 != expected_manifest_sha256:
+             raise ValueError("Generated clean manifest differs from the previously verified clean manifest.")
+         summary = {
+             "verified_utc": datetime.now(timezone.utc).isoformat(),
+@@ -161,14 +185,29 @@
+             "pixel_hash_note": "Historical pixel_sha256 preserved as metadata; independent_rgb_sha256 uses SHA256(b'RGB:{width}x{height}:' + RGB bytes).",
+             "alpha_handling": "Training/evaluation loaders use PIL convert('RGB'), discarding alpha without compositing. Underlying RGB values are retained.",
+             "patient_independence": "One image per patient was reported by the author; independent record linkage was not available. Image-hash checks do not establish patient independence.",
+-            "input_provenance_limitation": "Received PNGs depict outlined spinal regions with transparent background; origin of that preparation requires clarification. No additional manual cropping is applied here.",
++            "input_preparation": "M.J. prepared PNGs with Windows Snipping Tool by outlining the examined spinal segment with surrounding tissues before radiologist labeling; the preparer did not know the labels. No manual brightness/contrast adjustment or CLAHE was applied. This script performs no additional manual cropping or image enhancement.",
+         }
++        if byte_variant:
++            summary["png_byte_variant"] = {
++                "scope": "Future reproduction only; not a replacement for original locked PNG hashes or original-checkpoint replay inputs.",
++                "reference_clean_manifest_sha256": CLEAN_MANIFEST_SHA256,
++                "current_clean_manifest_sha256": PNG_BYTE_VARIANT_MANIFEST_SHA256,
++                "rgb_pixels_dimensions_paths_and_labels_match_reference": True,
++                "historical_pixel_sha256_note": "The pixel_sha256 column remains historical metadata with its original definition; independent_rgb_sha256 is the independently verified canonical RGB hash for both representations.",
++                "original_archived_files_modified": False,
++                "file_byte_hash_mapping": [
++                    {"relative_path": r["relative_path"],
++                     "historical_source_sha256": r["sha256"],
++                     "current_source_sha256": actual_file_hashes[r["relative_path"]],
++                     "independent_rgb_sha256": independent_hashes[r["relative_path"]]}
++                    for r in retained],
++            }
+         (temp / "data_audit.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n")
+         if args.output_dir.exists():
+             old_manifest = args.output_dir / "clean_manifest.csv"
+             if not old_manifest.exists() or sha_file(old_manifest) != summary["clean_manifest_sha256"]:
+                 raise FileExistsError("Existing destination is different; choose a new output directory.")
+-            for r in retained:
++            for r in output_rows:
+                 if sha_file(args.output_dir / "dataset" / r["relative_path"]) != r["sha256"]:
+                     raise ValueError("Existing prepared image changed; use a fresh output directory.")
+             actual_output_paths = {p.relative_to(args.output_dir / "dataset").as_posix()

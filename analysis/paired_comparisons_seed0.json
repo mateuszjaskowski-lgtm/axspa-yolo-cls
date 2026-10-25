@@ -1,0 +1,150 @@
+{
+  "family": "Three prespecified YOLO11-versus-comparator tests on the external cohort; exploratory",
+  "difference_intervals": "Pointwise 95% intervals; not simultaneous or multiplicity-adjusted.",
+  "results": [
+    {
+      "reference_correct_comparator_wrong": 14,
+      "reference_wrong_comparator_correct": 7,
+      "discordant_pairs": 21,
+      "mcnemar_exact_two_sided_p": 0.18924713134765625,
+      "differences": {
+        "accuracy": {
+          "estimate_reference_minus_comparator": 0.046666666666666745,
+          "ci_low": -0.00666666666666671,
+          "ci_high": 0.10666666666666669,
+          "valid_replicates": 2000,
+          "requested_replicates": 2000,
+          "method": "paired image-level percentile bootstrap",
+          "seed": 77011,
+          "degenerate_empirical_distribution": false,
+          "uncertainty_note": null
+        },
+        "unweighted_cohen_kappa": {
+          "estimate_reference_minus_comparator": 0.06791663397063419,
+          "ci_low": -0.009571206559037523,
+          "ci_high": 0.1517713262420686,
+          "valid_replicates": 2000,
+          "requested_replicates": 2000,
+          "method": "paired image-level percentile bootstrap",
+          "seed": 77011,
+          "degenerate_empirical_distribution": false,
+          "uncertainty_note": null
+        },
+        "macro_f1": {
+          "estimate_reference_minus_comparator": 0.07590566032764334,
+          "ci_low": 0.005127464736301452,
+          "ci_high": 0.15572955260924173,
+          "valid_replicates": 2000,
+          "requested_replicates": 2000,
+          "method": "paired image-level percentile bootstrap",
+          "seed": 77011,
+          "degenerate_empirical_distribution": false,
+          "uncertainty_note": null
+        }
+      },
+      "reference": "yolo11l-cls",
+      "comparator": "yolo26l-cls",
+      "seed": 0,
+      "split": "test",
+      "n": 150,
+      "exploratory": true,
+      "mcnemar_holm_adjusted_p": 0.5677413940429688
+    },
+    {
+      "reference_correct_comparator_wrong": 2,
+      "reference_wrong_comparator_correct": 4,
+      "discordant_pairs": 6,
+      "mcnemar_exact_two_sided_p": 0.6875,
+      "differences": {
+        "accuracy": {
+          "estimate_reference_minus_comparator": -0.013333333333333308,
+          "ci_low": -0.046666666666666634,
+          "ci_high": 0.019999999999999907,
+          "valid_replicates": 2000,
+          "requested_replicates": 2000,
+          "method": "paired image-level percentile bootstrap",
+          "seed": 77011,
+          "degenerate_empirical_distribution": false,
+          "uncertainty_note": null
+        },
+        "unweighted_cohen_kappa": {
+          "estimate_reference_minus_comparator": -0.018358594405179285,
+          "ci_low": -0.06636640161242233,
+          "ci_high": 0.027858032226397385,
+          "valid_replicates": 2000,
+          "requested_replicates": 2000,
+          "method": "paired image-level percentile bootstrap",
+          "seed": 77011,
+          "degenerate_empirical_distribution": false,
+          "uncertainty_note": null
+        },
+        "macro_f1": {
+          "estimate_reference_minus_comparator": -0.0044172442402530265,
+          "ci_low": -0.04207533291111473,
+          "ci_high": 0.03594449653482776,
+          "valid_replicates": 2000,
+          "requested_replicates": 2000,
+          "method": "paired image-level percentile bootstrap",
+          "seed": 77011,
+          "degenerate_empirical_distribution": false,
+          "uncertainty_note": null
+        }
+      },
+      "reference": "yolo11l-cls",
+      "comparator": "resnet50",
+      "seed": 0,
+      "split": "test",
+      "n": 150,
+      "exploratory": true,
+      "mcnemar_holm_adjusted_p": 1.0
+    },
+    {
+      "reference_correct_comparator_wrong": 8,
+      "reference_wrong_comparator_correct": 6,
+      "discordant_pairs": 14,
+      "mcnemar_exact_two_sided_p": 0.79052734375,
+      "differences": {
+        "accuracy": {
+          "estimate_reference_minus_comparator": 0.01333333333333342,
+          "ci_low": -0.033333333333333326,
+          "ci_high": 0.06000000000000005,
+          "valid_replicates": 2000,
+          "requested_replicates": 2000,
+          "method": "paired image-level percentile bootstrap",
+          "seed": 77011,
+          "degenerate_empirical_distribution": false,
+          "uncertainty_note": null
+        },
+        "unweighted_cohen_kappa": {
+          "estimate_reference_minus_comparator": 0.018633176586241085,
+          "ci_low": -0.04855599030575099,
+          "ci_high": 0.08748463796838259,
+          "valid_replicates": 2000,
+          "requested_replicates": 2000,
+          "method": "paired image-level percentile bootstrap",
+          "seed": 77011,
+          "degenerate_empirical_distribution": false,
+          "uncertainty_note": null
+        },
+        "macro_f1": {
+          "estimate_reference_minus_comparator": 0.020029466225118475,
+          "ci_low": -0.027969216159229926,
+          "ci_high": 0.0708658229617746,
+          "valid_replicates": 2000,
+          "requested_replicates": 2000,
+          "method": "paired image-level percentile bootstrap",
+          "seed": 77011,
+          "degenerate_empirical_distribution": false,
+          "uncertainty_note": null
+        }
+      },
+      "reference": "yolo11l-cls",
+      "comparator": "efficientnet_b0",
+      "seed": 0,
+      "split": "test",
+      "n": 150,
+      "exploratory": true,
+      "mcnemar_holm_adjusted_p": 1.0
+    }
+  ]
+}

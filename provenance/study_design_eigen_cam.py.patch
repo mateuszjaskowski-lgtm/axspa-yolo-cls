@@ -1,0 +1,52 @@
+--- provenance/original_code/eigen_cam.py
++++ code/eigen_cam.py
+@@ -22,6 +22,7 @@
+ from typing import Any
+ 
+ import numpy as np
++from study_design import interpret_evaluation, validate_frozen_code_root
+ 
+ CLASS_NAMES = ["normal", "osteofity", "parasyndesmofity", "syndesmofity"]
+ DISPLAY_NAMES = ["Normal", "Osteophytes", "Parasyndesmophytes", "Syndesmophytes"]
+@@ -476,6 +477,7 @@
+     """Accept only completed evaluation of the fixed primary model and seed 0."""
+     complete_path = evaluation_root / "analysis_complete.json"
+     complete = json.loads(complete_path.read_text(encoding="utf-8"))
++    study_scope = interpret_evaluation(training_root / "training_plan.json", complete_path)
+     if (complete.get("status") != "complete"
+             or complete.get("primary_reference_model") != "yolo11l-cls"
+             or complete.get("primary_reference_seed") != 0):
+@@ -543,28 +545,16 @@
+                   "test_metrics_sha256": sha256_file(metrics_path),
+                   "run_complete_sha256": sha256_file(metadata_path),
+                   "training_plan_sha256": complete["training_plan_sha256"],
+-                  "external_test_previously_examined": complete.get("external_test_previously_examined"),
++                  **study_scope,
++                  "operation_role": "explanation_replay_on_previously_evaluated_cohort",
+                   "note": "Seed and layer are fixed in advance; no best-external-seed selection"}
+     return run, metadata, rows, provenance
+ 
+ 
+ def main(argv: list[str] | None = None) -> None:
+-    parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument("--dataset-root", "--data-root", dest="dataset_root", type=Path, required=True,
+-                        help="Prepared clean dataset containing train/, val/ and test/")
+-    parser.add_argument("--training-root", type=Path, required=True)
+-    parser.add_argument("--evaluation-root", type=Path, required=True)
+-    parser.add_argument("--output-root", "--output-dir", dest="output_root", type=Path, required=True)
+-    parser.add_argument("--device", default="cuda:0")
+-    parser.add_argument("--dpi", type=int, choices=[300, 600], default=600)
+-    args = parser.parse_args(argv)
+-    run, metadata, rows, provenance = load_locked_artifacts(
+-        args.dataset_root, args.training_root, args.evaluation_root)
+-    generate_eigen_cam(dataset_root=args.dataset_root, weights=run / metadata["checkpoint"],
+-                       expected_weight_sha256=metadata["checkpoint_sha256"], rows=rows,
+-                       output_root=args.output_root, imgsz=metadata["preprocess"]["imgsz"],
+-                       device=args.device, dpi=args.dpi,
+-                       evaluation_provenance=provenance, training_run=run)
++    """Use the batch-faithful replay entry point, including frozen-code guards."""
++    from eigen_cam_replay import main as replay_main
++    replay_main(argv)
+ 
+ 
+ if __name__ == "__main__":

@@ -1,0 +1,53 @@
+{
+  "best_epoch_1based": 45,
+  "val_accuracy": 0.9368421052631579,
+  "epochs_completed": 240,
+  "backend": "ultralytics",
+  "active_epoch_training_validation_seconds": 1475.2572749820029,
+  "timing_definition": "Sum of completed epoch work through model-save callback; includes validation/checkpoint save, excludes pauses.",
+  "preprocess": {
+    "imgsz": 640,
+    "geometry": "whole_png_aspect_preserving_center_pad",
+    "padding_rgb": [
+      0,
+      0,
+      0
+    ],
+    "interpolation": "PIL bilinear",
+    "scale": "0..1",
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "std": [
+      1,
+      1,
+      1
+    ],
+    "source": "stored SpineResizePad transforms; new revision protocol"
+  },
+  "model": "yolo26l-cls",
+  "seed": 1,
+  "checkpoint": "selected.pt",
+  "checkpoint_sha256": "61170d34f29e28558f2ae64aea5d89de5ecc0c4c530e10bdc6dd30ccf7a5e34a",
+  "protocol_sha256": "2bdc54f59222462b2626cd8e1c5a49c5fec6a71590e261b6574be40ffcff95b2",
+  "class_names": [
+    "normal",
+    "osteofity",
+    "parasyndesmofity",
+    "syndesmofity"
+  ],
+  "pretrained": {
+    "model": "yolo26l-cls",
+    "filename": "yolo26l-cls_imagenet.pt",
+    "sha256": "7a3aebb7de6f5d79f0153da627a5f68bd3d7df30e648c0fdb7f9217986ee129e",
+    "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26l-cls.pt",
+    "requested_asset": "yolo26l-cls.pt",
+    "ultralytics": "8.4.163",
+    "pretrained_class_count": 1000,
+    "original_architecture": "{'nc': 1000, 'scales': {'n': [0.5, 0.25, 1024], 's': [0.5, 0.5, 1024], 'm': [0.5, 1.0, 512], 'l': [1.0, 1.0, 512], 'x': [1.0, 1.5, 512]}, 'backbone': [[-1, 1, 'Conv', [64, 3, 2]], [-1, 1, 'Conv', [128, 3, 2]], [-1, 2, 'C3k2', [256, False, 0.25]], [-1, 1, 'Conv', [256, 3, 2]], [-1, 2, 'C3k2', [512, False, 0.25]], [-1, 1, 'Conv', [512, 3, 2]], [-1, 2, 'C3k2', [512, True]], [-1, 1, 'Conv', [1024, 3, 2]], [-1, 2, 'C3k2', [1024, True]], [-1, 2, 'C2PSA', [1024]]], 'head': [[-1, 1, 'Classify', ['nc']]], 'scale': 'l', 'yaml_file': 'yolo26l-cls.yaml', 'ch': 3}",
+    "downloaded_utc": "2026-10-04T13:38:17.107006+00:00"
+  },
+  "external_test_access": false
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "registration_date": "2026-10-25",
+  "scope": "Exact PNG byte-variant registration for future reproduction only; no relaxation of original-study byte identities.",
+  "archive_filename": "Baza docelowa.zip",
+  "archive_sha256": "51f54607bb58b2d5492dd129e6c31b0198e67ce58a3efc19c4e1d4156aafd615",
+  "historical_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+  "registered_reproduction_manifest_sha256": "f98cc4992fe3da8140ed1ab033361e86188fc3e9c9c04d814ac09af3bb869642",
+  "comparison": {
+    "image_count": 824,
+    "rgb_matches": 824,
+    "dimension_matches": 824,
+    "file_byte_matches": 0,
+    "missing_or_unexpected_paths": 0
+  },
+  "comparison_record": "provenance/png_byte_variant_verification_2026-10-25.json",
+  "canonical_rgb_hash": "SHA256(UTF8('RGB:{width}x{height}:') + PIL.convert('RGB').tobytes())",
+  "variant_preparation": "Require exact archive SHA, exact 824 paths, expected dimensions, frozen reference manifest checksum, each canonical RGB checksum, no remaining duplicate RGBs, and exact generated variant manifest checksum. Preserve extracted PNG bytes. Store actual file SHA values in the new manifest and historical/current SHA mapping in the preparation audit.",
+  "legacy_pixel_hash_column": "pixel_sha256 retains historical metadata. independent_rgb_sha256 is the independently verified common RGB identity; sha256 identifies the actual file bytes in each manifest.",
+  "scope_guard": "Only a newly generated future_reproduction plan bound to the current helper may use the variant manifest. The exact original training plan still requires the original manifest. Unknown manifest hashes and reassignment to original_study are rejected.",
+  "locked_original_replay": "Original-checkpoint replay against frozen published outputs still requires original PNG bytes; no evaluation/CAM image guards are loosened.",
+  "source_preparation_description": "M.J.; Windows Snipping Tool; examined spinal segment and surrounding tissues; prepared before radiologist labeling without knowing labels; no manual brightness/contrast adjustment or CLAHE.",
+  "notebook_completed_result_guard": "Text corrected to describe the existing checkpoint/plan/completion-metadata checks; no claim of complete prediction-file integrity verification.",
+  "preserved_before_update": "provenance/before_png_variant_20261025/",
+  "original_code_manifests_plans_predictions_metrics_weights_changed": false,
+  "training_performed": false,
+  "inference_performed": false,
+  "active_files_sha256": {
+    "code/prepare_data.py": "c0bde29f63579740c5fd102eac017b92d2d63dbb9383ea82368bc96350102da8",
+    "code/study_design.py": "981f97151b30a8f1b9dbbd51f03ccabac2b5591000b18bd29603bf6fdd69e3d6",
+    "code/reference_clean_manifest.csv": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+    "code/test_archive_variant.py": "7bc1d48aaafe6b41cf9a4daa2c2c373ed07099004922618312ccc9bf0497fa13",
+    "notebooks/axspa_clean_retraining.ipynb": "c0c212c4714dec54427d810f18e13d79d4395ef01982ef4f4deb0076b4e8eadd",
+    "provenance/notebook_code_integrity.json": "a1c8c785e69f3c229e12e17f5df9c65b331f6d90e578648f04423ad41ce57a21",
+    "provenance/byte_exact_files.json": "70a5a2d60b8de063c3973bd34f7df764ad4d3af6ca89b249211db3849e4a4fd7",
+    "provenance/study_design_correction.json": "f86c34be96e98c22b1646f860a1428244c9788af745339fb3461db09ff52a24a",
+    "provenance/png_byte_variant_verification_2026-10-25.json": "ee57f95777c7dad457b6bf190389cb02dbbae0271a8b9116d8b154961c543a3f",
+    "provenance/png_byte_variant_prepare_data.py.patch": "b55b9fe9f884cd9c1737b0adf1a045f8271fe7de28f543dffc125aa73b087a65",
+    "provenance/png_byte_variant_study_design.py.patch": "1a587d800c34b348ef97031ab4ad3a87e4d902d547214a5efd27c54060999f9e"
+  },
+  "validation": {
+    "private_archive_test_command": "PYTHONDONTWRITEBYTECODE=1 AXSPA_EQUIVALENT_ARCHIVE='/path/to/Baza docelowa.zip' python -m unittest discover -s code -p test_archive_variant.py -v",
+    "archive_tests_passed": 8,
+    "scope": "Registered private-archive extraction/verification, metadata/hash guards and evaluation unit tests. No training or model inference. Original scientific artifacts remain byte-identical.",
+    "full_suite_command": "PYTHONDONTWRITEBYTECODE=1 AXSPA_EQUIVALENT_ARCHIVE='/path/to/Baza docelowa.zip' python -m unittest discover -s code -p 'test_*.py' -v",
+    "full_suite_tests_passed": 21,
+    "full_suite_failures": 0,
+    "notebook_fresh_installer_assets_verified": 12,
+    "preserved_byte_exact_entries_verified": 280,
+    "immutable_files_compared_to_pre_update_package": 280
+  }
+}

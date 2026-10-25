@@ -1,0 +1,71 @@
+--- provenance/original_code/evaluate_models.py
++++ code/evaluate_models.py
+@@ -20,6 +20,7 @@
+ from pathlib import Path
+ 
+ import numpy as np
++from study_design import validate_plan_design, reproduction_metadata, validate_evaluation_lock
+ from scipy.stats import beta, binomtest
+ from sklearn.metrics import roc_auc_score, roc_curve
+ 
+@@ -314,8 +315,7 @@
+         raise ValueError("Training plan class order differs from prespecified canonical order.")
+     if set(plan["models"]) != set(MODELS) or list(plan["seeds"]) != list(range(5)):
+         raise ValueError("This evaluation requires all four prespecified models and all five seeds (0..4).")
+-    if plan.get("reference_seed") != 0 or plan.get("external_test_previously_examined") is not True:
+-        raise ValueError("Training plan must identify fixed reference seed 0 and previously examined external test cohort.")
++    plan_scope = validate_plan_design(plan_path)
+     records = []
+     for model in plan["models"]:
+         for seed in plan["seeds"]:
+@@ -335,7 +335,7 @@
+             if metadata.get("class_names") != CLASSES:
+                 raise RuntimeError(f"Checkpoint class order mismatch: {run}")
+             records.append({"model": model, "seed": seed, "checkpoint": str(checkpoint.resolve()), "checkpoint_sha256": actual, "run_complete_sha256": sha256_file(metadata_path), "backend": metadata["backend"], "preprocess": metadata.get("preprocess")})
+-    return plan, {"created_utc": datetime.now(timezone.utc).isoformat(), "training_plan_sha256": sha256_file(plan_path), "n_complete_runs": len(records), "records": records, "external_test_previously_examined": True, "reference_seed": 0, "interpretation": "Revised exploratory benchmark on an external cohort whose prior results have already been examined."}
++    return plan, {"created_utc": datetime.now(timezone.utc).isoformat(), "training_plan_sha256": sha256_file(plan_path), "n_complete_runs": len(records), "records": records, **reproduction_metadata(), "reference_seed": 0, "source_plan_study_design": plan_scope, "interpretation": "Reproduction on the already evaluated cohort; original study history is separately author-confirmed."}
+ 
+ 
+ def validate_data_manifest(data_root, manifest_path, plan):
+@@ -428,6 +428,8 @@
+     args = parser.parse_args()
+     if args.bootstrap_replicates < 1000:
+         raise ValueError("Use at least 1000 bootstrap replicates for the study evaluation.")
++    if (args.output_dir / "analysis_complete.json").exists():
++        raise RuntimeError("Completed evaluation is immutable. Use a new output directory for an explicitly labeled reproduction.")
+     plan, freeze = validate_training_freeze(args.training_root)
+     manifest = validate_data_manifest(args.data_root, args.manifest or args.data_root.parent / "clean_manifest.csv", plan)
+     freeze["clean_manifest_sha256"] = manifest["sha256"]
+@@ -442,11 +444,9 @@
+     # Persistent lock: after this point the same training directory cannot be used
+     # to fit or select further models after seeing external evaluation results.
+     lock_path = args.training_root / "external_evaluation_started.json"
+-    lock = {"training_plan_sha256": freeze["training_plan_sha256"], "clean_manifest_sha256": manifest["sha256"], "records": freeze["records"], "external_test_previously_examined": True}
++    lock = {"training_plan_sha256": freeze["training_plan_sha256"], "clean_manifest_sha256": manifest["sha256"], "records": freeze["records"], **reproduction_metadata()}
+     if lock_path.exists():
+-        previous_lock = json.loads(lock_path.read_text())
+-        if previous_lock != lock:
+-            raise RuntimeError("Training weights, protocol or manifest changed after external evaluation was locked.")
++        validate_evaluation_lock(lock_path, lock)
+     else:
+         write_json(lock_path, lock)
+     from train_models import predict_split
+@@ -491,15 +491,15 @@
+         if not all(np.array_equal(reference[i], other[i]) for i in range(3)):
+             raise ValueError("Pairwise comparison blocked: IDs, hashes, or labels are not identically aligned.")
+         result = paired_comparison(reference[2], reference[3], other[3], args.bootstrap_replicates)
+-        result.update({"reference": "yolo11l-cls", "comparator": comparator, "seed": 0, "split": "test", "n": len(reference[2]), "exploratory": True})
++        result.update({"reference": "yolo11l-cls", "comparator": comparator, "seed": 0, "split": "test", "n": len(reference[2]), "exploratory": True, "exploratory_scope": "Secondary metric intervals are pointwise; this future rerun is a reproduction, not a new confirmatory study."})
+         comparisons.append(result)
+     adjusted = holm_adjust([r["mcnemar_exact_two_sided_p"] for r in comparisons])
+     for result, p in zip(comparisons, adjusted): result["mcnemar_holm_adjusted_p"] = p
+-    write_json(args.output_dir / "paired_comparisons_seed0.json", {"family": "Three prespecified YOLO11-versus-comparator tests on the external cohort; exploratory", "difference_intervals": "Pointwise 95% intervals; not simultaneous or multiplicity-adjusted.", "results": comparisons})
++    write_json(args.output_dir / "paired_comparisons_seed0.json", {"family": "Reproduction of the three planned YOLO11-versus-comparator paired accuracy tests; Holm-adjusted exact McNemar p-values", "secondary_analysis_scope": "Pointwise secondary metric intervals remain exploratory; no claim of new untouched external validation.", "difference_intervals": "Pointwise 95% intervals; not simultaneous or multiplicity-adjusted.", "results": comparisons})
+     write_csv(args.output_dir / "metrics_all_runs.csv", long_metrics)
+     write_csv(args.output_dir / "all_runs_overview.csv", overview)
+     write_csv(args.output_dir / "five_seed_summary.csv", seed_summary(long_metrics))
+-    write_json(args.output_dir / "analysis_complete.json", {"status": "complete", "completed_utc": datetime.now(timezone.utc).isoformat(), "training_plan_sha256": freeze["training_plan_sha256"], "clean_manifest_sha256": manifest["sha256"], "evaluation_script_sha256": sha256_file(__file__), "n_evaluated_runs": len(plan["models"]) * len(plan["seeds"]), "bootstrap_replicates": args.bootstrap_replicates, "bootstrap_scope": "All four models, validation and external test, reference seed 0 only. Other seeds receive point estimates and exact binomial CIs for proportions, plus five-seed summary statistics.", "python": platform.python_version(), "numpy": np.__version__, "cohort_independence": "Image-level uncertainty assumes one independent patient per image; investigators must verify source-patient identity and cross-split separation.", "primary_reference_model": "yolo11l-cls", "primary_reference_seed": 0, "external_test_previously_examined": True})
++    write_json(args.output_dir / "analysis_complete.json", {"status": "complete", "completed_utc": datetime.now(timezone.utc).isoformat(), "training_plan_sha256": freeze["training_plan_sha256"], "clean_manifest_sha256": manifest["sha256"], "evaluation_script_sha256": sha256_file(__file__), "n_evaluated_runs": len(plan["models"]) * len(plan["seeds"]), "bootstrap_replicates": args.bootstrap_replicates, "bootstrap_scope": "All four models, validation and external test, reference seed 0 only. Other seeds receive point estimates and exact binomial CIs for proportions, plus five-seed summary statistics.", "python": platform.python_version(), "numpy": np.__version__, "cohort_independence": "Image-level uncertainty assumes one independent patient per image; investigators must verify source-patient identity and cross-split separation.", "primary_reference_model": "yolo11l-cls", "primary_reference_seed": 0, **reproduction_metadata(), "source_plan_study_design": freeze["source_plan_study_design"]})
+     print(f"Completed evaluation: {args.output_dir}", flush=True)
+ 
+ 

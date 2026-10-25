@@ -1,0 +1,271 @@
+{
+  "schema_version": 2,
+  "class_names": [
+    "normal",
+    "osteofity",
+    "parasyndesmofity",
+    "syndesmofity"
+  ],
+  "classes": [
+    "normal",
+    "osteofity",
+    "parasyndesmofity",
+    "syndesmofity"
+  ],
+  "models": [
+    "yolo11l-cls",
+    "yolo26l-cls",
+    "resnet50",
+    "efficientnet_b0"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reference_seed": 0,
+  "expected_runs": [
+    {
+      "model": "yolo11l-cls",
+      "seed": 0,
+      "relative_run_dir": "yolo11l-cls/seed_0"
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 1,
+      "relative_run_dir": "yolo11l-cls/seed_1"
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 2,
+      "relative_run_dir": "yolo11l-cls/seed_2"
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 3,
+      "relative_run_dir": "yolo11l-cls/seed_3"
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 4,
+      "relative_run_dir": "yolo11l-cls/seed_4"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 0,
+      "relative_run_dir": "yolo26l-cls/seed_0"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 1,
+      "relative_run_dir": "yolo26l-cls/seed_1"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 2,
+      "relative_run_dir": "yolo26l-cls/seed_2"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 3,
+      "relative_run_dir": "yolo26l-cls/seed_3"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 4,
+      "relative_run_dir": "yolo26l-cls/seed_4"
+    },
+    {
+      "model": "resnet50",
+      "seed": 0,
+      "relative_run_dir": "resnet50/seed_0"
+    },
+    {
+      "model": "resnet50",
+      "seed": 1,
+      "relative_run_dir": "resnet50/seed_1"
+    },
+    {
+      "model": "resnet50",
+      "seed": 2,
+      "relative_run_dir": "resnet50/seed_2"
+    },
+    {
+      "model": "resnet50",
+      "seed": 3,
+      "relative_run_dir": "resnet50/seed_3"
+    },
+    {
+      "model": "resnet50",
+      "seed": 4,
+      "relative_run_dir": "resnet50/seed_4"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 0,
+      "relative_run_dir": "efficientnet_b0/seed_0"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 1,
+      "relative_run_dir": "efficientnet_b0/seed_1"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 2,
+      "relative_run_dir": "efficientnet_b0/seed_2"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 3,
+      "relative_run_dir": "efficientnet_b0/seed_3"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 4,
+      "relative_run_dir": "efficientnet_b0/seed_4"
+    }
+  ],
+  "development_manifest_sha256": "1325dcef2ae6fcc571ae2bbfe90359a970bd771876322f385a3cbf83f8f36a04",
+  "development_manifest_hash_definition": "canonical JSON of train/val records only",
+  "clean_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+  "clean_manifest_hash_definition": "SHA256 of full clean_manifest.csv bytes; no test images opened",
+  "configs": {
+    "ultralytics": {
+      "imgsz": 640,
+      "batch": 100,
+      "epochs": 240,
+      "patience": 240,
+      "optimizer": "auto",
+      "lr0": 0.01,
+      "lrf": 0.01,
+      "momentum": 0.937,
+      "weight_decay": 0.0005,
+      "warmup_epochs": 3.0,
+      "cos_lr": false,
+      "amp": true,
+      "workers": 2,
+      "cache": false,
+      "fliplr": 0.5,
+      "flipud": 0.0,
+      "auto_augment": null,
+      "erasing": 0.0,
+      "scale": 0.0,
+      "dropout": 0.0,
+      "hsv_h": 0.0,
+      "hsv_s": 0.0,
+      "hsv_v": 0.0,
+      "deterministic": true,
+      "save": true,
+      "save_period": -1,
+      "plots": true,
+      "device": 0,
+      "val": true,
+      "split": "val",
+      "fraction": 1.0,
+      "compile": false
+    },
+    "torchvision": {
+      "imgsz": 640,
+      "resize_mode": "whole_png_aspect_preserving_center_pad",
+      "batch": 32,
+      "epochs": 100,
+      "optimizer": "SGD",
+      "lr": 0.01,
+      "momentum": 0.937,
+      "nesterov": true,
+      "weight_decay": 0.0005,
+      "scheduler": "CosineAnnealingLR",
+      "min_lr": 0.0001,
+      "early_stopping_patience": 20,
+      "workers": 0,
+      "amp": true,
+      "horizontal_flip_p": 0.5,
+      "color_jitter_brightness": 0.1,
+      "color_jitter_contrast": 0.1,
+      "randaugment": false,
+      "random_affine": false,
+      "random_erasing_p": 0.0,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "resnet50_weights": "IMAGENET1K_V2",
+      "efficientnet_b0_weights": "IMAGENET1K_V1"
+    }
+  },
+  "runner_sha256": "fbc3425fd99b52cf5e201900f23b6d797015c71499b88ce7d0cac34cab12db1e",
+  "ultralytics_version": "8.4.163",
+  "transform_source_sha256": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+  "spatial_augmentation_protocol": {
+    "geometry": "Preserve the entire PNG; resize longest edge, preserve aspect ratio, center-pad to square.",
+    "size": 640,
+    "padding_rgb": [
+      0,
+      0,
+      0
+    ],
+    "interpolation": "PIL bilinear",
+    "alpha_handling": "Discard alpha without compositing; retain stored RGB values.",
+    "training_horizontal_flip_p": 0.5,
+    "training_brightness": 0.1,
+    "training_contrast": 0.1,
+    "random_crop": false,
+    "random_affine": false,
+    "randaugment": false,
+    "random_erasing": false,
+    "yolo_normalization": {
+      "mean": [
+        0,
+        0,
+        0
+      ],
+      "std": [
+        1,
+        1,
+        1
+      ]
+    },
+    "torchvision_normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    }
+  },
+  "validation_precision": "float32",
+  "validation_batch_size": 32,
+  "yolo_inference_conv_batchnorm_fusion": false,
+  "external_test_previously_examined": true,
+  "primary_model": "yolo11l-cls",
+  "experiment": "New cleaned-data revision experiment; not historical training reconstruction.",
+  "checkpoint_selection": "Maximum val top-1 with earliest epoch on ties, separately for each model/seed.",
+  "primary_seed_selection": "Fixed reference seed0; no external or validation selection among seeds.",
+  "comparison_scope": "Training pipelines at640px; common whole-PNG geometry/augmentation; optimizers, normalization and epoch budgets differ.",
+  "training_timing_comparable_across_backends": false,
+  "timing_limitation": "Epoch timing scopes differ in checkpoint I/O; record operational timings, do not rank architecture efficiency from them.",
+  "alpha_handling": "Discard PNG alpha channel without compositing; retain stored RGB values.",
+  "patient_identity_independence": "Requires author/local linkage; image hashes alone cannot verify patients.",
+  "torchvision_config_provenance": "Optimizer/budget based on recovered notebook; common whole-PNG transforms newly specified before retraining.",
+  "deliberate_changes_from_old_torchvision": "Five seeds, whole-PNG aspect-preserving resize+pad, mild common augmentation, explicit RNG streams, float32 validation/inference, locked test, hash audit.",
+  "external_test_access_during_training": false,
+  "expected_train": 579,
+  "expected_val": 95,
+  "expected_external": 150,
+  "protocol_sha256": "2bdc54f59222462b2626cd8e1c5a49c5fec6a71590e261b6574be40ffcff95b2",
+  "created_utc": "2026-10-04T14:03:04.642506+00:00"
+}

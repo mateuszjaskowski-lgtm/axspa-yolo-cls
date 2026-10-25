@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.ipynb_checkpoints/
+*.pt
+*.pth
+*.zip
+*.npz
+!analysis/**/val_predictions.npz
+!analysis/**/test_predictions.npz
+private_data/
+private_cam_replay/
+reproduced_analysis/
+reproduced_figures/

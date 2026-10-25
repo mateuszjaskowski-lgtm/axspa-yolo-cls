@@ -1,0 +1,154 @@
+{
+  "input_sha256": "0381c83dae0151230bc07928488e372bc359a0a087edc4f9cdd9c0be65c793b9",
+  "class_order": [
+    "normal",
+    "osteofity",
+    "parasyndesmofity",
+    "syndesmofity"
+  ],
+  "numpy_version": "2.3.5",
+  "method": {
+    "agreement": "Initial M.P. and P.G. labels agree before consensus.",
+    "kappa": "Unweighted Cohen kappa for four nominal classes.",
+    "ci": "95% percentile paired-row bootstrap; 10000 draws; default_rng(0) reset for All, Lodz and Konskie; linear quantiles.",
+    "row_order": "Physical CSV row order, retained from the accepted workbook; no sorting.",
+    "unit": "One accepted case per row; row_index is a technical sequence, not a patient or image identifier."
+  },
+  "statistics": {
+    "All": {
+      "n": 824,
+      "agreement": 740,
+      "disagreement": 84,
+      "observed_agreement": 0.8980582524271845,
+      "nominal_kappa": 0.8552723470987977,
+      "ci95": [
+        0.8252851354175187,
+        0.8836419619458149
+      ],
+      "matrix_MP_rows_PG_columns": [
+        [
+          271,
+          19,
+          4,
+          0
+        ],
+        [
+          15,
+          265,
+          7,
+          6
+        ],
+        [
+          5,
+          9,
+          101,
+          5
+        ],
+        [
+          0,
+          5,
+          9,
+          103
+        ]
+      ],
+      "consensus_counts": {
+        "0": 303,
+        "1": 298,
+        "2": 113,
+        "3": 110
+      },
+      "consensus_outside_reader_choices": 0,
+      "bootstrap_valid_replicates": 10000
+    },
+    "Lodz": {
+      "n": 674,
+      "agreement": 605,
+      "disagreement": 69,
+      "observed_agreement": 0.8976261127596439,
+      "nominal_kappa": 0.8545250935298607,
+      "ci95": [
+        0.8209107851024453,
+        0.885971861056512
+      ],
+      "matrix_MP_rows_PG_columns": [
+        [
+          222,
+          15,
+          4,
+          0
+        ],
+        [
+          13,
+          217,
+          4,
+          6
+        ],
+        [
+          4,
+          7,
+          82,
+          4
+        ],
+        [
+          0,
+          5,
+          7,
+          84
+        ]
+      ],
+      "consensus_counts": {
+        "0": 248,
+        "1": 244,
+        "2": 93,
+        "3": 89
+      },
+      "consensus_outside_reader_choices": 0,
+      "bootstrap_valid_replicates": 10000
+    },
+    "Konskie": {
+      "n": 150,
+      "agreement": 135,
+      "disagreement": 15,
+      "observed_agreement": 0.9,
+      "nominal_kappa": 0.8585795097423005,
+      "ci95": [
+        0.7856963121969726,
+        0.9230110330789186
+      ],
+      "matrix_MP_rows_PG_columns": [
+        [
+          49,
+          4,
+          0,
+          0
+        ],
+        [
+          2,
+          48,
+          3,
+          0
+        ],
+        [
+          1,
+          2,
+          19,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          19
+        ]
+      ],
+      "consensus_counts": {
+        "0": 55,
+        "1": 54,
+        "2": 20,
+        "3": 21
+      },
+      "consensus_outside_reader_choices": 0,
+      "bootstrap_valid_replicates": 10000
+    }
+  }
+}

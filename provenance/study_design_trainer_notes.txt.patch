@@ -1,0 +1,62 @@
+--- provenance/original_code/trainer_notes.txt
++++ code/trainer_notes.txt
+@@ -7,13 +7,36 @@
+ The complete received PNG field is retained; these source PNGs had already
+ been prepared by outlining the region of the examined spinal segment.
+ 
++AUTHOR-CLARIFIED STUDY DESIGN — 2026-10-06
++The development folders were assigned manually in Windows Explorer. Within
++each numerically sorted class folder, contiguous file ranges were moved to
++validation until approximately 15% of that class had been selected. Selection
++was independent of image content, fixed before the first training and not
++changed according to model outcomes. No random allocation or scikit-learn
++split was used. Numerical filename order does not establish acquisition
++chronology. After duplicate-copy removal, the retained validation fraction is
++95/674 = 14.1%; by class it is 37/248 normal, 34/244 osteophytes,
++12/93 parasyndesmophytes and 12/89 syndesmophytes.
++The author confirmed that the external cohort had not been used before the
++final evaluation. The original analysis plan was verbal and not prospectively
++registered; the locked computational plan is a separate experiment record.
++See root study_design.json and provenance/study_design_correction.json.
++The original_study scope records no prior external evaluation. A future rerun
++uses a cohort whose original evaluation is now complete; its future_reproduction
++scope does not claim a new untouched external validation.
++The original hardcoded external_test_previously_examined=True was descriptive
++metadata, not empirical evidence of prior test use. Original executed code,
++plans and result records are preserved; active scripts apply the documented
++description correction. No image reassignment, new fitting, inference or
++numerical-result changes were made for this correction.
++
+ FROZEN SCIENTIFIC PLAN
+ Four models: YOLO11l-cls (primary), YOLO26l-cls, ResNet50, EfficientNet-B0.
+ Five seeds each: 0,1,2,3,4. Reference seed0 is specified before results.
+ All20 model/seed pairs must finish before external evaluation. Validation
+ selects each checkpoint by maximum top1, earliest epoch on ties. No model,
+-seed or checkpoint is selected from external performance. Comparisons remain
+-exploratory because earlier results from the same external cohort were viewed.
++seed or checkpoint is selected from external performance. The external cohort
++is held out until the final evaluation, as clarified by the author on 2026-10-06.
+ The evaluation lock blocks any later fitting in this experiment directory.
+ 
+ WHOLE-FIELD TRANSFORMS
+@@ -69,7 +92,7 @@
+ hashes, class-order errors or mismatched reloaded accuracy stop for review.
+ 
+ PERSISTENCE AND RESTARTS
+-Use the notebook's NEW full_region_v3 Drive project; do not reuse earlier
++Use the notebook's new empty Drive project directory; do not reuse earlier
+ folders produced with crop/stretch transforms. Selected and latest checkpoints
+ are saved each epoch. Complete runs are hash-checked and skipped. First-start
+ metadata is retained; each invocation gets its own audit record.
+@@ -91,6 +114,11 @@
+ is accepted from the author's source confirmation, not proved by image hashes.
+ The notebook freezes all code assets, environment and analysis settings before
+ study fitting, and saves stdout/stderr logs on Drive.
++The current notebook embeds active corrected scripts and the design record;
++its executable cells are not byte-identical to the originally executed notebook.
++Original hash-bound assets remain under provenance/original_code. Use that
++original directory as the frozen code root when replaying original CAM results;
++fresh reproductions record the corrected metadata in their own new directory.
+ Outputs include training_plan.json;development_manifest.json/.csv;
+ train_models_frozen.py;spine_transforms.py;generic initialization records;
+ hardware_preflight.json;per-run selected.pt/latest checkpoints;run_complete.json;

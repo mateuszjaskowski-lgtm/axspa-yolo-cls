@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+title: "Radiographic Differentiation of Axial Spondyloarthritis and Degenerative Spinal Changes in Patients with Chronic Back Pain: Development and External Validation of a YOLO-Based Deep Learning Model"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - given-names: Mateusz
+    family-names: Jaśkowski
+    orcid: "https://orcid.org/0009-0003-7303-9600"
+    affiliation: "Saint Lucas Hospital, Konskie, Poland"
+    email: mjaskowski@zoz.konskie.pl
+  - given-names: Paweł
+    family-names: Górski
+    orcid: "https://orcid.org/0009-0008-2389-7750"
+    affiliation: "Saint Lucas Hospital, Konskie, Poland"
+  - given-names: Zbigniew
+    family-names: Guzera
+    orcid: "https://orcid.org/0009-0006-0263-0964"
+    affiliation: "Saint Lucas Hospital, Konskie, Poland"
+  - given-names: Michał
+    family-names: Podgórski
+    orcid: "https://orcid.org/0000-0003-4513-0602"
+    affiliation: "Medical University of Lodz, Poland"
+
+repository-code: "https://github.com/mateuszjaskowski-lgtm/axspa-yolo-cls"
+url: "https://github.com/mateuszjaskowski-lgtm/axspa-yolo-cls"
+abstract: >-
+  Reproducibility materials for nominal four-class morphology classification
+  of prepared lateral spinal radiographs. Includes the completed cleaned-data
+  experiment with 579 training, 95 validation and 150 external-test images,
+  four model configurations and five seeds. The reference is YOLO11l-cls seed 0.
+  The development split used manual, content-independent selection of numerical
+  file ranges within classes before the first training. The author confirmed on
+  2026-10-06 that the external cohort had not been used before final evaluation.
+  The original plan was verbal; the locked computational protocol is archived
+  separately. PNG images are available on reasonable request.
+keywords:
+  - axial spondyloarthritis
+  - deep learning
+  - YOLO
+  - spinal radiography
+  - external validation
+  - convolutional neural network
+license: MIT
+version: "2.0.0"
+date-released: "2026-10-25"
+doi: "10.5281/zenodo.23649843"

@@ -1,0 +1,39 @@
+--- provenance/original_code/train_models.py
++++ code/train_models.py
+@@ -24,6 +24,7 @@
+ from datetime import datetime, timezone
+ from urllib.parse import urlparse
+ import spine_transforms
++from study_design import reproduction_metadata
+ from spine_transforms import TRANSFORM_PROTOCOL, build_spine_transforms
+ 
+ CLASSES = ['normal', 'osteofity', 'parasyndesmofity', 'syndesmofity']
+@@ -893,7 +894,8 @@
+ def create_or_check_plan(output, manifest, clean_manifest_path):
+     output = Path(output)
+     path = output / 'training_plan.json'
+-    protocol = dict(schema_version=SCHEMA_VERSION, class_names=CLASSES, classes=CLASSES,
++    study_metadata = reproduction_metadata()
++    protocol = dict(**study_metadata, study_design_helper_sha256=sha256(Path(__file__).with_name('study_design.py')), schema_version=SCHEMA_VERSION, class_names=CLASSES, classes=CLASSES,
+         models=MODELS, seeds=SEEDS, reference_seed=0,
+         expected_runs=[dict(model=m, seed=s, relative_run_dir=f'{m}/seed_{s}') for m in MODELS for s in SEEDS],
+         development_manifest_sha256=canonical_hash(manifest),
+@@ -906,9 +908,8 @@
+         spatial_augmentation_protocol=TRANSFORM_PROTOCOL,
+         validation_precision='float32', validation_batch_size=VALIDATION_BATCH_SIZE,
+         yolo_inference_conv_batchnorm_fusion=False,
+-        external_test_previously_examined=True,
+         primary_model='yolo11l-cls',
+-        experiment='New cleaned-data revision experiment; not historical training reconstruction.',
++        experiment='Reproduction of the completed study on the same fixed data assignments; not a new untouched external validation.',
+         checkpoint_selection='Maximum val top-1 with earliest epoch on ties, separately for each model/seed.',
+         primary_seed_selection='Fixed reference seed0; no external or validation selection among seeds.',
+         comparison_scope='Training pipelines at640px; common whole-PNG geometry/augmentation; optimizers, normalization and epoch budgets differ.',
+@@ -931,6 +932,7 @@
+         write_rows(output / 'development_manifest.csv', manifest)
+         shutil.copy2(__file__, output / 'train_models_frozen.py')
+         shutil.copy2(spine_transforms.__file__, output / 'spine_transforms.py')
++        shutil.copy2(Path(__file__).with_name('study_design.py'), output / 'study_design.py')
+     return plan
+ 
+ 

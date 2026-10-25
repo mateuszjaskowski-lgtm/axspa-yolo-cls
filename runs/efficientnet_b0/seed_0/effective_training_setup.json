@@ -1,0 +1,53 @@
+{
+  "config": {
+    "imgsz": 640,
+    "resize_mode": "whole_png_aspect_preserving_center_pad",
+    "batch": 32,
+    "epochs": 100,
+    "optimizer": "SGD",
+    "lr": 0.01,
+    "momentum": 0.937,
+    "nesterov": true,
+    "weight_decay": 0.0005,
+    "scheduler": "CosineAnnealingLR",
+    "min_lr": 0.0001,
+    "early_stopping_patience": 20,
+    "workers": 0,
+    "amp": true,
+    "horizontal_flip_p": 0.5,
+    "color_jitter_brightness": 0.1,
+    "color_jitter_contrast": 0.1,
+    "randaugment": false,
+    "random_affine": false,
+    "random_erasing_p": 0.0,
+    "normalization_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "normalization_std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "resnet50_weights": "IMAGENET1K_V2",
+    "efficientnet_b0_weights": "IMAGENET1K_V1"
+  },
+  "train_transforms": "Compose(\n    RandomHorizontalFlip(p=0.5)\n    ColorJitter(brightness=(0.9, 1.1), contrast=(0.9, 1.1), saturation=None, hue=None)\n    SpineResizePad(size=640, interpolation=BILINEAR, fill=(0,0,0), crop=False)\n    ToTensor()\n    Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])\n)",
+  "val_transforms": "Compose(\n    SpineResizePad(size=640, interpolation=BILINEAR, fill=(0,0,0), crop=False)\n    ToTensor()\n    Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])\n)",
+  "optimizer_class": "SGD",
+  "pretrained": {
+    "model": "efficientnet_b0",
+    "filename": "efficientnet_b0_imagenet.pth",
+    "sha256": "7f5810bc96def8f7552d5b7e68d53c4786f81167d28291b21c0d90e1fca14934",
+    "source": "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth",
+    "weight_enum": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+    "pretrained_class_count": 1000,
+    "downloaded_utc": "2026-10-04T13:38:19.209614+00:00"
+  },
+  "parameter_count": 4012672,
+  "selection": "Maximum internal validation top-1; earliest epoch on ties.",
+  "restart_policy": "Exact epoch-boundary states saved; identical package/GPU environment required.",
+  "resume_count_start_epoch": 0,
+  "protocol_is_new": true
+}

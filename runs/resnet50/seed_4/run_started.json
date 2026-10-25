@@ -1,0 +1,17 @@
+{
+  "model": "resnet50",
+  "seed": 4,
+  "protocol_sha256": "2bdc54f59222462b2626cd8e1c5a49c5fec6a71590e261b6574be40ffcff95b2",
+  "started_utc": "2026-10-04T19:41:15.191115+00:00",
+  "pretrained": {
+    "model": "resnet50",
+    "filename": "resnet50_imagenet.pth",
+    "sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+    "source": "https://download.pytorch.org/models/resnet50-11ad3fa6.pth",
+    "weight_enum": "ResNet50_Weights.IMAGENET1K_V2",
+    "pretrained_class_count": 1000,
+    "downloaded_utc": "2026-10-04T13:38:18.883537+00:00"
+  },
+  "status": "training",
+  "external_test_access": false
+}

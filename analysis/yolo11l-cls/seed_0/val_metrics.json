@@ -1,0 +1,1176 @@
+{
+  "n": 95,
+  "class_names": [
+    "normal",
+    "osteofity",
+    "parasyndesmofity",
+    "syndesmofity"
+  ],
+  "confusion_matrix_true_rows_predicted_columns": [
+    [
+      36,
+      1,
+      0,
+      0
+    ],
+    [
+      2,
+      31,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      10,
+      1
+    ],
+    [
+      0,
+      1,
+      0,
+      11
+    ]
+  ],
+  "metrics": {
+    "accuracy": {
+      "estimate": 0.9263157894736842,
+      "ci_low": 0.8540601507668739,
+      "ci_high": 0.9698627810901742,
+      "numerator": 88,
+      "denominator": 95,
+      "method": "Clopper-Pearson"
+    },
+    "unweighted_cohen_kappa": {
+      "estimate": 0.8925165669953128,
+      "ci_low": 0.8129890562555255,
+      "ci_high": 0.9681760658237711,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "balanced_accuracy": {
+      "estimate": 0.9086844197138315,
+      "ci_low": 0.8306339172291793,
+      "ci_high": 0.9752761945185545,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "macro_f1": {
+      "estimate": 0.9144991474850809,
+      "ci_low": 0.8370043003962631,
+      "ci_high": 0.9738098447043139,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "macro_ovr_auc": {
+      "estimate": 0.9935246449530066,
+      "ci_low": 0.9853873932777044,
+      "ci_high": 0.9992947256739485,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "binary_auc": {
+      "estimate": 0.9958920187793427,
+      "ci_low": 0.9867137681159421,
+      "ci_high": 1.0,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "multiclass_brier": {
+      "estimate": 0.11706381976203946,
+      "ci_low": 0.042818253770644424,
+      "ci_high": 0.19387705469149918,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "mean_ovr_brier": {
+      "estimate": 0.029265954940509865,
+      "ci_low": 0.010704563442661106,
+      "ci_high": 0.048469263672874796,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "binary_brier": {
+      "estimate": 0.02260362448969911,
+      "ci_low": 0.0030955099479528262,
+      "ci_high": 0.048022621718891746,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "normal_f1": {
+      "estimate": 0.96,
+      "ci_low": 0.9117647058823529,
+      "ci_high": 1.0,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "osteofity_f1": {
+      "estimate": 0.9117647058823529,
+      "ci_low": 0.8333333333333334,
+      "ci_high": 0.9736842105263158,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "parasyndesmofity_f1": {
+      "estimate": 0.8695652173913043,
+      "ci_low": 0.6666666666666666,
+      "ci_high": 1.0,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "syndesmofity_f1": {
+      "estimate": 0.9166666666666666,
+      "ci_low": 0.7692307692307693,
+      "ci_high": 1.0,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "normal_ovr_auc": {
+      "estimate": 0.9962721342031686,
+      "ci_low": 0.9888566643666263,
+      "ci_high": 1.0,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "osteofity_ovr_auc": {
+      "estimate": 0.9898746383799422,
+      "ci_low": 0.9743589743589745,
+      "ci_high": 1.0,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "parasyndesmofity_ovr_auc": {
+      "estimate": 0.9899598393574297,
+      "ci_low": 0.9699786952688805,
+      "ci_high": 1.0,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    },
+    "syndesmofity_ovr_auc": {
+      "estimate": 0.997991967871486,
+      "ci_low": 0.9905063291139241,
+      "ci_high": 1.0,
+      "method": "image-level percentile bootstrap",
+      "valid_replicates": 2000,
+      "requested_replicates": 2000,
+      "bootstrap_seed": 42117,
+      "degenerate_empirical_distribution": false,
+      "uncertainty_note": null
+    }
+  },
+  "per_class": [
+    {
+      "class": "normal",
+      "tp": 36,
+      "fn": 1,
+      "fp": 2,
+      "tn": 56,
+      "sensitivity": {
+        "estimate": 0.972972972972973,
+        "ci_low": 0.858396904388842,
+        "ci_high": 0.9993159689753053,
+        "numerator": 36,
+        "denominator": 37,
+        "method": "Clopper-Pearson"
+      },
+      "specificity": {
+        "estimate": 0.9655172413793104,
+        "ci_low": 0.8809226891196079,
+        "ci_high": 0.9957963527601323,
+        "numerator": 56,
+        "denominator": 58,
+        "method": "Clopper-Pearson"
+      },
+      "ppv": {
+        "estimate": 0.9473684210526315,
+        "ci_low": 0.8225094096523592,
+        "ci_high": 0.9935612832849081,
+        "numerator": 36,
+        "denominator": 38,
+        "method": "Clopper-Pearson"
+      },
+      "npv": {
+        "estimate": 0.9824561403508771,
+        "ci_low": 0.9060831581080893,
+        "ci_high": 0.9995559265599107,
+        "numerator": 56,
+        "denominator": 57,
+        "method": "Clopper-Pearson"
+      },
+      "f1": {
+        "estimate": 0.96,
+        "ci_low": 0.9117647058823529,
+        "ci_high": 1.0,
+        "method": "image-level percentile bootstrap",
+        "valid_replicates": 2000,
+        "requested_replicates": 2000,
+        "bootstrap_seed": 42117,
+        "degenerate_empirical_distribution": false,
+        "uncertainty_note": null
+      },
+      "ovr_auc": {
+        "estimate": 0.9962721342031686,
+        "ci_low": 0.9888566643666263,
+        "ci_high": 1.0,
+        "method": "image-level percentile bootstrap",
+        "valid_replicates": 2000,
+        "requested_replicates": 2000,
+        "bootstrap_seed": 42117,
+        "degenerate_empirical_distribution": false,
+        "uncertainty_note": null
+      }
+    },
+    {
+      "class": "osteofity",
+      "tp": 31,
+      "fn": 3,
+      "fp": 3,
+      "tn": 58,
+      "sensitivity": {
+        "estimate": 0.9117647058823529,
+        "ci_low": 0.7632247257130624,
+        "ci_high": 0.9814204965591596,
+        "numerator": 31,
+        "denominator": 34,
+        "method": "Clopper-Pearson"
+      },
+      "specificity": {
+        "estimate": 0.9508196721311475,
+        "ci_low": 0.8629307780841057,
+        "ci_high": 0.9897406848316792,
+        "numerator": 58,
+        "denominator": 61,
+        "method": "Clopper-Pearson"
+      },
+      "ppv": {
+        "estimate": 0.9117647058823529,
+        "ci_low": 0.7632247257130624,
+        "ci_high": 0.9814204965591596,
+        "numerator": 31,
+        "denominator": 34,
+        "method": "Clopper-Pearson"
+      },
+      "npv": {
+        "estimate": 0.9508196721311475,
+        "ci_low": 0.8629307780841057,
+        "ci_high": 0.9897406848316792,
+        "numerator": 58,
+        "denominator": 61,
+        "method": "Clopper-Pearson"
+      },
+      "f1": {
+        "estimate": 0.9117647058823529,
+        "ci_low": 0.8333333333333334,
+        "ci_high": 0.9736842105263158,
+        "method": "image-level percentile bootstrap",
+        "valid_replicates": 2000,
+        "requested_replicates": 2000,
+        "bootstrap_seed": 42117,
+        "degenerate_empirical_distribution": false,
+        "uncertainty_note": null
+      },
+      "ovr_auc": {
+        "estimate": 0.9898746383799422,
+        "ci_low": 0.9743589743589745,
+        "ci_high": 1.0,
+        "method": "image-level percentile bootstrap",
+        "valid_replicates": 2000,
+        "requested_replicates": 2000,
+        "bootstrap_seed": 42117,
+        "degenerate_empirical_distribution": false,
+        "uncertainty_note": null
+      }
+    },
+    {
+      "class": "parasyndesmofity",
+      "tp": 10,
+      "fn": 2,
+      "fp": 1,
+      "tn": 82,
+      "sensitivity": {
+        "estimate": 0.8333333333333334,
+        "ci_low": 0.515862251314033,
+        "ci_high": 0.9791374745399076,
+        "numerator": 10,
+        "denominator": 12,
+        "method": "Clopper-Pearson"
+      },
+      "specificity": {
+        "estimate": 0.9879518072289156,
+        "ci_low": 0.9346916264486556,
+        "ci_high": 0.999695012686953,
+        "numerator": 82,
+        "denominator": 83,
+        "method": "Clopper-Pearson"
+      },
+      "ppv": {
+        "estimate": 0.9090909090909091,
+        "ci_low": 0.5872200830116173,
+        "ci_high": 0.9977010277861857,
+        "numerator": 10,
+        "denominator": 11,
+        "method": "Clopper-Pearson"
+      },
+      "npv": {
+        "estimate": 0.9761904761904762,
+        "ci_low": 0.9166255334330945,
+        "ci_high": 0.997103437029467,
+        "numerator": 82,
+        "denominator": 84,
+        "method": "Clopper-Pearson"
+      },
+      "f1": {
+        "estimate": 0.8695652173913043,
+        "ci_low": 0.6666666666666666,
+        "ci_high": 1.0,
+        "method": "image-level percentile bootstrap",
+        "valid_replicates": 2000,
+        "requested_replicates": 2000,
+        "bootstrap_seed": 42117,
+        "degenerate_empirical_distribution": false,
+        "uncertainty_note": null
+      },
+      "ovr_auc": {
+        "estimate": 0.9899598393574297,
+        "ci_low": 0.9699786952688805,
+        "ci_high": 1.0,
+        "method": "image-level percentile bootstrap",
+        "valid_replicates": 2000,
+        "requested_replicates": 2000,
+        "bootstrap_seed": 42117,
+        "degenerate_empirical_distribution": false,
+        "uncertainty_note": null
+      }
+    },
+    {
+      "class": "syndesmofity",
+      "tp": 11,
+      "fn": 1,
+      "fp": 1,
+      "tn": 82,
+      "sensitivity": {
+        "estimate": 0.9166666666666666,
+        "ci_low": 0.6152038348490559,
+        "ci_high": 0.9978924067681397,
+        "numerator": 11,
+        "denominator": 12,
+        "method": "Clopper-Pearson"
+      },
+      "specificity": {
+        "estimate": 0.9879518072289156,
+        "ci_low": 0.9346916264486556,
+        "ci_high": 0.999695012686953,
+        "numerator": 82,
+        "denominator": 83,
+        "method": "Clopper-Pearson"
+      },
+      "ppv": {
+        "estimate": 0.9166666666666666,
+        "ci_low": 0.6152038348490559,
+        "ci_high": 0.9978924067681397,
+        "numerator": 11,
+        "denominator": 12,
+        "method": "Clopper-Pearson"
+      },
+      "npv": {
+        "estimate": 0.9879518072289156,
+        "ci_low": 0.9346916264486556,
+        "ci_high": 0.999695012686953,
+        "numerator": 82,
+        "denominator": 83,
+        "method": "Clopper-Pearson"
+      },
+      "f1": {
+        "estimate": 0.9166666666666666,
+        "ci_low": 0.7692307692307693,
+        "ci_high": 1.0,
+        "method": "image-level percentile bootstrap",
+        "valid_replicates": 2000,
+        "requested_replicates": 2000,
+        "bootstrap_seed": 42117,
+        "degenerate_empirical_distribution": false,
+        "uncertainty_note": null
+      },
+      "ovr_auc": {
+        "estimate": 0.997991967871486,
+        "ci_low": 0.9905063291139241,
+        "ci_high": 1.0,
+        "method": "image-level percentile bootstrap",
+        "valid_replicates": 2000,
+        "requested_replicates": 2000,
+        "bootstrap_seed": 42117,
+        "degenerate_empirical_distribution": false,
+        "uncertainty_note": null
+      }
+    }
+  ],
+  "binary_morphology": {
+    "positive_group": [
+      "parasyndesmofity",
+      "syndesmofity"
+    ],
+    "negative_group": [
+      "normal",
+      "osteofity"
+    ],
+    "interpretation": "Radiographic morphology grouping, not a clinical axSpA diagnosis.",
+    "threshold": {
+      "threshold": 0.27126939594745636,
+      "derivation_split": "val",
+      "criterion": "maximize sensitivity + specificity - 1",
+      "tie_rule": "highest threshold among maxima within absolute tolerance 1e-12",
+      "decision_rule": "sum(P(parasyndesmofity), P(syndesmofity)) >= threshold",
+      "max_youden": 0.971830985915493,
+      "tied_candidate_count": 1,
+      "threshold_selection_uncertainty_in_test_ci": false
+    },
+    "tp": 24,
+    "fn": 0,
+    "fp": 2,
+    "tn": 69,
+    "accuracy": {
+      "estimate": 0.9789473684210527,
+      "ci_low": 0.9260134525711725,
+      "ci_high": 0.9974401820139384,
+      "numerator": 93,
+      "denominator": 95,
+      "method": "Clopper-Pearson"
+    },
+    "sensitivity": {
+      "estimate": 1.0,
+      "ci_low": 0.8575264022774743,
+      "ci_high": 1.0,
+      "numerator": 24,
+      "denominator": 24,
+      "method": "Clopper-Pearson"
+    },
+    "specificity": {
+      "estimate": 0.971830985915493,
+      "ci_low": 0.9019199313429451,
+      "ci_high": 0.9965702092287638,
+      "numerator": 69,
+      "denominator": 71,
+      "method": "Clopper-Pearson"
+    },
+    "ppv": {
+      "estimate": 0.9230769230769231,
+      "ci_low": 0.7486970833046261,
+      "ci_high": 0.9905446089962873,
+      "numerator": 24,
+      "denominator": 26,
+      "method": "Clopper-Pearson"
+    },
+    "npv": {
+      "estimate": 1.0,
+      "ci_low": 0.9479419421369203,
+      "ci_high": 1.0,
+      "numerator": 69,
+      "denominator": 69,
+      "method": "Clopper-Pearson"
+    }
+  },
+  "calibration": {
+    "top_label": {
+      "bins": [
+        {
+          "bin": 0,
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 1,
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 2,
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 3,
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 4,
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 1,
+          "mean_probability": 0.49727490544319153,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.975
+        },
+        {
+          "bin": 5,
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 6,
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 3,
+          "mean_probability": 0.6373070875803629,
+          "observed_fraction": 0.6666666666666666,
+          "ci_low": 0.09429932405024613,
+          "ci_high": 0.9915962413403874
+        },
+        {
+          "bin": 7,
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 3,
+          "mean_probability": 0.7326980034510294,
+          "observed_fraction": 0.6666666666666666,
+          "ci_low": 0.09429932405024613,
+          "ci_high": 0.9915962413403874
+        },
+        {
+          "bin": 8,
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 6,
+          "mean_probability": 0.8409747779369354,
+          "observed_fraction": 0.6666666666666666,
+          "ci_low": 0.22277809550351216,
+          "ci_high": 0.9567281317072583
+        },
+        {
+          "bin": 9,
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 82,
+          "mean_probability": 0.9974094302189059,
+          "observed_fraction": 0.975609756097561,
+          "ci_low": 0.9146567750449174,
+          "ci_high": 0.9970324584485772
+        }
+      ],
+      "ece": 0.03807231156449571,
+      "definition": "10 equal-width bins on [0,1]; left-closed, right-open except last includes 1; empty bins not plotted; ECE weighted absolute calibration error"
+    },
+    "binary_morphology": {
+      "bins": [
+        {
+          "bin": 0,
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 67,
+          "mean_probability": 0.0006078107918060064,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.053569654127096765
+        },
+        {
+          "bin": 1,
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 2,
+          "mean_probability": 0.11511033121496439,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.841886116991581
+        },
+        {
+          "bin": 2,
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 3,
+          "mean_probability": 0.28278884344763355,
+          "observed_fraction": 0.6666666666666666,
+          "ci_low": 0.09429932405024613,
+          "ci_high": 0.9915962413403874
+        },
+        {
+          "bin": 3,
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 4,
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 5,
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 6,
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 7,
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 2,
+          "mean_probability": 0.7513500053001394,
+          "observed_fraction": 1.0,
+          "ci_low": 0.15811388300841903,
+          "ci_high": 1.0
+        },
+        {
+          "bin": 8,
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 1,
+          "mean_probability": 0.8265732677864435,
+          "observed_fraction": 1.0,
+          "ci_low": 0.025000000000000022,
+          "ci_high": 1.0
+        },
+        {
+          "bin": 9,
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 20,
+          "mean_probability": 0.9954610435659526,
+          "observed_fraction": 0.95,
+          "ci_low": 0.7512672372279723,
+          "ci_high": 0.9987349105020502
+        }
+      ],
+      "ece": 0.03160552682179327,
+      "definition": "10 equal-width bins on [0,1]; left-closed, right-open except last includes 1; empty bins not plotted; ECE weighted absolute calibration error"
+    },
+    "ovr_normal": {
+      "bins": [
+        {
+          "bin": 0,
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 55,
+          "mean_probability": 0.0024126956257527242,
+          "observed_fraction": 0.01818181818181818,
+          "ci_low": 0.00046021784879569753,
+          "ci_high": 0.0971910157492534
+        },
+        {
+          "bin": 1,
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 1,
+          "mean_probability": 0.19778800010681152,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.975
+        },
+        {
+          "bin": 2,
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 1,
+          "mean_probability": 0.23145568370819092,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.975
+        },
+        {
+          "bin": 3,
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 4,
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 5,
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 6,
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 1,
+          "mean_probability": 0.6174866557121277,
+          "observed_fraction": 1.0,
+          "ci_low": 0.025000000000000022,
+          "ci_high": 1.0
+        },
+        {
+          "bin": 7,
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 8,
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 2,
+          "mean_probability": 0.8426980078220367,
+          "observed_fraction": 0.5,
+          "ci_low": 0.01257911709342506,
+          "ci_high": 0.9874208829065749
+        },
+        {
+          "bin": 9,
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 35,
+          "mean_probability": 0.9985961931092399,
+          "observed_fraction": 0.9714285714285714,
+          "ci_low": 0.8508279203435684,
+          "ci_high": 0.999276895623662
+        }
+      ],
+      "ece": 0.03489812150688362,
+      "definition": "10 equal-width bins on [0,1]; left-closed, right-open except last includes 1; empty bins not plotted; ECE weighted absolute calibration error"
+    },
+    "ovr_osteofity": {
+      "bins": [
+        {
+          "bin": 0,
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 56,
+          "mean_probability": 0.0018956042808796832,
+          "observed_fraction": 0.03571428571428571,
+          "ci_low": 0.0043548127410526485,
+          "ci_high": 0.12313180745799579
+        },
+        {
+          "bin": 1,
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 2,
+          "mean_probability": 0.18092752248048782,
+          "observed_fraction": 0.5,
+          "ci_low": 0.01257911709342506,
+          "ci_high": 0.9874208829065749
+        },
+        {
+          "bin": 2,
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 2,
+          "mean_probability": 0.24829014390707016,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.841886116991581
+        },
+        {
+          "bin": 3,
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 1,
+          "mean_probability": 0.38235512375831604,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.975
+        },
+        {
+          "bin": 4,
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 1,
+          "mean_probability": 0.49727490544319153,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.975
+        },
+        {
+          "bin": 5,
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 6,
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 1,
+          "mean_probability": 0.6478798985481262,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.975
+        },
+        {
+          "bin": 7,
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 1,
+          "mean_probability": 0.7130436897277832,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.975
+        },
+        {
+          "bin": 8,
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 2,
+          "mean_probability": 0.8439444303512573,
+          "observed_fraction": 1.0,
+          "ci_low": 0.15811388300841903,
+          "ci_high": 1.0
+        },
+        {
+          "bin": 9,
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 29,
+          "mean_probability": 0.9977059610958757,
+          "observed_fraction": 1.0,
+          "ci_low": 0.8805551309304973,
+          "ci_high": 1.0
+        }
+      ],
+      "ece": 0.05945013987493061,
+      "definition": "10 equal-width bins on [0,1]; left-closed, right-open except last includes 1; empty bins not plotted; ECE weighted absolute calibration error"
+    },
+    "ovr_parasyndesmofity": {
+      "bins": [
+        {
+          "bin": 0,
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 81,
+          "mean_probability": 0.0021023325624677366,
+          "observed_fraction": 0.012345679012345678,
+          "ci_low": 0.0003125166871538298,
+          "ci_high": 0.06687562093221079
+        },
+        {
+          "bin": 1,
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 1,
+          "mean_probability": 0.11063786596059799,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.975
+        },
+        {
+          "bin": 2,
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 2,
+          "mean_probability": 0.28850819170475006,
+          "observed_fraction": 0.5,
+          "ci_low": 0.01257911709342506,
+          "ci_high": 0.9874208829065749
+        },
+        {
+          "bin": 3,
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 4,
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 5,
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 6,
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 1,
+          "mean_probability": 0.646554708480835,
+          "observed_fraction": 1.0,
+          "ci_low": 0.025000000000000022,
+          "ci_high": 1.0
+        },
+        {
+          "bin": 7,
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 2,
+          "mean_probability": 0.7425251603126526,
+          "observed_fraction": 1.0,
+          "ci_low": 0.15811388300841903,
+          "ci_high": 1.0
+        },
+        {
+          "bin": 8,
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 2,
+          "mean_probability": 0.8362818956375122,
+          "observed_fraction": 0.5,
+          "ci_low": 0.01257911709342506,
+          "ci_high": 0.9874208829065749
+        },
+        {
+          "bin": 9,
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 6,
+          "mean_probability": 0.9935711622238159,
+          "observed_fraction": 1.0,
+          "ci_low": 0.5407418735600996,
+          "ci_high": 1.0
+        }
+      ],
+      "ece": 0.030977519303338946,
+      "definition": "10 equal-width bins on [0,1]; left-closed, right-open except last includes 1; empty bins not plotted; ECE weighted absolute calibration error"
+    },
+    "ovr_syndesmofity": {
+      "bins": [
+        {
+          "bin": 0,
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 80,
+          "mean_probability": 0.0016270100113341425,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.045064035067692285
+        },
+        {
+          "bin": 1,
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 2,
+          "mean_probability": 0.15672707930207253,
+          "observed_fraction": 0.5,
+          "ci_low": 0.01257911709342506,
+          "ci_high": 0.9874208829065749
+        },
+        {
+          "bin": 2,
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 3,
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 1,
+          "mean_probability": 0.348844051361084,
+          "observed_fraction": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.975
+        },
+        {
+          "bin": 4,
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 5,
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 6,
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 7,
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 8,
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "mean_probability": null,
+          "observed_fraction": null,
+          "ci_low": null,
+          "ci_high": null
+        },
+        {
+          "bin": 9,
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 12,
+          "mean_probability": 0.9951505561669668,
+          "observed_fraction": 0.9166666666666666,
+          "ci_low": 0.6152038348490559,
+          "ci_high": 0.9978924067681397
+        }
+      ],
+      "ece": 0.02218270913333971,
+      "definition": "10 equal-width bins on [0,1]; left-closed, right-open except last includes 1; empty bins not plotted; ECE weighted absolute calibration error"
+    }
+  },
+  "ci_scope": "95% pointwise CIs conditional on fitted checkpoint and evaluation cohort sampling; test threshold treated as fixed after validation derivation. Seed variability is reported separately. These CIs do not account for model selection or threshold-estimation uncertainty.",
+  "brier_definition": "multiclass_brier: mean(sum_c (p_c-y_c)^2), range 0..2, not divided by number of classes. mean_ovr_brier: multiclass_brier/4, the mean of four one-versus-rest Brier scores, range 0..0.5 for valid four-class probabilities. binary_brier: mean((p_positive-y_positive)^2), range 0..1. Do not interchange the conventional multiclass score and mean OvR score when updating historical manuscript values.",
+  "model": "yolo11l-cls",
+  "training_seed": 0,
+  "split": "val",
+  "checkpoint_sha256": "2ef70f6c73c43970cbaebed2884e71b1cd374b1545d5239abe6f2243e75c5ac6"
+}

@@ -1,0 +1,108 @@
+--- executed/build_publication_figures.py
++++ public/code/build_publication_figures.py
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python3
+ """Re-layout audited spinal morphology results; never train or modify source data.
+-Usage: python build_publication_figures.py --source ../audited_results --output .
++Usage: python code/build_publication_figures.py --source . --output reproduced_figures
++Optional --include-private-cam requires the separately held CAM inputs/provenance.
+ Requires numpy, matplotlib, Pillow, scikit-learn; versions recorded in inventory.
+ All CI values and calibration bins are read from the audited evaluation JSON.
+ """
+@@ -19,10 +20,12 @@
+ from sklearn.metrics import confusion_matrix, roc_curve, roc_auc_score
+ 
+ parser=argparse.ArgumentParser()
+-parser.add_argument('--source',type=Path,default=Path(__file__).resolve().parent.parent/'audited_results')
+-parser.add_argument('--output',type=Path,default=Path(__file__).resolve().parent)
++parser.add_argument('--source',type=Path,default=Path(__file__).resolve().parent.parent)
++parser.add_argument('--output',type=Path,default=Path(__file__).resolve().parent.parent/'reproduced_figures')
++parser.add_argument('--include-private-cam',action='store_true',help='Generate Figure 5 only when separately held audited CAM image inputs are available')
+ a=parser.parse_args(); ROOT=a.source.resolve(); OUT=a.output.resolve(); OUT.mkdir(parents=True,exist_ok=True)
+-RES=ROOT/'results'; BASE=RES/'analysis/yolo11l-cls/seed_0'
++RES=ROOT/'results' if (ROOT/'results/analysis').is_dir() else ROOT
++BASE=RES/'analysis/yolo11l-cls/seed_0'
+ WIDTH=7.05
+ CLASS=['normal','osteofity','parasyndesmofity','syndesmofity']
+ EN=['Normal','Osteophytes','Parasyndesmophytes','Syndesmophytes']
+@@ -96,7 +99,7 @@
+  ax.set_xticks(np.arange(-.5,4,1),minor=True);ax.set_yticks(np.arange(-.5,4,1),minor=True);ax.grid(which='minor',color='white',lw=1);ax.tick_params(which='minor',length=0)
+  for sp in ax.spines.values():sp.set_visible(False)
+ fig.text(.017,.56,'Reference class',rotation=90,va='center',fontsize=8)
+-save(fig,'Figure_1_confusion_matrices','Figure 1. Confusion matrices for the primary YOLO11l-cls model (reference seed 0): (A) internal validation and (B) external test. Rows represent reference classes and columns predicted classes. Cells show counts and percentages normalized within each reference-class row; shading encodes the same row percentages. All four classes are nominal. The external cohort had previously been examined during earlier model development; this re-evaluation is exploratory.',SRC)
++save(fig,'Figure_1_confusion_matrices','Figure 1. Confusion matrices for the primary YOLO11l-cls model (reference seed 0): (A) internal validation and (B) external test. Rows represent reference classes and columns predicted classes. Cells show counts and percentages normalized within each reference-class row; shading encodes the same row percentages. All four classes are nominal. The external cohort was held out until the final evaluation.',SRC)
+ 
+ # Figure 2: actual unsmoothed empirical OvR curves.
+ fig,axs=plt.subplots(1,2,figsize=(WIDTH,3.65))
+@@ -147,27 +150,30 @@
+ save(fig,'Figure_4_binary_morphology_roc','Figure 4. Exploratory binary morphology ROC curves for the primary model (seed 0): (A) internal validation and (B) external test. The positive group combines parasyndesmophytes and syndesmophytes; the negative group combines normal morphology and osteophytes. The score is P(parasyndesmophytes) + P(syndesmophytes). Orange diamonds indicate the fixed threshold 0.27126939594745636, selected by maximizing Youden\'s index in internal validation and applied unchanged to the external test. Confidence intervals for AUC are the saved 2000-replicate image-level bootstrap intervals. Operating-point uncertainty does not include uncertainty in selecting the validation threshold. This grouping concerns radiographic morphology and is not a clinical diagnosis of axial spondyloarthritis.',SRC)
+ 
+ # Figure 5: reuse unmodified audited raster panels. No map recoloring/recalculation.
+-CAM=RES/'eigen_cam';panels=read_csv(CAM/'eigen_cam_panels.csv');prov=read_json(CAM/'eigen_cam_provenance.json');audit=read_json(ROOT/'review_supplement/cam_audit.json')
+-assert len(panels)==8 and ''.join(p['panel'] for p in panels)=='abcdefgh'
+-assert audit['checks']['exact_probability_equality_all150'] and audit['checks']['selection_matches_locked_predictions']
+-fig=plt.figure(figsize=(WIDTH,9.2))
+-# Explicit inch-based positions keep every heading between, rather than over, image rows.
+-for k,p in enumerate(panels):
+- row,col=divmod(k,2);head_in=9.0-2.07*row;left_in=.20+3.55*col;side_in=1.43;gap_in=.12
+- ax0=fig.add_axes([left_in/WIDTH,(head_in-.45-side_in)/9.2,side_in/WIDTH,side_in/9.2])
+- ax1=fig.add_axes([(left_in+side_in+gap_in)/WIDTH,(head_in-.45-side_in)/9.2,side_in/WIDTH,side_in/9.2])
+- tr=EN[CLASS.index(p['true_class'])];pr=EN[CLASS.index(p['pred_class'])];pc=float(p['p_'+p['pred_class']]);pdisplay='p > 0.999' if .9995<=pc<1 else f'p = {pc:.3f}'
+- for ax,key in [(ax0,'input_png'),(ax1,'overlay_png')]:
+-  f=CAM/p[key];sources[str(f.relative_to(ROOT))]=sha(f);im=np.asarray(Image.open(f));assert im.shape[:2]==(640,640)
+-  ax.imshow(im,interpolation='none',resample=False);ax.axis('off')
+- ax0.set_title('Model input',fontsize=7,pad=3);ax1.set_title('Eigen-CAM overlay',fontsize=7,pad=3)
+- fig.text(left_in/WIDTH,head_in/9.2,f'({p["panel"]})  Reference: {tr}',fontsize=7.8,weight='bold',ha='left',va='bottom')
+- fig.text(left_in/WIDTH,(head_in-.18)/9.2,f'Prediction: {pr} ({pdisplay})',fontsize=7.5,ha='left',va='bottom')
+- # Keep exact original NPZs referenced and hashed; do not rewrite pixel or map data.
+- f=CAM/p['raw_arrays_npz'];sources[str(f.relative_to(ROOT))]=sha(f)
+-cbax=fig.add_axes([.31,.045,.38,.013]);cb=fig.colorbar(plt.cm.ScalarMappable(norm=Normalize(0,1),cmap='turbo'),cax=cbax,orientation='horizontal',ticks=[0,.5,1]);cb.ax.tick_params(labelsize=7,length=2);cb.set_label('Relative map intensity (normalized per image)',fontsize=7.5,labelpad=3)
+-cam_src=[str((CAM/'eigen_cam_panels.csv').relative_to(ROOT)),str((CAM/'eigen_cam_provenance.json').relative_to(ROOT)),str((ROOT/'review_supplement/cam_audit.json').relative_to(ROOT))]+[str((CAM/p[key]).relative_to(ROOT)) for p in panels for key in ['input_png','overlay_png','raw_arrays_npz']]
+-save(fig,'Figure_5_eigen_cam','Figure 5. Exploratory Eigen-CAM examples for the primary YOLO11l-cls model (seed 0) on the external test cohort. Panels (a-d) show one correctly classified example per reference class; (e-h) show four incorrect classifications. Within each pair, the left image is the exact saved 640 x 640 model input and the right is its audited Eigen-CAM overlay. The displayed p is the predicted-class probability, not the intensity of the map. Selection follows the fixed lexicographic rule recorded in the panel ledger: first correct case per reference class; for errors, first case per available reference class followed by remaining paths up to four examples. No confidence-based selection was used. The source PNGs had been prepared manually around the examined spinal segment before radiologist labeling; the computational transform preserved the entire prepared PNG by aspect-preserving resizing and square padding. Maps use the first principal-component projection of centered activations from model.9, clipped at zero, normalized separately per image, and bilinearly resized. The unchanged overlay is 40% turbo heatmap and 60% model input. All 150 external probability vectors matched the locked evaluation exactly in the recorded replay. These class-agnostic maps are qualitative illustrations; they neither validate lesion localization nor establish causal reasoning or exclude shortcut learning. Source identifiers, array files and hashes remain available in the panel ledger and provenance record.',cam_src,['Original input and overlay PNG pixels and numerical map arrays are not modified; only page layout and English labeling changed. PDF embeds original raster panels with vector text. Source images are 640 x 640; exporting the composite at 600 dpi does not create additional source detail.','All eight previously selected cases retained in original a-h order. No need to split or select only favorable examples.'])
++if a.include_private_cam:
++ CAM=RES/'eigen_cam';panels=read_csv(CAM/'eigen_cam_panels.csv');prov=read_json(CAM/'eigen_cam_provenance.json');audit=read_json(ROOT/'review_supplement/cam_audit.json')
++ assert len(panels)==8 and ''.join(p['panel'] for p in panels)=='abcdefgh'
++ assert audit['checks']['exact_probability_equality_all150'] and audit['checks']['selection_matches_locked_predictions']
++ fig=plt.figure(figsize=(WIDTH,9.2))
++ # Explicit inch-based positions keep every heading between, rather than over, image rows.
++ for k,p in enumerate(panels):
++  row,col=divmod(k,2);head_in=9.0-2.07*row;left_in=.20+3.55*col;side_in=1.43;gap_in=.12
++  ax0=fig.add_axes([left_in/WIDTH,(head_in-.45-side_in)/9.2,side_in/WIDTH,side_in/9.2])
++  ax1=fig.add_axes([(left_in+side_in+gap_in)/WIDTH,(head_in-.45-side_in)/9.2,side_in/WIDTH,side_in/9.2])
++  tr=EN[CLASS.index(p['true_class'])];pr=EN[CLASS.index(p['pred_class'])];pc=float(p['p_'+p['pred_class']]);pdisplay='p > 0.999' if .9995<=pc<1 else f'p = {pc:.3f}'
++  for ax,key in [(ax0,'input_png'),(ax1,'overlay_png')]:
++   f=CAM/p[key];sources[str(f.relative_to(ROOT))]=sha(f);im=np.asarray(Image.open(f));assert im.shape[:2]==(640,640)
++   ax.imshow(im,interpolation='none',resample=False);ax.axis('off')
++  ax0.set_title('Model input',fontsize=7,pad=3);ax1.set_title('Eigen-CAM overlay',fontsize=7,pad=3)
++  fig.text(left_in/WIDTH,head_in/9.2,f'({p["panel"]})  Reference: {tr}',fontsize=7.8,weight='bold',ha='left',va='bottom')
++  fig.text(left_in/WIDTH,(head_in-.18)/9.2,f'Prediction: {pr} ({pdisplay})',fontsize=7.5,ha='left',va='bottom')
++  # Keep exact original NPZs referenced and hashed; do not rewrite pixel or map data.
++  f=CAM/p['raw_arrays_npz'];sources[str(f.relative_to(ROOT))]=sha(f)
++ cbax=fig.add_axes([.31,.045,.38,.013]);cb=fig.colorbar(plt.cm.ScalarMappable(norm=Normalize(0,1),cmap='turbo'),cax=cbax,orientation='horizontal',ticks=[0,.5,1]);cb.ax.tick_params(labelsize=7,length=2);cb.set_label('Relative map intensity (normalized per image)',fontsize=7.5,labelpad=3)
++ cam_src=[str((CAM/'eigen_cam_panels.csv').relative_to(ROOT)),str((CAM/'eigen_cam_provenance.json').relative_to(ROOT)),str((ROOT/'review_supplement/cam_audit.json').relative_to(ROOT))]+[str((CAM/p[key]).relative_to(ROOT)) for p in panels for key in ['input_png','overlay_png','raw_arrays_npz']]
++ save(fig,'Figure_5_eigen_cam','Figure 5. Exploratory Eigen-CAM examples for the primary YOLO11l-cls model (seed 0) on the external test cohort. Panels (a-d) show one correctly classified example per reference class; (e-h) show four incorrect classifications. Within each pair, the left image is the exact saved 640 x 640 model input and the right is its audited Eigen-CAM overlay. The displayed p is the predicted-class probability, not the intensity of the map. Selection follows the fixed lexicographic rule recorded in the panel ledger: first correct case per reference class; for errors, first case per available reference class followed by remaining paths up to four examples. No confidence-based selection was used. The source PNGs had been prepared manually around the examined spinal segment before radiologist labeling; the computational transform preserved the entire prepared PNG by aspect-preserving resizing and square padding. Maps use the first principal-component projection of centered activations from model.9, clipped at zero, normalized separately per image, and bilinearly resized. The unchanged overlay is 40% turbo heatmap and 60% model input. All 150 external probability vectors matched the locked evaluation exactly in the recorded replay. These class-agnostic maps are qualitative illustrations; they neither validate lesion localization nor establish causal reasoning or exclude shortcut learning. Source identifiers, array files and hashes remain available in the panel ledger and provenance record.',cam_src,['Original input and overlay PNG pixels and numerical map arrays are not modified; only page layout and English labeling changed. PDF embeds original raster panels with vector text. Source images are 640 x 640; exporting the composite at 600 dpi does not create additional source detail.','All eight previously selected cases retained in original a-h order. No need to split or select only favorable examples.'])
++else:
++ inv['validation_checks'].append('Figure 5 omitted: private CAM pixel inputs are not included in the public repository.')
+ 
+ # Supplement S1: author-confirmed historical screening vs retained image inventory.
+ # Initial record counts are not asserted to be unique-patient counts.
+@@ -215,7 +221,7 @@
+  ax.set(xticks=range(4),xticklabels=ML,ylabel=yl,xlim=(-.45,3.45),ylim=(77,98));ax.tick_params(axis='x',rotation=25);tidy(ax);ax.set_title(f'{ltr}  Five fixed training seeds',pad=10)
+ handles=[Line2D([0],[0],color='none',marker='*' if i==0 else 'o',markerfacecolor=seedcols[i],markeredgecolor='white',markersize=9 if i==0 else 6,label=f'Seed {i}'+(' (reference)' if i==0 else '')) for i in range(5)]
+ fig.legend(handles=handles,loc='lower center',ncol=5,frameon=False,bbox_to_anchor=(.5,.005),columnspacing=1.1)
+-save(fig,'Figure_S2_seed_robustness','Figure S2. External-test (A) accuracy and (B) macro F1 for all 20 training runs: four model pipelines and five fixed seeds each, evaluated on the same 150 images. Points show individual runs; stars identify the prespecified reference seed 0. Gray bars show the mean plus/minus one sample standard deviation across the five seeds, not confidence intervals. Models remain in a fixed order rather than an external-performance ranking. Seed variability does not increase the number of independent evaluation cases. Comparisons concern full training pipelines with different optimization settings and remain exploratory because the external cohort had previously been examined.',[str((RES/'analysis/metrics_all_runs.csv').relative_to(ROOT)),str((RES/'analysis/five_seed_summary.csv').relative_to(ROOT))])
++save(fig,'Figure_S2_seed_robustness','Figure S2. External-test (A) accuracy and (B) macro F1 for all 20 training runs: four model pipelines and five fixed seeds each, evaluated on the same 150 images. Points show individual runs; stars identify the prespecified reference seed 0. Gray bars show the mean plus/minus one sample standard deviation across the five seeds, not confidence intervals. Models remain in a fixed order rather than an external-performance ranking. Seed variability does not increase the number of independent evaluation cases. Comparisons concern full training pipelines with different optimization settings. The external cohort was held out until the final evaluation.',[str((RES/'analysis/metrics_all_runs.csv').relative_to(ROOT)),str((RES/'analysis/five_seed_summary.csv').relative_to(ROOT))])
+ 
+ # Supplement: descriptive repeatability of mistakes across fixed YOLO11 seeds.
+ pp=[read_csv(RES/f'analysis/yolo11l-cls/seed_{seed}/test_predictions.csv') for seed in range(5)]
+@@ -242,7 +248,9 @@
+ save(fig,'Figure_S3_error_recurrence','Figure S3. Post-evaluation descriptive analysis of primary-model errors across five training seeds on the same external cohort (n = 150). (A) Number of images misclassified in 0-5 seeds. (B) Counts by reference class: correct in all five seeds, incorrect in one to four seeds, or incorrect in all five seeds. The counts of errors for seeds 0-4 were 12, 24, 22, 14 and 15. Overall, 108 images were classified correctly by every seed, 42 were misclassified at least once and two were misclassified in every seed. This analysis describes training variability; it is not an ensemble evaluation, an independent validation, or evidence that any reference label is incorrect.',[str((RES/f'analysis/yolo11l-cls/seed_{seed}/test_predictions.csv').relative_to(ROOT)) for seed in range(5)])
+ 
+ inv['sources_sha256']=sources
+-inv['validation_checks']+=['All eight CAM cases, original input PNGs, overlays and array files preserved and referenced by hash.','All class-specific ROC areas and binary areas recomputed and matched audited point estimates.','Threshold-operating-point counts independently checked without selecting any test threshold.','Calibration bin counts sum to 95 and 150.','All twenty displayed seed point estimates, sample means and sample standard deviations matched the audited summaries.','Error recurrence distribution independently reconstructed: [108, 21, 8, 4, 7, 2].']
++if a.include_private_cam:
++ inv['validation_checks'].append('All eight CAM cases, original input PNGs, overlays and array files preserved and referenced by hash.')
++inv['validation_checks']+=['All class-specific ROC areas and binary areas recomputed and matched audited point estimates.','Threshold-operating-point counts independently checked without selecting any test threshold.','Calibration bin counts sum to 95 and 150.','All twenty displayed seed point estimates, sample means and sample standard deviations matched the audited summaries.','Error recurrence distribution independently reconstructed: [108, 21, 8, 4, 7, 2].']
+ inv['script_sha256']=sha(Path(__file__))
+ (OUT/'figure_inventory.json').write_text(json.dumps(inv,indent=2)+'\n')
+ (OUT/'figure_captions.txt').write_text('\n'.join(caps))

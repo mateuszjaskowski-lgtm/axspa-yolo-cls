@@ -1,0 +1,63 @@
+{
+  "best_epoch_1based": 44,
+  "val_accuracy": 0.968421052631579,
+  "epochs_completed": 64,
+  "active_epoch_training_validation_seconds": 860.6530610070149,
+  "timing_definition": "Sum of completed epoch training/validation/selection work; excludes pauses and epoch checkpoint I/O.",
+  "backend": "torchvision",
+  "preprocess": {
+    "imgsz": 640,
+    "resize_mode": "whole_png_aspect_preserving_center_pad",
+    "batch": 32,
+    "epochs": 100,
+    "optimizer": "SGD",
+    "lr": 0.01,
+    "momentum": 0.937,
+    "nesterov": true,
+    "weight_decay": 0.0005,
+    "scheduler": "CosineAnnealingLR",
+    "min_lr": 0.0001,
+    "early_stopping_patience": 20,
+    "workers": 0,
+    "amp": true,
+    "horizontal_flip_p": 0.5,
+    "color_jitter_brightness": 0.1,
+    "color_jitter_contrast": 0.1,
+    "randaugment": false,
+    "random_affine": false,
+    "random_erasing_p": 0.0,
+    "normalization_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "normalization_std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "resnet50_weights": "IMAGENET1K_V2",
+    "efficientnet_b0_weights": "IMAGENET1K_V1"
+  },
+  "model": "efficientnet_b0",
+  "seed": 0,
+  "checkpoint": "selected.pt",
+  "checkpoint_sha256": "14b0deaa5b2bf860cb1d47b8ecaa93df64240ddd52a2e895e63715ce427d2676",
+  "protocol_sha256": "2bdc54f59222462b2626cd8e1c5a49c5fec6a71590e261b6574be40ffcff95b2",
+  "class_names": [
+    "normal",
+    "osteofity",
+    "parasyndesmofity",
+    "syndesmofity"
+  ],
+  "pretrained": {
+    "model": "efficientnet_b0",
+    "filename": "efficientnet_b0_imagenet.pth",
+    "sha256": "7f5810bc96def8f7552d5b7e68d53c4786f81167d28291b21c0d90e1fca14934",
+    "source": "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth",
+    "weight_enum": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+    "pretrained_class_count": 1000,
+    "downloaded_utc": "2026-10-04T13:38:19.209614+00:00"
+  },
+  "external_test_access": false
+}

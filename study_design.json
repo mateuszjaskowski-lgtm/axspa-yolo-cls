@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "clarification_date": "2026-10-06",
+  "source": "Explicit author clarification in the study preparation conversation; author report, not an inference from software timestamps.",
+  "split": {
+    "method": "manual_numeric_range_selection_within_each_class",
+    "randomized": false,
+    "content_independent": true,
+    "fixed_before_first_training": true,
+    "reallocated_based_on_model_outputs": false,
+    "assignment_source": "Existing accepted clean_manifest.csv; no new split is generated.",
+    "clean_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+    "counts": {
+      "train": 579,
+      "val": 95,
+      "test": 150
+    }
+  },
+  "original_study": {
+    "scope": "Before the original planned final external evaluation",
+    "external_test_previously_examined": false,
+    "evidence_type": "author_confirmation",
+    "primary_model": "yolo11l-cls",
+    "reference_seed": 0,
+    "external_test_used_for_model_development_before_final_evaluation": false
+  },
+  "future_reproduction": {
+    "scope": "Any rerun after the original evaluation of this same cohort",
+    "external_test_previously_examined": true,
+    "evaluation_role": "reproduction_on_previously_evaluated_cohort",
+    "claim_of_new_untouched_external_validation": false
+  },
+  "legacy_registration": {
+    "training_plan_sha256": "807f6fafe844636fc99d9ba4ec89c5fc4a8c8daa449b4b8eba3d64e1cf7c0024",
+    "protocol_sha256": "2bdc54f59222462b2626cd8e1c5a49c5fec6a71590e261b6574be40ffcff95b2",
+    "original_code_sha256": {
+      "train_models.py": "fbc3425fd99b52cf5e201900f23b6d797015c71499b88ce7d0cac34cab12db1e",
+      "original_manifest.csv": "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746",
+      "prepare_data.py": "4ed7d4cc66148fc1c917c41797433d7b8cc8886d585b2a148071b9cf7c6e024e",
+      "trainer_notes.txt": "2005c62a9f92fd4f974f19e815c5ef59f5a7a9833237fa4f7bf6bb537d814ed0",
+      "eigen_cam_replay.py": "7a0b9deb225e36c8b426f6fc2dbf6cd993187733783db3625c8ec44a37a1020c",
+      "test_evaluation.py": "f6def3b89a9e6275d15cc56497a89a89791ba30e9286c904fbaeb2286827595d",
+      "evaluate_models.py": "50f37e547b741f97295df291c64225a9b1d0acf96e186c6be3f7736be993e2b4",
+      "eigen_cam.py": "e159f0bcfede0da4ce3348ca54f444de934b2b015cb42a5f577bc1f76dda78cb",
+      "spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+      "preview_training_inputs.py": "1a5c92fd646779f586515678cbaccfa1582d92db426b740ab4dedd07c6feb718"
+    },
+    "artifact_sha256": {
+      "runs/training_plan.json": "807f6fafe844636fc99d9ba4ec89c5fc4a8c8daa449b4b8eba3d64e1cf7c0024",
+      "protocol_artifacts_frozen.json": "cc30a54078fb48aa378e4e1f10cf8b4b1db3a9cd5ce0358ed5cee0ae4c31c106",
+      "analysis/evaluation_freeze.json": "44cba1c0a581ca65dee5813ea3e2ba459901d182a4a850abcff84794e7a458f3",
+      "analysis/analysis_complete.json": "d0ce4fcd928a5b75856d98b5448efdb2537ec3f36f5be0092668bc65e513a306",
+      "analysis/paired_comparisons_seed0.json": "58bc1579e084b69fcc2c92176dc7b4dbef15d47f36f46b9d23d0ecebf9ca1f6b",
+      "eigen_cam/eigen_cam_provenance.json": "8d17339a5acf774519e33a51b860f7ba2fdd90d97b5e79d4b28e83be85ffc439",
+      "eigen_cam/replay_verification.json": "2d06126a889fc4278ad091cdf3d8d50926e69fad0ad410489437a0192670eac4"
+    },
+    "external_evaluation_lock_sha256": "fe298a4e328fd669ad1a1907b3bb39b64362a3a2f96dd97efbc460c7d8ec4d83"
+  },
+  "correction_scope": "Descriptive study-design metadata only. Original results, model weights, data assignments and scientific computation are unchanged; no training or inference performed for this correction."
+}

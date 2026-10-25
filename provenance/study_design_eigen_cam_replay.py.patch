@@ -1,0 +1,37 @@
+--- provenance/original_code/eigen_cam_replay.py
++++ code/eigen_cam_replay.py
+@@ -25,6 +25,7 @@
+ from typing import Any
+ 
+ import numpy as np
++from study_design import interpret_evaluation, validate_frozen_code_root
+ 
+ CLASS_NAMES = ["normal", "osteofity", "parasyndesmofity", "syndesmofity"]
+ DISPLAY_NAMES = ["Normal", "Osteophytes", "Parasyndesmophytes", "Syndesmophytes"]
+@@ -640,6 +641,7 @@
+     """Accept only completed evaluation of the fixed primary model and seed 0."""
+     complete_path = evaluation_root / "analysis_complete.json"
+     complete = json.loads(complete_path.read_text(encoding="utf-8"))
++    study_scope = interpret_evaluation(training_root / "training_plan.json", complete_path)
+     if (complete.get("status") != "complete"
+             or complete.get("primary_reference_model") != "yolo11l-cls"
+             or complete.get("primary_reference_seed") != 0
+@@ -713,7 +715,8 @@
+                   "test_metrics_sha256": sha256_file(metrics_path),
+                   "run_complete_sha256": sha256_file(metadata_path),
+                   "training_plan_sha256": complete["training_plan_sha256"],
+-                  "external_test_previously_examined": complete.get("external_test_previously_examined"),
++                  **study_scope,
++                  "operation_role": "explanation_replay_on_previously_evaluated_cohort",
+                   "note": "Seed and layer are fixed in advance; no best-external-seed selection"}
+     return run, metadata, rows, provenance
+ 
+@@ -738,6 +741,8 @@
+     for name in ("train_models.py", "spine_transforms.py", "evaluate_models.py", "eigen_cam.py"):
+         if not (frozen_code_root / name).is_file():
+             raise FileNotFoundError(frozen_code_root / name)
++    validate_frozen_code_root(args.training_root / "training_plan.json", frozen_code_root,
++                              args.evaluation_root / "analysis_complete.json")
+     sys.path.insert(0, str(frozen_code_root))
+     run, metadata, rows, provenance = load_locked_artifacts(
+         args.dataset_root, args.training_root, args.evaluation_root)

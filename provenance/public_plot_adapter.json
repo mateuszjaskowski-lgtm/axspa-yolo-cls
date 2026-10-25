@@ -1,0 +1,17 @@
+{
+  "executed_script_sha256": "e4f6cb65ee74c00fd074e2a8eaec051c6eab030e8b4bf580c8db8603e3cb17cf",
+  "public_adapter_sha256": "be82a0a177d1275b8b6623b7ea40aa24d8e1892be9314cba05cfeabaee79d188",
+  "changes": [
+    "Repository-root and output-path CLI defaults",
+    "Support repository analysis directory or original results/analysis layout",
+    "Explicit opt-in for private CAM pixels",
+    "Caption-only study-design correction for Figures 1 and S2: remove erroneous prior-external-exposure claim, according to author clarification dated 2026-10-06",
+    "All numerical/statistical plotting code and input data remain unchanged"
+  ],
+  "reverse_patch_recovers_executed_script": true,
+  "study_design_correction_source": "Author clarification dated 2026-10-06; study_design.json and provenance/study_design_correction.json",
+  "previous_public_adapter_sha256": "7345c60ccbebd3938374ff19c8aad059de2f615797716a39ae1fe3490c1e5a60",
+  "rendered_artifacts_regenerated": false,
+  "publication_update_status": "Existing rendered figures and article artifacts are unchanged and await a single coordinated manuscript revision.",
+  "patch_sha256": "34e8b0cfc918dfe7b16873c545424627c72101356e8244a68f7086bae0465c9d"
+}

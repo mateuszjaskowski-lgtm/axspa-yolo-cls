@@ -1,0 +1,55 @@
+{
+  "repair": "ampfix1",
+  "state": "complete",
+  "created_utc": "2026-10-04T14:03:04.765233+00:00",
+  "old_code_sha256": {
+    "eigen_cam.py": "e159f0bcfede0da4ce3348ca54f444de934b2b015cb42a5f577bc1f76dda78cb",
+    "evaluate_models.py": "50f37e547b741f97295df291c64225a9b1d0acf96e186c6be3f7736be993e2b4",
+    "original_manifest.csv": "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746",
+    "prepare_data.py": "4ed7d4cc66148fc1c917c41797433d7b8cc8886d585b2a148071b9cf7c6e024e",
+    "preview_training_inputs.py": "1a5c92fd646779f586515678cbaccfa1582d92db426b740ab4dedd07c6feb718",
+    "spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+    "test_evaluation.py": "f6def3b89a9e6275d15cc56497a89a89791ba30e9286c904fbaeb2286827595d",
+    "train_models.py": "f8ec5657edd3fb1d1b4fca3074d5ceb927165a3ae352803a73c69e98b0518924",
+    "trainer_notes.txt": "2005c62a9f92fd4f974f19e815c5ef59f5a7a9833237fa4f7bf6bb537d814ed0"
+  },
+  "new_code_sha256": {
+    "eigen_cam.py": "e159f0bcfede0da4ce3348ca54f444de934b2b015cb42a5f577bc1f76dda78cb",
+    "evaluate_models.py": "50f37e547b741f97295df291c64225a9b1d0acf96e186c6be3f7736be993e2b4",
+    "original_manifest.csv": "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746",
+    "prepare_data.py": "4ed7d4cc66148fc1c917c41797433d7b8cc8886d585b2a148071b9cf7c6e024e",
+    "preview_training_inputs.py": "1a5c92fd646779f586515678cbaccfa1582d92db426b740ab4dedd07c6feb718",
+    "spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+    "test_evaluation.py": "f6def3b89a9e6275d15cc56497a89a89791ba30e9286c904fbaeb2286827595d",
+    "train_models.py": "fbc3425fd99b52cf5e201900f23b6d797015c71499b88ce7d0cac34cab12db1e",
+    "trainer_notes.txt": "2005c62a9f92fd4f974f19e815c5ef59f5a7a9833237fa4f7bf6bb537d814ed0"
+  },
+  "clean_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+  "unchanged_files": {
+    "runs/development_manifest.json": "07d8b8b80e63bca6dbbca4987f065bd7279509ca26eecdc8a95f972ee7ad287f",
+    "runs/development_manifest.csv": "05ef7cac3655a9fe2ebb241f0955aef33ec01e53fdcdb630e337e8148c8c9d54",
+    "runs/spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30"
+  },
+  "files": {
+    "protocol_artifacts_frozen.json": {
+      "old_sha256": "f3bc727c3d9bcd9a13b950a7435da83d80ee8f92f0443594e253105cc72cc105",
+      "new_sha256": "cc30a54078fb48aa378e4e1f10cf8b4b1db3a9cd5ce0358ed5cee0ae4c31c106",
+      "staged_relative_path": "technical_repairs/ampfix1/staged_protocol_artifacts_frozen.json",
+      "original_relative_path": "technical_repairs/ampfix1/original/protocol_artifacts_frozen.json"
+    },
+    "runs/training_plan.json": {
+      "old_sha256": "c701d8894b93242ab6c9ca85173c4771858c3d405030263f2b19c1e49b62dd4a",
+      "new_sha256": "807f6fafe844636fc99d9ba4ec89c5fc4a8c8daa449b4b8eba3d64e1cf7c0024",
+      "staged_relative_path": "technical_repairs/ampfix1/staged_runs/training_plan.json",
+      "original_relative_path": "technical_repairs/ampfix1/original/runs/training_plan.json"
+    },
+    "runs/train_models_frozen.py": {
+      "old_sha256": "f8ec5657edd3fb1d1b4fca3074d5ceb927165a3ae352803a73c69e98b0518924",
+      "new_sha256": "fbc3425fd99b52cf5e201900f23b6d797015c71499b88ce7d0cac34cab12db1e",
+      "staged_relative_path": "technical_repairs/ampfix1/staged_runs/train_models_frozen.py",
+      "original_relative_path": "technical_repairs/ampfix1/original/runs/train_models_frozen.py"
+    }
+  },
+  "reason": "Count actual AMP optimizer updates in the discarded hardware probe.",
+  "completed_utc": "2026-10-04T14:03:04.843379+00:00"
+}

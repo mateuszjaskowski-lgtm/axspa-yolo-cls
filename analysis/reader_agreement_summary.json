@@ -1,0 +1,194 @@
+{
+  "source_workbook_sha256": "c5252866223c148dbc7152afb35dc30d4146858e69c0945d6274de6a736f0f05",
+  "accepted_case_count": 824,
+  "class_order": [
+    "normal",
+    "osteofity",
+    "parasyndesmofity",
+    "syndesmofity"
+  ],
+  "statistics": {
+    "All": {
+      "n": 824,
+      "agreement": 740,
+      "disagreement": 84,
+      "observed_agreement": 0.8980582524271845,
+      "nominal_kappa": 0.8552723470987977,
+      "ci95": [
+        0.8252851354175187,
+        0.8836419619458149
+      ],
+      "matrix_MP_rows_PG_columns": [
+        [
+          271,
+          19,
+          4,
+          0
+        ],
+        [
+          15,
+          265,
+          7,
+          6
+        ],
+        [
+          5,
+          9,
+          101,
+          5
+        ],
+        [
+          0,
+          5,
+          9,
+          103
+        ]
+      ],
+      "consensus_counts": {
+        "0": 303,
+        "1": 298,
+        "2": 113,
+        "3": 110
+      },
+      "consensus_outside_reader_choices": 0,
+      "bootstrap_valid_replicates": 10000
+    },
+    "Lodz": {
+      "n": 674,
+      "agreement": 605,
+      "disagreement": 69,
+      "observed_agreement": 0.8976261127596439,
+      "nominal_kappa": 0.8545250935298607,
+      "ci95": [
+        0.8209107851024453,
+        0.885971861056512
+      ],
+      "matrix_MP_rows_PG_columns": [
+        [
+          222,
+          15,
+          4,
+          0
+        ],
+        [
+          13,
+          217,
+          4,
+          6
+        ],
+        [
+          4,
+          7,
+          82,
+          4
+        ],
+        [
+          0,
+          5,
+          7,
+          84
+        ]
+      ],
+      "consensus_counts": {
+        "0": 248,
+        "1": 244,
+        "2": 93,
+        "3": 89
+      },
+      "consensus_outside_reader_choices": 0,
+      "bootstrap_valid_replicates": 10000
+    },
+    "Konskie": {
+      "n": 150,
+      "agreement": 135,
+      "disagreement": 15,
+      "observed_agreement": 0.9,
+      "nominal_kappa": 0.8585795097423005,
+      "ci95": [
+        0.7856963121969726,
+        0.9230110330789186
+      ],
+      "matrix_MP_rows_PG_columns": [
+        [
+          49,
+          4,
+          0,
+          0
+        ],
+        [
+          2,
+          48,
+          3,
+          0
+        ],
+        [
+          1,
+          2,
+          19,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          19
+        ]
+      ],
+      "consensus_counts": {
+        "0": 55,
+        "1": 54,
+        "2": 20,
+        "3": 21
+      },
+      "consensus_outside_reader_choices": 0,
+      "bootstrap_valid_replicates": 10000
+    }
+  },
+  "method": {
+    "agreement": "M.P. equals P.G. before consensus",
+    "kappa": "Unweighted Cohen kappa for four nominal classes in canonical label order 0,1,2,3.",
+    "ci": "95% percentile paired-row bootstrap, 10000 replicates, numpy default_rng(0) independently reset within each cohort, row order as in supplied workbook; quantile default linear interpolation.",
+    "patient_independence": "Intervals assume independent underlying cases; workbook alone does not establish patient linkage.",
+    "spreadsheet_modified": false
+  },
+  "reproduction_scope": "The included ordered nonidentifying paired ratings and standalone NumPy script reproduce every reported reader statistic and all three 10000-draw percentile intervals. A technical row_index preserves the original analysis order and is not a patient ID or image-path linkage. The original workbook remains unmodified.",
+  "reproduction_inputs": {
+    "ratings": "data/reader_ratings.csv",
+    "script": "code/recompute_reader_agreement.py",
+    "recomputed_output": "analysis/reader_agreement_recomputed.json",
+    "command": "python code/recompute_reader_agreement.py"
+  },
+  "verification": {
+    "cohorts": [
+      "All",
+      "Lodz",
+      "Konskie"
+    ],
+    "bootstrap_replicates_per_cohort": 10000,
+    "csv_sha256": "0381c83dae0151230bc07928488e372bc359a0a087edc4f9cdd9c0be65c793b9",
+    "script_sha256": "ba10e719c47af6e6cd0aaeaa4c42062f0cab470fa90a9090c5dbbe5cd925041d",
+    "numpy_version_used": "2.3.5",
+    "source_workbook_unmodified": true,
+    "published_columns": [
+      "row_index",
+      "cohort",
+      "mp_label",
+      "pg_label",
+      "consensus_label"
+    ],
+    "patient_identifiers_names_demographics_or_image_links_exported": false,
+    "statistics_exactly_match_recomputed_output": true
+  },
+  "source_workbook_filename": "axSpA_konsensus.xlsx",
+  "source_confirmation": {
+    "author_confirmed_independent_pre_consensus_ratings": true,
+    "author_confirmed_previous_reader_data_erroneous": true,
+    "corrected_individual_rating_entries": 89,
+    "corrected_MP_entries": 48,
+    "corrected_PG_entries": 41,
+    "consensus_labels_changed": 0,
+    "comparison_basis": "824 retained ordered rows; cohort and consensus columns unchanged in every row.",
+    "training_or_inference_performed": false,
+    "model_results_changed": false
+  }
+}

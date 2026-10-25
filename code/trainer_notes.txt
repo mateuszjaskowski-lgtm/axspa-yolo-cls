@@ -1,0 +1,140 @@
+TRAINING RUNNER — NEW FULL-FIELD SPINE PROTOCOL
+
+This is a new cleaned-data experiment during manuscript revision, not recovery
+of historical training. The author accepts the latest dataset and reader sheet
+as correct. There are 579 training, 95 validation and 150 external images.
+The original train/val/test folders and retained PNG bytes are preserved.
+The complete received PNG field is retained; these source PNGs had already
+been prepared by outlining the region of the examined spinal segment.
+
+AUTHOR-CLARIFIED STUDY DESIGN — 2026-10-06
+The development folders were assigned manually in Windows Explorer. Within
+each numerically sorted class folder, contiguous file ranges were moved to
+validation until approximately 15% of that class had been selected. Selection
+was independent of image content, fixed before the first training and not
+changed according to model outcomes. No random allocation or scikit-learn
+split was used. Numerical filename order does not establish acquisition
+chronology. After duplicate-copy removal, the retained validation fraction is
+95/674 = 14.1%; by class it is 37/248 normal, 34/244 osteophytes,
+12/93 parasyndesmophytes and 12/89 syndesmophytes.
+The author confirmed that the external cohort had not been used before the
+final evaluation. The original analysis plan was verbal and not prospectively
+registered; the locked computational plan is a separate experiment record.
+See root study_design.json and provenance/study_design_correction.json.
+The original_study scope records no prior external evaluation. A future rerun
+uses a cohort whose original evaluation is now complete; its future_reproduction
+scope does not claim a new untouched external validation.
+The original hardcoded external_test_previously_examined=True was descriptive
+metadata, not empirical evidence of prior test use. Original executed code,
+plans and result records are preserved; active scripts apply the documented
+description correction. No image reassignment, new fitting, inference or
+numerical-result changes were made for this correction.
+
+FROZEN SCIENTIFIC PLAN
+Four models: YOLO11l-cls (primary), YOLO26l-cls, ResNet50, EfficientNet-B0.
+Five seeds each: 0,1,2,3,4. Reference seed0 is specified before results.
+All20 model/seed pairs must finish before external evaluation. Validation
+selects each checkpoint by maximum top1, earliest epoch on ties. No model,
+seed or checkpoint is selected from external performance. The external cohort
+is held out until the final evaluation, as clarified by the author on 2026-10-06.
+The evaluation lock blocks any later fitting in this experiment directory.
+
+WHOLE-FIELD TRANSFORMS
+spine_transforms.py is required beside the scripts when loading checkpoints.
+SpineResizePad uses proportional bilinear resizing of the complete PNG and
+symmetric black padding to640x640; integer rounding is at most0.5pixel.
+There is no random/center crop, anisotropic stretching, RandAugment, affine
+transform or random erasing. Training only: horizontal flip p=.5 and modest
+brightness/contrast jitter=.1 before padding. Both architecture families use
+this shared spatial/intensity policy. PNG alpha is discarded without
+compositing; stored RGB values are retained. Source files are never altered.
+YOLO uses identity normalization after scaling RGB to0..1; torchvision uses
+its ImageNet mean/std. Backbone-specific normalization, optimization and epoch
+budgets differ, so the comparison concerns entire training pipelines.
+
+The input preview uses only the first lexicographic training image per class.
+It compares source, deterministic evaluation input and one seeded augmentation.
+Numeric checks verify full-field geometry, identical pre-normalization outputs
+across backends, finite float32 tensors, valid ranges and black padding.
+The figure and input/hash/transform metadata are saved with the experiment.
+
+FIXED TRAINING SETTINGS
+YOLO: Ultralytics8.4.163, 640px, batch100,240epochs, patience240,
+optimizerauto, lr0=.01,lrf=.01,momentum=.937,weight_decay=.0005,warmup3,
+cos_lr=False, AMP for training. Native image augmentations are replaced by
+the shared policy above. Effective optimizer/groups, args, parameter count,
+transforms and environment are saved per run.
+Torchvision: ResNet50 ImageNet1K_V2 and EfficientNet-B0 ImageNet1K_V1;
+640px,batch32,up to100epochs,SGD Nesterov lr=.01,momentum=.937,wd=.0005,
+cosine scheduler eta_min=.0001,early-stop patience20,AMP for training.
+All validation/checkpoint selection and exported inference use FP32,batch32.
+YOLO inference is explicitly unfused to preserve the validation computation.
+Every selected checkpoint is reloaded and validation accuracy must match.
+Generic official ImageNet initialization files, source URLs and SHA256 hashes
+are recorded. No previous research checkpoint is used to initialize training.
+
+PRETRAINING CONTROLS
+  python train_models.py --data-root DATA/dataset --output-dir RUNS --validate-only
+Validates development files and writes/checks the full immutable plan.
+  python train_models.py --data-root DATA/dataset --output-dir RUNS --hardware-preflight-only
+On GPU, checks allfour actual architectures at full configured640px batches.
+Two discarded AMP optimizer steps allocate optimizer state; an EMA-sized copy
+is retained for YOLO memory accounting. FP32 validation-shaped inference also
+uses TRAIN images only. No validation/test performance or study checkpoint is
+produced. Successful hardware_preflight.json is bound to protocol/environment.
+The training entry point also enforces this control automatically.
+This checks feasibility, not a guarantee against all later resource failures.
+
+NO SILENT FALLBACK
+CUDA is required for study training. OOM stops without batch/resolution changes.
+YOLO automatic batch reduction and NaN recovery are disabled. Changed scientific
+settings require a separately documented experiment. Nonfinite values, changed
+hashes, class-order errors or mismatched reloaded accuracy stop for review.
+
+PERSISTENCE AND RESTARTS
+Use the notebook's new empty Drive project directory; do not reuse earlier
+folders produced with crop/stretch transforms. Selected and latest checkpoints
+are saved each epoch. Complete runs are hash-checked and skipped. First-start
+metadata is retained; each invocation gets its own audit record.
+Torchvision restores model, optimizer,scheduler,AMP,RNG and loader-generator
+state from the last complete epoch. Matching Python/packages/GPU are required;
+a partially completed epoch is discarded. This is not a promise of bitwise
+reproducibility across different devices or environments.
+Incomplete YOLO fits are preserved in interrupted_attempts/ and restarted from
+recorded ImageNet weights with the same seed, because exact native RNG resume
+has not been established. If the fit already completed but validation/export
+was interrupted after selection_metadata.json, continuation recovers only that
+finalization and does not retrain the completed fit.
+
+DATAFLOW AND OUTPUTS
+Training enumerates only train/val. Its temporary Ultralytics view exposes
+no external test directory. Full-manifest bytes are hashed without opening
+test images; preparation separately audits all source files for integrity.
+Image IDs and SHA256 accompany all exported probabilities. Patient independence
+is accepted from the author's source confirmation, not proved by image hashes.
+The notebook freezes all code assets, environment and analysis settings before
+study fitting, and saves stdout/stderr logs on Drive.
+The current notebook embeds active corrected scripts and the design record;
+its executable cells are not byte-identical to the originally executed notebook.
+Original hash-bound assets remain under provenance/original_code. Use that
+original directory as the frozen code root when replaying original CAM results;
+fresh reproductions record the corrected metadata in their own new directory.
+Outputs include training_plan.json;development_manifest.json/.csv;
+train_models_frozen.py;spine_transforms.py;generic initialization records;
+hardware_preflight.json;per-run selected.pt/latest checkpoints;run_complete.json;
+selection_metadata.json;effective_training_setup.json;results.csv;
+validation predictions;invocation environment/pip freeze;interrupted attempts.
+Epoch timing has different checkpoint-I/O boundaries between backends. It is
+an operational log, not a controlled architecture speed comparison. Do not
+rank architecture efficiency from these values.
+
+TECHNICAL VERIFICATION AND LIMITS
+CPU tests exercised the new custom YOLO trainer on579/95 synthetic tiny images
+for one epoch, including custom transforms, FP32 validation, selected checkpoint
+and reloaded accuracy. Smoke-only resolution/batch/epochs do not change the
+production configuration. Real source training PNGs passed geometry/input tests.
+A randomly initialized YOLO11l checkpoint at640px passed the actual inference
+and Eigen-CAM hook path with the serialized SpineResizePad; maps/provenance were
+exported successfully. These synthetic tests are not model performance results.
+Statistical evaluation tests use synthetic probabilities. New study GPU training
+has NOT been executed locally. Its full-batch hardware control runs in Colab.

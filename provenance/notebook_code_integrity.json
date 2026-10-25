@@ -1,0 +1,104 @@
+{
+  "pre_correction_notebook_path": "provenance/axspa_clean_retraining_before_design_correction.ipynb",
+  "pre_correction_notebook_sha256": "95df28843e100dfe30f537468acd0f94a5af1618e863aac18237a5a324f041a1",
+  "active_notebook_sha256": "c0c212c4714dec54427d810f18e13d79d4395ef01982ef4f4deb0076b4e8eadd",
+  "code_cells_unchanged": false,
+  "changed_cells": [
+    {
+      "cell_index": 0,
+      "cell_type": "markdown",
+      "old_source_sha256": "a860ddea291d40ef47ae97d0a7c1d212bf9d6566e18f321dbdbb3b79ad56ad5f",
+      "new_source_sha256": "4a3616fb16cfc027758a48601d781a992b5998abc5952b755b7bdb67d921604d"
+    },
+    {
+      "cell_index": 4,
+      "cell_type": "code",
+      "old_source_sha256": "5cf687c36ad372aa8cf3e1560a3df8e874d752bf8940f75cc036cc4c350df499",
+      "new_source_sha256": "784195ab0461244756b263877609fdc65660d004343e99d32563674a082c93b1"
+    },
+    {
+      "cell_index": 5,
+      "cell_type": "markdown",
+      "old_source_sha256": "d4f7ab327de4d6b07e9d136fff6398c12effeffcb777524cd04a87da9be0bee0",
+      "new_source_sha256": "a77d9416b22e1028ca556bb0d64a9818752058dfb8db54e31549bdf39c5a182a"
+    },
+    {
+      "cell_index": 6,
+      "cell_type": "code",
+      "old_source_sha256": "ef21e0769ee792f3a26684fe3b3026eefc9e98bc520c9de9cebbf8500f3e1bb9",
+      "new_source_sha256": "c03553fa2958ffc5dc6bde1c1c0f6d7592c375d39e52431e3ac1551e627796a5"
+    },
+    {
+      "cell_index": 7,
+      "cell_type": "markdown",
+      "old_source_sha256": "ce333dfee60a6944dcae1a31bf939544844ab593ec89e908780aec08de42f2a5",
+      "new_source_sha256": "3a9611f0a48369eb2f2fd9e1425fc060031d4a05ddc2ebbe2e1be5c4fa4f61eb"
+    },
+    {
+      "cell_index": 8,
+      "cell_type": "code",
+      "old_source_sha256": "691a855875c6d20d9d69290479da75b2e80ecc3490b61c9bc882520e252b19c9",
+      "new_source_sha256": "a828333924c6aa7a57239ef0f28e3f10f721eac81a500a5bb52e709c57c5f40d"
+    },
+    {
+      "cell_index": 11,
+      "cell_type": "markdown",
+      "old_source_sha256": "9f3084604ad03dc436cd64b206af5f49b561474f2235b08705de18bceaec4d7d",
+      "new_source_sha256": "1cf4ea58668baef35a58ef830b42721508ff7b4dc76201cda086205dbb0a7021"
+    },
+    {
+      "cell_index": 12,
+      "cell_type": "code",
+      "old_source_sha256": "fbac2ddc896b16d379c5a4e8da20a2dc124a98e4135812afc36cd7c8de3cdba2",
+      "new_source_sha256": "ea28f09a0fea5aafca945381c9211383aa2c8b10905cd6951f0b6f37fbb45e99"
+    },
+    {
+      "cell_index": 17,
+      "cell_type": "markdown",
+      "old_source_sha256": "9abc791c2481b11260c3f31fd3a1e3d67b6046c0ee2b82351f4c9beb659ae900",
+      "new_source_sha256": "425337f2ee77dc6c7e9f63eba1934404a02215038ce811a247d40bce59185ccd"
+    },
+    {
+      "cell_index": 18,
+      "cell_type": "code",
+      "old_source_sha256": "597b6e6e76c8619c7662856881c6d9b443ba6200bb2e90b9acb302c0f8cdf460",
+      "new_source_sha256": "efc8cc49194e9e4622f06d1f32f40eba3db10aa7509f80c883eaab579a5ddb1e"
+    },
+    {
+      "cell_index": 20,
+      "cell_type": "code",
+      "old_source_sha256": "465ef8742a80c9c93d5621ea0ad4651e2cdabf4ced717e64ec1aed125a109bf1",
+      "new_source_sha256": "5e1811aa8d363d76ed9b2c024339e8ad3375ac037d8ca3d72e6cbdd41d3fedaa"
+    },
+    {
+      "cell_index": 22,
+      "cell_type": "code",
+      "old_source_sha256": "0deaf1d99c30997fe1644cdada060a5cde73aeded33a4960673a644ca925f7dc",
+      "new_source_sha256": "7f258e4c4e18075ac71ab2b36531e081137cbc75e0a955945d35ae4d1b13216f"
+    },
+    {
+      "cell_index": 23,
+      "cell_type": "markdown",
+      "old_source_sha256": "09c770391ef3f35425824d7fef1976f193ae9aa68a584b542b2af25e95ba5c09",
+      "new_source_sha256": "6bf94ee05a47ad0b7695e429a811935b6ebdbf1fcd82861387933feec75a803b"
+    }
+  ],
+  "embedded_active_assets_sha256": {
+    "eigen_cam.py": "70f66b92dc2145ae8ed8cd45cd11b12bc022c3d2b7477a886c2636b552ed8e32",
+    "eigen_cam_replay.py": "d0c0e653b945a619901018008ed2f8367302481bebf8e0f949984e73f5038a3a",
+    "evaluate_models.py": "8b4b02eb1a8765693c9cefcab5181d9bbda5a99ffc6686b7227cb1b2cb127e59",
+    "original_manifest.csv": "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746",
+    "prepare_data.py": "c0bde29f63579740c5fd102eac017b92d2d63dbb9383ea82368bc96350102da8",
+    "preview_training_inputs.py": "1a5c92fd646779f586515678cbaccfa1582d92db426b740ab4dedd07c6feb718",
+    "spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+    "test_evaluation.py": "f6def3b89a9e6275d15cc56497a89a89791ba30e9286c904fbaeb2286827595d",
+    "train_models.py": "2386fd1fbf253e58d577d891dc34d4ef369fbb35aa51d72561fb33a7392a17e1",
+    "trainer_notes.txt": "051bea78f18b9d8cc517cb3eef1546d46d795394f203093ded43f7ab6277d5eb",
+    "study_design.py": "981f97151b30a8f1b9dbbd51f03ccabac2b5591000b18bd29603bf6fdd69e3d6",
+    "reference_clean_manifest.csv": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd"
+  },
+  "embedded_study_design_sha256": "121c944bb74d7f9fbf353b388a47df99f8003fe3c872e29bfae2555ffe88bb6f",
+  "changes": "Corrected active payloads, immutable installer replacing one-off AMP repair, explicit reproduction project and metadata, compatible completed-result guard, batch-faithful replay with active frozen source root, and export of study_design.json. Numerical workflow/settings retained. Original notebook preserved; no cell executed for model training or inference. The 2026-10-25 input registration updates preparation/helper payloads, embeds the frozen clean reference manifest, accepts the registered byte variant, uses a new project-specific data location, and narrows the completed-evaluation guard description to its actual checks. Numerical fitting/inference/statistics are unchanged.",
+  "pre_png_variant_notebook_path": "provenance/before_png_variant_20261025/notebooks/axspa_clean_retraining.ipynb",
+  "pre_png_variant_notebook_sha256": "cfe0572b6052d73e41ffc6d48cb3239da73a54d5f6f4858834137050bfcb1141"
+}

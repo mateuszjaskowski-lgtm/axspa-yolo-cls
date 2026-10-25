@@ -1,0 +1,197 @@
+"""Verify the supplied archive and create a separate deduplicated dataset.
+
+No original images are modified. Two explicitly verified archives are accepted:
+the historical 827-entry archive and its 824-entry version with the three
+approved copies already removed. Both produce identical retained PNG bytes and
+the same clean manifest. The already-clean archive is not deduplicated again.
+"""
+from __future__ import annotations
+import argparse
+import csv
+import hashlib
+import io
+import json
+import os
+import shutil
+import tempfile
+import zipfile
+from collections import Counter, defaultdict
+from datetime import datetime, timezone
+from pathlib import Path, PurePosixPath
+
+import numpy as np
+from PIL import Image
+
+ARCHIVE_SHA256 = "c4eb673704b93daaceaea208a3d1fd202d900c2ef8d013c9b73a07a37a320bdf"
+ALREADY_CLEAN_ARCHIVE_SHA256 = "ba4c5ece78779f67b209f839cec75f70aa480c07bc8ee1dee008f4594a96613d"
+ACCEPTED_ARCHIVES = {
+    ARCHIVE_SHA256: "historical_original",
+    ALREADY_CLEAN_ARCHIVE_SHA256: "already_deduplicated",
+}
+MANIFEST_SHA256 = "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746"
+CLEAN_MANIFEST_SHA256 = "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd"
+CLASSES = ["normal", "osteofity", "parasyndesmofity", "syndesmofity"]
+PAIRS = [
+    ("train/normal/263.png", "train/normal/264.png"),
+    ("train/normal/84.png", "train/normal/85.png"),
+    ("train/osteofity/114.png", "train/osteofity/115.png"),
+]
+EXPECTED_COUNTS = {
+    "train": [211, 210, 81, 77], "val": [37, 34, 12, 12], "test": [55, 54, 20, 21]
+}
+
+def sha_file(path):
+    with open(path, "rb") as f:
+        return hashlib.file_digest(f, "sha256").hexdigest()
+
+def canonical_rgb_hash(im):
+    rgb = im.convert("RGB")
+    return hashlib.sha256(f"RGB:{rgb.width}x{rgb.height}:".encode() + rgb.tobytes()).hexdigest()
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--archive", type=Path, required=True)
+    ap.add_argument("--output-dir", type=Path, required=True)
+    ap.add_argument("--manifest", type=Path, default=Path(__file__).with_name("original_manifest.csv"))
+    args = ap.parse_args(argv)
+    input_sha256 = sha_file(args.archive)
+    input_kind = ACCEPTED_ARCHIVES.get(input_sha256)
+    if input_kind is None:
+        raise ValueError("Archive is neither the verified original nor the verified already-clean study archive.")
+    if sha_file(args.manifest) != MANIFEST_SHA256:
+        raise ValueError("Historical manifest checksum mismatch.")
+    with args.manifest.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f); fields = list(reader.fieldnames); rows = list(reader)
+    if len(rows) != 827:
+        raise ValueError("Expected 827 original entries.")
+    by_path = {r["relative_path"]: r for r in rows}
+    if len(by_path) != 827:
+        raise ValueError("Duplicate manifest paths.")
+    omitted = {b for _, b in PAIRS}
+    retained = [r for r in rows if r["relative_path"] not in omitted]
+    # The fixed historical manifest documents the approved duplicate pairs even
+    # when the removed copies are absent from the already-clean input archive.
+    for keep, drop in PAIRS:
+        if any(by_path[keep][field] != by_path[drop][field]
+               for field in ("sha256", "pixel_sha256", "width", "height")):
+            raise ValueError(f"Historical duplicate pair no longer matches: {keep}, {drop}")
+    input_rows = rows if input_kind == "historical_original" else retained
+    expected_input_paths = {r["relative_path"] for r in input_rows}
+    removed_this_invocation = sorted(omitted) if input_kind == "historical_original" else []
+    previously_removed = sorted(omitted) if input_kind == "already_deduplicated" else []
+    counts = {s: [sum(r["split"] == s and r["class_name"] == c for r in retained) for c in CLASSES]
+              for s in EXPECTED_COUNTS}
+    if counts != EXPECTED_COUNTS:
+        raise ValueError(f"Unexpected cleaned class counts: {counts}")
+    args.output_dir.parent.mkdir(parents=True, exist_ok=True)
+    temp = Path(tempfile.mkdtemp(prefix="axspa_verified_", dir=args.output_dir.parent))
+    new_data = temp / "dataset"
+    independent_hashes = {}; alpha_stats = []; mode_counts = Counter()
+    try:
+        with zipfile.ZipFile(args.archive) as z:
+            files = {}
+            for info in z.infolist():
+                if info.is_dir():
+                    continue
+                path = PurePosixPath(info.filename)
+                if path.is_absolute() or ".." in path.parts or len(path.parts) != 4 or path.parts[0] != "baza danych":
+                    raise ValueError(f"Unexpected archive path: {info.filename}")
+                rel = str(PurePosixPath(*path.parts[1:]))
+                if rel in files:
+                    raise ValueError(f"Repeated ZIP member: {rel}")
+                files[rel] = info
+            if set(files) != expected_input_paths:
+                missing = sorted(expected_input_paths - set(files))
+                unexpected = sorted(set(files) - expected_input_paths)
+                raise ValueError(f"ZIP paths do not match the verified {input_kind} path set. "
+                                 f"Missing: {missing}; unexpected: {unexpected}")
+            for r in input_rows:
+                rel = r["relative_path"]
+                blob = z.read(files[rel])
+                if hashlib.sha256(blob).hexdigest() != r["sha256"]:
+                    raise ValueError(f"Image-byte mismatch: {rel}")
+                with Image.open(io.BytesIO(blob)) as im:
+                    im.load()
+                    if im.size != (int(r["width"]), int(r["height"])):
+                        raise ValueError(f"Dimensions differ: {rel}")
+                    mode_counts[im.mode] += 1
+                    independent_hashes[rel] = canonical_rgb_hash(im)
+                    if "A" in im.getbands():
+                        a = np.asarray(im.getchannel("A"))
+                        alpha_stats.append({"relative_path": rel,
+                                            "transparent_fraction": float(np.mean(a == 0)),
+                                            "partial_alpha_fraction": float(np.mean((a > 0) & (a < 255)))})
+                if rel not in omitted:
+                    dest = new_data / rel
+                    dest.parent.mkdir(parents=True, exist_ok=True)
+                    dest.write_bytes(blob)
+            for keep, drop in PAIRS:
+                if input_kind == "historical_original" and independent_hashes[keep] != independent_hashes[drop]:
+                    raise ValueError(f"Accepted pair no longer matches: {keep}, {drop}")
+        groups = defaultdict(list)
+        for r in retained:
+            groups[independent_hashes[r["relative_path"]]].append(r["relative_path"])
+        if any(len(v) > 1 for v in groups.values()):
+            raise ValueError("Unexpected duplicate remains after the three specified omissions.")
+        with (temp / "clean_manifest.csv").open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=fields + ["independent_rgb_sha256"])
+            writer.writeheader()
+            for r in retained:
+                writer.writerow({**r, "independent_rgb_sha256": independent_hashes[r["relative_path"]]})
+        clean_manifest_sha256 = sha_file(temp / "clean_manifest.csv")
+        if clean_manifest_sha256 != CLEAN_MANIFEST_SHA256:
+            raise ValueError("Generated clean manifest differs from the previously verified clean manifest.")
+        summary = {
+            "verified_utc": datetime.now(timezone.utc).isoformat(),
+            "source_archive_sha256": input_sha256,
+            "source_archive_kind": input_kind,
+            "historical_original_archive_sha256": ARCHIVE_SHA256,
+            "historical_manifest_sha256": MANIFEST_SHA256,
+            "clean_manifest_sha256": clean_manifest_sha256,
+            "historical_image_entries": 827,
+            "source_image_entries": len(input_rows), "retained_unique_images": 824,
+            "counts": counts, "classes": CLASSES,
+            "omitted_duplicate_copies": sorted(omitted),
+            "omitted_duplicate_copies_note": "Approved omissions relative to the historical manifest, not necessarily removals in this invocation.",
+            "removed_duplicate_copies_this_invocation": removed_this_invocation,
+            "previously_removed_duplicate_copies": previously_removed,
+            "exact_cross_split_duplicates_after_deduplication": [],
+            "source_modes": dict(mode_counts), "alpha_statistics": alpha_stats,
+            "source_png_bytes_modified": False,
+            "pixel_hash_note": "Historical pixel_sha256 preserved as metadata; independent_rgb_sha256 uses SHA256(b'RGB:{width}x{height}:' + RGB bytes).",
+            "alpha_handling": "Training/evaluation loaders use PIL convert('RGB'), discarding alpha without compositing. Underlying RGB values are retained.",
+            "patient_independence": "One image per patient was reported by the author; independent record linkage was not available. Image-hash checks do not establish patient independence.",
+            "input_provenance_limitation": "Received PNGs depict outlined spinal regions with transparent background; origin of that preparation requires clarification. No additional manual cropping is applied here.",
+        }
+        (temp / "data_audit.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n")
+        if args.output_dir.exists():
+            old_manifest = args.output_dir / "clean_manifest.csv"
+            if not old_manifest.exists() or sha_file(old_manifest) != summary["clean_manifest_sha256"]:
+                raise FileExistsError("Existing destination is different; choose a new output directory.")
+            for r in retained:
+                if sha_file(args.output_dir / "dataset" / r["relative_path"]) != r["sha256"]:
+                    raise ValueError("Existing prepared image changed; use a fresh output directory.")
+            actual_output_paths = {p.relative_to(args.output_dir / "dataset").as_posix()
+                                   for p in (args.output_dir / "dataset").rglob("*") if p.is_file()}
+            if actual_output_paths != {r["relative_path"] for r in retained}:
+                raise ValueError("Existing prepared dataset has missing or unexpected files; use a fresh output directory.")
+            # Keep the original preparation record while recording which input
+            # archive was verified during this later invocation.
+            verification_dir = args.output_dir / "verification_invocations"
+            verification_dir.mkdir(exist_ok=True)
+            verification_file = verification_dir / (datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S_%fZ") + ".json")
+            verification_file.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            print("Existing clean dataset verified; retained without overwriting.")
+        else:
+            os.replace(temp, args.output_dir)
+        print(json.dumps({"output_dir": str(args.output_dir.resolve()), "counts": counts,
+                          "source_archive_kind": input_kind, "source_image_entries": len(input_rows),
+                          "removed_this_invocation": len(removed_this_invocation),
+                          "previously_removed": len(previously_removed),
+                          "unique_images": 824, "manifest_sha256": summary["clean_manifest_sha256"]}, indent=2))
+    finally:
+        if temp.exists():
+            shutil.rmtree(temp)
+
+if __name__ == "__main__":
+    main()

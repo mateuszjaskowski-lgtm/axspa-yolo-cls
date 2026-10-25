@@ -1,0 +1,727 @@
+{
+  "training_plan_sha256": "807f6fafe844636fc99d9ba4ec89c5fc4a8c8daa449b4b8eba3d64e1cf7c0024",
+  "clean_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+  "records": [
+    {
+      "model": "yolo11l-cls",
+      "seed": 0,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo11l-cls/seed_0/selected.pt",
+      "checkpoint_sha256": "2ef70f6c73c43970cbaebed2884e71b1cd374b1545d5239abe6f2243e75c5ac6",
+      "run_complete_sha256": "22fe94f68978f5e7659b6e5fd92e61f9879fbf4d134d6b13ad5d3cc00f1b0af7",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 1,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo11l-cls/seed_1/selected.pt",
+      "checkpoint_sha256": "270958659e7a601c00eba5bc9e33d4c9510293caafe7a42139fe913340143aab",
+      "run_complete_sha256": "8d3cf677191684c941de17e1d5c79d49176867b10e29c9a965818427fce2b0bd",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 2,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo11l-cls/seed_2/selected.pt",
+      "checkpoint_sha256": "8c2e82d5ec3c11b5ec87cd5e1a96541a98b17db8e70d0c488619b6022f117d16",
+      "run_complete_sha256": "b3f1c54da121592d55e662874891fd61b46014f653d6a7e3e77f351367357803",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 3,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo11l-cls/seed_3/selected.pt",
+      "checkpoint_sha256": "27e4cf816f39650aa3681b284f278a3acd9d6f72915cf311d3462d9179c8b348",
+      "run_complete_sha256": "596aae024d5ce74abf1ec9d83b531a769e711e7060a549b620872724e6481791",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 4,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo11l-cls/seed_4/selected.pt",
+      "checkpoint_sha256": "6d4e82012b69132237a46f115eba53f82517516718d78e591a579818ece14ba9",
+      "run_complete_sha256": "557ef1ad5b536d847d377e8f9b76d373d7778400260392b5e492ef3548977650",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 0,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo26l-cls/seed_0/selected.pt",
+      "checkpoint_sha256": "bf89d3ce0bd13b45c58382505da67e55f61b32f2b1627a8277f07074dfb4cb4d",
+      "run_complete_sha256": "de4a0dcb25a90a361457053966672d87b0e5c49a3984211155c6464ba8df4eb7",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 1,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo26l-cls/seed_1/selected.pt",
+      "checkpoint_sha256": "61170d34f29e28558f2ae64aea5d89de5ecc0c4c530e10bdc6dd30ccf7a5e34a",
+      "run_complete_sha256": "387e7312bd8575d21e4168ce1c68adb19b153b460a28e315837e8ddb0e05be00",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 2,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo26l-cls/seed_2/selected.pt",
+      "checkpoint_sha256": "0ab66c76e8392a5dfb5bc2c3e2cf257c300feadabd35955d793044faebc6f1c8",
+      "run_complete_sha256": "0b6e1e8178d49e1642af851ee655d76465bf8b32fb7d713efb7a0593d335599f",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 3,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo26l-cls/seed_3/selected.pt",
+      "checkpoint_sha256": "00f1b91c316ccbf5691791f543dc728a4da177eef3e75c08e166913e045f48d9",
+      "run_complete_sha256": "58831be38e2af3dd8be94942bb1d921c8d50a882f728a7b7bf8aad30d3c0492d",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 4,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/yolo26l-cls/seed_4/selected.pt",
+      "checkpoint_sha256": "3da1374dcf0c5ec867f47daf4eda2206a912af01d34cfb234233c171177cdf7b",
+      "run_complete_sha256": "0783710328b1e58c63bdff2890fdd2203e82eaac2f7160f13084a6c86ef39b17",
+      "backend": "ultralytics",
+      "preprocess": {
+        "imgsz": 640,
+        "geometry": "whole_png_aspect_preserving_center_pad",
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "interpolation": "PIL bilinear",
+        "scale": "0..1",
+        "mean": [
+          0,
+          0,
+          0
+        ],
+        "std": [
+          1,
+          1,
+          1
+        ],
+        "source": "stored SpineResizePad transforms; new revision protocol"
+      }
+    },
+    {
+      "model": "resnet50",
+      "seed": 0,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/resnet50/seed_0/selected.pt",
+      "checkpoint_sha256": "6f153d43b1d56de83cde766c3bbdf8553726afa6100d6b140de9107f10270cc2",
+      "run_complete_sha256": "5570de70706879fa2beadd566c01d1df73ef258b105a9664a89ce4316c2984ef",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    },
+    {
+      "model": "resnet50",
+      "seed": 1,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/resnet50/seed_1/selected.pt",
+      "checkpoint_sha256": "4b1a2733d8e9d9756ccacb3cb5f736b152f33ec39bc2f55a06e746556383b1b9",
+      "run_complete_sha256": "7e7329dc1d9ee624584c5f86727d37b63d757a8f2393e8bee792d12ac6fb2a75",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    },
+    {
+      "model": "resnet50",
+      "seed": 2,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/resnet50/seed_2/selected.pt",
+      "checkpoint_sha256": "ab30611766c33b17b806fb9b8165e1bc8217aae2943e54b464d6168b90909c2b",
+      "run_complete_sha256": "945e34f01d2712001fdcb8d01a5410103b89e66ca71425c202e9117590de6458",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    },
+    {
+      "model": "resnet50",
+      "seed": 3,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/resnet50/seed_3/selected.pt",
+      "checkpoint_sha256": "7346cf9239ea92a7ec2d09dbebe03617a02cb11a5d3e1e0fe919eacb0ebedcb6",
+      "run_complete_sha256": "da854a26e1b04bf1b77f8619773efff00a221cc5b57f026de23216ce75c1cc70",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    },
+    {
+      "model": "resnet50",
+      "seed": 4,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/resnet50/seed_4/selected.pt",
+      "checkpoint_sha256": "86b3b48683c476612fd5fb5488ddd9d526b46ab71729dc4983c3863707d19bb2",
+      "run_complete_sha256": "7b40c2b3ce03d2503b3ed530a7fa20e6aa438f8f05b5ebf7ef52bc15f46c735d",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 0,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/efficientnet_b0/seed_0/selected.pt",
+      "checkpoint_sha256": "14b0deaa5b2bf860cb1d47b8ecaa93df64240ddd52a2e895e63715ce427d2676",
+      "run_complete_sha256": "1bc88969bec44ec3281d6b5a94cb9aa9363a95601619f273063ea0b7a40eff3e",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 1,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/efficientnet_b0/seed_1/selected.pt",
+      "checkpoint_sha256": "30dea23a38c151cea83edd921e8ad03c7c89841e40c5a7d1fda67eaf29daf542",
+      "run_complete_sha256": "2428ea82b42aeefbac07058652b93d6607e4d7a28bd9f77dbb695381c218dfe4",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 2,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/efficientnet_b0/seed_2/selected.pt",
+      "checkpoint_sha256": "5fb073a590c4bdb0c925393382b4ae24c7cdaea19ddd0f24f79f79f095f7a79b",
+      "run_complete_sha256": "2421f8e7de99ced74f438715936a0b522ae62ae2f1afe85ab3a6200d3b018d85",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 3,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/efficientnet_b0/seed_3/selected.pt",
+      "checkpoint_sha256": "954d6f882eb2043f325c5dfb543fed6fc42870d2148965f4acca8be180a22ddf",
+      "run_complete_sha256": "e136713a7e32a911772875ea4bdd52999f93bc570fab9fa8ea4b09b06e854543",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 4,
+      "checkpoint": "/content/drive/MyDrive/axspa_spine_2026_10_04_full_region_v3/runs/efficientnet_b0/seed_4/selected.pt",
+      "checkpoint_sha256": "7621a866080af8e1800efe3b92aee1debdd5455bc7b671d26b1c26bf77fbe1da",
+      "run_complete_sha256": "92724341c3321a819dc110b35e51c063068297bad2aabf7b7367302f5aae8ad4",
+      "backend": "torchvision",
+      "preprocess": {
+        "imgsz": 640,
+        "resize_mode": "whole_png_aspect_preserving_center_pad",
+        "batch": 32,
+        "epochs": 100,
+        "optimizer": "SGD",
+        "lr": 0.01,
+        "momentum": 0.937,
+        "nesterov": true,
+        "weight_decay": 0.0005,
+        "scheduler": "CosineAnnealingLR",
+        "min_lr": 0.0001,
+        "early_stopping_patience": 20,
+        "workers": 0,
+        "amp": true,
+        "horizontal_flip_p": 0.5,
+        "color_jitter_brightness": 0.1,
+        "color_jitter_contrast": 0.1,
+        "randaugment": false,
+        "random_affine": false,
+        "random_erasing_p": 0.0,
+        "normalization_mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "normalization_std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "resnet50_weights": "IMAGENET1K_V2",
+        "efficientnet_b0_weights": "IMAGENET1K_V1"
+      }
+    }
+  ],
+  "external_test_previously_examined": true
+}

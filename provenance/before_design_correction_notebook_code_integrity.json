@@ -1,0 +1,20 @@
+{
+  "source_notebook_sha256": "ce24c3016d32f48cfbbf304c8f7d50bb75b7709f64b4c4584eb2fad7b91ffb52",
+  "release_notebook_sha256": "95df28843e100dfe30f537468acd0f94a5af1618e863aac18237a5a324f041a1",
+  "code_cells_unchanged": true,
+  "code_cell_count": 11,
+  "code_cell_sha256": [
+    "2ae7ee3bb3fbd594fe456e3a26f1b058691f2c84228a2ae71197806b4f8aae20",
+    "5cf687c36ad372aa8cf3e1560a3df8e874d752bf8940f75cc036cc4c350df499",
+    "ef21e0769ee792f3a26684fe3b3026eefc9e98bc520c9de9cebbf8500f3e1bb9",
+    "691a855875c6d20d9d69290479da75b2e80ecc3490b61c9bc882520e252b19c9",
+    "b56d0b76a440dc345d10e9f411e862123d6ef14442d187dbd8ac7c99f32ca76a",
+    "fbac2ddc896b16d379c5a4e8da20a2dc124a98e4135812afc36cd7c8de3cdba2",
+    "ea187bab0b8bb91289f0a73ea353dbedf51453f957186b7dc4dbfde8605c8343",
+    "7a72adc82ca5952c43aa1a890e4f6347968607ce62cf1d1f7f0fd5d93ce1249a",
+    "597b6e6e76c8619c7662856881c6d9b443ba6200bb2e90b9acb302c0f8cdf460",
+    "465ef8742a80c9c93d5621ea0ad4651e2cdabf4ced717e64ec1aed125a109bf1",
+    "0deaf1d99c30997fe1644cdada060a5cde73aeded33a4960673a644ca925f7dc"
+  ],
+  "changes": "Explanatory Markdown cells 0 and 23 updated; outputs and execution counters cleared; no executable code changed."
+}

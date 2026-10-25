@@ -1,0 +1,681 @@
+model,seed,split,n,metric,estimate,ci_low,ci_high,ci_method
+yolo11l-cls,0,val,95,accuracy,0.9263157894736842,0.8540601507668739,0.9698627810901742,Clopper-Pearson
+yolo11l-cls,0,val,95,unweighted_cohen_kappa,0.8925165669953128,0.8129890562555255,0.9681760658237711,image-level percentile bootstrap
+yolo11l-cls,0,val,95,balanced_accuracy,0.9086844197138315,0.8306339172291793,0.9752761945185545,image-level percentile bootstrap
+yolo11l-cls,0,val,95,macro_f1,0.9144991474850809,0.8370043003962631,0.9738098447043139,image-level percentile bootstrap
+yolo11l-cls,0,val,95,macro_ovr_auc,0.9935246449530066,0.9853873932777044,0.9992947256739485,image-level percentile bootstrap
+yolo11l-cls,0,val,95,binary_auc,0.9958920187793427,0.9867137681159421,1.0,image-level percentile bootstrap
+yolo11l-cls,0,val,95,multiclass_brier,0.11706381976203946,0.042818253770644424,0.19387705469149918,image-level percentile bootstrap
+yolo11l-cls,0,val,95,mean_ovr_brier,0.029265954940509865,0.010704563442661106,0.048469263672874796,image-level percentile bootstrap
+yolo11l-cls,0,val,95,binary_brier,0.02260362448969911,0.0030955099479528262,0.048022621718891746,image-level percentile bootstrap
+yolo11l-cls,0,val,95,normal_f1,0.96,0.9117647058823529,1.0,image-level percentile bootstrap
+yolo11l-cls,0,val,95,osteofity_f1,0.9117647058823529,0.8333333333333334,0.9736842105263158,image-level percentile bootstrap
+yolo11l-cls,0,val,95,parasyndesmofity_f1,0.8695652173913043,0.6666666666666666,1.0,image-level percentile bootstrap
+yolo11l-cls,0,val,95,syndesmofity_f1,0.9166666666666666,0.7692307692307693,1.0,image-level percentile bootstrap
+yolo11l-cls,0,val,95,normal_ovr_auc,0.9962721342031686,0.9888566643666263,1.0,image-level percentile bootstrap
+yolo11l-cls,0,val,95,osteofity_ovr_auc,0.9898746383799422,0.9743589743589745,1.0,image-level percentile bootstrap
+yolo11l-cls,0,val,95,parasyndesmofity_ovr_auc,0.9899598393574297,0.9699786952688805,1.0,image-level percentile bootstrap
+yolo11l-cls,0,val,95,syndesmofity_ovr_auc,0.997991967871486,0.9905063291139241,1.0,image-level percentile bootstrap
+yolo11l-cls,0,test,150,accuracy,0.92,0.8644261097873609,0.9579797352998276,Clopper-Pearson
+yolo11l-cls,0,test,150,unweighted_cohen_kappa,0.8861911987860394,0.8179477918850532,0.943097485786296,image-level percentile bootstrap
+yolo11l-cls,0,test,150,balanced_accuracy,0.9369107744107743,0.8945100360344264,0.9705947759538599,image-level percentile bootstrap
+yolo11l-cls,0,test,150,macro_f1,0.9265246015246016,0.876321529772123,0.9649168794854374,image-level percentile bootstrap
+yolo11l-cls,0,test,150,macro_ovr_auc,0.9875131001109556,0.9743612953952926,0.9970129199323613,image-level percentile bootstrap
+yolo11l-cls,0,test,150,binary_auc,0.9988811814723652,0.9960315734989649,1.0,image-level percentile bootstrap
+yolo11l-cls,0,test,150,multiclass_brier,0.1280222567305495,0.06469635995113586,0.19770421520467418,image-level percentile bootstrap
+yolo11l-cls,0,test,150,mean_ovr_brier,0.03200556418263738,0.01617408998778396,0.04942605380116855,image-level percentile bootstrap
+yolo11l-cls,0,test,150,binary_brier,0.014471700453861971,0.0027822131804015353,0.03193665973388137,image-level percentile bootstrap
+yolo11l-cls,0,test,150,normal_f1,0.918918918918919,0.8595864661654136,0.9666666666666667,image-level percentile bootstrap
+yolo11l-cls,0,test,150,osteofity_f1,0.9038461538461539,0.8367346938775511,0.9586776859504132,image-level percentile bootstrap
+yolo11l-cls,0,test,150,parasyndesmofity_f1,0.95,0.863474025974026,1.0,image-level percentile bootstrap
+yolo11l-cls,0,test,150,syndesmofity_f1,0.9333333333333333,0.8363636363636363,1.0,image-level percentile bootstrap
+yolo11l-cls,0,test,150,normal_ovr_auc,0.988133971291866,0.9730316689359028,0.9984447502405646,image-level percentile bootstrap
+yolo11l-cls,0,test,150,osteofity_ovr_auc,0.980516975308642,0.962399219647455,0.9947021331169705,image-level percentile bootstrap
+yolo11l-cls,0,test,150,parasyndesmofity_ovr_auc,0.9873076923076923,0.955703211517165,1.0,image-level percentile bootstrap
+yolo11l-cls,0,test,150,syndesmofity_ovr_auc,0.994093761535622,0.9831257533145842,1.0,image-level percentile bootstrap
+yolo11l-cls,1,val,95,accuracy,0.9052631578947369,0.8277652986819433,0.9557588906706195,Clopper-Pearson
+yolo11l-cls,1,val,95,unweighted_cohen_kappa,0.8609530004878843,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,balanced_accuracy,0.854133545310016,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,macro_f1,0.8677022178734507,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,macro_ovr_auc,0.9792354284411063,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,binary_auc,0.9982394366197184,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,multiclass_brier,0.15447881484867645,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,mean_ovr_brier,0.038619703712169114,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,binary_brier,0.021764172576128726,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,normal_f1,0.958904109589041,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,osteofity_f1,0.9166666666666666,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,parasyndesmofity_f1,0.7619047619047619,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,syndesmofity_f1,0.8333333333333334,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,normal_ovr_auc,0.9953401677539608,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,osteofity_ovr_auc,0.9898746383799422,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,parasyndesmofity_ovr_auc,0.9538152610441767,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,val,95,syndesmofity_ovr_auc,0.9779116465863454,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,accuracy,0.84,0.7713508164668923,0.8947133221604362,Clopper-Pearson
+yolo11l-cls,1,test,150,unweighted_cohen_kappa,0.7695262483994877,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,balanced_accuracy,0.7997113997113997,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,macro_f1,0.8050544050544051,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,macro_ovr_auc,0.9729971358031333,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,binary_auc,0.9923920340120832,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,multiclass_brier,0.24128892865383558,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,mean_ovr_brier,0.06032223216345888,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,binary_brier,0.03709029120842001,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,normal_f1,0.8828828828828829,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,osteofity_f1,0.8727272727272727,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,parasyndesmofity_f1,0.7619047619047619,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,syndesmofity_f1,0.7027027027027027,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,normal_ovr_auc,0.9810526315789474,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,osteofity_ovr_auc,0.9722222222222223,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,parasyndesmofity_ovr_auc,0.9630769230769229,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,1,test,150,syndesmofity_ovr_auc,0.9756367663344407,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,accuracy,0.9263157894736842,0.8540601507668739,0.9698627810901742,Clopper-Pearson
+yolo11l-cls,2,val,95,unweighted_cohen_kappa,0.891640866873065,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,balanced_accuracy,0.8946078431372548,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,macro_f1,0.9118768060583917,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,macro_ovr_auc,0.9624553741112084,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,binary_auc,0.9642018779342724,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,multiclass_brier,0.15390505051091208,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,mean_ovr_brier,0.03847626262772802,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,binary_brier,0.029339419661839648,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,normal_f1,0.961038961038961,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,osteofity_f1,0.9117647058823529,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,parasyndesmofity_f1,0.8181818181818182,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,syndesmofity_f1,0.9565217391304348,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,normal_ovr_auc,0.9869524697110904,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,osteofity_ovr_auc,0.9532304725168755,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,parasyndesmofity_ovr_auc,0.9146586345381527,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,val,95,syndesmofity_ovr_auc,0.9949799196787149,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,accuracy,0.8533333333333334,0.786405781273821,0.9057449151374255,Clopper-Pearson
+yolo11l-cls,2,test,150,unweighted_cohen_kappa,0.7881899871630296,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,balanced_accuracy,0.7917027417027417,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,macro_f1,0.8000730994152047,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,macro_ovr_auc,0.9748371140193993,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,binary_auc,0.9928395614231372,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,multiclass_brier,0.20493083284837965,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,mean_ovr_brier,0.05123270821209491,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,binary_brier,0.0341200412123856,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,normal_f1,0.9298245614035088,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,osteofity_f1,0.8888888888888888,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,parasyndesmofity_f1,0.631578947368421,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,syndesmofity_f1,0.75,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,normal_ovr_auc,0.9867942583732058,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,osteofity_ovr_auc,0.9708719135802469,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,parasyndesmofity_ovr_auc,0.9634615384615384,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,2,test,150,syndesmofity_ovr_auc,0.9782207456626062,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,accuracy,0.9263157894736842,0.8540601507668739,0.9698627810901742,Clopper-Pearson
+yolo11l-cls,3,val,95,unweighted_cohen_kappa,0.8933782267115601,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,balanced_accuracy,0.9092806041335453,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,macro_f1,0.9017878218119959,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,macro_ovr_auc,0.9751065897848936,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,binary_auc,0.9847417840375587,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,multiclass_brier,0.13931512381779507,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,mean_ovr_brier,0.03482878095444877,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,binary_brier,0.027803791466421028,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,normal_f1,0.958904109589041,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,osteofity_f1,0.9411764705882353,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,parasyndesmofity_f1,0.8181818181818182,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,syndesmofity_f1,0.8888888888888888,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,normal_ovr_auc,0.9906803355079217,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,osteofity_ovr_auc,0.9729990356798457,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,parasyndesmofity_ovr_auc,0.9427710843373494,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,val,95,syndesmofity_ovr_auc,0.9939759036144578,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,accuracy,0.9066666666666666,0.8483614686963519,0.9480298277055218,Clopper-Pearson
+yolo11l-cls,3,test,150,unweighted_cohen_kappa,0.866335688371205,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,balanced_accuracy,0.8960858585858585,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,macro_f1,0.8962479210873431,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,macro_ovr_auc,0.9892703402400974,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,binary_auc,0.9982098903557842,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,multiclass_brier,0.14918039505194197,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,mean_ovr_brier,0.03729509876298549,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,binary_brier,0.019871014864299253,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,normal_f1,0.9285714285714286,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,osteofity_f1,0.9056603773584906,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,parasyndesmofity_f1,0.8571428571428571,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,syndesmofity_f1,0.8936170212765957,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,normal_ovr_auc,0.9846889952153111,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,osteofity_ovr_auc,0.982253086419753,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,parasyndesmofity_ovr_auc,0.9934615384615385,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,3,test,150,syndesmofity_ovr_auc,0.9966777408637874,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,accuracy,0.9473684210526315,0.8814372111951139,0.98269212415356,Clopper-Pearson
+yolo11l-cls,4,val,95,unweighted_cohen_kappa,0.923498147849895,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,balanced_accuracy,0.9227941176470588,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,macro_f1,0.9229726368159203,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,macro_ovr_auc,0.9896688166252308,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,binary_auc,0.9964788732394366,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,multiclass_brier,0.11658892539055996,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,mean_ovr_brier,0.02914723134763999,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,binary_brier,0.021542621798192243,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,normal_f1,0.9866666666666667,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,osteofity_f1,0.9552238805970149,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,parasyndesmofity_f1,0.8333333333333334,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,syndesmofity_f1,0.9166666666666666,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,normal_ovr_auc,0.9962721342031687,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,osteofity_ovr_auc,0.9864995178399228,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,parasyndesmofity_ovr_auc,0.9799196787148595,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,val,95,syndesmofity_ovr_auc,0.995983935742972,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,accuracy,0.9,0.840432114872423,0.9429425651637531,Clopper-Pearson
+yolo11l-cls,4,test,150,unweighted_cohen_kappa,0.8574144486692014,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,balanced_accuracy,0.8994107744107744,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,macro_f1,0.8931597250746186,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,macro_ovr_auc,0.9881018967503439,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,binary_auc,0.9937346162452451,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,multiclass_brier,0.16446418643792257,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,mean_ovr_brier,0.041116046609480636,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,binary_brier,0.026867172225004225,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,normal_f1,0.918918918918919,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,osteofity_f1,0.8952380952380953,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,parasyndesmofity_f1,0.8648648648648649,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,syndesmofity_f1,0.8936170212765957,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,normal_ovr_auc,0.9888995215311005,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,osteofity_ovr_auc,0.9820601851851851,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,parasyndesmofity_ovr_auc,0.9884615384615385,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo11l-cls,4,test,150,syndesmofity_ovr_auc,0.9929863418235512,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,0,val,95,accuracy,0.9052631578947369,0.8277652986819433,0.9557588906706195,Clopper-Pearson
+yolo26l-cls,0,val,95,unweighted_cohen_kappa,0.862495979414603,0.7714120705578258,0.9388386584487501,image-level percentile bootstrap
+yolo26l-cls,0,val,95,balanced_accuracy,0.8816905140434552,0.7993864989177488,0.9500049603174603,image-level percentile bootstrap
+yolo26l-cls,0,val,95,macro_f1,0.8773809523809524,0.7802951552318581,0.9475630072088405,image-level percentile bootstrap
+yolo26l-cls,0,val,95,macro_ovr_auc,0.9772535474471505,0.9440704231508575,0.9969433052712172,image-level percentile bootstrap
+yolo26l-cls,0,val,95,binary_auc,0.972417840375587,0.9147739651416121,1.0,image-level percentile bootstrap
+yolo26l-cls,0,val,95,multiclass_brier,0.15333103066677226,0.0747918770865241,0.2477704911022762,image-level percentile bootstrap
+yolo26l-cls,0,val,95,mean_ovr_brier,0.03833275766669307,0.01869796927163102,0.06194262277556905,image-level percentile bootstrap
+yolo26l-cls,0,val,95,binary_brier,0.033131608582972136,0.006266286280518608,0.06713691851009752,image-level percentile bootstrap
+yolo26l-cls,0,val,95,normal_f1,0.9444444444444444,0.8787878787878788,0.9876543209876543,image-level percentile bootstrap
+yolo26l-cls,0,val,95,osteofity_f1,0.9142857142857143,0.8387096774193549,0.972972972972973,image-level percentile bootstrap
+yolo26l-cls,0,val,95,parasyndesmofity_f1,0.7619047619047619,0.47058823529411764,0.9333333333333333,image-level percentile bootstrap
+yolo26l-cls,0,val,95,syndesmofity_f1,0.8888888888888888,0.7331818181818182,1.0,image-level percentile bootstrap
+yolo26l-cls,0,val,95,normal_ovr_auc,0.9874184529356943,0.9680567879325643,1.0,image-level percentile bootstrap
+yolo26l-cls,0,val,95,osteofity_ovr_auc,0.9778206364513018,0.9456289978678039,0.9984621975806452,image-level percentile bootstrap
+yolo26l-cls,0,val,95,parasyndesmofity_ovr_auc,0.9467871485943775,0.8408820346320347,1.0,image-level percentile bootstrap
+yolo26l-cls,0,val,95,syndesmofity_ovr_auc,0.9969879518072289,0.9867724867724869,1.0,image-level percentile bootstrap
+yolo26l-cls,0,test,150,accuracy,0.8733333333333333,0.8092793862436114,0.9219854745695966,Clopper-Pearson
+yolo26l-cls,0,test,150,unweighted_cohen_kappa,0.8182745648154052,0.7397753278131932,0.8925306348289405,image-level percentile bootstrap
+yolo26l-cls,0,test,150,balanced_accuracy,0.8502585377585377,0.7858891018260663,0.914857063640734,image-level percentile bootstrap
+yolo26l-cls,0,test,150,macro_f1,0.8506189411969582,0.7780307881327619,0.9143647244128823,image-level percentile bootstrap
+yolo26l-cls,0,test,150,macro_ovr_auc,0.97799819059101,0.9613075801325606,0.9906971113629444,image-level percentile bootstrap
+yolo26l-cls,0,test,150,binary_auc,0.9914969791899754,0.9780502789279963,0.9995128949396532,image-level percentile bootstrap
+yolo26l-cls,0,test,150,multiclass_brier,0.20062248257275542,0.12306745597232371,0.282167026700878,image-level percentile bootstrap
+yolo26l-cls,0,test,150,mean_ovr_brier,0.05015562064318886,0.03076686399308093,0.07054175667521949,image-level percentile bootstrap
+yolo26l-cls,0,test,150,binary_brier,0.029096305439641625,0.009452441892957767,0.054300194890196295,image-level percentile bootstrap
+yolo26l-cls,0,test,150,normal_f1,0.897196261682243,0.8314288742845029,0.9541388657214345,image-level percentile bootstrap
+yolo26l-cls,0,test,150,osteofity_f1,0.8928571428571429,0.8301786431152148,0.9473684210526315,image-level percentile bootstrap
+yolo26l-cls,0,test,150,parasyndesmofity_f1,0.7428571428571429,0.5555555555555556,0.8888888888888888,image-level percentile bootstrap
+yolo26l-cls,0,test,150,syndesmofity_f1,0.8695652173913043,0.7368421052631579,0.9629629629629629,image-level percentile bootstrap
+yolo26l-cls,0,test,150,normal_ovr_auc,0.9737799043062202,0.9469505624217591,0.9930558158420789,image-level percentile bootstrap
+yolo26l-cls,0,test,150,osteofity_ovr_auc,0.9737654320987654,0.9493993014128728,0.9918896531148688,image-level percentile bootstrap
+yolo26l-cls,0,test,150,parasyndesmofity_ovr_auc,0.9696153846153848,0.9307668410725964,0.9967367971930121,image-level percentile bootstrap
+yolo26l-cls,0,test,150,syndesmofity_ovr_auc,0.9948320413436693,0.9858180753070459,1.0,image-level percentile bootstrap
+yolo26l-cls,1,val,95,accuracy,0.9368421052631579,0.8675872565115876,0.9764716142156938,Clopper-Pearson
+yolo26l-cls,1,val,95,unweighted_cohen_kappa,0.9082864038616252,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,balanced_accuracy,0.9166335453100158,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,macro_f1,0.916247766527695,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,macro_ovr_auc,0.9917937176705899,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,binary_auc,0.9929577464788732,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,multiclass_brier,0.12032796793138542,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,mean_ovr_brier,0.030081991982846355,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,binary_brier,0.021242345038254937,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,normal_f1,0.958904109589041,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,osteofity_f1,0.9565217391304348,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,parasyndesmofity_f1,0.8695652173913043,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,syndesmofity_f1,0.88,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,normal_ovr_auc,0.9944082013047529,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,osteofity_ovr_auc,0.9908389585342333,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,parasyndesmofity_ovr_auc,0.9879518072289156,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,val,95,syndesmofity_ovr_auc,0.9939759036144579,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,accuracy,0.9,0.840432114872423,0.9429425651637531,Clopper-Pearson
+yolo26l-cls,1,test,150,unweighted_cohen_kappa,0.8574686431014824,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,balanced_accuracy,0.8928992303992304,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,macro_f1,0.8873895898417892,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,macro_ovr_auc,0.9852252804018028,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,binary_auc,0.994182143656299,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,multiclass_brier,0.15715835452370375,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,mean_ovr_brier,0.03928958863092595,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,binary_brier,0.02577047612169736,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,normal_f1,0.9158878504672897,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,osteofity_f1,0.9174311926605505,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,parasyndesmofity_f1,0.8717948717948718,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,syndesmofity_f1,0.8444444444444444,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,normal_ovr_auc,0.9833492822966508,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,osteofity_ovr_auc,0.9809027777777779,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,parasyndesmofity_ovr_auc,0.9884615384615385,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,1,test,150,syndesmofity_ovr_auc,0.988187523071244,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,accuracy,0.9578947368421052,0.8956916268102718,0.9884103541006212,Clopper-Pearson
+yolo26l-cls,2,val,95,unweighted_cohen_kappa,0.9387689332903641,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,balanced_accuracy,0.9436274509803921,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,macro_f1,0.9438872530977795,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,macro_ovr_auc,0.9896261556808242,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,binary_auc,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,multiclass_brier,0.08528312664446565,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,mean_ovr_brier,0.02132078166111641,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,binary_brier,0.0005975850978150201,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,normal_f1,0.9736842105263158,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,osteofity_f1,0.9696969696969697,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,parasyndesmofity_f1,0.9090909090909091,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,syndesmofity_f1,0.9230769230769231,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,normal_ovr_auc,0.9990680335507922,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,osteofity_ovr_auc,0.997589199614272,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,parasyndesmofity_ovr_auc,0.9688755020080322,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,val,95,syndesmofity_ovr_auc,0.9929718875502008,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,accuracy,0.9066666666666666,0.8483614686963519,0.9480298277055218,Clopper-Pearson
+yolo26l-cls,2,test,150,unweighted_cohen_kappa,0.8665989073815269,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,balanced_accuracy,0.8886423761423761,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,macro_f1,0.8862740563385391,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,macro_ovr_auc,0.9893985555509551,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,binary_auc,0.9966435444170955,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,multiclass_brier,0.15340225842425195,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,mean_ovr_brier,0.03835056460606299,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,binary_brier,0.026616076067077287,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,normal_f1,0.9391304347826087,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,osteofity_f1,0.9215686274509803,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,parasyndesmofity_f1,0.8333333333333334,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,syndesmofity_f1,0.851063829787234,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,normal_ovr_auc,0.9946411483253589,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,osteofity_ovr_auc,0.986304012345679,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,parasyndesmofity_ovr_auc,0.9884615384615384,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,2,test,150,syndesmofity_ovr_auc,0.988187523071244,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,accuracy,0.9263157894736842,0.8540601507668739,0.9698627810901742,Clopper-Pearson
+yolo26l-cls,3,val,95,unweighted_cohen_kappa,0.8933782267115601,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,balanced_accuracy,0.9092806041335453,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,macro_f1,0.9039499109306067,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,macro_ovr_auc,0.9834506681648266,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,binary_auc,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,multiclass_brier,0.1274041571296929,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,mean_ovr_brier,0.03185103928242323,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,binary_brier,0.01308900933407859,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,normal_f1,0.958904109589041,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,osteofity_f1,0.9411764705882353,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,parasyndesmofity_f1,0.8461538461538461,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,syndesmofity_f1,0.8695652173913043,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,normal_ovr_auc,0.9967381174277726,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,osteofity_ovr_auc,0.9922854387656701,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,parasyndesmofity_ovr_auc,0.9678714859437751,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,val,95,syndesmofity_ovr_auc,0.9769076305220884,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,accuracy,0.9,0.840432114872423,0.9429425651637531,Clopper-Pearson
+yolo26l-cls,3,test,150,unweighted_cohen_kappa,0.8580710275657606,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,balanced_accuracy,0.9085557960557961,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,macro_f1,0.8950947308505448,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,macro_ovr_auc,0.9736145166292938,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,binary_auc,0.9982098903557842,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,multiclass_brier,0.17467567483830568,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,mean_ovr_brier,0.043668918709576426,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,binary_brier,0.02043893544869433,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,normal_f1,0.9090909090909091,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,osteofity_f1,0.9038461538461539,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,parasyndesmofity_f1,0.8837209302325582,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,syndesmofity_f1,0.8837209302325582,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,normal_ovr_auc,0.9818181818181817,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,osteofity_ovr_auc,0.9735725308641975,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,parasyndesmofity_ovr_auc,0.9626923076923076,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,3,test,150,syndesmofity_ovr_auc,0.976375046142488,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,accuracy,0.9368421052631579,0.8675872565115876,0.9764716142156938,Clopper-Pearson
+yolo26l-cls,4,val,95,unweighted_cohen_kappa,0.9081533999355463,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,balanced_accuracy,0.9154411764705882,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,macro_f1,0.9157695374800638,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,macro_ovr_auc,0.9876368923285983,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,binary_auc,0.9823943661971831,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,multiclass_brier,0.08928761900726781,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,mean_ovr_brier,0.022321904751816952,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,binary_brier,0.01641624425272511,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,normal_f1,0.9736842105263158,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,osteofity_f1,0.9393939393939394,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,parasyndesmofity_f1,0.8333333333333334,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,syndesmofity_f1,0.9166666666666666,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,normal_ovr_auc,0.9967381174277725,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,osteofity_ovr_auc,0.9879459980713596,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,parasyndesmofity_ovr_auc,0.9668674698795181,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,val,95,syndesmofity_ovr_auc,0.998995983935743,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,accuracy,0.8933333333333333,0.8325636609592538,0.9377894259935293,Clopper-Pearson
+yolo26l-cls,4,test,150,unweighted_cohen_kappa,0.8449812685699521,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,balanced_accuracy,0.8403679653679654,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,macro_f1,0.851302862759667,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,macro_ovr_auc,0.9916658134420018,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,binary_auc,0.9993287088834191,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,multiclass_brier,0.1571486749346754,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,mean_ovr_brier,0.03928716873366885,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,binary_brier,0.03173115976578934,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,normal_f1,0.9433962264150944,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,osteofity_f1,0.907563025210084,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,parasyndesmofity_f1,0.6451612903225806,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,syndesmofity_f1,0.9090909090909091,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,normal_ovr_auc,0.9910047846889951,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,osteofity_ovr_auc,0.9934413580246914,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,parasyndesmofity_ovr_auc,0.9892307692307692,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+yolo26l-cls,4,test,150,syndesmofity_ovr_auc,0.9929863418235512,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,0,val,95,accuracy,0.968421052631579,0.91047750201309,0.9934397082498416,Clopper-Pearson
+resnet50,0,val,95,unweighted_cohen_kappa,0.9540766999677731,0.8939541913508308,1.0,image-level percentile bootstrap
+resnet50,0,val,95,balanced_accuracy,0.9644607843137255,0.909673579109063,1.0,image-level percentile bootstrap
+resnet50,0,val,95,macro_f1,0.96497572983843,0.9080895426985686,1.0,image-level percentile bootstrap
+resnet50,0,val,95,macro_ovr_auc,0.9950464727912397,0.9865013146247964,1.0,image-level percentile bootstrap
+resnet50,0,val,95,binary_auc,1.0,0.9999999999999999,1.0,image-level percentile bootstrap
+resnet50,0,val,95,multiclass_brier,0.07363028804113048,0.019329531253588467,0.14260595420273664,image-level percentile bootstrap
+resnet50,0,val,95,mean_ovr_brier,0.018407572010282616,0.0048323828133971175,0.03565148855068416,image-level percentile bootstrap
+resnet50,0,val,95,binary_brier,0.005664372392188242,0.0010597428258297729,0.011480358698037924,image-level percentile bootstrap
+resnet50,0,val,95,normal_f1,0.9736842105263158,0.9295774647887324,1.0,image-level percentile bootstrap
+resnet50,0,val,95,osteofity_f1,0.9696969696969697,0.918918918918919,1.0,image-level percentile bootstrap
+resnet50,0,val,95,parasyndesmofity_f1,0.96,0.8571428571428571,1.0,image-level percentile bootstrap
+resnet50,0,val,95,syndesmofity_f1,0.9565217391304348,0.8333333333333334,1.0,image-level percentile bootstrap
+resnet50,0,val,95,normal_ovr_auc,0.9967381174277726,0.9890467032967033,1.0,image-level percentile bootstrap
+resnet50,0,val,95,osteofity_ovr_auc,0.9874638379942142,0.9615340909090908,1.0,image-level percentile bootstrap
+resnet50,0,val,95,parasyndesmofity_ovr_auc,0.998995983935743,0.993666776261713,1.0,image-level percentile bootstrap
+resnet50,0,val,95,syndesmofity_ovr_auc,0.9969879518072289,0.9870069745069745,1.0,image-level percentile bootstrap
+resnet50,0,test,150,accuracy,0.9333333333333333,0.8808160229330741,0.9675702718413236,Clopper-Pearson
+resnet50,0,test,150,unweighted_cohen_kappa,0.9045497931912186,0.8428452378692343,0.9537477499384733,image-level percentile bootstrap
+resnet50,0,test,150,balanced_accuracy,0.9308561808561808,0.8818650170487179,0.9722644710034862,image-level percentile bootstrap
+resnet50,0,test,150,macro_f1,0.9309418457648546,0.8808570885068645,0.9721123820033297,image-level percentile bootstrap
+resnet50,0,test,150,macro_ovr_auc,0.9930992961971389,0.9860430901476781,0.9981506586172317,image-level percentile bootstrap
+resnet50,0,test,150,binary_auc,0.9982098903557843,0.9940473602484471,1.0,image-level percentile bootstrap
+resnet50,0,test,150,multiclass_brier,0.10708190773485825,0.051460656262618545,0.1731506433133735,image-level percentile bootstrap
+resnet50,0,test,150,mean_ovr_brier,0.026770476933714562,0.012865164065654636,0.04328766082834337,image-level percentile bootstrap
+resnet50,0,test,150,binary_brier,0.01288657515406749,0.001362694831296214,0.030462519161267135,image-level percentile bootstrap
+resnet50,0,test,150,normal_f1,0.9380530973451328,0.8846153846153846,0.9787234042553191,image-level percentile bootstrap
+resnet50,0,test,150,osteofity_f1,0.9333333333333333,0.8763991439272338,0.975609756097561,image-level percentile bootstrap
+resnet50,0,test,150,parasyndesmofity_f1,0.9,0.7857142857142857,0.9787451150673033,image-level percentile bootstrap
+resnet50,0,test,150,syndesmofity_f1,0.9523809523809523,0.8694927536231883,1.0,image-level percentile bootstrap
+resnet50,0,test,150,normal_ovr_auc,0.9908133971291866,0.9791969713417281,0.9986964061519146,image-level percentile bootstrap
+resnet50,0,test,150,osteofity_ovr_auc,0.9895833333333333,0.9768637917325098,0.9985542907362523,image-level percentile bootstrap
+resnet50,0,test,150,parasyndesmofity_ovr_auc,0.9938461538461538,0.9821373626373626,1.0,image-level percentile bootstrap
+resnet50,0,test,150,syndesmofity_ovr_auc,0.9981543004798819,0.9920389208314905,1.0,image-level percentile bootstrap
+resnet50,1,val,95,accuracy,0.9263157894736842,0.8540601507668739,0.9698627810901742,Clopper-Pearson
+resnet50,1,val,95,unweighted_cohen_kappa,0.8926726920593931,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,balanced_accuracy,0.9374337572866984,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,macro_f1,0.9436492141253316,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,macro_ovr_auc,0.9904292110316938,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,binary_auc,0.994131455399061,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,multiclass_brier,0.11045823165426237,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,mean_ovr_brier,0.0276145579135656,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,binary_brier,0.01609547015734213,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,normal_f1,0.9166666666666666,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,osteofity_f1,0.9014084507042254,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,parasyndesmofity_f1,0.9565217391304348,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,syndesmofity_f1,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,normal_ovr_auc,0.9906803355079217,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,osteofity_ovr_auc,0.9840887174541948,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,parasyndesmofity_ovr_auc,0.9869477911646587,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,val,95,syndesmofity_ovr_auc,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,accuracy,0.9,0.840432114872423,0.9429425651637531,Clopper-Pearson
+resnet50,1,test,150,unweighted_cohen_kappa,0.8565965583173997,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,balanced_accuracy,0.8867303992303992,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,macro_f1,0.8881632550543199,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,macro_ovr_auc,0.989277465464481,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,binary_auc,0.9993287088834192,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,multiclass_brier,0.14320636857216407,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,mean_ovr_brier,0.03580159214304102,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,binary_brier,0.010077012988991546,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,normal_f1,0.9259259259259259,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,osteofity_f1,0.9009009009009009,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,parasyndesmofity_f1,0.8837209302325582,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,syndesmofity_f1,0.8421052631578947,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,normal_ovr_auc,0.9854545454545455,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,osteofity_ovr_auc,0.9776234567901235,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,parasyndesmofity_ovr_auc,0.9984615384615385,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,1,test,150,syndesmofity_ovr_auc,0.9955703211517165,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,accuracy,0.968421052631579,0.91047750201309,0.9934397082498416,Clopper-Pearson
+resnet50,2,val,95,unweighted_cohen_kappa,0.9539133247089261,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,balanced_accuracy,0.9644607843137255,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,macro_f1,0.9713574575634414,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,macro_ovr_auc,0.9958582723318553,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,binary_auc,0.9953051643192489,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,multiclass_brier,0.07710506510682835,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,mean_ovr_brier,0.019276266276707088,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,binary_brier,0.012831700443865031,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,normal_f1,0.9736842105263158,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,osteofity_f1,0.9552238805970149,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,parasyndesmofity_f1,0.9565217391304348,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,syndesmofity_f1,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,normal_ovr_auc,0.9981360671015844,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,osteofity_ovr_auc,0.9913211186113791,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,parasyndesmofity_ovr_auc,0.9939759036144578,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,val,95,syndesmofity_ovr_auc,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,accuracy,0.9466666666666667,0.8976181039766762,0.97669618980353,Clopper-Pearson
+resnet50,2,test,150,unweighted_cohen_kappa,0.9239688272191598,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,balanced_accuracy,0.940031265031265,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,macro_f1,0.9336112086112086,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,macro_ovr_auc,0.9953137755865596,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,binary_auc,0.9995524725889461,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,multiclass_brier,0.07797320089164282,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,mean_ovr_brier,0.01949330022291071,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,binary_brier,0.009515621573774093,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,normal_f1,0.972972972972973,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,osteofity_f1,0.9523809523809523,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,parasyndesmofity_f1,0.9,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,syndesmofity_f1,0.9090909090909091,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,normal_ovr_auc,0.9936842105263157,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,osteofity_ovr_auc,0.9928626543209876,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,parasyndesmofity_ovr_auc,0.9969230769230769,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,2,test,150,syndesmofity_ovr_auc,0.9977851605758582,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,accuracy,0.9368421052631579,0.8675872565115876,0.9764716142156938,Clopper-Pearson
+resnet50,3,val,95,unweighted_cohen_kappa,0.9082421120412106,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,balanced_accuracy,0.9301139374668785,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,macro_f1,0.9301139374668785,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,macro_ovr_auc,0.991455989780849,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,binary_auc,0.994131455399061,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,multiclass_brier,0.10933414009633916,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,mean_ovr_brier,0.027333535024084775,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,binary_brier,0.019187161608564738,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,normal_f1,0.9459459459459459,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,osteofity_f1,0.9411764705882353,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,parasyndesmofity_f1,0.9166666666666666,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,syndesmofity_f1,0.9166666666666666,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,normal_ovr_auc,0.993942218080149,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,osteofity_ovr_auc,0.9879459980713596,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,parasyndesmofity_ovr_auc,0.9859437751004017,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,val,95,syndesmofity_ovr_auc,0.9979919678714859,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,accuracy,0.9133333333333333,0.8563572767166129,0.9530447797605528,Clopper-Pearson
+resnet50,3,test,150,unweighted_cohen_kappa,0.8756377551020408,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,balanced_accuracy,0.9092652717652718,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,macro_f1,0.9136529910478509,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,macro_ovr_auc,0.9931903460294296,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,binary_auc,0.9964197807115686,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,multiclass_brier,0.11792308175197733,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,mean_ovr_brier,0.02948077043799433,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,binary_brier,0.022153704585505394,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,normal_f1,0.9107142857142857,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,osteofity_f1,0.9158878504672897,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,parasyndesmofity_f1,0.918918918918919,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,syndesmofity_f1,0.9090909090909091,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,normal_ovr_auc,0.991578947368421,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,osteofity_ovr_auc,0.9913194444444445,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,parasyndesmofity_ovr_auc,0.9957692307692307,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,3,test,150,syndesmofity_ovr_auc,0.994093761535622,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,accuracy,0.9789473684210527,0.9260134525711725,0.9974401820139384,Clopper-Pearson
+resnet50,4,val,95,unweighted_cohen_kappa,0.9693202002260618,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,balanced_accuracy,0.9724099099099099,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,macro_f1,0.978562920105505,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,macro_ovr_auc,0.9986582560460021,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,binary_auc,0.9988262910798122,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,multiclass_brier,0.05248595562129894,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,mean_ovr_brier,0.013121488905324736,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,binary_brier,0.01168955995387562,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,normal_f1,0.9863013698630136,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,osteofity_f1,0.9714285714285714,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,parasyndesmofity_f1,0.9565217391304348,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,syndesmofity_f1,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,normal_ovr_auc,0.9995340167753961,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,osteofity_ovr_auc,0.9971070395371263,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,parasyndesmofity_ovr_auc,0.997991967871486,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,val,95,syndesmofity_ovr_auc,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,accuracy,0.86,0.7939893108634507,0.9112017677435141,Clopper-Pearson
+resnet50,4,test,150,unweighted_cohen_kappa,0.7984644913627639,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,balanced_accuracy,0.8731541606541606,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,macro_f1,0.883449635915854,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,macro_ovr_auc,0.9892383732992795,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,binary_auc,0.9991049451778922,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,multiclass_brier,0.1922521417214738,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,mean_ovr_brier,0.04806303543036845,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,binary_brier,0.014020367911466623,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,normal_f1,0.8247422680412371,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,osteofity_f1,0.8387096774193549,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,parasyndesmofity_f1,0.8947368421052632,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,syndesmofity_f1,0.975609756097561,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,normal_ovr_auc,0.9822009569377991,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,osteofity_ovr_auc,0.9770447530864198,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,parasyndesmofity_ovr_auc,0.9980769230769231,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+resnet50,4,test,150,syndesmofity_ovr_auc,0.9996308600959763,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,0,val,95,accuracy,0.968421052631579,0.91047750201309,0.9934397082498416,Clopper-Pearson
+efficientnet_b0,0,val,95,unweighted_cohen_kappa,0.9544655695798051,0.8981841229090692,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,balanced_accuracy,0.9650569687334393,0.9144978408928701,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,macro_f1,0.9527798966180687,0.8868855408290199,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,macro_ovr_auc,0.998776960514068,0.9961316547727169,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,binary_auc,1.0,0.9999999999999999,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,multiclass_brier,0.06033334762235013,0.02079564860740119,0.10876711040843091,image-level percentile bootstrap
+efficientnet_b0,0,val,95,mean_ovr_brier,0.015083336905587535,0.005198912151850298,0.027191777602107725,image-level percentile bootstrap
+efficientnet_b0,0,val,95,binary_brier,0.01388108162458157,0.0017542442491626893,0.03027055528773021,image-level percentile bootstrap
+efficientnet_b0,0,val,95,normal_f1,0.9863013698630136,0.9512195121951219,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,osteofity_f1,0.9850746268656716,0.9491525423728814,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,parasyndesmofity_f1,0.9166666666666666,0.7619047619047619,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,syndesmofity_f1,0.9230769230769231,0.7856366459627329,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,normal_ovr_auc,0.9986020503261883,0.9940476190476191,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,osteofity_ovr_auc,0.9995178399228544,0.9971751412429378,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,parasyndesmofity_ovr_auc,0.9969879518072289,0.9870675660546351,1.0,image-level percentile bootstrap
+efficientnet_b0,0,val,95,syndesmofity_ovr_auc,1.0,0.9999999999999999,1.0,image-level percentile bootstrap
+efficientnet_b0,0,test,150,accuracy,0.9066666666666666,0.8483614686963519,0.9480298277055218,Clopper-Pearson
+efficientnet_b0,0,test,150,unweighted_cohen_kappa,0.8675580221997983,0.7971962153437923,0.9284054228428655,image-level percentile bootstrap
+efficientnet_b0,0,test,150,balanced_accuracy,0.9201178451178451,0.8722144943375003,0.9606411736007447,image-level percentile bootstrap
+efficientnet_b0,0,test,150,macro_f1,0.9064951352994831,0.8509222394460888,0.9526106829916399,image-level percentile bootstrap
+efficientnet_b0,0,test,150,macro_ovr_auc,0.9912138536334655,0.9830434516430039,0.9971133282131844,image-level percentile bootstrap
+efficientnet_b0,0,test,150,binary_auc,0.9993287088834191,0.997180218491774,1.0,image-level percentile bootstrap
+efficientnet_b0,0,test,150,multiclass_brier,0.1341099023008706,0.07691738418364105,0.2001829731205752,image-level percentile bootstrap
+efficientnet_b0,0,test,150,mean_ovr_brier,0.03352747557521765,0.019229346045910263,0.05004574328014379,image-level percentile bootstrap
+efficientnet_b0,0,test,150,binary_brier,0.02060243391928753,0.006975284283330181,0.03757531502277293,image-level percentile bootstrap
+efficientnet_b0,0,test,150,normal_f1,0.9038461538461539,0.8380952380952381,0.9572649572649573,image-level percentile bootstrap
+efficientnet_b0,0,test,150,osteofity_f1,0.9090909090909091,0.8461538461538461,0.96,image-level percentile bootstrap
+efficientnet_b0,0,test,150,parasyndesmofity_f1,0.9,0.7777777777777778,0.9787451150673033,image-level percentile bootstrap
+efficientnet_b0,0,test,150,syndesmofity_f1,0.9130434782608695,0.8062903225806451,0.9836065573770492,image-level percentile bootstrap
+efficientnet_b0,0,test,150,normal_ovr_auc,0.9919617224880383,0.9822208963574626,0.9986502043932229,image-level percentile bootstrap
+efficientnet_b0,0,test,150,osteofity_ovr_auc,0.9828317901234568,0.9656608745130745,0.9953319473361905,image-level percentile bootstrap
+efficientnet_b0,0,test,150,parasyndesmofity_ovr_auc,0.9915384615384615,0.971945519267457,1.0,image-level percentile bootstrap
+efficientnet_b0,0,test,150,syndesmofity_ovr_auc,0.9985234403839054,0.9942295018829167,1.0,image-level percentile bootstrap
+efficientnet_b0,1,val,95,accuracy,0.9263157894736842,0.8540601507668739,0.9698627810901742,Clopper-Pearson
+efficientnet_b0,1,val,95,unweighted_cohen_kappa,0.8928974069898534,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,balanced_accuracy,0.9086844197138315,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,macro_f1,0.9088432835820895,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,macro_ovr_auc,0.9913879843789353,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,binary_auc,0.994718309859155,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,multiclass_brier,0.12308785518364888,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,mean_ovr_brier,0.03077196379591222,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,binary_brier,0.031074267177673667,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,normal_f1,0.96,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,osteofity_f1,0.9253731343283582,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,parasyndesmofity_f1,0.8333333333333334,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,syndesmofity_f1,0.9166666666666666,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,normal_ovr_auc,0.9972041006523765,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,osteofity_ovr_auc,0.9884281581485053,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,parasyndesmofity_ovr_auc,0.9889558232931727,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,val,95,syndesmofity_ovr_auc,0.9909638554216867,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,accuracy,0.8933333333333333,0.8325636609592538,0.9377894259935293,Clopper-Pearson
+efficientnet_b0,1,test,150,unweighted_cohen_kappa,0.8479954398631958,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,balanced_accuracy,0.8888648388648389,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,macro_f1,0.8823140333900859,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,macro_ovr_auc,0.9876519710546,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,binary_auc,0.9966435444170956,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,multiclass_brier,0.16111025126157363,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,mean_ovr_brier,0.04027756281539341,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,binary_brier,0.024734165850765932,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,normal_f1,0.9158878504672897,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,osteofity_f1,0.8990825688073395,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,parasyndesmofity_f1,0.8571428571428571,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,syndesmofity_f1,0.8571428571428571,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,normal_ovr_auc,0.9864114832535886,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,osteofity_ovr_auc,0.9758873456790124,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,parasyndesmofity_ovr_auc,0.9938461538461538,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,1,test,150,syndesmofity_ovr_auc,0.9944629014396457,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,accuracy,0.968421052631579,0.91047750201309,0.9934397082498416,Clopper-Pearson
+efficientnet_b0,2,val,95,unweighted_cohen_kappa,0.9539803003390925,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,balanced_accuracy,0.9515765765765766,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,macro_f1,0.9567052125956236,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,macro_ovr_auc,0.9945414997246704,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,binary_auc,0.9947183098591549,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,multiclass_brier,0.07756313985899195,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,mean_ovr_brier,0.01939078496474799,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,binary_brier,0.015807491926660776,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,normal_f1,0.9863013698630136,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,osteofity_f1,0.9714285714285714,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,parasyndesmofity_f1,0.9090909090909091,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,syndesmofity_f1,0.96,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,normal_ovr_auc,0.9995340167753961,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,osteofity_ovr_auc,0.9946962391513983,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,parasyndesmofity_ovr_auc,0.9859437751004017,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,val,95,syndesmofity_ovr_auc,0.9979919678714859,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,accuracy,0.9066666666666666,0.8483614686963519,0.9480298277055218,Clopper-Pearson
+efficientnet_b0,2,test,150,unweighted_cohen_kappa,0.8658232700785892,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,balanced_accuracy,0.8884680134680134,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,macro_f1,0.8935635123614664,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,macro_ovr_auc,0.983957160913059,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,binary_auc,0.9805325576191541,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,multiclass_brier,0.1562722494604715,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,mean_ovr_brier,0.03906806236511788,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,binary_brier,0.03838628092210533,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,normal_f1,0.9333333333333333,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,osteofity_f1,0.9043478260869565,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,parasyndesmofity_f1,0.8235294117647058,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,syndesmofity_f1,0.9130434782608695,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,normal_ovr_auc,0.9917703349282296,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,osteofity_ovr_auc,0.9762731481481481,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,parasyndesmofity_ovr_auc,0.9699999999999999,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,2,test,150,syndesmofity_ovr_auc,0.9977851605758582,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,accuracy,0.9578947368421052,0.8956916268102718,0.9884103541006212,Clopper-Pearson
+efficientnet_b0,3,val,95,unweighted_cohen_kappa,0.9394422310756971,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,balanced_accuracy,0.9705882352941176,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,macro_f1,0.9518108974358974,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,macro_ovr_auc,0.9939476444270351,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,binary_auc,0.9988262910798122,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,multiclass_brier,0.08768461359060556,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,mean_ovr_brier,0.02192115339765139,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,binary_brier,0.02851764287471337,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,normal_f1,0.9866666666666667,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,osteofity_f1,0.9375,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,parasyndesmofity_f1,0.9230769230769231,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,syndesmofity_f1,0.96,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,normal_ovr_auc,0.9972041006523765,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,osteofity_ovr_auc,0.9836065573770492,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,parasyndesmofity_ovr_auc,0.9949799196787149,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,val,95,syndesmofity_ovr_auc,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,accuracy,0.88,0.8169911229752387,0.9273065333032355,Clopper-Pearson
+efficientnet_b0,3,test,150,unweighted_cohen_kappa,0.830081812460667,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,balanced_accuracy,0.9017676767676768,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,macro_f1,0.8850326754427147,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,macro_ovr_auc,0.9843342849200152,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,binary_auc,0.9959722533005148,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,multiclass_brier,0.18579267100787536,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,mean_ovr_brier,0.04644816775196883,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,binary_brier,0.038415265955076675,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,normal_f1,0.8737864077669902,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,osteofity_f1,0.8727272727272727,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,parasyndesmofity_f1,0.9,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,syndesmofity_f1,0.8936170212765957,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,normal_ovr_auc,0.9835406698564593,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,osteofity_ovr_auc,0.9637345679012345,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,parasyndesmofity_ovr_auc,0.9915384615384615,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,3,test,150,syndesmofity_ovr_auc,0.9985234403839054,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,accuracy,0.9578947368421052,0.8956916268102718,0.9884103541006212,Clopper-Pearson
+efficientnet_b0,4,val,95,unweighted_cohen_kappa,0.9387985182799161,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,balanced_accuracy,0.9436274509803921,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,macro_f1,0.9446030715985292,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,macro_ovr_auc,0.9945286610172637,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,binary_auc,0.9953051643192489,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,multiclass_brier,0.0768396842348774,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,mean_ovr_brier,0.019209921058719343,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,binary_brier,0.018115998212458764,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,normal_f1,0.9866666666666667,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,osteofity_f1,0.9552238805970149,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,parasyndesmofity_f1,0.88,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,syndesmofity_f1,0.9565217391304348,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,normal_ovr_auc,0.9962721342031686,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,osteofity_ovr_auc,0.9898746383799422,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,parasyndesmofity_ovr_auc,0.9919678714859438,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,val,95,syndesmofity_ovr_auc,1.0,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,accuracy,0.8933333333333333,0.8325636609592538,0.9377894259935293,Clopper-Pearson
+efficientnet_b0,4,test,150,unweighted_cohen_kappa,0.8480146919131151,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,balanced_accuracy,0.8821007696007697,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,macro_f1,0.8745726495726496,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,macro_ovr_auc,0.9896054087507193,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,binary_auc,0.9979861266502573,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,multiclass_brier,0.16684407500772616,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,mean_ovr_brier,0.04171101875193154,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,binary_brier,0.016607892196842642,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,normal_f1,0.9259259259259259,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,osteofity_f1,0.9074074074074074,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,parasyndesmofity_f1,0.8444444444444444,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,syndesmofity_f1,0.8205128205128205,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,normal_ovr_auc,0.9898564593301435,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,osteofity_ovr_auc,0.9855324074074074,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,parasyndesmofity_ovr_auc,0.991153846153846,,,point estimate; bootstrap CIs only for prespecified reference seed 0
+efficientnet_b0,4,test,150,syndesmofity_ovr_auc,0.9918789221114803,,,point estimate; bootstrap CIs only for prespecified reference seed 0

@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-10-04T21:07:54.372783+00:00",
+  "training_plan_sha256": "807f6fafe844636fc99d9ba4ec89c5fc4a8c8daa449b4b8eba3d64e1cf7c0024",
+  "clean_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+  "evaluation_script_sha256": "50f37e547b741f97295df291c64225a9b1d0acf96e186c6be3f7736be993e2b4",
+  "n_evaluated_runs": 20,
+  "bootstrap_replicates": 2000,
+  "bootstrap_scope": "All four models, validation and external test, reference seed 0 only. Other seeds receive point estimates and exact binomial CIs for proportions, plus five-seed summary statistics.",
+  "python": "3.13.15",
+  "numpy": "2.2.6",
+  "cohort_independence": "Image-level uncertainty assumes one independent patient per image; investigators must verify source-patient identity and cross-split separation.",
+  "primary_reference_model": "yolo11l-cls",
+  "primary_reference_seed": 0,
+  "external_test_previously_examined": true
+}

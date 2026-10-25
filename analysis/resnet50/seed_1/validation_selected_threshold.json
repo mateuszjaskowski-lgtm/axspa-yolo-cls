@@ -1,0 +1,10 @@
+{
+  "threshold": 0.7240967351244763,
+  "derivation_split": "val",
+  "criterion": "maximize sensitivity + specificity - 1",
+  "tie_rule": "highest threshold among maxima within absolute tolerance 1e-12",
+  "decision_rule": "sum(P(parasyndesmofity), P(syndesmofity)) >= threshold",
+  "max_youden": 0.9583333333333334,
+  "tied_candidate_count": 1,
+  "threshold_selection_uncertainty_in_test_ci": false
+}

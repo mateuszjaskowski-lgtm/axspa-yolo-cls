@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "author_clarification_date": "2026-10-06",
+  "study_design_path": "study_design.json",
+  "study_design_sha256": "121c944bb74d7f9fbf353b388a47df99f8003fe3c872e29bfae2555ffe88bb6f",
+  "authority": "Explicit author clarification; the old true flag was a hardcoded assistant-generated descriptive statement, not observed/log-derived evidence. This correction does not establish historical chronology from code alone.",
+  "old_statement": "Split/external-use descriptions in assistant-produced technical metadata were inaccurate or insufficiently scoped.",
+  "current_statement": {
+    "split": {
+      "method": "manual_numeric_range_selection_within_each_class",
+      "randomized": false,
+      "content_independent": true,
+      "fixed_before_first_training": true,
+      "reallocated_based_on_model_outputs": false,
+      "assignment_source": "Existing accepted clean_manifest.csv; no new split is generated.",
+      "clean_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+      "counts": {
+        "train": 579,
+        "val": 95,
+        "test": 150
+      }
+    },
+    "original_study": {
+      "scope": "Before the original planned final external evaluation",
+      "external_test_previously_examined": false,
+      "evidence_type": "author_confirmation",
+      "primary_model": "yolo11l-cls",
+      "reference_seed": 0,
+      "external_test_used_for_model_development_before_final_evaluation": false
+    },
+    "future_reproduction": {
+      "scope": "Any rerun after the original evaluation of this same cohort",
+      "external_test_previously_examined": true,
+      "evaluation_role": "reproduction_on_previously_evaluated_cohort",
+      "claim_of_new_untouched_external_validation": false
+    }
+  },
+  "retained_original_fields": [
+    {
+      "path": "runs/training_plan.json",
+      "original_file_sha256": "807f6fafe844636fc99d9ba4ec89c5fc4a8c8daa449b4b8eba3d64e1cf7c0024",
+      "json_pointer": "/external_test_previously_examined",
+      "retained_original_value": true,
+      "corrected_interpretation": "Original-study external cohort unused before its planned final evaluation (author confirmed); interpret as false in original_study scope. No inference of chronology from the old flag.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "analysis/evaluation_freeze.json",
+      "original_file_sha256": "44cba1c0a581ca65dee5813ea3e2ba459901d182a4a850abcff84794e7a458f3",
+      "json_pointer": "/external_test_previously_examined",
+      "retained_original_value": true,
+      "corrected_interpretation": "Original-study external cohort unused before its planned final evaluation (author confirmed); interpret as false in original_study scope. No inference of chronology from the old flag.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "analysis/evaluation_freeze.json",
+      "original_file_sha256": "44cba1c0a581ca65dee5813ea3e2ba459901d182a4a850abcff84794e7a458f3",
+      "json_pointer": "/interpretation",
+      "retained_original_value": "Revised exploratory benchmark on an external cohort whose prior results have already been examined.",
+      "corrected_interpretation": "Author-confirmed held-out original external evaluation; future reproductions are separately labeled as already evaluated.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "analysis/analysis_complete.json",
+      "original_file_sha256": "d0ce4fcd928a5b75856d98b5448efdb2537ec3f36f5be0092668bc65e513a306",
+      "json_pointer": "/external_test_previously_examined",
+      "retained_original_value": true,
+      "corrected_interpretation": "Original-study external cohort unused before its planned final evaluation (author confirmed); interpret as false in original_study scope. No inference of chronology from the old flag.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "analysis/paired_comparisons_seed0.json",
+      "original_file_sha256": "58bc1579e084b69fcc2c92176dc7b4dbef15d47f36f46b9d23d0ecebf9ca1f6b",
+      "json_pointer": "/family",
+      "retained_original_value": "Three prespecified YOLO11-versus-comparator tests on the external cohort; exploratory",
+      "corrected_interpretation": "Retain original statistical output. The preplanned paired accuracy tests and primary accuracy must be distinguished from pointwise secondary intervals and qualitative CAM; no prior-test-exposure rationale.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "analysis/paired_comparisons_seed0.json",
+      "original_file_sha256": "58bc1579e084b69fcc2c92176dc7b4dbef15d47f36f46b9d23d0ecebf9ca1f6b",
+      "json_pointer": "/results/0/exploratory",
+      "retained_original_value": true,
+      "corrected_interpretation": "Retain original statistical output. The preplanned paired accuracy tests and primary accuracy must be distinguished from pointwise secondary intervals and qualitative CAM; no prior-test-exposure rationale.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "analysis/paired_comparisons_seed0.json",
+      "original_file_sha256": "58bc1579e084b69fcc2c92176dc7b4dbef15d47f36f46b9d23d0ecebf9ca1f6b",
+      "json_pointer": "/results/1/exploratory",
+      "retained_original_value": true,
+      "corrected_interpretation": "Retain original statistical output. The preplanned paired accuracy tests and primary accuracy must be distinguished from pointwise secondary intervals and qualitative CAM; no prior-test-exposure rationale.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "analysis/paired_comparisons_seed0.json",
+      "original_file_sha256": "58bc1579e084b69fcc2c92176dc7b4dbef15d47f36f46b9d23d0ecebf9ca1f6b",
+      "json_pointer": "/results/2/exploratory",
+      "retained_original_value": true,
+      "corrected_interpretation": "Retain original statistical output. The preplanned paired accuracy tests and primary accuracy must be distinguished from pointwise secondary intervals and qualitative CAM; no prior-test-exposure rationale.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "eigen_cam/eigen_cam_provenance.json",
+      "original_file_sha256": "8d17339a5acf774519e33a51b860f7ba2fdd90d97b5e79d4b28e83be85ffc439",
+      "json_pointer": "/evaluation_provenance/external_test_previously_examined",
+      "retained_original_value": true,
+      "corrected_interpretation": "Original-study external cohort unused before its planned final evaluation (author confirmed); interpret as false in original_study scope. No inference of chronology from the old flag.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "eigen_cam/replay_verification.json",
+      "original_file_sha256": "2d06126a889fc4278ad091cdf3d8d50926e69fad0ad410489437a0192670eac4",
+      "json_pointer": "/evaluation_provenance/external_test_previously_examined",
+      "retained_original_value": true,
+      "corrected_interpretation": "Original-study external cohort unused before its planned final evaluation (author confirmed); interpret as false in original_study scope. No inference of chronology from the old flag.",
+      "original_bytes_modified": false
+    },
+    {
+      "path": "provenance/original_external_evaluation_started.json",
+      "original_file_sha256": "fe298a4e328fd669ad1a1907b3bb39b64362a3a2f96dd97efbc460c7d8ec4d83",
+      "json_pointer": "/external_test_previously_examined",
+      "retained_original_value": true,
+      "corrected_interpretation": "Original-study external cohort unused before its planned final evaluation (author confirmed); interpret as false in original_study scope. No inference of chronology from the old flag.",
+      "original_bytes_modified": false
+    }
+  ],
+  "derived_active_sources": [
+    {
+      "active_path": "code/train_models.py",
+      "active_sha256": "2386fd1fbf253e58d577d891dc34d4ef369fbb35aa51d72561fb33a7392a17e1",
+      "original_path": "provenance/original_code/train_models.py",
+      "original_sha256": "fbc3425fd99b52cf5e201900f23b6d797015c71499b88ce7d0cac34cab12db1e"
+    },
+    {
+      "active_path": "code/evaluate_models.py",
+      "active_sha256": "8b4b02eb1a8765693c9cefcab5181d9bbda5a99ffc6686b7227cb1b2cb127e59",
+      "original_path": "provenance/original_code/evaluate_models.py",
+      "original_sha256": "50f37e547b741f97295df291c64225a9b1d0acf96e186c6be3f7736be993e2b4"
+    },
+    {
+      "active_path": "code/eigen_cam.py",
+      "active_sha256": "70f66b92dc2145ae8ed8cd45cd11b12bc022c3d2b7477a886c2636b552ed8e32",
+      "original_path": "provenance/original_code/eigen_cam.py",
+      "original_sha256": "e159f0bcfede0da4ce3348ca54f444de934b2b015cb42a5f577bc1f76dda78cb"
+    },
+    {
+      "active_path": "code/eigen_cam_replay.py",
+      "active_sha256": "d0c0e653b945a619901018008ed2f8367302481bebf8e0f949984e73f5038a3a",
+      "original_path": "provenance/original_code/eigen_cam_replay.py",
+      "original_sha256": "7a0b9deb225e36c8b426f6fc2dbf6cd993187733783db3625c8ec44a37a1020c"
+    },
+    {
+      "active_path": "code/trainer_notes.txt",
+      "active_sha256": "051bea78f18b9d8cc517cb3eef1546d46d795394f203093ded43f7ab6277d5eb",
+      "original_path": "provenance/original_code/trainer_notes.txt",
+      "original_sha256": "2005c62a9f92fd4f974f19e815c5ef59f5a7a9833237fa4f7bf6bb537d814ed0"
+    }
+  ],
+  "helper_path": "code/study_design.py",
+  "helper_sha256": "981f97151b30a8f1b9dbbd51f03ccabac2b5591000b18bd29603bf6fdd69e3d6",
+  "tests_path": "code/test_study_design.py",
+  "tests_sha256": "233d850f47ce1c37f76251a7f430073ff83a96250f1c1db0f502e4e3256ce110",
+  "compatibility": "Only exact registered original plan/evaluation/lock hashes receive a descriptive interpretation correction. Active plans bind the explicit design and helper hashes. Canonical protocol, all checkpoint/run metadata and clean-manifest constraints remain enforced. Unknown/changed legacy files are rejected. Completed evaluation output directories are immutable. Original checkpoint replay requires original_code.",
+  "numerical_changes": false,
+  "training_performed": false,
+  "inference_performed": false,
+  "notebook_record": "provenance/notebook_code_integrity.json",
+  "validation": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s code -p test_study_design.py -v",
+    "tests_passed": 8,
+    "scope": "Metadata/legacy guards, synthetic checkpoint hash guard test, AST identity of unchanged scientific functions. No model or image data loaded."
+  },
+  "note": "Original archived/publication numerical outputs and source artifacts are not rewritten; this is an additive, reversible descriptive correction.",
+  "helper_previous_sha256": "218300b6a46138fd1cb0bd4785b57da3d065169de22d45f36e510f7c38df40f2",
+  "subsequent_registered_input_variant": {
+    "date": "2026-10-25",
+    "record": "provenance/png_byte_variant_registration_2026-10-25.json",
+    "previous_record": "provenance/before_png_variant_20261025/provenance/study_design_correction.json",
+    "scope": "Current helper additionally accepts exactly the registered RGB-equivalent manifest for future_reproduction only; original-study hashes/scope remain unchanged."
+  }
+}

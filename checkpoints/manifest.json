@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "scope": "20 selected checkpoints used for the published revision analysis; hashes identify exact bytes, not equivalent retrained models.",
+  "primary_model": "yolo11l-cls",
+  "primary_seed": 0,
+  "location_policy": "Checkpoint binaries are distributed separately from the Git source tree. Resolve the exact archive names below from the associated research-materials deposit or request them from the corresponding author.",
+  "archive_locator": null,
+  "contact": "mjaskowski@zoz.konskie.pl",
+  "checkpoints": [
+    {
+      "model": "yolo11l-cls",
+      "seed": 0,
+      "path": "runs/yolo11l-cls/seed_0/selected.pt",
+      "sha256": "2ef70f6c73c43970cbaebed2884e71b1cd374b1545d5239abe6f2243e75c5ac6",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_01_of_04.zip"
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 1,
+      "path": "runs/yolo11l-cls/seed_1/selected.pt",
+      "sha256": "270958659e7a601c00eba5bc9e33d4c9510293caafe7a42139fe913340143aab",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_01_of_04.zip"
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 2,
+      "path": "runs/yolo11l-cls/seed_2/selected.pt",
+      "sha256": "8c2e82d5ec3c11b5ec87cd5e1a96541a98b17db8e70d0c488619b6022f117d16",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_01_of_04.zip"
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 3,
+      "path": "runs/yolo11l-cls/seed_3/selected.pt",
+      "sha256": "27e4cf816f39650aa3681b284f278a3acd9d6f72915cf311d3462d9179c8b348",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_01_of_04.zip"
+    },
+    {
+      "model": "yolo11l-cls",
+      "seed": 4,
+      "path": "runs/yolo11l-cls/seed_4/selected.pt",
+      "sha256": "6d4e82012b69132237a46f115eba53f82517516718d78e591a579818ece14ba9",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_01_of_04.zip"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 0,
+      "path": "runs/yolo26l-cls/seed_0/selected.pt",
+      "sha256": "bf89d3ce0bd13b45c58382505da67e55f61b32f2b1627a8277f07074dfb4cb4d",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_01_of_04.zip"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 1,
+      "path": "runs/yolo26l-cls/seed_1/selected.pt",
+      "sha256": "61170d34f29e28558f2ae64aea5d89de5ecc0c4c530e10bdc6dd30ccf7a5e34a",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_02_of_04.zip"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 2,
+      "path": "runs/yolo26l-cls/seed_2/selected.pt",
+      "sha256": "0ab66c76e8392a5dfb5bc2c3e2cf257c300feadabd35955d793044faebc6f1c8",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_02_of_04.zip"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 3,
+      "path": "runs/yolo26l-cls/seed_3/selected.pt",
+      "sha256": "00f1b91c316ccbf5691791f543dc728a4da177eef3e75c08e166913e045f48d9",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_02_of_04.zip"
+    },
+    {
+      "model": "yolo26l-cls",
+      "seed": 4,
+      "path": "runs/yolo26l-cls/seed_4/selected.pt",
+      "sha256": "3da1374dcf0c5ec867f47daf4eda2206a912af01d34cfb234233c171177cdf7b",
+      "bytes": 51708917,
+      "archive": "axspa_checkpoint_part_02_of_04.zip"
+    },
+    {
+      "model": "resnet50",
+      "seed": 0,
+      "path": "runs/resnet50/seed_0/selected.pt",
+      "sha256": "6f153d43b1d56de83cde766c3bbdf8553726afa6100d6b140de9107f10270cc2",
+      "bytes": 94385367,
+      "archive": "axspa_checkpoint_part_02_of_04.zip"
+    },
+    {
+      "model": "resnet50",
+      "seed": 1,
+      "path": "runs/resnet50/seed_1/selected.pt",
+      "sha256": "4b1a2733d8e9d9756ccacb3cb5f736b152f33ec39bc2f55a06e746556383b1b9",
+      "bytes": 94385367,
+      "archive": "axspa_checkpoint_part_03_of_04.zip"
+    },
+    {
+      "model": "resnet50",
+      "seed": 2,
+      "path": "runs/resnet50/seed_2/selected.pt",
+      "sha256": "ab30611766c33b17b806fb9b8165e1bc8217aae2943e54b464d6168b90909c2b",
+      "bytes": 94385367,
+      "archive": "axspa_checkpoint_part_03_of_04.zip"
+    },
+    {
+      "model": "resnet50",
+      "seed": 3,
+      "path": "runs/resnet50/seed_3/selected.pt",
+      "sha256": "7346cf9239ea92a7ec2d09dbebe03617a02cb11a5d3e1e0fe919eacb0ebedcb6",
+      "bytes": 94385367,
+      "archive": "axspa_checkpoint_part_03_of_04.zip"
+    },
+    {
+      "model": "resnet50",
+      "seed": 4,
+      "path": "runs/resnet50/seed_4/selected.pt",
+      "sha256": "86b3b48683c476612fd5fb5488ddd9d526b46ab71729dc4983c3863707d19bb2",
+      "bytes": 94385367,
+      "archive": "axspa_checkpoint_part_04_of_04.zip"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 0,
+      "path": "runs/efficientnet_b0/seed_0/selected.pt",
+      "sha256": "14b0deaa5b2bf860cb1d47b8ecaa93df64240ddd52a2e895e63715ce427d2676",
+      "bytes": 16351719,
+      "archive": "axspa_checkpoint_part_04_of_04.zip"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 1,
+      "path": "runs/efficientnet_b0/seed_1/selected.pt",
+      "sha256": "30dea23a38c151cea83edd921e8ad03c7c89841e40c5a7d1fda67eaf29daf542",
+      "bytes": 16351719,
+      "archive": "axspa_checkpoint_part_04_of_04.zip"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 2,
+      "path": "runs/efficientnet_b0/seed_2/selected.pt",
+      "sha256": "5fb073a590c4bdb0c925393382b4ae24c7cdaea19ddd0f24f79f79f095f7a79b",
+      "bytes": 16351719,
+      "archive": "axspa_checkpoint_part_04_of_04.zip"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 3,
+      "path": "runs/efficientnet_b0/seed_3/selected.pt",
+      "sha256": "954d6f882eb2043f325c5dfb543fed6fc42870d2148965f4acca8be180a22ddf",
+      "bytes": 16351719,
+      "archive": "axspa_checkpoint_part_04_of_04.zip"
+    },
+    {
+      "model": "efficientnet_b0",
+      "seed": 4,
+      "path": "runs/efficientnet_b0/seed_4/selected.pt",
+      "sha256": "7621a866080af8e1800efe3b92aee1debdd5455bc7b671d26b1c26bf77fbe1da",
+      "bytes": 16351719,
+      "archive": "axspa_checkpoint_part_04_of_04.zip"
+    }
+  ],
+  "archives": [
+    {
+      "name": "axspa_checkpoint_part_01_of_04.zip",
+      "bytes": 310255632,
+      "sha256": "ec644005e56b0b68111ec637d0bc8b51d35bc28220f716aebd98b9f35b07922b"
+    },
+    {
+      "name": "axspa_checkpoint_part_02_of_04.zip",
+      "bytes": 301222826,
+      "sha256": "e7c1b792f33e1994d02ed142a99991ab72337f6b909e0c61de303070767408a4"
+    },
+    {
+      "name": "axspa_checkpoint_part_03_of_04.zip",
+      "bytes": 283157214,
+      "sha256": "4af6824397fee833da9a74a60a4653a22c84d5ff87eb14c9b84f8b706ad3cf96"
+    },
+    {
+      "name": "axspa_checkpoint_part_04_of_04.zip",
+      "bytes": 176792028,
+      "sha256": "c4def723ecb5fb4dfb782934f3e99cac603535d2c4aeda46b05bf9d83247f512"
+    }
+  ]
+}

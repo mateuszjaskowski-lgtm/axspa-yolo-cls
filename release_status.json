@@ -1,0 +1,15 @@
+{
+  "materials_version": "2.0.0",
+  "documentation_updated": "2026-10-25",
+  "manuscript_coordinated_update_completed": "2026-10-06",
+  "new_zenodo_version_doi": "10.5281/zenodo.23649843",
+  "checkpoint_archive_locator": null,
+  "old_plot_adapter_publication_status_is_historical": true,
+  "figure5_source_verification": "eigen_cam/source_png_verification_2026-10-25.json",
+  "scope": "Corrected author-confirmed independent pre-consensus reader ratings and recomputed reader-agreement statistics; no retraining, new inference, consensus-label changes, dataset reassignment or model-result changes.",
+  "github_release": "v2.0.0",
+  "full_png_archive_verification": "provenance/png_byte_variant_verification_2026-10-25.json",
+  "png_byte_variant_registration": "provenance/png_byte_variant_registration_2026-10-25.json",
+  "final_scientific_audit": "Corrected reader ratings and all three 10000-draw bootstrap intervals independently verified; all consensus labels and model outputs unchanged.",
+  "reader_agreement_source": "analysis/reader_agreement_summary.json"
+}

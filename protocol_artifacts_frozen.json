@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-10-04T13:37:38.521907+00:00",
+  "artifacts": {
+    "code_sha256": {
+      "eigen_cam.py": "e159f0bcfede0da4ce3348ca54f444de934b2b015cb42a5f577bc1f76dda78cb",
+      "evaluate_models.py": "50f37e547b741f97295df291c64225a9b1d0acf96e186c6be3f7736be993e2b4",
+      "original_manifest.csv": "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746",
+      "prepare_data.py": "4ed7d4cc66148fc1c917c41797433d7b8cc8886d585b2a148071b9cf7c6e024e",
+      "preview_training_inputs.py": "1a5c92fd646779f586515678cbaccfa1582d92db426b740ab4dedd07c6feb718",
+      "spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+      "test_evaluation.py": "f6def3b89a9e6275d15cc56497a89a89791ba30e9286c904fbaeb2286827595d",
+      "train_models.py": "fbc3425fd99b52cf5e201900f23b6d797015c71499b88ce7d0cac34cab12db1e",
+      "trainer_notes.txt": "2005c62a9f92fd4f974f19e815c5ef59f5a7a9833237fa4f7bf6bb537d814ed0"
+    },
+    "clean_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+    "evaluation_config": {
+      "bootstrap_replicates": 2000,
+      "batch_size": 32,
+      "reference_model": "yolo11l-cls",
+      "reference_seed": 0
+    },
+    "runtime": {
+      "python": "3.13.15",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "torchvision": "0.26.0+cu128",
+        "ultralytics": "8.4.163",
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "pandas": "2.2.3",
+        "scikit-learn": "1.8.0",
+        "matplotlib": "3.10.7",
+        "pillow": "11.3.0",
+        "opencv-python": "5.0.0.93"
+      },
+      "torch_cuda": "12.8",
+      "cudnn": 91900,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "gpu_total_bytes": 85094825984,
+      "gpu_capability": [
+        8,
+        0
+      ]
+    },
+    "experiment": "Full outlined PNG field preserved; new cleaned-data revision experiment"
+  }
+}

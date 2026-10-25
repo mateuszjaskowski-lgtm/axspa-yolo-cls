@@ -1,0 +1,17 @@
+{
+  "model": "efficientnet_b0",
+  "seed": 1,
+  "protocol_sha256": "2bdc54f59222462b2626cd8e1c5a49c5fec6a71590e261b6574be40ffcff95b2",
+  "started_utc": "2026-10-04T20:11:54.805674+00:00",
+  "pretrained": {
+    "model": "efficientnet_b0",
+    "filename": "efficientnet_b0_imagenet.pth",
+    "sha256": "7f5810bc96def8f7552d5b7e68d53c4786f81167d28291b21c0d90e1fca14934",
+    "source": "https://download.pytorch.org/models/efficientnet_b0_rwightman-7f5810bc.pth",
+    "weight_enum": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+    "pretrained_class_count": 1000,
+    "downloaded_utc": "2026-10-04T13:38:19.209614+00:00"
+  },
+  "status": "training",
+  "external_test_access": false
+}
