@@ -1,0 +1,5 @@
+{
+  "transform_repr": "Compose(\n    SpineResizePad(size=640, interpolation=BILINEAR, fill=(0,0,0), crop=False)\n    ToTensor()\n    Normalize(mean=[0, 0, 0], std=[1, 1, 1])\n)",
+  "backend": "ultralytics",
+  "whole_png_aspect_preserving_pad_640_verified": true
+}

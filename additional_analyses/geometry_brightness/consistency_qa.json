@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "all_824_unique_rows_original_hashes_checked_during_feature_extraction": true,
+  "saved_model_coefficients_reproduce_all_824_probability_vectors": true,
+  "max_probability_round_trip_absolute_difference": 2.7755575615628914e-16,
+  "saved_model_reproduces_all_predictions": true,
+  "split_sizes_preserved": true,
+  "reported_correct_counts_verified": true,
+  "frozen_plan_sha256_still_matches": true,
+  "executed_code_sha256_still_matches": true,
+  "canonical_artifacts_modified": false
+}

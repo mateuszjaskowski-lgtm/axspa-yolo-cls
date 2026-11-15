@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "scientific_interpretation_allowed": true,
+  "n": 150,
+  "original_replay_max_abs": 0.0,
+  "conditions": {
+    "original": {
+      "correct": 138,
+      "accuracy": 0.92,
+      "wilson_ci": [
+        0.8653786362494686,
+        0.953646358481347
+      ],
+      "balanced_accuracy": 0.9369107744107743,
+      "macro_f1": 0.9265246015246016,
+      "unweighted_cohen_kappa": 0.8861911987860395,
+      "mean_max_probability": 0.9620605349540711
+    },
+    "fixed_gray_128": {
+      "correct": 55,
+      "accuracy": 0.36666666666666664,
+      "wilson_ci": [
+        0.29377444565332833,
+        0.4462176195114921
+      ],
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.13414634146341464,
+      "unweighted_cohen_kappa": 0.0,
+      "mean_max_probability": 0.9451985335350037
+    },
+    "per_image_mean_gray": {
+      "correct": 55,
+      "accuracy": 0.36666666666666664,
+      "wilson_ci": [
+        0.29377444565332833,
+        0.4462176195114921
+      ],
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.13414634146341464,
+      "unweighted_cohen_kappa": 0.0,
+      "mean_max_probability": 0.9346493017673493
+    }
+  },
+  "checks": [
+    "CRC and file hashes",
+    "frozen code/plan/checkpoint identity",
+    "original PNG identities",
+    "GPU CUDA12.8 runtime",
+    "150 original decisions and probability gate",
+    "450 predictions CSV/NPZ",
+    "sklearn point metrics and Wilson intervals",
+    "paired bootstrap independently recomputed",
+    "300 geometry/gray transformations"
+  ],
+  "caveat": "Artifact consistency does not prove absence of shortcut learning; apply the frozen OOD interpretation limits."
+}

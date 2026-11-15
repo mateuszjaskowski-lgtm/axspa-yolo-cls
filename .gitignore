@@ -8,6 +8,9 @@ __pycache__/
 *.npz
 !analysis/**/val_predictions.npz
 !analysis/**/test_predictions.npz
+!additional_analyses/shape_sensitivity/gpu_results/*_predictions.npz
+!additional_analyses/shape_sensitivity/prior_cpu_attempt/results/original_predictions.npz
+!additional_analyses/shape_sensitivity/reference_source/analysis/yolo11l-cls/seed_0/test_predictions.npz
 private_data/
 private_cam_replay/
 reproduced_analysis/

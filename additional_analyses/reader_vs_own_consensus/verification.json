@@ -1,0 +1,10 @@
+{
+  "M.P.": {
+    "accuracy_kappa_confusion": "Matched scikit-learn within 1e-14.",
+    "wilson_ci": "Matched independent numerical inversion of binomial score test using scipy.optimize.brentq within 1e-14."
+  },
+  "P.G.": {
+    "accuracy_kappa_confusion": "Matched scikit-learn within 1e-14.",
+    "wilson_ci": "Matched independent numerical inversion of binomial score test using scipy.optimize.brentq within 1e-14."
+  }
+}

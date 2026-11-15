@@ -1,0 +1,84 @@
+{
+  "date": "2026-11-01",
+  "scope": "Current descriptive materials now use the author-confirmed study cohort. Original experimental evidence is not reinterpreted as clinical cohort history.",
+  "counts": {
+    "Lodz": 674,
+    "train": 579,
+    "val": 95,
+    "Konskie_external": 150,
+    "total": 824,
+    "assessed": 879,
+    "excluded": 55
+  },
+  "new_training_or_inference": false,
+  "dataset_memberships_labels_predictions_or_weights_changed": false,
+  "active_notebook_code_cells_unchanged": true,
+  "active_notebook_markdown_changed_cells": [
+    7
+  ],
+  "figure_S1_graphic_regenerated": false,
+  "figure_S1_reason": "Existing artwork already shows the correct flow without the removed descriptive narrative.",
+  "current_documentation_and_caption_changes": [
+    {
+      "path": "README.md",
+      "before_sha256": "d87bd00627f858234181d9b31db4a70c83626cbcd075d591bd9d2573d651919b",
+      "after_sha256": "a045598c2715b53b1306639c8f65d2cf6ba066b9a13c744690723bf62ba9dddc"
+    },
+    {
+      "path": "REVISION_ADDENDUM_2026-11-01.md",
+      "before_sha256": "a11077c8268a8c232a398a782523660d2ea255c9c30740bf19e0e5c3819d131f",
+      "after_sha256": "f7321a55d445483cb84dff61c7fa94ed6fd88be3e61c2093ca7e29ebf538a200"
+    },
+    {
+      "path": "code/build_publication_figures.py",
+      "before_sha256": "662dd55353bd18f010b4d1df420269a009335e96461874a7ca0decd20e2f5c8d",
+      "after_sha256": "f678ccf94c918e43b19f53ad66987e8017e79821d18644ffe9d3cd21c349eb16"
+    },
+    {
+      "path": "code/render_cohort_flow.py",
+      "before_sha256": "471dcb093a3a45f81be315d56f77b8c2138705dd6ece4e0d74ad6abbc0c0577d",
+      "after_sha256": "a01773b132a4e89e7fa01b76dd9af43a8193d004ad9f203ee24428ba17dd7dc4"
+    },
+    {
+      "path": "code/trainer_notes.txt",
+      "before_sha256": "051bea78f18b9d8cc517cb3eef1546d46d795394f203093ded43f7ab6277d5eb",
+      "after_sha256": "5710195492d343a93d6d320cdf8248d479a2ce5748aadbf8be4b87e1e963331d"
+    },
+    {
+      "path": "cohort_clarification_2026-11-01.json",
+      "before_sha256": "5d0b9c0358ab23864e0b86cd439bf09b765e3f6f1889946c78bf2622da53a821",
+      "after_sha256": "1624abf2ecc9cc1e74055909d55bed0f6b3b04ffcac602db9d199e73e67cf79b"
+    },
+    {
+      "path": "data/README.md",
+      "before_sha256": "d6a5fd77e717e5673f3c9851561bb0841c3f639a484476906948d57602518059",
+      "after_sha256": "e0ab911db4f2a084d82f244b2907aa127897818598822eea95ae609868ae3a21"
+    },
+    {
+      "path": "model_card.md",
+      "before_sha256": "74cde3a70ac0fd4cbce570a0f6e3074b60d4a9509d6eaac828a279613f456ae6",
+      "after_sha256": "487016b4a733bb96840f96c595a3ecc4db6950d69b05e312bd5a355188c59bd1"
+    },
+    {
+      "path": "notebooks/axspa_clean_retraining.ipynb",
+      "before_sha256": "c0c212c4714dec54427d810f18e13d79d4395ef01982ef4f4deb0076b4e8eadd",
+      "after_sha256": "a546ed43134a9fe43e960a6729cac03df53f9ecc95d01d33d29cff09f9756f13"
+    }
+  ],
+  "notebook_privacy_review": {
+    "status": "PASS",
+    "notebook_sha256": "cc3240a8155495fa31105988b8e37de3eeada6108a48cc0c1eed382bcda205e3",
+    "outputs": "plain text streams only",
+    "embedded_medical_image_pixels": false,
+    "embedded_checkpoint_bytes": false,
+    "credentials_or_account_specific_upload_urls": false,
+    "url_classes": [
+      "PyTorch package index",
+      "Ultralytics public documentation",
+      "generic Colab localhost metadata"
+    ],
+    "artifact_bytes_unchanged": true
+  },
+  "public_version_and_doi_unchanged": true,
+  "public_repository_and_zenodo_mutated": false
+}

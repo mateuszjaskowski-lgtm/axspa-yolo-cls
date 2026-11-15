@@ -1,0 +1,136 @@
+{
+  "analysis": "Exploratory descriptive initial reader-versus-consensus agreement",
+  "cohort": "Konskie external, n=150",
+  "source_file": "/workspace/scratch/12793bdc6888/release_2026-10-25/repo/data/reader_ratings.csv",
+  "source_sha256": "0381c83dae0151230bc07928488e372bc359a0a087edc4f9cdd9c0be65c793b9",
+  "source_status": "Corrected initial independent pre-consensus readings confirmed by the author; consensus labels unchanged.",
+  "label_order": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "class_order": [
+    "normal",
+    "osteophytes",
+    "parasyndesmophytes",
+    "syndesmophytes"
+  ],
+  "method": {
+    "accuracy": "Number of initial labels equal to final consensus / 150.",
+    "accuracy_interval": "Two-sided 95% Wilson score interval, no continuity correction; z=NormalDist().inv_cdf(0.975).",
+    "kappa": "Nominal unweighted Cohen kappa; observed and chance-expected agreement from the 4x4 table.",
+    "confusion_orientation": "Rows: final consensus; columns: initial reader label.",
+    "interval_scope": "Binomial interval conditional on the co-created reference; assumes independent underlying cases. Does not remove dependence of the reference on reader judgments."
+  },
+  "interpretation": "Descriptive agreement with consensus co-created by the same reader; dependent reference/incorporation bias, not an independent human benchmark. No comparison with model performance, p-values, or noninferiority claims.",
+  "statistics": {
+    "M.P.": {
+      "n": 150,
+      "matches_consensus": 142,
+      "differs_from_consensus": 8,
+      "accuracy_against_co_created_consensus": 0.9466666666666667,
+      "accuracy_wilson_95_ci": [
+        0.8982961216180454,
+        0.9727304600798061
+      ],
+      "unweighted_cohen_kappa": 0.9241562381494121,
+      "chance_expected_agreement": 0.2968,
+      "consensus_counts": [
+        55,
+        54,
+        20,
+        21
+      ],
+      "initial_reader_counts": [
+        53,
+        53,
+        23,
+        21
+      ],
+      "confusion_consensus_rows_initial_reader_columns": [
+        [
+          52,
+          2,
+          1,
+          0
+        ],
+        [
+          1,
+          51,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          19,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          20
+        ]
+      ]
+    },
+    "P.G.": {
+      "n": 150,
+      "matches_consensus": 143,
+      "differs_from_consensus": 7,
+      "accuracy_against_co_created_consensus": 0.9533333333333334,
+      "accuracy_wilson_95_ci": [
+        0.9068135276008726,
+        0.977213450838738
+      ],
+      "unweighted_cohen_kappa": 0.9336450960566229,
+      "chance_expected_agreement": 0.2967111111111111,
+      "consensus_counts": [
+        55,
+        54,
+        20,
+        21
+      ],
+      "initial_reader_counts": [
+        52,
+        54,
+        24,
+        20
+      ],
+      "confusion_consensus_rows_initial_reader_columns": [
+        [
+          52,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          51,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          20,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          20
+        ]
+      ]
+    }
+  },
+  "not_performed": [
+    "Model comparison",
+    "P-values",
+    "Noninferiority analysis",
+    "Clinical diagnostic accuracy assessment"
+  ],
+  "source_unchanged_after_read": true
+}

@@ -4,9 +4,9 @@
 
 This archived manifest identifies the original PNG file bytes. The subsequently registered `Baza docelowa.zip` representation has identical RGB pixels, dimensions and assignments for all 824 images, but different file-byte hashes. For future reproduction only, `code/prepare_data.py` creates a separate manifest containing those actual hashes and records the historical-to-current mapping in its preparation audit. The archived `data/clean_manifest.csv` and published prediction exports are not replaced. The exact original manifest checksum is `3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd`; the registered reproduction manifest checksum is `f98cc4992fe3da8140ed1ab033361e86188fc3e9c9c04d814ac09af3bb869642`. Details and all 824 comparisons are in `provenance/png_byte_variant_registration_2026-10-25.json` and `provenance/png_byte_variant_verification_2026-10-25.json` at the repository root.
 
-The author's **2026-10-06** clarification describes manual allocation in Windows Explorer. Within numerically sorted class folders, contiguous file ranges were moved to validation until approximately 15% of each class had been selected. Selection was independent of image content; the folders were fixed before the first training and were not reassigned according to results. No random or `scikit-learn` split was used. File numbering does not establish acquisition chronology.
+The author's **2026-10-06** clarification describes manual allocation in Windows Explorer. Within numerically sorted class folders, contiguous file ranges were moved to validation until approximately 15% of each class had been selected. Selection was independent of image content; the folders were fixed before the first training and were not reassigned according to results. No random or `scikit-learn` split was used. This allocation was nonrandom, and acquisition chronology was not established from the numerical filenames. Checks of file bytes and decoded RGB pixels confirmed exact-image uniqueness.
 
-The retained development memberships, after the documented removal of duplicate training copies, are:
+The fixed development memberships are:
 
 | Class | Training | Validation | Development total | Validation fraction |
 |---|---:|---:|---:|---:|
@@ -16,7 +16,7 @@ The retained development memberships, after the documented removal of duplicate 
 | Syndesmophytes | 77 | 12 | 89 | 13.5% |
 | Total | 579 | 95 | 674 | 14.1% |
 
-The external cohort contains 150 images. The author confirmed that it had not been used before the final evaluation. `../study_design.json` and `../provenance/study_design_correction.json` document this clarification and the correction of the erroneous hardcoded `external_test_previously_examined=True` field in the original workflow. The preserved original metadata are historical execution records; the correction does not change any image memberships, labels, predictions or numerical results.
+The external cohort contains 150 images. The author confirmed that it had not been used before the final evaluation. `../study_design.json` and `../provenance/study_design_correction.json` document this clarification and its binding to the original workflow records. The preserved original metadata are historical execution records; the correction does not change any image memberships, labels, predictions or numerical results.
 
 | Column | Meaning |
 |---|---|
@@ -40,3 +40,11 @@ The neighboring `*_metrics.json` files provide confusion matrices with **true cl
 These files contain no medical image pixels. Prepared PNGs are available from the corresponding author on reasonable request.
 
 `eigen_cam/eigen_cam_panels.csv` maps each of the eight Figure 5 panels to its technical source path, image identifier, source hash, labels, prediction, probabilities and private output-file names. The adjacent JSONs record selection, preprocessing, target layer, runtime flags, probability replay and original artifact hashes. They contain metadata only; referenced input/overlay pixels and activation/map NPZs are deliberately separate from this public Git tree.
+
+## Cohort eligibility and supplementary analyses
+
+The current methods describe the cohort as chronic-back-pain referrals from rheumatology. Initial radiographic review by M.P. excluded DISH, fractures and previous spinal surgery (33 in Łódź and 8 in Końskie), with additional technical exclusions of 9 and 5. The author-confirmed final counts and reconstructed flow are recorded in `../cohort_clarification_2026-11-01.json`: 879 minus 55 equals 824. The study manifest and fixed memberships are unchanged. Clinical history beyond chronic back pain was unavailable; do not infer axSpA diagnosis or clinical-history exclusion variables from image labels.
+
+The `../additional_analyses/` files were generated post hoc after the main results were known. Geometry/brightness features join to the same accepted manifest; corrected initial reader ratings retain the same consensus labels. No new patients or changes to original model predictions, reference labels or splits were introduced. The gray-control analysis contains separately labeled predictions on artificial inputs; it does not replace the original evaluation.
+
+The primary binary threshold is displayed as 0.271; retain the full-precision number in its JSON for computation. Supplementary Table S9 uses Wilson intervals, while the main primary-accuracy table uses an exact Clopper–Pearson interval. Both estimate 138/150 on the same original images; the difference in interval endpoints reflects the stated interval method.

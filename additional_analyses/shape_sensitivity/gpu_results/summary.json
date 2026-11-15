@@ -1,0 +1,243 @@
+{
+  "status": "COMPLETE",
+  "created_utc": "2026-11-01T16:11:53.290796+00:00",
+  "study": "Diagnostics four-class spinal morphology",
+  "analysis_type": "post hoc exploratory frozen-checkpoint inference-only content ablation",
+  "n": 150,
+  "class_order": [
+    "normal",
+    "osteofity",
+    "parasyndesmofity",
+    "syndesmofity"
+  ],
+  "conditions": {
+    "original": {
+      "accuracy": {
+        "estimate": 0.92,
+        "ci_low": 0.8653786362494686,
+        "ci_high": 0.953646358481347,
+        "confidence": 0.95,
+        "method": "Wilson",
+        "correct": 138,
+        "total": 150
+      },
+      "balanced_accuracy": 0.9369107744107743,
+      "macro_f1": 0.9265246015246016,
+      "unweighted_cohen_kappa": 0.8861911987860394,
+      "confusion_matrix_true_rows_predicted_columns": [
+        [
+          51,
+          3,
+          0,
+          1
+        ],
+        [
+          5,
+          47,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          19,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          21
+        ]
+      ],
+      "true_class_counts": [
+        55,
+        54,
+        20,
+        21
+      ],
+      "predicted_class_counts": [
+        56,
+        50,
+        20,
+        24
+      ],
+      "class_sensitivity": [
+        0.9272727272727272,
+        0.8703703703703703,
+        0.95,
+        1.0
+      ],
+      "mean_max_probability": 0.9620605349540711
+    },
+    "fixed_gray_128": {
+      "accuracy": {
+        "estimate": 0.36666666666666664,
+        "ci_low": 0.2937744456533283,
+        "ci_high": 0.44621761951149214,
+        "confidence": 0.95,
+        "method": "Wilson",
+        "correct": 55,
+        "total": 150
+      },
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.13414634146341464,
+      "unweighted_cohen_kappa": 0.0,
+      "confusion_matrix_true_rows_predicted_columns": [
+        [
+          55,
+          0,
+          0,
+          0
+        ],
+        [
+          54,
+          0,
+          0,
+          0
+        ],
+        [
+          20,
+          0,
+          0,
+          0
+        ],
+        [
+          21,
+          0,
+          0,
+          0
+        ]
+      ],
+      "true_class_counts": [
+        55,
+        54,
+        20,
+        21
+      ],
+      "predicted_class_counts": [
+        150,
+        0,
+        0,
+        0
+      ],
+      "class_sensitivity": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_max_probability": 0.9451985335350037
+    },
+    "per_image_mean_gray": {
+      "accuracy": {
+        "estimate": 0.36666666666666664,
+        "ci_low": 0.2937744456533283,
+        "ci_high": 0.44621761951149214,
+        "confidence": 0.95,
+        "method": "Wilson",
+        "correct": 55,
+        "total": 150
+      },
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.13414634146341464,
+      "unweighted_cohen_kappa": 0.0,
+      "confusion_matrix_true_rows_predicted_columns": [
+        [
+          55,
+          0,
+          0,
+          0
+        ],
+        [
+          54,
+          0,
+          0,
+          0
+        ],
+        [
+          20,
+          0,
+          0,
+          0
+        ],
+        [
+          21,
+          0,
+          0,
+          0
+        ]
+      ],
+      "true_class_counts": [
+        55,
+        54,
+        20,
+        21
+      ],
+      "predicted_class_counts": [
+        150,
+        0,
+        0,
+        0
+      ],
+      "class_sensitivity": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_max_probability": 0.9346493017673493
+    }
+  },
+  "paired_comparisons": {
+    "fixed_gray_128": {
+      "estimate_original_minus_variant": 0.5533333333333333,
+      "ci_low": 0.4666666666666667,
+      "ci_high": 0.64,
+      "confidence": 0.95,
+      "method": "paired image-level percentile bootstrap",
+      "replicates": 10000,
+      "seed": 0,
+      "degenerate": false,
+      "prediction_agreement_with_original": 0.37333333333333335,
+      "prediction_agreement_count_with_original": 56,
+      "caveat": "Conditional on checkpoint and this OOD intervention; not a causal effect or proof of equivalence."
+    },
+    "per_image_mean_gray": {
+      "estimate_original_minus_variant": 0.5533333333333333,
+      "ci_low": 0.4666666666666667,
+      "ci_high": 0.64,
+      "confidence": 0.95,
+      "method": "paired image-level percentile bootstrap",
+      "replicates": 10000,
+      "seed": 0,
+      "degenerate": false,
+      "prediction_agreement_with_original": 0.37333333333333335,
+      "prediction_agreement_count_with_original": 56,
+      "caveat": "Conditional on checkpoint and this OOD intervention; not a causal effect or proof of equivalence."
+    }
+  },
+  "descriptive_comparators": {
+    "training_majority_class_normal_accuracy": 0.36666666666666664,
+    "training_class_counts": [
+      211,
+      210,
+      81,
+      77
+    ],
+    "majority_class_derived_from_train": "normal",
+    "training_majority_class_normal_balanced_accuracy": 0.25,
+    "previous_geometry_brightness_logistic_accuracy": 0.44666666666666666,
+    "note": "Neither majority accuracy nor previous logistic accuracy is a universal chance or acceptance cutoff."
+  },
+  "interpretation_limits": [
+    "Ablated inputs are out of distribution.",
+    "Low ablation accuracy does not prove use of bone-specific features or absence of shortcuts on original images.",
+    "High ablation accuracy shows information exploitable under the intervention, not its causal contribution on intact images.",
+    "Aspect ratio is retained; original absolute pixel height and width are removed by normalization apart from rounding/interpolation.",
+    "No retraining, threshold fitting, checkpoint selection, cropping or post-result parameter choice performed."
+  ],
+  "freeze_sha256": "2516ecb0a018afce3460e0eb0c50138aa24bb829167a354a02056d8f0590a514",
+  "plan_sha256": "dbd6611584c31bbafbaa9b93ad3ffc06a5a7e0efa00b0d50ff65759157d664f7",
+  "checkpoint_sha256": "2ef70f6c73c43970cbaebed2884e71b1cd374b1545d5239abe6f2243e75c5ac6"
+}

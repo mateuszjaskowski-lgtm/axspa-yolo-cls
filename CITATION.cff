@@ -6,33 +6,35 @@ authors:
   - given-names: Mateusz
     family-names: Jaśkowski
     orcid: "https://orcid.org/0009-0003-7303-9600"
-    affiliation: "Saint Lucas Hospital, Konskie, Poland"
-    email: mjaskowski@zoz.konskie.pl
+    affiliation: "Saint Lucas Hospital, Rheumatology Department, Konskie, Poland"
+    email: mateuszjaskowski@gmail.com
   - given-names: Paweł
     family-names: Górski
     orcid: "https://orcid.org/0009-0008-2389-7750"
-    affiliation: "Saint Lucas Hospital, Konskie, Poland"
+    affiliation: "Saint Lucas Hospital, Radiology and Diagnostic Imaging Department, Konskie, Poland"
   - given-names: Zbigniew
     family-names: Guzera
     orcid: "https://orcid.org/0009-0006-0263-0964"
-    affiliation: "Saint Lucas Hospital, Konskie, Poland"
+    affiliation: "Saint Lucas Hospital, Rheumatology Department, Konskie, Poland"
   - given-names: Michał
     family-names: Podgórski
     orcid: "https://orcid.org/0000-0003-4513-0602"
-    affiliation: "Medical University of Lodz, Poland"
+    affiliation: "Medical University of Lodz, III Department of Radiology and Diagnostic Imaging, Lodz, Poland"
 
 repository-code: "https://github.com/mateuszjaskowski-lgtm/axspa-yolo-cls"
 url: "https://github.com/mateuszjaskowski-lgtm/axspa-yolo-cls"
 abstract: >-
   Reproducibility materials for nominal four-class morphology classification
-  of prepared lateral spinal radiographs. Includes the completed cleaned-data
+  of prepared lateral spinal radiographs. Includes the completed fixed-cohort
   experiment with 579 training, 95 validation and 150 external-test images,
   four model configurations and five seeds. The reference is YOLO11l-cls seed 0.
   The development split used manual, content-independent selection of numerical
   file ranges within classes before the first training. The author confirmed on
   2026-10-06 that the external cohort had not been used before final evaluation.
   The original plan was verbal; the locked computational protocol is archived
-  separately. PNG images are available on reasonable request.
+  separately. This version includes the corrected cohort eligibility flow and
+  post hoc geometry/brightness, reader-consensus and frozen-checkpoint
+  image-content sensitivity analyses. PNG images are available on reasonable request.
 keywords:
   - axial spondyloarthritis
   - deep learning
@@ -41,6 +43,5 @@ keywords:
   - external validation
   - convolutional neural network
 license: MIT
-version: "2.0.0"
-date-released: "2026-10-25"
-doi: "10.5281/zenodo.23649843"
+version: "2.1.0"
+date-released: "2026-11-15"

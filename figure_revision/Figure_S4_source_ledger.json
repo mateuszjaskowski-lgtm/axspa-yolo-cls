@@ -1,0 +1,80 @@
+{
+  "figure": "S4",
+  "source": "prepared study PNGs",
+  "selection": "reuse the four fixed-rule correct examples already shown in Figure 5a-d",
+  "display": {
+    "full_prepared_field": true,
+    "aspect_preserved": true,
+    "intensity_enhancement": false,
+    "cropping": false,
+    "alpha_policy": "discard alpha and retain stored RGB, matching model input convention",
+    "cam_overlay": false,
+    "lesion_arrows": false,
+    "figure_size_inches": [
+      6.2,
+      7.7
+    ],
+    "png_dpi": 300
+  },
+  "reference_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+  "reference_panel_ledger_sha256": "f1bd2e4808824b5f4542130438deb00ed9b02d4b0161d46a5323031acf6323a8",
+  "panels": [
+    {
+      "panel": "A",
+      "display_label": "Normal",
+      "consensus_class": "normal",
+      "relative_path": "test/normal/1.png",
+      "image_id": "49e20b5c10128c281cdb0a27ee8a8c285a9b276413f48675f4b466e58912ac38",
+      "source_sha256": "900107ae9ae1b097003a34239f8f54c5b4446a21ca8725b791b4c6cf29cbf0af",
+      "original_figure5_panel": "a",
+      "source_mode": "RGBA",
+      "source_width": 305,
+      "source_height": 692,
+      "verification": "source bytes and label agree with panel ledger and clean manifest"
+    },
+    {
+      "panel": "B",
+      "display_label": "Osteophytes",
+      "consensus_class": "osteofity",
+      "relative_path": "test/osteofity/106.png",
+      "image_id": "8dd27f017fb4ec83f0e94c6a475abfdcbacb87912ab41b54c109f9729b5766a1",
+      "source_sha256": "c9a12993e0a09fa04c751201115b0526ca09d39166e4949b2a4863029b769503",
+      "original_figure5_panel": "b",
+      "source_mode": "RGBA",
+      "source_width": 298,
+      "source_height": 486,
+      "verification": "source bytes and label agree with panel ledger and clean manifest"
+    },
+    {
+      "panel": "C",
+      "display_label": "Parasyndesmophytes",
+      "consensus_class": "parasyndesmofity",
+      "relative_path": "test/parasyndesmofity/105.png",
+      "image_id": "06150f794217b53d8e7858b7ee280a8d2bfc8f472fe3202f8062572fcf2e2ef5",
+      "source_sha256": "386e10d7416a9419339317464034e1ce216a56fb1e60fe70cb50a3dea73ae3e8",
+      "original_figure5_panel": "c",
+      "source_mode": "RGBA",
+      "source_width": 200,
+      "source_height": 387,
+      "verification": "source bytes and label agree with panel ledger and clean manifest"
+    },
+    {
+      "panel": "D",
+      "display_label": "Bridging syndesmophytes",
+      "consensus_class": "syndesmofity",
+      "relative_path": "test/syndesmofity/1.png",
+      "image_id": "cbef387077ae3eda595f3b2309819fd401d5f3b5cf87dca3015147d64b51226d",
+      "source_sha256": "e6d3ba860c955cd8fec613392e96a59bd79561238e8ae248b5025040631d97f5",
+      "original_figure5_panel": "d",
+      "source_mode": "RGBA",
+      "source_width": 483,
+      "source_height": 903,
+      "verification": "source bytes and label agree with panel ledger and clean manifest"
+    }
+  ],
+  "outputs": {
+    "Figure_S4_morphology_examples.pdf": "d4fb0845f8c8d136e89cb2c05da99cb25f311a2815af3916dfd040e0615809ba",
+    "Figure_S4_morphology_examples.png": "44f530efd78aa756a8a266851333e5884ce2af68e9765e6a7171ec07aefd2987"
+  },
+  "all_source_checks_passed": true
+}

@@ -1,0 +1,9 @@
+{
+  "return_code": 0,
+  "input_package_name": "PRIVATE_Diagnostics_shape_test_GPU.zip",
+  "input_package_sha256": "a8f6ca4fa97513ce07334452143ffe61668ee6af696f7d3b08b52763abc49c2e",
+  "frozen_script_sha256": "8c118c45efb84011207b66eed0f759df8c085688e71ebde75816ae02455ffbab",
+  "freeze_sha256": "2516ecb0a018afce3460e0eb0c50138aa24bb829167a354a02056d8f0590a514",
+  "cpu_attempt_preceded_this_gpu_retry": true,
+  "analysis_tolerance_changed": false
+}

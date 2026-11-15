@@ -1,0 +1,15 @@
+Eksploracyjna zgodność ocen początkowych z konsensusem — Końskie, n = 150
+
+To opis zgodności z konsensusem współtworzonym przez tego samego radiologa. Referencja jest zależna od jego ocen (incorporation bias); nie jest to niezależny benchmark ludzki ani ocena trafności rozpoznania klinicznego.
+
+M.P.: zgodność 142/150 (94.7%); 95% CI Wilsona 89.8%–97.3%; nieważona κ Cohena 0.924; rozbieżności 8.
+P.G.: zgodność 143/150 (95.3%); 95% CI Wilsona 90.7%–97.7%; nieważona κ Cohena 0.934; rozbieżności 7.
+
+Macierze: wiersze = konsensus końcowy; kolumny = początkowa ocena danego radiologa. Kolejność: normal, osteophytes, parasyndesmophytes, syndesmophytes. Pełne macierze i wyniki bez zaokrągleń zapisano w JSON.
+
+Przedziały Wilsona są warunkowe względem tej referencji i zakładają niezależne przypadki; nie rozwiązują problemu współtworzenia konsensusu przez ocenianego radiologa.
+Nie wykonywano porównań z modelami, testów istotności ani analizy równoważności/non-inferiority. Wyniki nie uzasadniają twierdzenia, że model jest lepszy, podobny lub nie gorszy od radiologa.
+
+Plik źródłowy: /workspace/scratch/12793bdc6888/release_2026-10-25/repo/data/reader_ratings.csv
+SHA-256 źródła: 0381c83dae0151230bc07928488e372bc359a0a087edc4f9cdd9c0be65c793b9
+Plik źródłowy oraz kanoniczne pliki artykułu i repozytorium nie zostały zmienione przez ten skrypt.

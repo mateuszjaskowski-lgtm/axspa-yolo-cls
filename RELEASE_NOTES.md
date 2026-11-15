@@ -1,14 +1,19 @@
 # Radiographic Differentiation of Axial Spondyloarthritis and Degenerative Spinal Changes in Patients with Chronic Back Pain: Development and External Validation of a YOLO-Based Deep Learning Model
 
-This is the completed cleaned-data experiment accompanying the current Diagnostics manuscript. The current GitHub release is v2.0.0. Code and non-image reproducibility materials are archived at [DOI: 10.5281/zenodo.23649843](https://doi.org/10.5281/zenodo.23649843).
+## Materials version 2.1.0 — 8 November 2026
 
-- 824 images: 579 training and 95 validation from Łódź, with 150 external images from Końskie.
-- Primary model: YOLO11l-cls seed 0, 138/150 correct external classifications (92.0%). Four configurations, five seeds each; all exported validation/test predictions and recorded settings are included.
-- Manual within-class allocation of numerically ordered filename ranges, fixed before training without content-based or performance-based selection. The external cohort was reserved for final evaluation, as confirmed by the author.
-- Windows Snipping Tool preparation before labeling; whole prepared PNG computational input, proportional resize and black padding.
-- Active code, reproduction notebook, manifests, metrics, original executed code and hash-bound correction records constitute the current repository tree.
-- The eight Figure 5 source images have matching RGB-pixel and model-input hashes. The new verification contains metadata only. Source PNGs and model weights remain separate research materials, available from the corresponding author as described in README.
-- All 824 images in the subsequently supplied PNG archive match the frozen RGB pixels and assignments. This exact archive is registered for future reproduction with its own actual-file-hash manifest; the original-study manifest and locked replay checks remain unchanged.
-- Active preparation metadata now states the confirmed source-preparation method. Notebook completion-check descriptions match the implemented checks. These technical corrections do not change training methods or reported results.
+This release aligns the public reproducibility package with the current manuscript prepared for *Diagnostics*. It contains the fixed 824-image experiment and its completed supplementary analyses. It does not report a new training experiment or a new independent external validation.
 
-The author supplied corrected independent pre-consensus reader ratings, replacing erroneous initial reader data. Agreement is 740/824 (89.8%), unweighted Cohen kappa 0.855 (95% CI 0.825–0.884), with 84 disagreements. All 824 consensus labels remain unchanged. No training or new inference was performed; all model results and dataset assignments are unchanged. The DOI above identifies these current computational materials; source PNGs and checkpoint binaries are not included in this deposit.
+- **Cohort:** 674 development cases from Łódź (579 training, 95 validation) and 150 external cases from Końskie. The cohort is defined by chronic back pain and referral by a rheumatologist. The author-confirmed eligibility flow is 716−33−9=674 and 163−8−5=150; severe degenerative changes were not excluded. Figure S1 and its generating code use this accounting.
+- **Allocation:** manual within-class numerical filename ranges, selected without regard to image content and fixed before first training. Acquisition chronology was not established from those filenames.
+- **Supplementary analyses:** all code, saved non-image outputs and execution records for geometry/brightness (S7), initial readers versus their own consensus (S8), and gray-content ablation (S9). Their post hoc exploratory status and limits are explicit.
+- **Interpretation:** the same readers labeled both cohorts; seed 0 happened to be the best external YOLO11 run, while the five-seed mean was 88.4%; gray controls do not establish reliance specifically on bone features. The replay requirement is a maximum absolute probability difference no greater than 0.0001.
+- **Technical descriptions:** shared stored YOLO backbone/head definitions and different pretrained checkpoint hashes are distinguished from claims about tensor differences. Exact-image uniqueness is described neutrally. The displayed binary threshold is 0.271, with full precision retained in its deposited JSON.
+- **Current reproduction:** active preparation accepts the registered 824-image archives and verifies accepted memberships and identities. Numerical model training/evaluation methods are unchanged. Original executed source and frozen artifacts remain identifiable as execution evidence, separate from current study descriptions.
+- **Publication material:** the complete current supplementary methods and results PDF is supplied. The main manuscript, administrative submission files, source radiographs, checkpoint binaries and private CAM arrays are not part of this software deposit.
+
+The primary result remains 138/150 external classifications correct (92.0%; exact 95% CI 86.4–95.8), and the YOLO11 five-seed mean remains 88.4%. Model predictions, fitted checkpoint hashes, consensus labels and fixed split memberships are unchanged. The release adds the already completed gray-control predictions as a distinct sensitivity analysis.
+
+See `CITATION.cff` for citation metadata and the [Zenodo all-versions DOI](https://doi.org/10.5281/zenodo.22850851) for the deposit series. The version-specific record identifies the archived package and should be used for exact-version citation.
+
+The [15 November review revision](REVISION_ADDENDUM_2026-11-15.md) documents the methods and ethics clarifications, current correspondence details, revised ROC figures and the Figure S4 reconstruction procedure. The public PDF contains the supplementary methods, tables and Figures S1–S3. Figure S4 is reproduced from the study images obtained through the manuscript’s data-access procedure.

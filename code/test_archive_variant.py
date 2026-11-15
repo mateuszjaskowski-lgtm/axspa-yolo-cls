@@ -48,18 +48,20 @@ class ArchiveVariantTests(unittest.TestCase):
                          (ROOT/'data/clean_manifest.csv').read_bytes())
         self.assertEqual(prep.sha_file(ROOT/'code/reference_clean_manifest.csv'), prep.CLEAN_MANIFEST_SHA256)
         self.assertEqual(prep.PNG_BYTE_VARIANT_MANIFEST_SHA256, sd.PNG_BYTE_VARIANT_MANIFEST_SHA256)
-        self.assertEqual(len(prep.ACCEPTED_ARCHIVES), 3)
-        # Recover the old output layout without changing any historical values.
-        with (ROOT/'code/original_manifest.csv').open(newline='') as f:
-            reader = csv.DictReader(f); fields = reader.fieldnames; rows = list(reader)
-        with (ROOT/'data/clean_manifest.csv').open(newline='') as f:
-            reference = {r['relative_path']: r for r in csv.DictReader(f)}
-        omitted = {drop for _, drop in prep.PAIRS}
+        self.assertEqual(len(prep.ACCEPTED_ARCHIVES), 2)
+        with (ROOT/'code/reference_clean_manifest.csv').open(newline='') as f:
+            reader = csv.DictReader(f)
+            fields = reader.fieldnames
+            rows = list(reader)
+        self.assertEqual(len(rows), 824)
+        self.assertEqual(len({r['relative_path'] for r in rows}), 824)
+        counts = {s: [sum(r['split'] == s and r['class_name'] == c for r in rows)
+                      for c in prep.CLASSES] for s in prep.EXPECTED_COUNTS}
+        self.assertEqual(counts, prep.EXPECTED_COUNTS)
         stream = io.StringIO(newline='')
-        writer = csv.DictWriter(stream, fieldnames=fields+['independent_rgb_sha256'])
+        writer = csv.DictWriter(stream, fieldnames=fields)
         writer.writeheader()
-        writer.writerows({**r, 'independent_rgb_sha256': reference[r['relative_path']]['independent_rgb_sha256']}
-                         for r in rows if r['relative_path'] not in omitted)
+        writer.writerows(rows)
         self.assertEqual(stream.getvalue().encode(), (ROOT/'data/clean_manifest.csv').read_bytes())
 
     def test_registered_variant_is_future_reproduction_only(self):
@@ -90,7 +92,7 @@ class ArchiveVariantTests(unittest.TestCase):
         with zipfile.ZipFile(archive, 'w') as z:
             z.writestr('arbitrary.txt', 'not registered')
         output = self.root/'output'
-        with self.assertRaisesRegex(ValueError, 'three explicitly registered'):
+        with self.assertRaisesRegex(ValueError, 'two explicitly registered'):
             prep.main(['--archive', str(archive), '--output-dir', str(output)])
         self.assertFalse(output.exists())
 
@@ -109,7 +111,12 @@ class ArchiveVariantTests(unittest.TestCase):
         audit = json.loads((output/'data_audit.json').read_text())
         self.assertTrue(audit['png_byte_variant']['rgb_pixels_dimensions_paths_and_labels_match_reference'])
         self.assertEqual(len(audit['png_byte_variant']['file_byte_hash_mapping']), 824)
-        self.assertEqual(audit['removed_duplicate_copies_this_invocation'], [])
+        self.assertEqual(audit['source_image_entries'], 824)
+        self.assertEqual(audit['prepared_image_entries'], 824)
+        self.assertTrue(audit['exact_file_byte_uniqueness_confirmed'])
+        self.assertTrue(audit['exact_decoded_rgb_uniqueness_confirmed'])
+        self.assertTrue(audit['paths_labels_and_split_assignments_match_reference'])
+        self.assertFalse(audit['source_png_bytes_modified'])
         before = (output/'data_audit.json').read_bytes()
         with contextlib.redirect_stdout(io.StringIO()):
             prep.main(['--archive', str(archive), '--output-dir', str(output)])
@@ -120,18 +127,18 @@ class ArchiveVariantTests(unittest.TestCase):
     def test_changed_archive_bytes_are_rejected(self):
         altered = self.root/'altered.zip'
         altered.write_bytes(Path(PRIVATE_ARCHIVE).read_bytes()+b'changed archive bytes')
-        with self.assertRaisesRegex(ValueError, 'three explicitly registered'):
+        with self.assertRaisesRegex(ValueError, 'two explicitly registered'):
             prep.main(['--archive', str(altered), '--output-dir', str(self.root/'output')])
 
     @unittest.skipUnless(PRIVATE_ARCHIVE, 'Set AXSPA_EQUIVALENT_ARCHIVE for private archive checks')
     def test_original_archive_branch_still_requires_original_png_bytes(self):
-        # Exercise the OLD branch with the current differing PNG bytes. Only
+        # Exercise the original-representation guard with differing PNG bytes. Only
         # the outer archive identity is mocked in this test; image hashes remain
         # real, and the original per-PNG byte guard must reject the first file.
         archive = Path(PRIVATE_ARCHIVE)
         real_sha = prep.sha_file
         def test_archive_identity(path):
-            return prep.ALREADY_CLEAN_ARCHIVE_SHA256 if Path(path) == archive else real_sha(path)
+            return prep.ORIGINAL_PNG_ARCHIVE_SHA256 if Path(path) == archive else real_sha(path)
         with patch.object(prep, 'sha_file', side_effect=test_archive_identity):
             with self.assertRaisesRegex(ValueError, 'Image-byte mismatch'):
                 prep.main(['--archive', str(archive), '--output-dir', str(self.root/'output')])

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "argmax_matches": 150,
+  "correct": 138,
+  "total": 150,
+  "maximum_absolute_probability_difference": 0.0,
+  "mean_absolute_probability_difference": 0.0,
+  "prespecified_absolute_tolerance": 0.0001,
+  "exact_probability_array_match": true
+}

@@ -1,0 +1,173 @@
+{
+  "primary_model": "YOLO11l-cls",
+  "seed": 0,
+  "operation": "Display-only revision of Figures 2 and 4 from frozen predictions",
+  "model_inference_performed": false,
+  "model_fitting_performed": false,
+  "probability_values_modified": false,
+  "curve_smoothing": false,
+  "inset_limits": {
+    "false_positive_rate": [
+      0,
+      0.2
+    ],
+    "true_positive_rate": [
+      0.8,
+      1
+    ]
+  },
+  "source_sha256_before": {
+    "val_predictions.npz": "325cfaca2506d086312c5e0432583e9907904b127deab0dc093d0d19b7bdf76c",
+    "val_metrics.json": "27fa3be8ab7bddc1b6596c81e2492e345b598bcc3ed8e73803f9f7c79bb79958",
+    "test_predictions.npz": "d891d629e55c304b0ec636d17323a431dcf5a209d56aa8862bc36e68e07a858d",
+    "test_metrics.json": "2fa84d207a857f2b0f8a395855512094a0888909fef17a06de9323879083ba66"
+  },
+  "source_sha256_after": {
+    "val_predictions.npz": "325cfaca2506d086312c5e0432583e9907904b127deab0dc093d0d19b7bdf76c",
+    "val_metrics.json": "27fa3be8ab7bddc1b6596c81e2492e345b598bcc3ed8e73803f9f7c79bb79958",
+    "test_predictions.npz": "d891d629e55c304b0ec636d17323a431dcf5a209d56aa8862bc36e68e07a858d",
+    "test_metrics.json": "2fa84d207a857f2b0f8a395855512094a0888909fef17a06de9323879083ba66"
+  },
+  "checks": {
+    "val": {
+      "n": 95,
+      "class_order": [
+        "normal",
+        "osteofity",
+        "parasyndesmofity",
+        "syndesmofity"
+      ],
+      "class_auc": {
+        "normal": {
+          "recomputed": 0.9962721342031686,
+          "archived": 0.9962721342031686,
+          "absolute_difference": 0.0,
+          "roc_points": 90
+        },
+        "osteofity": {
+          "recomputed": 0.9898746383799422,
+          "archived": 0.9898746383799422,
+          "absolute_difference": 0.0,
+          "roc_points": 95
+        },
+        "parasyndesmofity": {
+          "recomputed": 0.9899598393574297,
+          "archived": 0.9899598393574297,
+          "absolute_difference": 0.0,
+          "roc_points": 96
+        },
+        "syndesmofity": {
+          "recomputed": 0.997991967871486,
+          "archived": 0.997991967871486,
+          "absolute_difference": 0.0,
+          "roc_points": 96
+        }
+      },
+      "macro_auc": 0.9935246449530066,
+      "binary_auc": {
+        "recomputed": 0.9958920187793427,
+        "archived": 0.9958920187793427,
+        "absolute_difference": 0.0,
+        "roc_points": 96
+      },
+      "binary_operating_point_counts": {
+        "tp": 24,
+        "fn": 0,
+        "fp": 2,
+        "tn": 69
+      }
+    },
+    "test": {
+      "n": 150,
+      "class_order": [
+        "normal",
+        "osteofity",
+        "parasyndesmofity",
+        "syndesmofity"
+      ],
+      "class_auc": {
+        "normal": {
+          "recomputed": 0.988133971291866,
+          "archived": 0.988133971291866,
+          "absolute_difference": 0.0,
+          "roc_points": 134
+        },
+        "osteofity": {
+          "recomputed": 0.980516975308642,
+          "archived": 0.980516975308642,
+          "absolute_difference": 0.0,
+          "roc_points": 150
+        },
+        "parasyndesmofity": {
+          "recomputed": 0.9873076923076923,
+          "archived": 0.9873076923076923,
+          "absolute_difference": 0.0,
+          "roc_points": 150
+        },
+        "syndesmofity": {
+          "recomputed": 0.994093761535622,
+          "archived": 0.994093761535622,
+          "absolute_difference": 0.0,
+          "roc_points": 151
+        }
+      },
+      "macro_auc": 0.9875131001109556,
+      "binary_auc": {
+        "recomputed": 0.9988811814723652,
+        "archived": 0.9988811814723652,
+        "absolute_difference": 0.0,
+        "roc_points": 151
+      },
+      "binary_operating_point_counts": {
+        "tp": 41,
+        "fn": 0,
+        "fp": 4,
+        "tn": 105
+      }
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8",
+    "scikit_learn": "1.8.0"
+  },
+  "figures": {
+    "Figure_2_ovr_roc": {
+      "caption": "Figure 2. One-versus-rest receiver operating characteristic (ROC) curves for the primary YOLO11l-cls model (seed 0) in (A) internal validation and (B) external test. Legends give class-specific areas under the curve (AUC); macro AUC is their unweighted mean. The 95% confidence intervals are the previously computed image-level percentile bootstrap intervals (2000 replicates) for the fixed fitted model. Insets display the same curves over false-positive rates 0.00-0.20 and true-positive rates 0.80-1.00; dashed rectangles mark the corresponding regions in the full-scale plots. The dashed diagonals are no-discrimination references. Curves were reconstructed directly from saved probabilities without smoothing.",
+      "figure_inches": [
+        7.6,
+        5.5
+      ],
+      "png_pixels": [
+        4560,
+        3300
+      ],
+      "png_dpi": 600,
+      "vector_pdf": true,
+      "sha256": {
+        "Figure_2_ovr_roc.png": "7e7fbe70a5f47681c1de049f717a2abaf80595bcaa6cb46baec27273e4d807c1",
+        "Figure_2_ovr_roc.pdf": "cabb478b9a388eac79ab3a048d2bfb9ac85e18c2d3c9e6a241d3371b0ea68d92"
+      }
+    },
+    "Figure_4_binary_morphology_roc": {
+      "caption": "Figure 4. Exploratory binary morphology ROC curves for the primary YOLO11l-cls model (seed 0): (A) internal validation and (B) external test. The positive group combines parasyndesmophytes and syndesmophytes; the negative group combines normal morphology and osteophytes. The score is P(parasyndesmophytes) + P(syndesmophytes). Orange diamonds indicate the threshold 0.271, selected by maximizing Youden's index in internal validation and applied unchanged externally; the full-precision value is in the deposited validation_selected_threshold.json. Insets display the same curves over false-positive rates 0.00-0.20 and true-positive rates 0.80-1.00; dashed rectangles mark those regions in the full-scale plots. Confidence intervals for AUC are the saved 2000-replicate image-level bootstrap intervals. Operating-point uncertainty does not include uncertainty in selecting the validation threshold. This grouping concerns radiographic morphology and is not a clinical diagnosis of axial spondyloarthritis.",
+      "figure_inches": [
+        7.6,
+        5.5
+      ],
+      "png_pixels": [
+        4560,
+        3300
+      ],
+      "png_dpi": 600,
+      "vector_pdf": true,
+      "sha256": {
+        "Figure_4_binary_morphology_roc.png": "829605136c4aee31e17c277d63fc175a0ee89e7e56ba114a3655315a10141123",
+        "Figure_4_binary_morphology_roc.pdf": "9db405816d823d025795a5f27a4f20cea53a4b054697d6ecc8d2e965248b93d6"
+      }
+    }
+  },
+  "full_precision_validation_threshold": 0.27126939594745636,
+  "all_checks_passed": true
+}

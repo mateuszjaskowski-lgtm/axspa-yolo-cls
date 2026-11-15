@@ -1,0 +1,89 @@
+{
+  "document_date": "2026-11-01",
+  "author_clarification_dates": [
+    "2026-10-25",
+    "2026-10-26",
+    "2026-11-01"
+  ],
+  "evidence_type": "Author clarification during manuscript preparation; counts are not inferred from model outputs.",
+  "publication_status": "Included in materials version 2.1.0, prepared for publication; current release/deposit status is recorded in release_status.json.",
+  "base_release": {
+    "version": "2.0.0",
+    "doi": "10.5281/zenodo.23649843"
+  },
+  "population": "Patients with chronic back pain referred for spinal radiography by a rheumatologist.",
+  "suspected_axSpA_required_for_inclusion": false,
+  "history_available_to_reviewers": "Chronic back pain defining the cohort; no further clinical history was available.",
+  "initial_radiographic_reviewer": "M.P.",
+  "radiographic_exclusion_criteria": [
+    "DISH",
+    "fractures",
+    "radiographic evidence of previous spinal surgery"
+  ],
+  "severe_degenerative_changes_excluded": false,
+  "technical_exclusion_reasons": [
+    "artifacts",
+    "poor image quality"
+  ],
+  "technical_exclusions_additional_to_radiographic_exclusions": true,
+  "counts": {
+    "Lodz": {
+      "before_exclusions_derived": 716,
+      "DISH": 8,
+      "fractures": 13,
+      "previous_spinal_surgery": 12,
+      "radiographic_exclusions": 33,
+      "technical_exclusions": 9,
+      "all_exclusions": 42,
+      "included": 674,
+      "train": 579,
+      "internal_validation": 95
+    },
+    "Konskie": {
+      "before_exclusions_derived": 163,
+      "DISH": 2,
+      "fractures": 3,
+      "previous_spinal_surgery": 3,
+      "radiographic_exclusions": 8,
+      "technical_exclusions": 5,
+      "all_exclusions": 13,
+      "included": 150,
+      "external_test": 150
+    },
+    "total": {
+      "before_exclusions_derived": 879,
+      "DISH": 10,
+      "fractures": 16,
+      "previous_spinal_surgery": 15,
+      "radiographic_exclusions": 41,
+      "technical_exclusions": 14,
+      "all_exclusions": 55,
+      "included": 824
+    }
+  },
+  "count_derivation": "Initial unique-case totals are reconstructed from confirmed final cohort sizes plus distinct author-reported radiographic and technical exclusions.",
+  "screening_order_between_radiographic_and_quality_review": "Not established by the author clarification; do not imply a temporal sequence.",
+  "retained_data": {
+    "n": 824,
+    "train": 579,
+    "val": 95,
+    "test": 150,
+    "clean_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+    "memberships_changed": false,
+    "consensus_labels_changed": false
+  },
+  "superseded_descriptions": [
+    "Clinical suspicion of axSpA as a required definition of the cohort.",
+    "Eligibility exclusions as based on available trauma, surgery or DISH history.",
+    "No cases meeting DISH, fracture or surgery exclusion criteria were present before screening."
+  ],
+  "unavailable_details_not_invented": [
+    "Detailed radiographic criteria used for DISH",
+    "Fracture etiology",
+    "Timing relative to manual PNG preparation",
+    "PACS export/display settings before PNG preparation"
+  ],
+  "scope": "Cohort documentation only. No retraining, model inference, relabeling or repartitioning was performed for this correction.",
+  "historical_records_policy": "Frozen plans, original code, manifests, evaluation exports, model hashes and original provenance remain byte-identical; this clarification supplies the current cohort description.",
+  "authoritative_study_cohort": "The study comprises 674 Lodz development images (579 training and 95 internal validation) and 150 Konskie external images. The final 824-image manifest defines the study data."
+}

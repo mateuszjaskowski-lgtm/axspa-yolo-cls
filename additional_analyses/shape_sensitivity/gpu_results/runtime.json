@@ -1,0 +1,25 @@
+{
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128",
+    "ultralytics": "8.4.163",
+    "Pillow": "11.3.0",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.8.0"
+  },
+  "torch_cuda": "12.8",
+  "cuda_available": true,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "torch_threads": 6,
+  "deterministic_algorithms": false,
+  "cudnn_benchmark": false,
+  "cuda_matmul_allow_tf32": false,
+  "cudnn_allow_tf32": true,
+  "cublas_workspace_config": ":4096:8",
+  "runtime_note": "Recorded for this sensitivity run. Historical evaluation runtime flags were not independently recorded.",
+  "requested_device": "cuda:0",
+  "created_utc": "2026-11-01T16:11:37.641411+00:00"
+}

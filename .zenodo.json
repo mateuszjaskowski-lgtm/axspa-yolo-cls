@@ -1,0 +1,46 @@
+{
+  "title": "Radiographic Differentiation of Axial Spondyloarthritis and Degenerative Spinal Changes in Patients with Chronic Back Pain: Development and External Validation of a YOLO-Based Deep Learning Model",
+  "upload_type": "software",
+  "version": "2.1.0",
+  "publication_date": "2026-11-15",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Jaśkowski, Mateusz",
+      "affiliation": "Saint Lucas Hospital, Rheumatology Department, Konskie, Poland",
+      "orcid": "0009-0003-7303-9600"
+    },
+    {
+      "name": "Górski, Paweł",
+      "affiliation": "Saint Lucas Hospital, Radiology and Diagnostic Imaging Department, Konskie, Poland",
+      "orcid": "0009-0008-2389-7750"
+    },
+    {
+      "name": "Guzera, Zbigniew",
+      "affiliation": "Saint Lucas Hospital, Rheumatology Department, Konskie, Poland",
+      "orcid": "0009-0006-0263-0964"
+    },
+    {
+      "name": "Podgórski, Michał",
+      "affiliation": "Medical University of Lodz, III Department of Radiology and Diagnostic Imaging, Lodz, Poland",
+      "orcid": "0000-0003-4513-0602"
+    }
+  ],
+  "description": "<p>Reproducibility materials for the manuscript Radiographic Differentiation of Axial Spondyloarthritis and Degenerative Spinal Changes in Patients with Chronic Back Pain: Development and External Validation of a YOLO-Based Deep Learning Model, prepared for Diagnostics. The retrospective study classifies four nominal spinal radiographic morphologies against a two-radiologist consensus, not clinical axSpA diagnoses. The fixed cohort comprises 674 development cases from Lodz (579 training and 95 internal validation) and 150 external cases from Konskie, all with chronic back pain referred by a rheumatologist. The primary model is YOLO11l-cls, seed 0; four pipelines were evaluated with five seeds each. The external cohort was reserved for final evaluation after training and checkpoint selection.</p><p>Version 2.1.0 supplies the current cohort eligibility flow, all primary non-image prediction and metric records, current supplementary methods/results, and the completed post hoc geometry/brightness, reader-versus-own-consensus and frozen-checkpoint gray-content sensitivity analyses (Tables S7-S9). Their exploratory status, dependent reference standard and out-of-distribution control limitations are documented. Original primary predictions, labels, split assignments and checkpoint hashes remain unchanged. Source PNGs and checkpoint binaries are available from the corresponding author on reasonable request and are not included in this deposit.</p><p>This release incorporates the 15 November manuscript revision, including the clarified methods and ethics, updated ROC figure layouts and code to reconstruct Supplementary Figure S4 from the separately held source images.</p>",
+  "keywords": [
+    "axial spondyloarthritis",
+    "spinal radiography",
+    "morphology classification",
+    "deep learning",
+    "YOLO11",
+    "external evaluation",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/mateuszjaskowski-lgtm/axspa-yolo-cls",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

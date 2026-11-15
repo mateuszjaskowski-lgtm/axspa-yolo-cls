@@ -1,0 +1,75 @@
+{
+  "analysis_status": "post-hoc exploratory; motivated by reviewer suggestion after primary experiment results were known; not preregistered",
+  "frozen_utc": "2026-10-25T22:23:52.838482+00:00",
+  "purpose": "Assess whether simple prepared-image geometry and global brightness predict morphology labels, without changing or retraining any CNN. This analysis cannot rule out all shortcut learning.",
+  "inputs": {
+    "png_archive": "recovered_extra/baza danych(1).zip",
+    "archive_sha256": "ba4c5ece78779f67b209f839cec75f70aa480c07bc8ee1dee008f4594a96613d",
+    "manifest": "release_2026-10-25/repo/data/clean_manifest.csv",
+    "manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd"
+  },
+  "units": "One prepared PNG per existing manifest row; not DICOM/raw-image measurements.",
+  "classes": {
+    "0": "normal",
+    "1": "osteophytes",
+    "2": "parasyndesmophytes",
+    "3": "syndesmophytes"
+  },
+  "split": {
+    "train": 579,
+    "val": 95,
+    "test": 150,
+    "rule": "Reuse original fixed manifest; no movement, resampling or split selection."
+  },
+  "features": [
+    "width_px",
+    "height_px",
+    "aspect_ratio_width_over_height",
+    "mean_rgb_brightness_0_1"
+  ],
+  "feature_definition": {
+    "width_px": "PNG width",
+    "height_px": "PNG height",
+    "aspect_ratio_width_over_height": "PNG width divided by height",
+    "mean_rgb_brightness_0_1": "Mean of every pixel and all three channels after Pillow convert(RGB), divided by 255; no mask, resizing, windowing or enhancement."
+  },
+  "model": {
+    "preprocessing": "StandardScaler fitted only on train; transform val and test with retained train means/scales",
+    "classifier": "LogisticRegression multinomial softmax with lbfgs (automatic for >=3 classes in scikit-learn 1.8.0)",
+    "C": 1.0,
+    "solver": "lbfgs",
+    "max_iter": 5000,
+    "random_state": 0,
+    "class_weight": null,
+    "hyperparameter_tuning": false,
+    "model_selection": false
+  },
+  "reporting": {
+    "metrics": [
+      "accuracy",
+      "balanced_accuracy",
+      "macro_F1",
+      "true-row/predicted-column confusion matrix"
+    ],
+    "external_accuracy_ci95": "Wilson score interval, nominal z=norm.ppf(0.975)",
+    "baseline": "Always predict most frequent training class (ties: lowest numeric label); show baseline on each split. Uniform 25% is descriptive context only, not evidence of no association.",
+    "descriptive": "Per-class per-split n, median, Q1, Q3 for each feature; pandas linear quantiles",
+    "kruskal_wallis": "Four-class Kruskal–Wallis test separately for each feature within train, validation and external test; Holm correction across the four feature tests separately in each split. Post-hoc exploratory tests, not causal analyses.",
+    "permutation_analysis": false
+  },
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "pillow": "12.3.0"
+  },
+  "python": "3.12.14",
+  "restrictions": [
+    "No canonical manuscript/repository changes",
+    "No CNN inference or training",
+    "No claim that a near-chance four-feature model excludes shortcut learning",
+    "No claim that non-chance discrimination proves CNN reliance on those features",
+    "No new clinical recruitment or preprocessing details inferred from PNGs"
+  ]
+}

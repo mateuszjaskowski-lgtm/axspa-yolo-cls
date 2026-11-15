@@ -1,0 +1,28 @@
+EKSPLORACYJNA ANALIZA WYMIARÓW PNG I ŚREDNIEJ JASNOŚCI
+Analiza post hoc po poznaniu wyników głównego eksperymentu; nie była prerejestrowana. Plan tej analizy zapisano przed jej wykonaniem.
+
+Dane: 824 oryginalne przygotowane PNG, wszystkie sumy bajtowe zgodne z manifestem eksperymentu. Zachowano train 579, val 95, external test 150.
+Cechy: szerokość, wysokość, iloraz szerokości/wysokości oraz średnia jasność RGB/255 ze wszystkich pikseli. Nie są to parametry akwizycji DICOM.
+Model: standaryzacja wyłącznie na train i wieloklasowa regresja logistyczna (C=1, lbfgs, max_iter=5000). Bez strojenia, wyboru konfiguracji lub zmiany podziałów.
+
+Zewnętrzny test: 67/150 poprawnych, accuracy 44.67% (95% CI Wilsona 36.94–52.66%), balanced accuracy 35.87%, macro F1 0.3619.
+Baseline: zawsze klasa najczęstsza w train (normal): 55/150, accuracy 36.67%, balanced accuracy 25.00%.
+Walidacja wewnętrzna: accuracy 42.11%; train: 46.98%.
+Wartość 25% dla czterech jednakowo losowanych klas służy wyłącznie orientacji; nie jest wystarczającym punktem odniesienia dla nierównych klas.
+
+Testy Kruskala–Wallisa wykonano osobno w każdym podzbiorze i zastosowano korektę Holma dla czterech cech w danym podzbiorze.
+Cechy z p_Holm < 0,05 w zbiorze zewnętrznym: height_px, aspect_ratio_width_over_height.
+
+INTERPRETACJA
+Zależność samych wymiarów/jasności od etykiet może wskazywać na potencjalne cechy zakłócające. Nie dowodzi, że YOLO11 faktycznie korzystał z tych cech.
+Wynik bliski baseline nie wyklucza innych skrótów, np. sygnałów tekstury, tła, aparatu lub sposobu kadrowania. Ta analiza nie „zamyka tematu” shortcut learning.
+Nie trenowano ponownie modeli obrazowych i nie zmieniono artykułu, publicznych materiałów, etykiet ani wyników głównych.
+
+PLIKI
+analysis_plan_frozen_before_execution.json — plan i wersje bibliotek;
+image_geometry_brightness_features.csv — cechy wszystkich obrazów;
+class_feature_descriptives.csv — n, mediana, Q1 i Q3 według klasy i podzbioru;
+kruskal_wallis_holm.csv — H, surowe p i p po korekcie;
+logistic_predictions.csv — predykcje i prawdopodobieństwa;
+geometry_brightness_results.json — wyniki oraz współczynniki umożliwiające odtworzenie predykcji;
+analyze_geometry_brightness.py — kompletny kod analizy.

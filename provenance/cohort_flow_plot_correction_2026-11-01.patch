@@ -1,0 +1,62 @@
+--- base_v2.0.0/code/build_publication_figures.py
++++ local_review_2026-11-01/code/build_publication_figures.py
+@@ -175,35 +175,30 @@
+ else:
+  inv['validation_checks'].append('Figure 5 omitted: private CAM pixel inputs are not included in the public repository.')
+ 
+-# Supplement S1: author-confirmed historical screening vs retained image inventory.
+-# Initial record counts are not asserted to be unique-patient counts.
+-flow_source = {
+- 'source': 'Author-confirmed screening counts and accepted dataset reconciliation, as instructed for this final revision.',
+- 'lodz': {'historical_screening_records': 686, 'quality_exclusions': 9, 'original_png_inventory': 677, 'duplicate_training_copies_removed': 3, 'retained_unique_images': 674, 'train': 579, 'validation': 95},
+- 'konskie': {'historical_screening_records': 155, 'quality_exclusions': 5, 'retained_unique_images': 150, 'external_test': 150},
+- 'clarifications': ['Historical screening record counts are not asserted to represent unique patients.', 'One image per patient in the retained dataset was confirmed by the author.', 'Severe degenerative changes were not an exclusion criterion.', 'Prior spinal surgery or instrumentation, fractures unrelated to axSpA, and DISH were exclusion criteria; no additional cases meeting these criteria were present in the assessed pool.']
+-}
+-(OUT/'cohort_flow_source.json').write_text(json.dumps(flow_source,indent=2)+'\n')
+-assert 686-9==677 and 677-3==674 and 579+95==674 and 155-5==150
+-fig,ax=plt.subplots(figsize=(WIDTH,6.2));fig.subplots_adjust(left=.025,right=.975,bottom=.025,top=.975);ax.set(xlim=(0,1),ylim=(0,1));ax.axis('off')
+-def box(x,y,w,h,text,fill='#F2F6FA',edge='#54718C',fs=8):
+- ax.add_patch(FancyBboxPatch((x-w/2,y-h/2),w,h,boxstyle='round,pad=0.009,rounding_size=0.008',linewidth=.8,edgecolor=edge,facecolor=fill));ax.text(x,y,text,ha='center',va='center',fontsize=fs,linespacing=1.35)
+-def arrow(x1,y1,x2,y2):
+- ax.add_patch(FancyArrowPatch((x1,y1),(x2,y2),arrowstyle='-|>',mutation_scale=11,color='#54718C',linewidth=.8))
+-L=.265;R=.75;W=.43
+-ax.text(L,.975,'Łódź: development cohort',ha='center',fontsize=10,weight='bold');ax.text(R,.975,'Końskie: external cohort',ha='center',fontsize=10,weight='bold')
+-box(L,.88,W,.095,'Historical screening\n686 examination records');box(R,.88,W,.095,'Historical screening\n155 examination records')
+-arrow(L,.823,L,.776);arrow(R,.823,R,.776)
+-box(L,.72,W,.10,'Quality screening: 9 excluded\nArtifacts or poor image quality',fill='#FFF4E8',edge='#BE864A');box(R,.72,W,.10,'Quality screening: 5 excluded\nArtifacts or poor image quality',fill='#FFF4E8',edge='#BE864A')
+-arrow(L,.662,L,.615);arrow(R,.662,R,.245)
+-box(L,.56,W,.095,'Original image inventory\n677 PNG files')
+-arrow(L,.504,L,.456)
+-box(L,.40,W,.10,'Duplicate-copy removal\n3 copies removed from training',fill='#FFF4E8',edge='#BE864A')
+-arrow(L,.342,L,.295)
+-box(L,.24,W,.095,'Final development cohort\n674 unique images',fill='#EAF5F0',edge='#4B8270');box(R,.19,W,.10,'Final external test cohort\n150 unique images',fill='#EAF5F0',edge='#4B8270')
+-arrow(L,.184,.145,.127);arrow(L,.184,.375,.127)
+-box(.145,.076,.20,.08,'Training\nn = 579',fill='#EAF5F0',edge='#4B8270');box(.375,.076,.20,.08,'Validation\nn = 95',fill='#EAF5F0',edge='#4B8270')
+-save(fig,'Figure_S1_cohort_flow','Figure S1. Cohort screening and image-inventory reconciliation. The initial counts of 686 and 155 refer to historical examination records screened in Łódź and Końskie, respectively, and are not presented as counts of unique patients. Quality screening excluded nine and five records, respectively, owing to artifacts or poor image quality. The original Łódź image inventory contained 677 PNG files; removing three duplicate training copies yielded 674 retained images, with the original retained folder assignments preserved (579 training and 95 internal validation). The external test cohort contained 150 images. The author confirmed one image per patient in the retained dataset. Prior spinal surgery or instrumentation, fractures unrelated to axSpA, and diffuse idiopathic skeletal hyperostosis were exclusion criteria, but no additional cases meeting them occurred in the assessed pool. Severe degenerative changes were not an exclusion criterion. This diagram distinguishes clinical screening counts from subsequent technical duplicate-copy removal.',['cohort_flow_source.json'],['Source numerical values explicitly supplied or confirmed by the author; file inventory consistency is separate from unique-patient identity validation.'])
++# Supplement S1: author-corrected unique-case cohort flow, local addendum 2026-11-01.
++# The two review categories are grouped without asserting a screening chronology.
++from render_cohort_flow import render_cohort_flow, CAPTION as COHORT_FLOW_CAPTION
++flow_source=read_json(ROOT/'cohort_clarification_2026-11-01.json')
++(OUT/'cohort_flow_source.json').write_text(json.dumps(flow_source,indent=2,ensure_ascii=False)+'\n')
++for center in ('Lodz','Konskie','total'):
++ d=flow_source['counts'][center]
++ assert d['DISH']+d['fractures']+d['previous_spinal_surgery']==d['radiographic_exclusions']
++ assert d['radiographic_exclusions']+d['technical_exclusions']==d['all_exclusions']
++ assert d['before_exclusions_derived']-d['all_exclusions']==d['included']
++assert flow_source['counts']['Lodz']['included']==579+95
++with plt.rc_context():
++ render_cohort_flow(OUT)
++stem='Figure_S1_cohort_flow'
++inv['figures'].append({'id':stem,'caption':COHORT_FLOW_CAPTION,
++ 'files':[stem+'.png',stem+'.pdf'],'physical_inches':[7.4,5.7],
++ 'png_pixels':list(Image.open(OUT/(stem+'.png')).size),'png_dpi':300,
++ 'sources':['cohort_clarification_2026-11-01.json','code/render_cohort_flow.py'],
++ 'notes':['Initial unique-case counts reconstructed from final cohorts plus additional author-confirmed exclusions.',
++          'Three historical duplicate PNG copies are not additional patients or clinical exclusions.',
++          'No order between radiographic eligibility and quality review is asserted.'],
++ 'sha256':{stem+'.'+e:sha(OUT/(stem+'.'+e)) for e in ['png','pdf']}})
++sources['code/render_cohort_flow.py']=sha(ROOT/'code/render_cohort_flow.py')
++caps.append(stem+'\n'+COHORT_FLOW_CAPTION+'\n')
+ 
+ # Supplement: all seeds, no best external seed selection.
+ allruns=read_csv(RES/'analysis/metrics_all_runs.csv');summary=read_csv(RES/'analysis/five_seed_summary.csv')

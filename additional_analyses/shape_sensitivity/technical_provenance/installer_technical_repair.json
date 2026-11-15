@@ -1,0 +1,14 @@
+{
+  "recorded_utc": "2026-11-01T15:59:51.738784+00:00",
+  "repair": "Pin CUDA build suffixes in notebook installer; assert exact installed torch/torchvision build versions after installation.",
+  "reason": "Observed Colab torch2.11.0+cu130 satisfied torch==2.11.0 despite cu128 index; no study inference had occurred when detected.",
+  "affected_cell": 2,
+  "notebook_before_sha256": "7cdc87159e4ffabc9d5f44a5bb0825e966cf5c0abb584bd65bf8be0e00730887",
+  "notebook_after_sha256": "02d67a0eb02a7ae3102d8b14531437de535bda457bc64dcc45f7677fffdbd106",
+  "frozen_script_sha256": "8c118c45efb84011207b66eed0f759df8c085688e71ebde75816ae02455ffbab",
+  "frozen_plan_sha256": "dbd6611584c31bbafbaa9b93ad3ffc06a5a7e0efa00b0d50ff65759157d664f7",
+  "frozen_script_plan_gate_changed": false,
+  "syntax_validation": "PASS: all code cells parse",
+  "prior_colab_upload_package_sha256": "a8f6ca4fa97513ce07334452143ffe61668ee6af696f7d3b08b52763abc49c2e",
+  "prior_colab_upload_package_preserved": true
+}

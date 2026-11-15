@@ -1,0 +1,20 @@
+--- before/code/render_cohort_flow.py
++++ current/code/render_cohort_flow.py
+@@ -9,7 +9,6 @@
+            'A further 9 and 5 cases were excluded for artifacts or poor image quality; these were additional, non-overlapping exclusions. '
+            'The final cohorts contained 674 patients in Łódź (579 training, 95 internal validation) and 150 in Końskie (external evaluation), '
+            'with one retained image per patient. Reasons are grouped without implying the order of eligibility and quality checks. '
+-           'Three historical duplicate PNG copies were removed as a technical correction and are not additional patients or clinical exclusions. '
+            'Severe degenerative changes were not an exclusion criterion.')
+ 
+ def render_cohort_flow(output_dir):
+--- before/code/build_publication_figures.py
++++ current/code/build_publication_figures.py
+@@ -194,7 +194,6 @@
+  'png_pixels':list(Image.open(OUT/(stem+'.png')).size),'png_dpi':300,
+  'sources':['cohort_clarification_2026-11-01.json','code/render_cohort_flow.py'],
+  'notes':['Initial unique-case counts reconstructed from final cohorts plus additional author-confirmed exclusions.',
+-          'Three historical duplicate PNG copies are not additional patients or clinical exclusions.',
+           'No order between radiographic eligibility and quality review is asserted.'],
+  'sha256':{stem+'.'+e:sha(OUT/(stem+'.'+e)) for e in ['png','pdf']}})
+ sources['code/render_cohort_flow.py']=sha(ROOT/'code/render_cohort_flow.py')

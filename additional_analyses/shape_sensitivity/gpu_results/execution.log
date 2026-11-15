@@ -1,0 +1,71 @@
+{
+  "purpose": "Target numerical flags from previous exact A100 Eigen-CAM replay; current environment recorded before this retry.",
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "torch": "2.11.0+cu128",
+  "torch_cuda": "12.8",
+  "cudnn_version": 91900,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "gpu_capability": [
+    8,
+    0
+  ],
+  "deterministic_algorithms": false,
+  "cudnn_benchmark": false,
+  "cudnn_deterministic": false,
+  "cuda_matmul_allow_tf32": false,
+  "cudnn_allow_tf32": true,
+  "float32_matmul_precision": "highest",
+  "cublas_workspace_config": ":4096:8",
+  "historical_exact_replay_gpu": "NVIDIA A100-SXM4-80GB",
+  "historical_exact_replay_cudnn_version": 91900
+}
+Creating new Ultralytics Settings v0.0.8 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/root/.config/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/usage/settings.
+Replaying unmodified external inputs...
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Evaluating prespecified condition fixed_gray_128...
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Evaluating prespecified condition per_image_mean_gray...
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+{
+  "original": {
+    "estimate": 0.92,
+    "ci_low": 0.8653786362494686,
+    "ci_high": 0.953646358481347,
+    "confidence": 0.95,
+    "method": "Wilson",
+    "correct": 138,
+    "total": 150
+  },
+  "fixed_gray_128": {
+    "estimate": 0.36666666666666664,
+    "ci_low": 0.2937744456533283,
+    "ci_high": 0.44621761951149214,
+    "confidence": 0.95,
+    "method": "Wilson",
+    "correct": 55,
+    "total": 150
+  },
+  "per_image_mean_gray": {
+    "estimate": 0.36666666666666664,
+    "ci_low": 0.2937744456533283,
+    "ci_high": 0.44621761951149214,
+    "confidence": 0.95,
+    "method": "Wilson",
+    "correct": 55,
+    "total": 150
+  }
+}

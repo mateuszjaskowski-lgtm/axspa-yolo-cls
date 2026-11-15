@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T15:10:31.935062+00:00",
+  "stage": "before_any_new_study_image_predictions",
+  "prior_information": "Primary experiment and geometry/brightness analysis already known; this is a post hoc protocol, not preregistration.",
+  "script_sha256": "8c118c45efb84011207b66eed0f759df8c085688e71ebde75816ae02455ffbab",
+  "plan_sha256": "dbd6611584c31bbafbaa9b93ad3ffc06a5a7e0efa00b0d50ff65759157d664f7",
+  "readable_plan_sha256": "2de28544c3ff9be411dbd8283a09e0f8f0325fb15fb13d8ce5bb98077ae84a9d",
+  "source_hashes": {
+    "code/train_models.py": "2386fd1fbf253e58d577d891dc34d4ef369fbb35aa51d72561fb33a7392a17e1",
+    "code/spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+    "code/study_design.py": "981f97151b30a8f1b9dbbd51f03ccabac2b5591000b18bd29603bf6fdd69e3d6",
+    "data/clean_manifest.csv": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+    "analysis/yolo11l-cls/seed_0/test_predictions.npz": "d891d629e55c304b0ec636d17323a431dcf5a209d56aa8862bc36e68e07a858d",
+    "runs/yolo11l-cls/seed_0/selection_metadata.json": "53d9a1acf9c418cdc0737dacf3523cf76f85a19942ed3dc4b199dc8d7a3601fc"
+  },
+  "configuration": {
+    "conditions": [
+      "original",
+      "fixed_gray_128",
+      "per_image_mean_gray"
+    ],
+    "checkpoint_sha256": "2ef70f6c73c43970cbaebed2884e71b1cd374b1545d5239abe6f2243e75c5ac6",
+    "n_external": 150,
+    "baseline_correct": 138,
+    "baseline_probability_absolute_tolerance": 0.0001,
+    "all_baseline_argmax_must_match": true,
+    "batch_size": 32,
+    "imgsz": 640,
+    "half": false,
+    "augment": false,
+    "conv_batchnorm_fusion": false,
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 0,
+    "gray_rounding": "floor(float64_mean_all_original_RGB_pixels_and_channels + 0.5)",
+    "confidence_interval": "two-sided 95% Wilson accuracy; paired image-level percentile bootstrap accuracy difference",
+    "required_core_versions_without_build_suffix": {
+      "torch": "2.11.0",
+      "torchvision": "0.26.0",
+      "ultralytics": "8.4.163",
+      "Pillow": "11.3.0"
+    },
+    "input_identity_mode": "strict_original_PNG_bytes_plus_independent_RGB_and_dimensions",
+    "center_crop_or_stretch": false,
+    "new_training_or_parameter_selection": false,
+    "interpretation": "Post hoc OOD content ablation, not causal attribution or proof of bone-specific reliance."
+  }
+}

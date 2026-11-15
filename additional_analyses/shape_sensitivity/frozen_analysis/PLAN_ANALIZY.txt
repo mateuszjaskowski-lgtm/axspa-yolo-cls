@@ -1,0 +1,128 @@
+PLAN DODATKOWEJ ANALIZY WRAŻLIWOŚCI — YOLO11l-cls, seed 0
+Plan zatwierdzony do zamrożenia przed nową inferencją obrazów badania,
+1 listopada 2026 r.
+
+Status i cel
+To analiza eksploracyjna post hoc, zaplanowana po poznaniu wyników głównego
+eksperymentu i analizy geometrii/jasności. Nie jest prerejestracją ani nową
+oceną na wcześniej nieoglądanej kohorcie. Sprawdzamy predykcje istniejącego,
+zamrożonego modelu po usunięciu treści przestrzennej radiogramu, zachowując
+wymiary przygotowanego PNG, a następnie oryginalny resize i padding.
+Nie wykonujemy treningu, nie zmieniamy danych źródłowych ani artykułu.
+
+Przed wykonaniem
+Plan został zatwierdzony przez osobę prowadzącą analizę. Przed uzyskaniem
+jakichkolwiek nowych predykcji obrazów badania trzeba zapisać osobny rekord zamrożenia:
+datę i czas UTC oraz SHA-256 planu JSON, tego opisu, implementacji analizy
+i importowanych plików kodu. Ten dokument nie zamraża jeszcze kodu; zatwierdzenie nie jest prerejestracją.
+Identyfikatory i pełne hashe wejść są w analysis_plan.json.
+W tej analizie wymagane są oryginalne bajty PNG zgodne z manifestem;
+ponownie zapisane pliki równoważne wyłącznie po dekodowaniu RGB nie są dopuszczone.
+
+Ujawniony wcześniejszy test techniczny
+Przed zamrożeniem wykonano wyłącznie test wydajności na nowo wygenerowanym
+jednolitym obrazie RGB(128,128,128) o rozmiarze 280×640, powtórzonym 32 razy.
+Nie użyto pikseli ani etykiet obrazów badania. Odczytano wyłącznie liczbę
+wyników (32), czas (10.24 s) i załadowaną transformację; wartości predykcji
+nie były przeglądane. Nie uzyskano wyników analizy ablacyjnej ani nowych
+predykcji obrazów badania. Był to test sprzętu i uruchomienia, nie eksperyment
+naukowy, dobór ustawień na podstawie wyników ani prerejestracja.
+
+Dane i model
+Wszystkie 150 oryginalnych obrazów z Końskich, według istniejącego manifestu.
+Liczebności klas w kolejności normal/osteofity/parasyndesmofity/syndesmofity:
+55/54/20/21. Jeden przygotowany PNG na pacjenta. Bez wykluczania przypadków,
+przenoszenia między zbiorami lub zmiany etykiet.
+Model: YOLO11l-cls, seed 0, selected.pt.
+SHA-256 checkpointu:
+2ef70f6c73c43970cbaebed2884e71b1cd374b1545d5239abe6f2243e75c5ac6
+
+Trzy z góry ustalone warunki
+1. Oryginał: niezmieniony przygotowany PNG i pełna oryginalna ścieżka inferencji.
+2. Stała szarość: cały obraz RGB zastąpiony kolorem (128,128,128), dokładnie
+   przy oryginalnej szerokości i wysokości. Zastępujemy wszystkie piksele,
+   także tło obecne w PNG; nie stosujemy maski anatomicznej.
+3. Średnia jasność obrazu: po konwersji oryginału do RGB obliczamy średnią
+   float64 ze wszystkich pikseli i kanałów w skali 0–255. Ustalamy
+   g = floor(średnia + 0.5). Cały obraz zastępujemy kolorem (g,g,g), zachowując
+   jego szerokość i wysokość. Zapisujemy średnią przed zaokrągleniem i g.
+
+We wszystkich warunkach: oryginalny SpineResizePad, najdłuższy bok 640,
+proporcjonalne przeskalowanie PIL bilinear z oryginalnym zaokrąglaniem,
+wyśrodkowanie na czarnym tle 640×640, RGB→[0,1], normalizacja mean0/std1.
+Batch 32, FP32, half=False, augment=False. Ładowanie przez
+train_models.load_for_inference i oryginalny predyktor bez fuzji warstw.
+Nie zastępujemy go domyślnym, scalającym warstwy predyktorem YOLO.
+Zapisujemy wersje bibliotek, urządzenie i rzeczywiste flagi wykonania.
+Oczekiwane wersje podstawowe: torch 2.11.0, torchvision 0.26.0,
+ultralytics 8.4.163, Pillow 11.3.0. CPU jest dopuszczone jako jawnie opisana
+różnica środowiska, pod warunkiem przejścia niezmienionej bramki odtworzenia.
+
+Obowiązkowa bramka zgodności przed predykcjami na wariantach
+Najpierw wykonujemy tylko inferencję oryginalnych 150 zdjęć. Weryfikujemy
+identyfikatory, hashe plików, etykiety, kolejność klas i wymiary z manifestem
+oraz archiwalnym test_predictions.npz. Warunki dopuszczenia:
+- wszystkie 150 klas argmax identyczne z archiwum;
+- 138/150 poprawnych klasyfikacji;
+- maksymalna bezwzględna różnica dowolnego z 600 prawdopodobieństw ≤ 0.0001,
+  bez dodatkowej tolerancji względnej.
+Niespełnienie któregokolwiek warunku zatrzymuje analizę przed inferencją
+wariantów. Nie zwiększamy tolerancji po zobaczeniu wyniku. Zachowujemy raport
+błędu. Ewentualna udokumentowana naprawa techniczna wymaga przeglądu i nowego
+zamrożenia kodu, nie doboru checkpointu lub przetwarzania do lepszego wyniku.
+
+Kontrola wariantów
+Sprawdzamy rozmiary, jednolitość RGB, poprawność g i geometrię resize/paddingu
+dla każdego obrazu. Wariant ma mieć taki sam obrys przeskalowanego PNG
+i czarne dodane pasy jak oryginał. Każde odwzorowanie źródło→wariant i jego
+hash zostają zapisane. Brak lub błąd obrazu oznacza zatrzymanie, nie wykluczenie.
+
+Raportowanie
+Dla każdego warunku: liczba poprawnych/150, accuracy z 95% CI Wilsona,
+balanced accuracy, macro-F1 dla czterech klas (zero_division=0), nieważona
+kappa Cohena, macierz pomyłek (wiersze prawdziwe, kolumny przewidywane),
+liczba predykcji każdej klasy, średnia maksymalna pewność predykcji oraz
+zgodność argmax z predykcjami oryginału.
+Dla każdej z dwóch różnic accuracy (oryginał minus wariant): 10 000 sparowanych
+bootstrapów obrazów, numpy.random.default_rng(0), po 150 losowań
+ze zwracaniem, te same indeksy w obrębie pary oryginał/wariant. Generator
+resetujemy do seedu 0 przed każdym z dwóch porównań przy identycznym
+proceduralnie losowaniu, uzyskując te same indeksy także między porównaniami.
+95% CI: percentyle 2.5 i 97.5, kwantyle liniowe. Przedziały są punktowe,
+eksploracyjne i warunkowe względem checkpointu, bez korekty wielokrotności.
+Nie planujemy wartości p ani ponownej analizy lub doboru progu binarnego.
+
+Punkty odniesienia
+Stała predykcja klasy najczęstszej w oryginalnym zbiorze treningowym (normal)
+daje w Końskich 55/150 = 36.7% accuracy i 25% balanced accuracy. Wcześniejsza
+regresja na geometrii/jasności dała 67/150 = 44.7%; nie jest ponownie dopasowywana.
+Te wyniki są opisowymi punktami odniesienia, a nie „poziomem losowym” CNN.
+Nie ustalamy progów 35–45% lub 60–70% jako kryterium zaliczenia lub porażki.
+
+Granice interpretacji
+Zachowany zostaje stosunek szerokości do wysokości przygotowanego PNG i obrys
+prostokąta na dodanym tle, a w drugim wariancie także globalna jasność.
+Bezwzględna wysokość i szerokość źródłowa nie są osobno zachowane po resize,
+poza możliwymi efektami interpolacji/zaokrąglania.
+Istniejąca zależność geometrii od klasy nie dowodzi przyczynowego confoundingu
+ani wykorzystywania tej cechy przez CNN.
+Spadek accuracy oznacza utratę dyskryminacji po usunięciu przestrzennej treści
+obrazu na syntetycznych wejściach spoza rozkładu treningowego. Nie dowodzi
+rozpoznawania cech kostnych, nie wyznacza udziału geometrii na oryginałach
+i nie wyklucza shortcut learning. Zachowana dyskryminacja pokazuje informację
+wykorzystywaną na tych kontrolach, ale również nie mierzy bezpośrednio udziału
+tej informacji w predykcjach obrazów niezmienionych. Raportujemy oba warianty,
+niezależnie od wyniku, bez deklaracji, że problem shortcutów został zamknięty.
+
+Dlaczego bez dodatkowego center-crop
+Kadrowanie do wspólnego aspect ratio może usuwać fragmenty z patologią,
+łącząc zmianę geometrii z utratą treści. Rozciąganie do wspólnych proporcji
+deformuje anatomię. Obie interwencje pominięto w tej minimalnej analizie,
+ponieważ nie izolują czysto wpływu geometrii.
+
+Materiały końcowe
+Plan i rekord zamrożenia, kontrola zgodności oryginałów, środowisko,
+odwzorowanie źródeł i wariantów, wszystkie prawdopodobieństwa CSV/NPZ,
+komplet metryk, macierzy i sparowanych różnic oraz zwięzły opis ograniczeń.
+Artykuł, publiczne repozytorium i Zenodo zostaną zsynchronizowane dopiero
+w zbiorczej korekcie po przeglądzie wyników, zgodnie z ustaloną kolejnością.

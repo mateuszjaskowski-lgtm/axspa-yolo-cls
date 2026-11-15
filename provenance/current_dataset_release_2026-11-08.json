@@ -1,0 +1,164 @@
+{
+  "record_type": "Current active preparation and notebook release alignment",
+  "recorded_utc": "2026-11-08T17:49:33.904378+00:00",
+  "scope": "Current active source changes for the accepted 824-image study dataset. This is a new release record, not a replacement for an original execution record.",
+  "baseline": "Recovered current computational package (2026-11-01) overlaid into the publication checkout before this alignment.",
+  "accepted_cohort": {
+    "lodz": 674,
+    "lodz_train": 579,
+    "lodz_internal_validation": 95,
+    "konskie_external": 150,
+    "total": 824
+  },
+  "changes": [
+    "The active preparation entry point accepts only the two registered 824-image PNG archives and uses the accepted 824-row reference manifest directly.",
+    "Every accepted path is copied unchanged. Archive identity, path completeness, class labels, split counts, dimensions, canonical RGB hashes, exact-image uniqueness and resulting manifest identity are checked.",
+    "The original PNG representation retains the original locked manifest. The registered RGB-equivalent PNG byte variant retains a separate exact file-hash manifest and remains limited to future reproduction.",
+    "The active notebook embeds the current active source files, omits an unused input manifest, and uses a new reproduction project directory. Installer integrity and refusal to overwrite differing files are retained.",
+    "Trainer documentation describes the completed accepted cohort and distinguishes future reproduction from original-checkpoint replay.",
+    "The current ledger supersedes older snapshot hash listings only for identification of the active release. Earlier dated ledgers and immutable executed sources are unchanged."
+  ],
+  "active_files": {
+    "code/prepare_data.py": {
+      "before_sha256": "c0bde29f63579740c5fd102eac017b92d2d63dbb9383ea82368bc96350102da8",
+      "current_sha256": "63bc7332ddaa07f68f82405f0ced8be7d6f2b34013670d77e719afa3a3b3c73e"
+    },
+    "code/test_archive_variant.py": {
+      "before_sha256": "7bc1d48aaafe6b41cf9a4daa2c2c373ed07099004922618312ccc9bf0497fa13",
+      "current_sha256": "50569173cf0e1f147ded21dde56df214a9ce1ecfc037cabfa007861ac8bf8cfc"
+    },
+    "code/trainer_notes.txt": {
+      "before_sha256": "5710195492d343a93d6d320cdf8248d479a2ce5748aadbf8be4b87e1e963331d",
+      "current_sha256": "71f1ad44c73f6b8d5d7ee75766ca8a27312d700b640815678f9e03116ca81b0f"
+    },
+    "notebooks/axspa_clean_retraining.ipynb": {
+      "before_sha256": "a546ed43134a9fe43e960a6729cac03df53f9ecc95d01d33d29cff09f9756f13",
+      "current_sha256": "a2ce2c2f5c1f74af69f682e25e49fa0d5aa77c5d39b3a20a47b8f28eb4705977"
+    }
+  },
+  "reference_manifest": {
+    "path": "code/reference_clean_manifest.csv",
+    "sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+    "unchanged": true
+  },
+  "registered_inputs": [
+    {
+      "archive_sha256": "ba4c5ece78779f67b209f839cec75f70aa480c07bc8ee1dee008f4594a96613d",
+      "manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+      "scope": "Original PNG representation; original locked replay and future reproduction"
+    },
+    {
+      "archive_sha256": "51f54607bb58b2d5492dd129e6c31b0198e67ce58a3efc19c4e1d4156aafd615",
+      "manifest_sha256": "f98cc4992fe3da8140ed1ab033361e86188fc3e9c9c04d814ac09af3bb869642",
+      "scope": "RGB-equivalent PNG byte variant; future reproduction only"
+    }
+  ],
+  "validation": {
+    "focused_unit_and_integration_tests": {
+      "command": "AXSPA_EQUIVALENT_ARCHIVE=<private-registered-variant.zip> python -m unittest discover -s code -p test_archive_variant.py -v",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "status": "PASS"
+    },
+    "original_824_archive_preparation": {
+      "status": "PASS",
+      "source_archive_sha256": "ba4c5ece78779f67b209f839cec75f70aa480c07bc8ee1dee008f4594a96613d",
+      "output_manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+      "verified_images": 824,
+      "source_png_bytes_modified": false
+    },
+    "variant_824_archive_preparation": {
+      "status": "PASS",
+      "verified_images": 824,
+      "manifest_sha256": "f98cc4992fe3da8140ed1ab033361e86188fc3e9c9c04d814ac09af3bb869642",
+      "actual_file_hashes_verified": 824,
+      "original_first_preparation_audit_preserved_on_repeat": true
+    },
+    "notebook": {
+      "compiled_notebook_code_cells": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22
+      ],
+      "verified_embedded_active_assets": [
+        "eigen_cam.py",
+        "eigen_cam_replay.py",
+        "evaluate_models.py",
+        "prepare_data.py",
+        "preview_training_inputs.py",
+        "spine_transforms.py",
+        "test_evaluation.py",
+        "train_models.py",
+        "trainer_notes.txt",
+        "study_design.py",
+        "reference_clean_manifest.csv"
+      ],
+      "embedded_installer_idempotence_and_refusal_of_changed_files": "PASS",
+      "embedded_design_matches_repository": true,
+      "archive_allowlists_match": true,
+      "original_execution_files_unchanged": 10,
+      "numerical_source_files_unchanged": [
+        "code/train_models.py",
+        "code/evaluate_models.py",
+        "code/spine_transforms.py",
+        "code/study_design.py",
+        "code/eigen_cam.py",
+        "code/eigen_cam_replay.py"
+      ]
+    },
+    "unchanged_notebook_scientific_and_export_cells_zero_based": [
+      2,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22
+    ],
+    "unknown_or_modified_archive_rejected": true,
+    "original_png_byte_guard_rejects_variant_bytes": true,
+    "original_study_plan_binding_unchanged": true
+  },
+  "unchanged_numerical_source_sha256": {
+    "code/train_models.py": "2386fd1fbf253e58d577d891dc34d4ef369fbb35aa51d72561fb33a7392a17e1",
+    "code/evaluate_models.py": "8b4b02eb1a8765693c9cefcab5181d9bbda5a99ffc6686b7227cb1b2cb127e59",
+    "code/spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+    "code/study_design.py": "981f97151b30a8f1b9dbbd51f03ccabac2b5591000b18bd29603bf6fdd69e3d6",
+    "code/eigen_cam.py": "70f66b92dc2145ae8ed8cd45cd11b12bc022c3d2b7477a886c2636b552ed8e32",
+    "code/eigen_cam_replay.py": "d0c0e653b945a619901018008ed2f8367302481bebf8e0f949984e73f5038a3a"
+  },
+  "unchanged_original_execution_source_sha256": {
+    "provenance/original_code/eigen_cam.py": "e159f0bcfede0da4ce3348ca54f444de934b2b015cb42a5f577bc1f76dda78cb",
+    "provenance/original_code/eigen_cam_replay.py": "7a0b9deb225e36c8b426f6fc2dbf6cd993187733783db3625c8ec44a37a1020c",
+    "provenance/original_code/evaluate_models.py": "50f37e547b741f97295df291c64225a9b1d0acf96e186c6be3f7736be993e2b4",
+    "provenance/original_code/original_manifest.csv": "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746",
+    "provenance/original_code/prepare_data.py": "4ed7d4cc66148fc1c917c41797433d7b8cc8886d585b2a148071b9cf7c6e024e",
+    "provenance/original_code/preview_training_inputs.py": "1a5c92fd646779f586515678cbaccfa1582d92db426b740ab4dedd07c6feb718",
+    "provenance/original_code/spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+    "provenance/original_code/test_evaluation.py": "f6def3b89a9e6275d15cc56497a89a89791ba30e9286c904fbaeb2286827595d",
+    "provenance/original_code/train_models.py": "fbc3425fd99b52cf5e201900f23b6d797015c71499b88ce7d0cac34cab12db1e",
+    "provenance/original_code/trainer_notes.txt": "2005c62a9f92fd4f974f19e815c5ef59f5a7a9833237fa4f7bf6bb537d814ed0"
+  },
+  "training_performed": false,
+  "model_inference_performed": false,
+  "existing_predictions_or_checkpoints_modified": false,
+  "source_pngs_distributed_in_release": false,
+  "removed_unused_active_files": [
+    {
+      "path": "code/original_manifest.csv",
+      "sha256_before_removal": "b2b4d559fcee93f4f93f8b613d204fe78d6d7f506685910917616ab3f8e83746",
+      "reason": "No active script or notebook uses this input. The byte-identical frozen replay dependency remains at provenance/original_code/original_manifest.csv."
+    }
+  ]
+}

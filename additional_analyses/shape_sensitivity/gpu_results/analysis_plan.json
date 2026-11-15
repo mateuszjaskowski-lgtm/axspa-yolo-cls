@@ -1,0 +1,184 @@
+{
+  "analysis_id": "yolo11_seed0_external_shape_sensitivity_2026-11-01",
+  "plan_status": "approved_for_freeze_before_study_image_inference",
+  "analysis_status": "Post hoc exploratory inference-only analysis proposed after the primary CNN results and geometry/brightness analysis were known; not preregistered and not a new untouched external validation.",
+  "purpose": "Describe predictions of the frozen primary YOLO11l-cls seed-0 checkpoint after removing all within-image spatial radiographic information while retaining the prepared-PNG footprint, with and without per-image global brightness.",
+  "execution_precondition": "The root reviewer has approved this plan. Record UTC timestamp and SHA-256 hashes of this exact plan, readable plan, final analysis implementation and imported inference code in a separate freeze record before any new study-image inference. This approval is not preregistration.",
+  "reference_root": "/workspace/scratch/12793bdc6888/consolidated_revision_2026-11-01/private_computational_work/axspa-yolo-cls-v2.0.0",
+  "inputs": {
+    "source_png_archive_sha256": "ba4c5ece78779f67b209f839cec75f70aa480c07bc8ee1dee008f4594a96613d",
+    "manifest": "data/clean_manifest.csv",
+    "manifest_sha256": "3016eaeeb8af3745c64b159c5189549fadde3753aa08d232ea7e7d450f4e4dfd",
+    "selected_checkpoint": "runs/yolo11l-cls/seed_0/selected.pt",
+    "selected_checkpoint_sha256": "2ef70f6c73c43970cbaebed2884e71b1cd374b1545d5239abe6f2243e75c5ac6",
+    "run_metadata": "runs/yolo11l-cls/seed_0/run_complete.json",
+    "run_metadata_sha256": "22fe94f68978f5e7659b6e5fd92e61f9879fbf4d134d6b13ad5d3cc00f1b0af7",
+    "archived_predictions": "analysis/yolo11l-cls/seed_0/test_predictions.npz",
+    "archived_predictions_sha256": "d891d629e55c304b0ec636d17323a431dcf5a209d56aa8862bc36e68e07a858d",
+    "archived_predictions_csv": "analysis/yolo11l-cls/seed_0/test_predictions.csv",
+    "archived_predictions_csv_sha256": "52e11a02a5bffe4fc28aac687ba0b44d9f394cfaa69eb5354af2478d39c101e0",
+    "source_png_requirement": "Original PNG file bytes verified against the fixed manifest; RGB-equivalent reserialized files are not permitted for this run."
+  },
+  "source_code": {
+    "code/spine_transforms.py": "0db3795dcb4818126e2e80af91ba83e696d2a5ae84f50e22f40c0dcc6f4a3b30",
+    "code/train_models.py": "2386fd1fbf253e58d577d891dc34d4ef369fbb35aa51d72561fb33a7392a17e1",
+    "code/evaluate_models.py": "8b4b02eb1a8765693c9cefcab5181d9bbda5a99ffc6686b7227cb1b2cb127e59"
+  },
+  "cohort": {
+    "split": "test",
+    "site": "Konskie",
+    "n": 150,
+    "unit": "One prepared PNG per patient, as established for the existing study cohort.",
+    "class_order": [
+      "normal",
+      "osteofity",
+      "parasyndesmofity",
+      "syndesmofity"
+    ],
+    "class_counts": [
+      55,
+      54,
+      20,
+      21
+    ],
+    "selection": "All 150 external rows in the fixed manifest; no exclusions, resampling of the evaluation cohort, relabeling, selected examples or data-split changes. Train labels are read only to establish the descriptive majority-class baseline. No validation or train inference."
+  },
+  "conditions": [
+    {
+      "id": "original",
+      "role": "Mandatory replay and within-patient reference",
+      "source_operation": "Use each original prepared PNG without modification.",
+      "inference_operation": "Apply the archived complete inference transform and frozen checkpoint."
+    },
+    {
+      "id": "fixed_gray_128",
+      "role": "Prepared-footprint geometry control",
+      "source_operation": "Decode PNG with Pillow and convert to RGB. Create an RGB image with exactly the source width and height and every pixel equal to (128,128,128). Replace the entire source image, including its original background, not only segmented anatomy.",
+      "inference_operation": "Apply the identical archived resize-and-pad transform, so the resulting centered rectangle has the original prepared-image footprint against black added padding."
+    },
+    {
+      "id": "per_image_mean_gray",
+      "role": "Prepared-footprint geometry plus global-brightness control",
+      "source_operation": "Decode PNG with Pillow and convert to RGB. Compute the float64 arithmetic mean over every original pixel and all three RGB channels on the 0..255 scale. Let g = floor(mean + 0.5). Create an RGB image with the original width and height and every pixel equal to (g,g,g). Record the unrounded mean and integer g for each image.",
+      "inference_operation": "Apply the identical archived resize-and-pad transform. No brightness is calculated from the padded image."
+    }
+  ],
+  "inference": {
+    "model": "yolo11l-cls",
+    "training_seed": 0,
+    "loader": "train_models.load_for_inference from the verified source code; it verifies checkpoint SHA-256 and class order and installs attach_unfused_yolo_predictor.",
+    "execution_path": "Use the original prediction path, equivalent to train_models.predict_split, for original and generated PNG files; do not replace it with a standalone fused YOLO predictor or direct tensor path with unverified preprocessing.",
+    "backend_fusion": false,
+    "precision": "float32",
+    "batch_size": 32,
+    "image_size": 640,
+    "half": false,
+    "augment": false,
+    "preprocessing": "Pillow RGB conversion; resize longest edge to 640 preserving aspect ratio with Python round and PIL bilinear; centered RGB(0,0,0) padding to 640x640; ToTensor and identity normalization (mean0/std1). No crop.",
+    "runtime_record": "Record device, Python/package versions, CUDA/cuDNN when available, effective deterministic/TF32 flags, predictor transform representation and runtime source-code hashes. Do not retrospectively attribute the recorded training flags to the archived original evaluation.",
+    "no_fitting": true,
+    "expected_core_versions": {
+      "torch": "2.11.0",
+      "torchvision": "0.26.0",
+      "ultralytics": "8.4.163",
+      "Pillow": "11.3.0"
+    },
+    "device_scope": "CPU is permitted as an explicitly recorded environment difference from the original GPU evaluation, subject to the unchanged mandatory replay gate. Never loosen the probability tolerance after inspecting results."
+  },
+  "mandatory_replay_gate": {
+    "order": "Complete and verify original-condition replay before obtaining or inspecting predictions for either ablation condition.",
+    "identity": "Match all 150 image IDs, original source SHA-256 values, true labels and class-column order against the manifest and archived NPZ; check original PNG dimensions and byte hashes against the manifest.",
+    "argmax": "All 150 replayed argmax classes must match the corresponding archived argmax classes.",
+    "correct_predictions": 138,
+    "probability_tolerance": {
+      "metric": "maximum absolute difference across all 150x4 corresponding probability values",
+      "maximum_allowed": 0.0001,
+      "relative_tolerance": 0
+    },
+    "failure_rule": "Halt before ablation inference and report the exact failure. Do not change tolerance or use a different checkpoint, seed, preprocessing, class order or inference method to obtain a passing scientific result. A separately documented technical repair requires reviewed code and a new freeze before re-execution; preserve failed-gate records.",
+    "reporting": "Report maximum and mean absolute probability differences, number of argmax discrepancies, correct count and all identity checks, including when a valid cross-environment replay is not bitwise identical."
+  },
+  "quality_controls": [
+    "Verify manifest, archived prediction and checkpoint hashes before inference.",
+    "Verify both ablation RGB images have the exact original dimensions and are spatially uniform.",
+    "Verify generated gray value and all-original-pixel replacement numerically, including source background.",
+    "Check each variant's resize/pad geometry equals the geometry of its original image and added padding remains RGB0.",
+    "Keep source PNGs, checkpoint, original predictions, frozen experiment records and manuscript unchanged.",
+    "Use stable image identities for every cross-condition comparison, and preserve true-class ordering."
+  ],
+  "statistics": {
+    "primary_descriptive_metric": "Four-class accuracy, numerator/150, with two-sided 95% Wilson score interval using z=norm.ppf(0.975).",
+    "additional_metrics": [
+      "balanced accuracy (mean recall across the four fixed classes)",
+      "macro-F1 across the four fixed classes, zero_division=0",
+      "unweighted Cohen kappa",
+      "four-by-four confusion matrix with true rows and predicted columns",
+      "predicted count in each of the four classes",
+      "mean maximum predicted class probability",
+      "agreement count and percentage with original-condition argmax predictions"
+    ],
+    "paired_accuracy_differences": {
+      "comparisons": [
+        "original minus fixed_gray_128",
+        "original minus per_image_mean_gray"
+      ],
+      "estimand": "Paired difference in correct-classification proportions on the same 150 images, conditional on this checkpoint and interventions.",
+      "replicates": 10000,
+      "rng": "numpy.random.default_rng",
+      "seed": 0,
+      "resampling": "Unstratified paired image-level bootstrap: sample 150 row indices with replacement per replicate and use the same index array for original and its comparator. Reset default_rng(0) before each variant comparison with an identical sampling procedure; thus the same bootstrap row-index draws are reused across both comparisons.",
+      "interval": "Pointwise percentile interval at 0.025 and 0.975 using linear quantiles; no multiplicity-adjusted or confirmatory claim.",
+      "p_values": "None planned."
+    },
+    "baseline": {
+      "rule": "Always predict the most frequent training class in the original 579-row training manifest; break ties by lowest numeric class index.",
+      "expected_class": "normal",
+      "external_correct": 55,
+      "external_accuracy": 0.36666666666666664,
+      "external_balanced_accuracy": 0.25,
+      "comparison": "Descriptive context only. The prior train-fitted four-feature logistic regression achieved 67/150 (44.7%); it is not refitted or a chance benchmark for this frozen CNN. Uniform-random 25% accuracy and 25% balanced accuracy are theoretical descriptive context, not a decision criterion for absence of shortcuts."
+    },
+    "binary_analysis": "Not planned; no binary threshold re-estimation or threshold optimization.",
+    "missing_or_invalid": "Any missing image, invalid probability vector or unmatched identity is a failed analysis, not an exclusion. Report and halt."
+  },
+  "interpretation": {
+    "scope": "Sensitivity to removal of all within-image radiographic spatial information on the already-evaluated external cohort; conditional on one frozen checkpoint.",
+    "geometry_information": "Prepared aspect ratio and resulting rectangle/padding geometry remain exposed. Original absolute width and height are not separately preserved as raw dimensions after aspect-preserving resizing, apart from possible interpolation and rounding effects.",
+    "association": "The prior association between prepared-image geometry and class does not by itself establish a causal confounder or CNN reliance.",
+    "low_ablation_performance": "A reduction shows loss of discrimination on these out-of-distribution anatomy-erased inputs. It does not establish use of bone-specific features, estimate geometry's contribution on original images, or exclude shortcut learning.",
+    "high_ablation_performance": "Discrimination on these controls demonstrates predictive information available to this network from retained footprint and/or global intensity under the intervention, without directly quantifying reliance in intact images.",
+    "no_acceptance_cutoff": "No 35-45%, 60-70% or other success/failure threshold is specified. Interpret all estimates and uncertainty without declaring that shortcuts are excluded.",
+    "generalizability": "No claim of new independent external validation, clinical diagnostic accuracy, clinical readiness or improved performance."
+  },
+  "omitted_intervention": {
+    "center_crop_to_common_aspect_ratio": "Omitted because it can remove disease-bearing anatomy and confound geometry modification with lesion-content removal. Stretching to a common aspect ratio is also omitted because anatomical deformation and distribution shift would prevent clean isolation of geometry reliance."
+  },
+  "output_requirements": [
+    "Frozen plan/code/input provenance record and runtime environment record.",
+    "Replay verification report, including failures if any.",
+    "Per-image source/variant mapping with dimensions, original source hash, generated-image hash, gray value and original image mean for the mean-gray variant.",
+    "All original and ablation class-probability vectors with image identity, true class and predicted class in CSV/NPZ.",
+    "Complete metrics, confusion matrices and paired accuracy-difference summaries for both predetermined variants, regardless of outcome.",
+    "Readable results stating that this is post hoc, inference-only and out-of-distribution ablation, with the specified interpretation limits."
+  ],
+  "prohibitions": [
+    "No retraining or model, checkpoint, seed or threshold selection.",
+    "No outcome-driven gray-value, crop, aspect-ratio, tolerance or analysis changes.",
+    "No adaptive addition or suppression of conditions based on observed results.",
+    "No original manuscript, repository, public deposit or frozen primary-experiment mutation during this analysis."
+  ],
+  "prior_hardware_preflight": {
+    "status": "completed before protocol freeze; non-study synthetic input only",
+    "input": "One newly generated uniform RGB(128,128,128) image of width280 and height640, repeated32 times; no dataset image pixels or labels used.",
+    "observations_inspected": [
+      "output count32",
+      "elapsed time10.24seconds",
+      "loaded transform"
+    ],
+    "predictions_inspected": false,
+    "study_image_predictions_obtained": false,
+    "ablation_results_obtained": false,
+    "purpose": "Hardware/runtime feasibility only; no scientific result or parameter selection.",
+    "interpretation": "Disclosed technical preflight, not preregistration and not execution of the study-image sensitivity analysis."
+  }
+}

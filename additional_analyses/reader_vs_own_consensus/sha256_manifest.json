@@ -1,0 +1,13 @@
+{
+  "source": {
+    "path": "/workspace/scratch/12793bdc6888/release_2026-10-25/repo/data/reader_ratings.csv",
+    "sha256": "0381c83dae0151230bc07928488e372bc359a0a087edc4f9cdd9c0be65c793b9"
+  },
+  "outputs": {
+    "compute_reader_consensus_agreement.py": "eedf0c20cf818dea44553fc9e3622b623003bda566e864f1311098eff6ed3d1e",
+    "reader_consensus_descriptive_results.json": "eef92539727ac659cd327ecd6de36a6db0353029185d04374541bf46dc96596b",
+    "reader_consensus_descriptive_summary.csv": "455ee4f90964a624923cdd4aa9d939a7bf30f4f7b26d6441915b968dfae23a81",
+    "podsumowanie_PL.txt": "62a302ff6465000aac2385bcfc9d84b03a8577f1379093aec04bd48043f3edc7",
+    "verification.json": "9de5232dec664d0f6ebdffb1e510d3850501079813a83ea9a78fe68a367cf02b"
+  }
+}

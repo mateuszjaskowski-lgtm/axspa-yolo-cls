@@ -5,7 +5,7 @@
   "primary_seed": 0,
   "location_policy": "Checkpoint binaries are distributed separately from the Git source tree. Resolve the exact archive names below from the associated research-materials deposit or request them from the corresponding author.",
   "archive_locator": null,
-  "contact": "mjaskowski@zoz.konskie.pl",
+  "contact": "mateuszjaskowski@gmail.com",
   "checkpoints": [
     {
       "model": "yolo11l-cls",

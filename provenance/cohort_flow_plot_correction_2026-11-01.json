@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-01",
+  "publication_status": "unpublished local review addendum",
+  "base_script_sha256": "be82a0a177d1275b8b6623b7ea40aa24d8e1892be9314cba05cfeabaee79d188",
+  "current_script_sha256": "662dd55353bd18f010b4d1df420269a009335e96461874a7ca0decd20e2f5c8d",
+  "patch_sha256": "84e518934b46c0fe3aa4905b75805a1d04fa7564832594ae3256bd8043dc30e4",
+  "standalone_renderer_sha256": "471dcb093a3a45f81be315d56f77b8c2138705dd6ece4e0d74ad6abbc0c0577d",
+  "standalone_source": "Companion revised Figure S1 rendering implementation; only its standalone CLI default is adapted for repository use.",
+  "scope": "Only the Supplementary Figure S1 block changes. No main or secondary model plotting methods/data changed.",
+  "base_public_adapter_record_unchanged": true,
+  "historical_reference": "provenance/public_plot_adapter.json binds the prior public plotting adapter; the present record binds its successor.",
+  "source": "cohort_clarification_2026-11-01.json",
+  "previous_prefix_and_suffix_exactly_preserved": true
+}
